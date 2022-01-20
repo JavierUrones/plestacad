@@ -12,7 +12,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
-    return this.http.post<any>('http://localhost:5000/api/auth', {
+    return this.http.post<any>('http://localhost:3000/api/auth', {
       username: email,
       password: password,
     });

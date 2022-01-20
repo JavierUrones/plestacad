@@ -23,7 +23,7 @@ const routes: Routes = [
         loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
       },
       {
-        path: 'calendar',
+        path: 'calendario',
         loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule)
       },
     ], canActivate: [AuthGuard],
