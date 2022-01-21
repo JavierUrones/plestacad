@@ -12,7 +12,10 @@ import { AuthenticationService } from './services/authentication.service';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatOptionModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule} from '@angular/material/select'
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent],
@@ -25,8 +28,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     SharedModule,
     RouterModule,
-    MatButtonModule
-    
-  ]
+    MatButtonModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatGridListModule  ]
 })
 export class SessionModule { }

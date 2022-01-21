@@ -40,10 +40,22 @@ router.post("/signup", async (req, res) => {
   });
 
   try {
-      //Se guarda el nuevo usuario
+    //Se guarda el nuevo usuario
     const userSave = await newUser.save();
+
+    const user = await User.findOne({ email: req.body.email });
+    //Se genera el token asociado al usuario.
+    var token = jwt.sign({ id: user.id }, secret.key, {
+      expiresIn: 86400, // El token expira en 24 horas.
+    });
+    //Se genera el token asociado al usuario.
+    var token = jwt.sign({ id: user.id }, secret.key, {
+      expiresIn: 86400, // El token expira en 24 horas.
+    });
+
     res.json({
       data: userSave,
+      token: token,
     });
   } catch (error) {
     console.log(error);
@@ -74,7 +86,6 @@ router.post("/login", async (req, res) => {
     if (!checkPassword)
       return res.status(400).json({ error: "Password invalid" });
 
-
     //Se genera el token asociado al usuario.
     var token = jwt.sign({ id: user.id }, secret.key, {
       expiresIn: 86400, // El token expira en 24 horas.
@@ -89,7 +100,6 @@ router.post("/login", async (req, res) => {
       role: user.role,
       token: token,
     });
-
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
