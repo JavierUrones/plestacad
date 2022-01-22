@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const User = require("../../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Joi = require("@hapi/joi");
-const secret = require("../configs/config");
+const secret = require("../../config/index");
 
 //Se definen los validadores del registro
 const schemaRegister = Joi.object({
