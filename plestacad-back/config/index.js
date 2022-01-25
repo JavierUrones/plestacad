@@ -1,19 +1,18 @@
 module.exports = {
-    key: "mysecretkey"
-}
-
+  key: "mysecretkey",
+};
 
 const configCORS = {
-    application: {
-      cors: {
-        server: [
-          {
-            origin: "*",
-            credentials: true,
-          },
-        ],
-      },
+  application: {
+    cors: {
+      server: [
+        {
+          origin: "*",
+          credentials: true,
+        },
+      ],
     },
-  };
+  },
+};
 
-  module.exports.configCORS = configCORS;
+module.exports.configCORS = configCORS;

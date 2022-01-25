@@ -4,7 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const Joi = require("@hapi/joi");
 const secret = require("../../config/index");
+const AuthenticationService = require("../../services/authService");
+const EmailRepeatError = require("../../config/errors/customErrors");
+const ValidationError = require("../../config/errors/customErrors");
 
+const authService = new AuthenticationService();
 //Se definen los validadores del registro
 const schemaRegister = Joi.object({
   name: Joi.string().min(1).max(255).required(),
@@ -15,53 +19,27 @@ const schemaRegister = Joi.object({
 });
 
 router.post("/signup", async (req, res) => {
-  //Se validan los parámetros de la petición.
-  const { error } = schemaRegister.validate(req.body);
 
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
-  if (await User.findOne({ email: req.body.email })) {
-    return res.status(400).json({ error: "Email already in use" });
-  }
-
-  //Se encripta el password
-  const salt = await bcrypt.genSalt();
-  const password = await bcrypt.hash(req.body.password, salt);
-
-  //Se crea nuevo usuario
-  const newUser = new User({
-    name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    password: password,
-    role: req.body.role,
-  });
-
+  const userDto = req.body;
   try {
-    //Se guarda el nuevo usuario
-    const userSave = await newUser.save();
-
-    const user = await User.findOne({ email: req.body.email });
-    //Se genera el token asociado al usuario.
-    var token = jwt.sign({ id: user.id }, secret.key, {
-      expiresIn: 86400, // El token expira en 24 horas.
-    });
-    //Se genera el token asociado al usuario.
-    var token = jwt.sign({ id: user.id }, secret.key, {
-      expiresIn: 86400, // El token expira en 24 horas.
-    });
-
+    const  {token, userSave} = await authService.signUp(userDto)
     res.json({
       data: userSave,
       token: token,
     });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json(error);
+    console.log(error)
+    if (error instanceof EmailRepeatError){
+        return res.status(400).json({error: error.message});
+    } else if(error instanceof ValidationError){
+      return res.status(400).json({error: error.message});
+    } else{
+
+    return res.status(500).json({error: error.message});
+  }
   }
 });
+
 
 //Se definen los validadores del login.
 const schemaLogin = Joi.object({
