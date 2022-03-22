@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 const Joi = require("@hapi/joi");
 const secret = require("../config/index");
 const User = require("../models/User");
-const ValidationError = require("../config/errors/customErrors")
-const EmailRepeatError = require("../config/errors/customErrors")
+const ValidationError = require("../config/errors/customErrors");
+const { response } = require("express");
 
 //Se definen los validadores del registro
 const schemaRegister = Joi.object({
@@ -14,6 +14,12 @@ const schemaRegister = Joi.object({
     password: Joi.string().min(8).required(),
     role: Joi.string().valid("student", "admin", "teacher"),
   });
+
+  //Se definen los validadores del login.
+const schemaLogin = Joi.object({
+  email: Joi.string().min(6).max(255).required().email(),
+  password: Joi.string().min(8).required(),
+});
 
 class AuthenticationService {
 
@@ -27,8 +33,7 @@ class AuthenticationService {
     }
 
     if (await User.findOne({ email: userDto.email })) {
-      throw new EmailRepeatError('Email already used');
-      //return res.status(400).json({ error: "Email already in use" });
+      throw new ValidationError('Ya existe una cuenta registrada con el email indicado.');
     }
 
     //Se encripta el password
@@ -61,6 +66,33 @@ class AuthenticationService {
       return {token: token, user: userSave};
     } catch (error) {
         throw error;
+    }
+  }
+
+  async login(userDto){
+    try {
+      // Se comprueban los validadores con los datos de la petición.
+      const { error } = schemaLogin.validate(userDto);
+
+      if (error) throw new ValidationError(error.details[0].message);
+      const user = await User.findOne({ email: userDto.email });
+      if (!user) throw new ValidationError("Usuario no encontrado");
+  
+      //Se comprueba que el password sea la almacena en la base de datos.
+      const checkPassword = await bcrypt.compare(
+        userDto.password,
+        user.password
+      );
+      if (!checkPassword) throw new ValidationError("La contraseña no es válida");
+  
+      //Se genera el token asociado al usuario.
+      var token = jwt.sign({ id: user.id }, secret.key, {
+        expiresIn: 86400, // El token expira en 24 horas.
+      });
+
+      return {token: token, userLogged: user};
+    } catch (error) {
+      throw error;
     }
   }
 }

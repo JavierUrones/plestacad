@@ -9,12 +9,16 @@ import { AuthenticationService } from 'src/app/modules/session/services/authenti
 })
 export class HeaderComponent implements OnInit {
 
-
+  username = ""
+  surname = ""
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
   constructor(private authenticationService: AuthenticationService, private router:Router) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+     this.username = sessionStorage.getItem('name') as string;
+     this.surname = sessionStorage.getItem('surname') as string;
+  }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
@@ -26,7 +30,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-      console.log("click")
+      localStorage.removeItem('jwt');
+      sessionStorage.removeItem('currentUser');
       this.authenticationService.logout();
       this.router.navigateByUrl("/login")
   }

@@ -44,10 +44,14 @@ export class LoginComponent implements OnInit {
 
         this.authenticationService.login(email, password).subscribe({
           next: (response) => {
-            console.log("RESPUESTA", response);
                 const token = (<any> response).token;
+                const user = (<any> response).user;
+                console.log("USER", user.id)
                 localStorage.setItem("jwt", token);
-                console.log("User is logged in " + token);
+                sessionStorage.setItem("name", user.name);
+                sessionStorage.setItem("surname", user.surname);
+                sessionStorage.setItem("email", user.email);
+                sessionStorage.setItem("id", user._id);
                 this.router.navigateByUrl('/');
           },
           error: (e) => this.loginInvalid = true

@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './layout/main/main.component';
 import { LoginComponent } from './modules/session/login/login.component';
 import { SignupComponent } from './modules/session/signup/signup.component';
-import { WorkListComponent } from './modules/work-list/work-list.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
@@ -16,7 +15,10 @@ const routes: Routes = [
     children: [
       {
         path: 'trabajos',
-        loadChildren: () => import('./modules/work-list/work-list.module').then(m => m.WorkListModule)
+        loadChildren: () => import('./modules/works/work-list.module').then(m => m.WorkListModule),
+        data: {
+          breadcrumb: 'works'
+      }
       },
       {
         path: 'perfil',

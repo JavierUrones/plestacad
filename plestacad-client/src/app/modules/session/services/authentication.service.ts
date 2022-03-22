@@ -10,18 +10,19 @@ import { User } from 'src/app/shared/models/user.model';
 })
 export class AuthenticationService {
   jwtHelper = new JwtHelperService();
-  constructor(private http: HttpClient, private router: Router) {}
+  uri = "http://localhost:5200/api/";
 
+  constructor(private http: HttpClient, private router: Router) {}
   
   login(email: string, password: string) {
-    return this.http.post<any>('http://localhost:5200/api/login', {
+    return this.http.post<any>(this.uri+'login', {
       email: email,
       password: password,
     });
   }
 
   logout() {
-    localStorage.removeItem('jwt');
+    return this.http.get(this.uri+"/logout")
   }
 
   isLogged() {
@@ -30,7 +31,7 @@ export class AuthenticationService {
   }
 
   signup(name: string, surname: string, email:string, password: string, role:UserRole){
-    return this.http.post<any>('http://localhost:5200/api/signup', {
+    return this.http.post<any>(this.uri+'signup', {
       name: name,
       surname: surname,
       email: email,

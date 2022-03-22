@@ -1,4 +1,4 @@
-
+<!--
 <mat-grid-list cols="3" rowHeight=15em>
     <mat-grid-tile>
   <mat-card class="work-card">
@@ -27,3 +27,30 @@
   </mat-card>
 </mat-grid-tile>
 </mat-grid-list>
+-->
+<mat-form-field>
+  <mat-label>Filtrar</mat-label>
+
+<mat-select [value]="selected" (selectionChange)="onFilterChange($event.value)">
+  <mat-option *ngFor="let option of options" [value]="option.value">
+    {{ option.name }}
+  </mat-option>
+</mat-select>
+</mat-form-field>
+<mat-grid-list cols="3" rowHeight="13em">
+  <mat-grid-tile *ngFor="let work of workList" >
+
+  <mat-card class="work-card" (click)="navigateToWork(work._id)">
+
+    <mat-card-title
+    >{{work.title}}</mat-card-title
+  >
+  <mat-card-subtitle>{{work.category}}</mat-card-subtitle>
+  <mat-card-content class="content-card">
+    <p>Test descripción de prueba</p>
+  </mat-card-content>
+  </mat-card>
+</mat-grid-tile>
+
+</mat-grid-list>
+

@@ -4,6 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule }  from '@angular/material/toolbar';
 import { MatIconModule }  from '@angular/material/icon';
@@ -19,7 +21,8 @@ import { AuthGuard } from './guards/auth.guard';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { AuthGuard } from './guards/auth.guard';
     TranslateModule,
     HeaderComponent,
     FooterComponent,
-    SidenavComponent
+    SidenavComponent,
+    BreadcrumbComponent
   ],
   providers:[
   ]

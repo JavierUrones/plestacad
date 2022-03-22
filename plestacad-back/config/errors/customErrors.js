@@ -5,10 +5,3 @@ module.exports = class ValidationError extends Error {
     }
   }
   
-module.exports = class EmailRepeatError extends Error {
-    constructor(message) {
-      super(message);
-      this.name = "EmailRepeatError"; 
-    }
-  }  
-

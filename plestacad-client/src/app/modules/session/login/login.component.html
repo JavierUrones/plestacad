@@ -3,11 +3,8 @@
     <mat-card>
       <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <img class="logo" src="assets/images/logo.svg"/>
+          <img class="logo" src="assets/images/logo.svg" />
           <h3>{{ "login.main" | translate }}</h3>
-          <mat-error *ngIf="loginInvalid">
-            Usuario y contraseña no reconocidos
-          </mat-error>
           <mat-form-field class="full-width-input">
             <input
               matInput
@@ -25,19 +22,25 @@
               formControlName="password"
               required
             />
-            <mat-error> Contraseña incorrecta </mat-error>
+            <mat-error>Indica tu contraseña</mat-error>
           </mat-form-field>
           <button mat-raised-button color="primary" (click)="onSubmit()">
             Entrar
           </button>
+
+          <div class="mainError">
+            <mat-error *ngIf="loginInvalid">
+              Usuario y contraseña no reconocidos
+            </mat-error>
+          </div>
         </form>
       </mat-card-content>
       <mat-card>
         <p>¿No estás registrado?</p>
-        <a routerLink="/signup" routerLinkActive="active">Crea tu cuenta ahora</a>
+        <a routerLink="/signup" routerLinkActive="active"
+          >Crea tu cuenta ahora</a
+        >
       </mat-card>
     </mat-card>
-
-
   </div>
 </div>

@@ -1,0 +1,36 @@
+
+<p-treeTable [value]="files">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of cols">
+        {{ col.header }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+    <tr>
+
+      <td>
+        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+
+        <span> <mat-icon color="secondary" *ngIf="rowData.isDirectory">
+          folder
+        </mat-icon>
+        <mat-icon color="primary" *ngIf="!rowData.isDirectory">
+          insert_drive_file
+        </mat-icon> {{ rowData.filename }}</span>
+       
+      </td>
+      <td>{{ bytesToSize(rowData.size)}}</td>
+      <td>{{ rowData.modification | date:'dd/MM/yyyy HH:mm:ss' }} </td>
+      <td>
+        <mat-icon matTooltip="Añadir archivo" class="operations" color="primary" (click)="addFile(rowData.path)" *ngIf="rowData.isDirectory">upload_file</mat-icon>
+        <mat-icon class="operations" color="primary" (click)="addDirectory(rowData.path)" *ngIf="rowData.isDirectory">create_new_folder</mat-icon>
+        <mat-icon class="operations" color="primary" (click)="downloadFile(rowData.path, rowData.filename)" *ngIf="!rowData.isDirectory" >download</mat-icon>
+        <mat-icon class="operations" color="primary" (click)="deleteFile(rowData.path, rowData.isDirectory)">delete</mat-icon>
+
+
+      </td>
+    </tr>
+  </ng-template>
+</p-treeTable>

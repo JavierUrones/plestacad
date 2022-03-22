@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/file-input": "^7.0.1",
     "@angular/animations": "~13.1.0",
     "@angular/cdk": "^13.1.2",
     "@angular/common": "~13.1.0",
@@ -25,6 +26,11 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "file-saver": "^2.0.5",
+    "fontawesome": "^5.6.3",
+    "ngx-material-file-input": "^3.0.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.2.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -33,6 +39,7 @@
     "@angular-devkit/build-angular": "~13.1.2",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
+    "@types/file-saver": "^2.0.5",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.10.0",
