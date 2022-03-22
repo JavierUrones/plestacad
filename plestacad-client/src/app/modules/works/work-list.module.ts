@@ -24,11 +24,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { ForoComponent } from './foro/foro/foro.component';
-import { PostComponent } from './foro/foro/post/post.component';
+import {MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
-  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, ForoComponent, PostComponent],
+  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, ForoComponent],
   imports: [
     CommonModule,
     WorkListRoutingModule,
@@ -51,7 +51,7 @@ import { PostComponent } from './foro/foro/post/post.component';
     MatInputModule,
     NgxMatFileInputModule,
     ReactiveFormsModule,
-    MatListModule
+    MatPaginatorModule
     
     
     ],
