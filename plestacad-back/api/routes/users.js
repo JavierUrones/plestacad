@@ -20,4 +20,22 @@ router.get("/users", async (req, res) => {
   );
 
 
+
+  router.get("/users/fullname/:id", async (req, res) => {
+    try{
+      const user =   await userService.getUserById(req.params.id);
+    
+      res.json({
+        data: {
+          "fullname": user.name + " " + user.surname
+        }
+      })
+    }
+    catch(error){
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  );
+
+
   module.exports = router;

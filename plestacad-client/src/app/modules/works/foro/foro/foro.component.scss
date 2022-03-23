@@ -1,12 +1,4 @@
-.post-card{
-    background-color: white;
-    margin: 0 auto; float:none;
-    border-style: solid;
-    border-width: 0.25px 0.5px 0.25px 0.5px;
-    border-color: grey;
-    width: 60%;
-    position: relative;
-}
+
 h3{
     color: #008080;
     
@@ -15,23 +7,14 @@ h3{
     margin-left: 1%;
     margin-top: 0.5%;
 }
-.paginator-custom{
-    background-color: white;
-    margin: 0 auto; float:none;
-    width: 60%;
-    position: relative;
-}
 
-button{
+
+button, mat-form-field{
     margin: 0 auto; float: none; position:relative;
 }
 
 
-.container{
-    position : relative;
-    margin-top: 2%;
-    
-}
+
 
 .icon-text {
     display: flex;
@@ -42,11 +25,39 @@ button{
     color: rgb(250, 83, 83);
 }
 
+
+@media only screen and (min-width:765px) and (min-height: 765px) {
+    .paginator-custom{
+        background-color: white;
+        margin: 0 auto; float:none;
+        width: 60%;
+        position: relative;
+    }
+    .post-card{
+        background-color: white;
+        margin: 0 auto; float:none;
+        border-style: solid;
+        border-width: 0.25px 0.5px 0.25px 0.5px;
+        border-color: grey;
+        width: 60%;
+        position: relative;
+    }
+    .container{
+        position : relative;
+        margin-top: 2%;
+        
+    }
+    
 .add {
-    position: absolute;
+    position:absolute;
     top: 1%;
     right: 1%;
 }
+}
 
 
+
+.selector{
+    margin-left: 11%;
+}
 

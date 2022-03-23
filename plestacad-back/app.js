@@ -4,6 +4,7 @@ const authRoutes = require("./api/routes/authentication");
 const workRoutes = require("./api/routes/works");
 const userRoutes = require("./api/routes/users");
 const filesRoutes = require("./api/routes/files");
+const postsRoutes = require("./api/routes/posts");
 
 async function run() {
   const app = express();
@@ -15,6 +16,7 @@ async function run() {
   app.use("/api", workRoutes);
   app.use("/api", userRoutes);
   app.use("/api", filesRoutes);
+  app.use("/api", postsRoutes);
 
   const PORT = process.env.PORT || 5200;
   app.listen(PORT, () => {

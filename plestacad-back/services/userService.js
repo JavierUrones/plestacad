@@ -11,6 +11,16 @@ class UserService {
       throw error;
     }
   }
+
+
+  async getUserById(id){
+    try {
+      const user = User.findById(id)
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 
