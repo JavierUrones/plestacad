@@ -8,7 +8,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent },
   {
     path: '',
     component: MainComponent,
@@ -17,9 +17,10 @@ const routes: Routes = [
         path: 'trabajos',
         loadChildren: () => import('./modules/works/work-list.module').then(m => m.WorkListModule),
         data: {
-          breadcrumb: 'works'
-      }
+          breadcrumb: 'Mis Trabajos'
+        }
       },
+
       {
         path: 'perfil',
         loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
@@ -36,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

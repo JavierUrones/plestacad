@@ -27,4 +27,9 @@ export class WorkListService {
       return response.data
     }));
   }
+
+
+    getWorkById(id: string){
+    return this.http.get<any>(this.uri+"works/"+id).pipe(map(response => { return response;}))
+  }
 }

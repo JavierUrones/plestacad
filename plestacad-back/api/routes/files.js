@@ -7,6 +7,10 @@ const fastFolderSizeSync = require('fast-folder-size/sync')
 const { response } = require("express");
 
 
+const FileService = require("../../services/FileService");
+
+const fileService = new FileService();
+
 const rootProjectPath = require("path").resolve("./");
 getFilesFromDirectory = function (id, filesDirectory, listPathsFile) {
   files = fs.readdirSync(filesDirectory);
@@ -15,7 +19,7 @@ getFilesFromDirectory = function (id, filesDirectory, listPathsFile) {
   files.forEach(function (file) {
     var stats = fs.statSync(filesDirectory + file);
     if (stats.isFile()) {
-      var data = {"data": {}};
+      var data = { "data": {} };
       data.data.filename = file;
       data.data.size = stats["size"];
       data.data.modification = stats["mtime"];
@@ -43,7 +47,7 @@ getFilesFromDirectory = function (id, filesDirectory, listPathsFile) {
       listPathsFile.push(data);
     }
     if (stats.isDirectory()) {
-      var data = {"data": {}, "children": []};
+      var data = { "data": {}, "children": [] };
       data.data.filename = file;
       data.data.modification = stats["mtime"];
       data.data.size = 0;
@@ -65,7 +69,7 @@ getFilesFromDirectory = function (id, filesDirectory, listPathsFile) {
         data.data.parent = parent;
       }
       data.data.isDirectory = true;
-      
+
       listPathsFile.push(data);
       listPathsFile = getFilesFromDirectory(
         id,
@@ -78,48 +82,48 @@ getFilesFromDirectory = function (id, filesDirectory, listPathsFile) {
 };
 
 
-createResArray = function(responseArray, listPathsFile){
-    deepLevelList = []
-    for(var i= 0; i < listPathsFile.length; i++){
-      deepLevelList.push(listPathsFile[i].data.deepLevel)
-    }
-    maxDeepLevel = Math.max(...deepLevelList)
-    currentLevel = maxDeepLevel
+createResArray = function (responseArray, listPathsFile) {
+  deepLevelList = []
+  for (var i = 0; i < listPathsFile.length; i++) {
+    deepLevelList.push(listPathsFile[i].data.deepLevel)
+  }
+  maxDeepLevel = Math.max(...deepLevelList)
+  currentLevel = maxDeepLevel
 
-    var lastLevelFiles = []
-    while(currentLevel >= 1){
-        var filesCurrentLevel = listPathsFile.filter(function (el) { return el.data.deepLevel==currentLevel });
-        filesCurrentLevel.forEach((element, i) => {
-    
-            if (currentLevel == 1 && element.data.isDirectory) { 
-                lastLevelFiles.forEach((file, j) => {
-                    if(element.data.isDirectory && file.data.parent == element.data.filename){
-                        element.children.push(file);
+  var lastLevelFiles = []
+  while (currentLevel >= 1) {
+    var filesCurrentLevel = listPathsFile.filter(function (el) { return el.data.deepLevel == currentLevel });
+    filesCurrentLevel.forEach((element, i) => {
 
-                    } 
-                });
-                    responseArray.push(element)
-            }
-             if(currentLevel == 1 && !element.data.isDirectory){
-                    responseArray.push(element)
-            }
-             if(element.data.isDirectory && currentLevel > 1 && currentLevel < maxDeepLevel){
-                lastLevelFiles.forEach((file, j) => {
-                    if(file.data.parent == element.data.filename){
-  
-                        element.children.push(file);
-                    } 
-                });
-            }
+      if (currentLevel == 1 && element.data.isDirectory) {
+        lastLevelFiles.forEach((file, j) => {
+          if (element.data.isDirectory && file.data.parent == element.data.filename) {
+            element.children.push(file);
+
+          }
         });
-     
-        currentLevel = currentLevel - 1;
-        lastLevelFiles = filesCurrentLevel;
-    }
+        responseArray.push(element)
+      }
+      if (currentLevel == 1 && !element.data.isDirectory) {
+        responseArray.push(element)
+      }
+      if (element.data.isDirectory && currentLevel > 1 && currentLevel < maxDeepLevel) {
+        lastLevelFiles.forEach((file, j) => {
+          if (file.data.parent == element.data.filename) {
+
+            element.children.push(file);
+          }
+        });
+      }
+    });
+
+    currentLevel = currentLevel - 1;
+    lastLevelFiles = filesCurrentLevel;
+  }
 
 
 
-     return responseArray;
+  return responseArray;
 }
 
 
@@ -131,12 +135,12 @@ router.get("/files/:id", async (req, res) => {
     var listPathsFile = [];
 
     listPathsFile = getFilesFromDirectory(id, filesDirectory);
-    listPathsFile.sort(function(a, b) {
-        return parseFloat(b.data.deepLevel) - parseFloat(a.data.deepLevel);
+    listPathsFile.sort(function (a, b) {
+      return parseFloat(b.data.deepLevel) - parseFloat(a.data.deepLevel);
     });
 
     listPathsFile.forEach((element) => {
-      if (element.data.isDirectory){
+      if (element.data.isDirectory) {
         const bytes = fastFolderSizeSync(element.data.path);
         element.data.size = bytes;
       }
@@ -157,7 +161,7 @@ router.get("/files/:id", async (req, res) => {
 router.post("/files/add", async (req, res) => {
   try {
     var form = new formidable.IncomingForm();
- 
+
     form.parse(req, async (err, fields, files) => {
       if (err) {
         return res.status(400).json({
@@ -219,11 +223,14 @@ router.post("/files/delete/:id", async (req, res) => {
 
 
 router.post("/files/createDir", async (req, res) => {
-  var path = req.body.path;
   try{
-    if (!fs.existsSync(path)){
-      fs.mkdirSync(path);
-      return res.status(200).json({status: "Directory create succesfully"} );
+    var path = req.body.path;
+    var response = await fileService.createDirectory(path);
+    console.log(response)
+    if(response=="Ok"){
+      return res.status(200).json({
+        status: "Directory " + path + " created succesfully",
+      });
     } else{
       return res
       .status(400)
@@ -231,30 +238,32 @@ router.post("/files/createDir", async (req, res) => {
         error: "Directory already exists",
       });
     }
-  }catch(error) {
+  }catch(error){
     return res.status(500).json({ error: error.message });
-}
+  }
+
 })
 
 router.post("/files/deleteDir/:id", async (req, res) => {
   var id = req.params.id;
   var path = req.body.path;
   try {
-  fs.rmdir(path, function(err) {
-    if (err) {
-      console.log(err)
-      return res
-        .status(400)
-        .json({
-          error: "Something was wrong trying to delete the directory" + err,
-        });
-    }
-    return res.status(200).json({
-      status: "Directory deleted succesfully",
-    });})
+    fs.rmdir(path, function (err) {
+      if (err) {
+        console.log(err)
+        return res
+          .status(400)
+          .json({
+            error: "Something was wrong trying to delete the directory" + err,
+          });
+      }
+      return res.status(200).json({
+        status: "Directory deleted succesfully",
+      });
+    })
 
-  } catch(error) {
-      return res.status(500).json({ error: error.message });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
 
 });
@@ -264,9 +273,9 @@ router.post("/files/deleteDir/:id", async (req, res) => {
 
 
 router.post("/files/download/:id", async (req, res) => {
-  res.download(req.body.path,(err)=>{
-   if(err)
-    console.log(err)
+  res.download(req.body.path, (err) => {
+    if (err)
+      console.log(err)
   })
 });
 

@@ -1,5 +1,6 @@
+<mat-spinner *ngIf="loading" color="primary"></mat-spinner>
 
-<p-treeTable [value]="files">
+<p-treeTable *ngIf="!loading" [value]="files">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of cols">

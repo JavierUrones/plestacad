@@ -1,0 +1,36 @@
+<div class="container" *ngIf="!navigation">
+    <div class="options">
+      <mat-form-field class="selector" >
+        <mat-label>Ordenar por...</mat-label>
+      
+      <mat-select [value]="selected" (selectionChange)="onFilterChange($event.value)">
+        <mat-option *ngFor="let option of options" [value]="option.value">
+          {{ option.name }}
+        </mat-option>
+      </mat-select>
+      </mat-form-field>
+    <button (click)="newPost()" id="newPost" mat-raised-button color="primary"><mat-icon>edit</mat-icon>Nuevo tema</button>
+
+  </div>
+    <mat-paginator class="paginator-custom" [length]="length" [pageSize]= "pageSize" [pageSizeOptions]="pageSizeOptions" aria-label="Select page" (page)="getServerData($event)"></mat-paginator>
+    <mat-spinner *ngIf="loading" color="primary"></mat-spinner>
+
+    <div class="content-card" *ngFor="let post of posts">
+
+        <div class="post-card">
+          <p class="author">Publicado por {{ post.authorFullName }} el día {{ post.creationDate   | date: 'dd/MM/yyyy'}} </p>
+            <h3 class="content navigatorLink" (click)="navigateToPost(post._id)">{{ post.title }}</h3>
+            <p class="content add"></p>
+            <div [innerHTML]="post.message" class="content"></div>
+      
+              <button mat-button><div class="icon-text">
+                  <mat-icon class="red-icon" *ngIf="post.isFavorite" (click)="markAsFavorite(post._id, false)">favorite</mat-icon>
+                  <mat-icon class="red-icon" *ngIf="!post.isFavorite" (click)="markAsFavorite(post._id, true)">favorite_border</mat-icon>
+            </div></button>
+              <button mat-button> <div class="icon-text"><mat-icon>comment</mat-icon><p>{{ post.interactions.length }} Comentarios</p>
+              </div></button>
+        </div>
+    </div>
+
+
+</div>

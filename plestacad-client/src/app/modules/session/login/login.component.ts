@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  async onSubmit(): Promise<void> {
+   onSubmit() {
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
     if (this.form.valid) {

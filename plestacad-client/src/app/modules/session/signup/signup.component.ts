@@ -74,6 +74,7 @@ export class SignupComponent implements OnInit {
       .signup(name, surname, email, password, role)
       .subscribe({
         next: (response) => {
+          console.log("Execute authentication")
           const token = (<any>response).token;
           localStorage.setItem('jwt', token);
           console.log('User is logged in ' + token);

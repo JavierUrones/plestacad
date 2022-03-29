@@ -24,6 +24,7 @@ const schemaLogin = Joi.object({
 class AuthenticationService {
 
    async signUp(userDto) {
+     console.log("SIGNUP")
     //Se validan los parámetros de la petición.
     const { error } = schemaRegister.validate(userDto);
 

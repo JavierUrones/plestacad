@@ -1,0 +1,49 @@
+<div class="grid">
+    <div id="headerPost">
+        <div id="titlePost">
+            <h3>{{title}}</h3>
+        </div>
+    </div>
+
+    <div id="contentPost">
+        <div id="messageContent">
+            <div [innerHTML]="message"></div>
+            <p class="date">{{creationDate | date: 'dd/MM/yyyy hh:mm:ss'}}</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div id="interactionsSection">
+        <h4>Comentarios</h4>
+        <p> {{this.interactionsObjects.length}} respuestas </p>
+        <div *ngFor="let interaction of interactionsObjects">
+            <div class="interaction">
+                <span><p class="pull-left name">{{interaction.authorFullName}} </p><p class="date">{{interaction.date | date: 'dd/MM/yyyy hh:mm:ss' }}</p></span>
+                <div [innerHTML]="interaction.message" class="content"></div>
+
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <div id="commentOptions">
+        <quill-editor  placeholder='' [modules]="modulesQuill"  (onEditorChanged)="onChangedEditor($event)" [styles]="{height: '350px'}"></quill-editor>
+
+          <button id="buttonComment" mat-raised-button color="primary" (click)="sendInteraction()">
+            Comentar
+          </button>
+    </div>
+
+
+
+
+    </div>
+

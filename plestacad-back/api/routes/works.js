@@ -4,7 +4,10 @@ const WorkService = require("../../services/workService");
 const workService = new WorkService();
 
 const ValidationError = require("../../config/errors/customErrors");
-
+const FileService = require("../../services/FileService");
+const fileService = new FileService();
+const rootProjectPath = require("path").resolve("./");
+const directoryFiles = "/userdata/";
 router.get("/works", async (req, res) => {
   try {
     const listWorks = await workService.getAllWorks();
@@ -32,6 +35,10 @@ router.post("/works", async (req, res) => {
   const workDto = req.body;
   try {
     const workSave = await workService.createWork(workDto);
+      
+    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id);
+    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id + "/" + workSave.title);
+
     res.status(200).send({
       data: workSave,
     });

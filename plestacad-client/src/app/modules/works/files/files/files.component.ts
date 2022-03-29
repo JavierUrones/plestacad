@@ -20,7 +20,7 @@ interface TreeNode {
 export class FilesComponent implements OnInit {
   id!: string;
   files: TreeNode[] = [];
-
+  loading!: boolean;
   cols: any[] | undefined;
 
 
@@ -50,7 +50,9 @@ export class FilesComponent implements OnInit {
     })
   }
   getFilesFromWork() {
-    this.id = this.route.snapshot.params['id'];
+
+    this.loading = true;
+    this.id = this.route.snapshot.params['idWork'];
     this.fileService.getFilesByWorkId(this.id).subscribe((response) => {
       this.files = response.data;
       this.files.forEach((node) => {
@@ -58,6 +60,9 @@ export class FilesComponent implements OnInit {
           node.expanded = true;
           this.expandNodes(node.children)
         } 
+        if(node){
+          this.loading = false;
+        }
 
       })
     });
@@ -111,7 +116,7 @@ export class FilesComponent implements OnInit {
     });  }
 
   addFile(path: string){
-    this.id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['idWork'];
     let config: MatDialogConfig = {
       panelClass: "dialog-responsive",
       data: {path: path, id: this.id}

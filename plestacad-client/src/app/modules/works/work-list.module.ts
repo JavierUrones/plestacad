@@ -23,12 +23,13 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
-import { ForoComponent } from './foro/foro/foro.component';
 import {MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { QuillModule } from 'ngx-quill'
+import { ForoModule } from './foro/foro/foro.module';
 
 @NgModule({
-  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, ForoComponent],
+  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile ],
   imports: [
     CommonModule,
     WorkListRoutingModule,
@@ -51,8 +52,10 @@ import {MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     NgxMatFileInputModule,
     ReactiveFormsModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    QuillModule,
+    MatProgressSpinnerModule,
+    ForoModule
     
     ],
 })

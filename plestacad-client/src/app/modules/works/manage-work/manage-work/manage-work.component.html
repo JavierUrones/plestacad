@@ -5,9 +5,9 @@
 </div>
 <p class="none">.</p>
 
-<mat-tab-group animationDuration="1ms">
-  <mat-tab label="Información General"> Content 1 </mat-tab>
-  <mat-tab label="Foro"><app-foro></app-foro></mat-tab>
-  <mat-tab label="Archivos"> <app-files></app-files></mat-tab>
-  <mat-tab label="Calendario"> Content 4</mat-tab>
+<mat-tab-group animationDuration="1ms" (click)="onClick($event)">
+  <mat-tab label="Información General" #infoTab> Content 1 </mat-tab>
+  <mat-tab label="Foro" #foroTab><app-foro></app-foro></mat-tab>
+  <mat-tab label="Archivos" #filesTab> <app-files></app-files></mat-tab>
+  <mat-tab label="Calendario" #calendarTab> Content 4</mat-tab>
 </mat-tab-group>

@@ -26,6 +26,21 @@ orderList = function (listPost, orderBy) {
     throw new Error("Order value not recognized.");
   }
 };
+
+
+router.get("/posts/length/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const length = await postService.getPostsLengthByWorkId(id);
+    res.json({
+      data: {
+        length,
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 router.get("/posts/:id/:orderBy/:numElems/:pageNumber", async (req, res) => {
   try {
     const id = req.params.id;
@@ -80,5 +95,65 @@ router.post("/posts/:id", async (req, res) => {
     return res.status(400).json({ error: error.message });
   }
 });
+
+
+router.put('/posts/markFavorite', async (req, res) => {
+  const postDto = req.body;
+  try {
+    console.log("POSTDTO", postDto)
+    const postUpdate = await postService.markAsFavorite(postDto);
+    res.status(200).send({
+      data: postUpdate
+    })
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+})
+
+
+router.get("/posts/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await postService.getPostById(id);
+    res.status(200).send({
+      data: post
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+
+  }
+});
+
+
+router.get("/posts/interactions/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const interaction = await postService.getInteractionsById(id);
+    res.status(200).send({
+       interaction
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+
+  }
+});
+
+
+
+router.put('/posts/newInteraction/:id', async (req, res) => {
+
+  try {  
+    const id = req.params.id;
+    const interactionDto = req.body.interaction;
+    const postUpdate = await postService.newInteraction(id, interactionDto);
+    res.status(200).send({
+      data: postUpdate
+    })
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+})
 
 module.exports = router;

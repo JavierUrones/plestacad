@@ -19,7 +19,7 @@ export class FilesService {
   constructor(private http: HttpClient) {}
 
   getFilesByWorkId(id: string) {
-    console.log('ID', id);
+    console.log('ID get files from work', id);
     return this.http.get<any>(this.uri + 'files/' + id).pipe(
       map((response) => {
         return response;
