@@ -8,22 +8,42 @@ import { PostInteraction } from './models/post.interaction';
 })
 export class PostService {
 
+
+  deleteInteraction(id: string | undefined, idPost: string) {
+    return this.http.delete<any>(this.uri + "posts/interaction/" + id + "/" + idPost).pipe(map(response => {
+      return response;
+    }))
+  }
+
+  deletePost(id: string) {
+    return this.http.delete<any>(this.uri + "posts/" + id).pipe(map(response => {
+      return response;
+    }))
+  }
+
   uri = "http://localhost:5200/api/";
   constructor(private http: HttpClient) { }
 
 
 
-  getInteractionsById(id: string){
+  getListInteractionsByPostId(id: string) {
+    return this.http.get<any>(this.uri + "posts/listInteractions/" + id).pipe(map(response => {
+      return response;
+    }))
+  }
+
+
+  getInteractionsById(id: string) {
     return this.http.get<any>(this.uri + 'posts/interactions/' + id).pipe(map((response => {
       return response;
     })))
   }
   createNewInteraction(id: string, interaction: PostInteraction) {
-    return this.http.put<any>(this.uri + "posts/newInteraction/" + id, { interaction: interaction}).pipe(map(response => {
+    return this.http.put<any>(this.uri + "posts/newInteraction/" + id, { interaction: interaction }).pipe(map(response => {
       return response;
     }))
   }
- 
+
 
   getPostsByWorkId(idWork: string, optionOrder: string, pageSize: number, pageIndex: number) {
     console.log('ID', idWork);

@@ -18,6 +18,8 @@
     <div class="content-card" *ngFor="let post of posts">
 
         <div class="post-card">
+          <button mat-button class="floatRight" (click)="deletePost(post._id)"> <mat-icon  *ngIf="checkOwner(post.authorId)">delete</mat-icon></button>
+
           <p class="author">Publicado por {{ post.authorFullName }} el día {{ post.creationDate   | date: 'dd/MM/yyyy'}} </p>
             <h3 class="content navigatorLink" (click)="navigateToPost(post._id)">{{ post.title }}</h3>
             <p class="content add"></p>
@@ -27,7 +29,7 @@
                   <mat-icon class="red-icon" *ngIf="post.isFavorite" (click)="markAsFavorite(post._id, false)">favorite</mat-icon>
                   <mat-icon class="red-icon" *ngIf="!post.isFavorite" (click)="markAsFavorite(post._id, true)">favorite_border</mat-icon>
             </div></button>
-              <button mat-button> <div class="icon-text"><mat-icon>comment</mat-icon><p>{{ post.interactions.length }} Comentarios</p>
+              <button mat-button> <div class="icon-text"><mat-icon>comment</mat-icon><p>{{ post.interactions.length }} Respuestas</p>
               </div></button>
         </div>
     </div>

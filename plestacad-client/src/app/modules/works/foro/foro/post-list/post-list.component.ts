@@ -130,7 +130,22 @@ export class PostListComponent implements OnInit {
     this.getServerData(null)
   }
 
+  checkOwner(authorId: string){
+    if(authorId == sessionStorage.getItem("id")) return true;
+    else return false;
+  }
 
+  deletePost(id: string){
+    this.postService.deletePost(id).subscribe((response) => {
+      console.log(response);
+
+      var nullEvent = {
+        pageIndex: 0,
+        pageSize: this.pageSize
+      }
+      this.getServerData(nullEvent);
+    })
+  }
   newPost() {
 
     let config: MatDialogConfig = {
@@ -182,7 +197,7 @@ export class DialogAddPost {
   htmlContent!: any;
   formControl!: FormControl;
 
-  invalidUpload!: boolean;
+  invalidTitle!: boolean;
   public uploadFiles: any;
 
   public modulesQuill = {
@@ -207,7 +222,7 @@ export class DialogAddPost {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.form = this.fb.group({
-      title: ['', Validators.required]
+      title: ['', [Validators.required,Validators.maxLength(100) ]]
     });
   }
 
@@ -217,6 +232,8 @@ export class DialogAddPost {
 
   onClick() {
     if (this.form.valid) {
+      this.invalidTitle = false;
+
       //Llamar al servicio para crear posts.
       const title = this.form.get('title')?.value;
       const message = this.htmlContent;
@@ -231,6 +248,8 @@ export class DialogAddPost {
         console.log("POST CREATED", response)
       })
       this.dialogRef.close();
+    } else{
+      this.invalidTitle = true;
     }
 
   }

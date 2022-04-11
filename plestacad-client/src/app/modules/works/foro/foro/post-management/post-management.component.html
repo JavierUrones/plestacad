@@ -18,32 +18,39 @@
 
 
 
+    <mat-spinner *ngIf="loading" color="primary"></mat-spinner>
 
-    <div id="interactionsSection">
+    <div *ngIf="!loading" id="interactionsSection">
         <h4>Comentarios</h4>
         <p> {{this.interactionsObjects.length}} respuestas </p>
         <div *ngFor="let interaction of interactionsObjects">
             <div class="interaction">
-                <span><p class="pull-left name">{{interaction.authorFullName}} </p><p class="date">{{interaction.date | date: 'dd/MM/yyyy hh:mm:ss' }}</p></span>
+                <button mat-button class="floatRight" (click)="deleteInteraction(interaction._id)"> <mat-icon  *ngIf="checkOwner(interaction.authorId)">delete</mat-icon></button>
+
+                <span>
+                    <p class="pull-left name">{{interaction.authorFullName}} </p>
+                    <p class="dateComment">{{interaction.date | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+                </span>
                 <div [innerHTML]="interaction.message" class="content"></div>
 
             </div>
         </div>
-        
+
     </div>
 
 
 
     <div id="commentOptions">
-        <quill-editor  placeholder='' [modules]="modulesQuill"  (onEditorChanged)="onChangedEditor($event)" [styles]="{height: '350px'}"></quill-editor>
-
-          <button id="buttonComment" mat-raised-button color="primary" (click)="sendInteraction()">
+        <form [formGroup]="form">
+            <quill-editor formControlName="editorContent" placeholder='' [modules]="modulesQuill"
+                (onEditorChanged)="onChangedEditor($event)" [styles]="{height: '350px'}"></quill-editor>
+        </form>
+        <button id="buttonComment" mat-raised-button color="primary" (click)="sendInteraction()">
             Comentar
-          </button>
+        </button>
     </div>
 
 
 
 
-    </div>
-
+</div>

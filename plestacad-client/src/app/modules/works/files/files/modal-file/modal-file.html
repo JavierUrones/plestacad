@@ -7,6 +7,13 @@
     [(ngModel)]="filename"
   />     </mat-form-field>
 </div>
+
+<div class="mainError">
+  <mat-error *ngIf="invalidCreation">
+    Ha ocurrido un error al crear el directorio
+  </mat-error>
+</div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="onClick(data.path)" cdkFocusInitial>Crear</button>
   <button mat-button (click)="onNoClick()">Salir</button>

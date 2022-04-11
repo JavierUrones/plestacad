@@ -1,18 +1,17 @@
 const router = require("express").Router();
+const Post = require("../../models/Post");
 const PostService = require("../../services/postService");
 
 const postService = new PostService();
 
 orderList = function (listPost, orderBy) {
   if (orderBy == "desc") {
-    console.log("desc");
 
     listPost.sort(function (a, b) {
       return new Date(b.lastMessageDate) - new Date(a.lastMessageDate);
     });
     return listPost;
   } else if (orderBy == "asc") {
-    console.log("asc");
     listPost.sort(function (a, b) {
       return new Date(a.lastMessageDate) - new Date(b.lastMessageDate);
     });
@@ -53,14 +52,11 @@ router.get("/posts/:id/:orderBy/:numElems/:pageNumber", async (req, res) => {
     //Calcular elementos totales. Dividir entre el número de páginas y mostrar el número de elementos de páginas.
 
     const listsPosts = await postService.getPostsByWorkId(id);
-    console.log(listsPosts);
     const orderedList = orderList(listsPosts, orderBy);
-    console.log("ORDER", orderedList);
 
     const totalElements = orderedList.length;
     var elementsInPage;
     const totalPages = parseInt(totalElements / numElemsPerPag);
-    console.log("TOTAL PAGES", totalPages);
     if ((pagNumber > 1 && totalPages == 0) || pagNumber > totalPages + 1) {
       return res.status(400).json({ error: "Error in page request" });
     } else if (numElemsPerPag > totalElements) {
@@ -100,7 +96,6 @@ router.post("/posts/:id", async (req, res) => {
 router.put('/posts/markFavorite', async (req, res) => {
   const postDto = req.body;
   try {
-    console.log("POSTDTO", postDto)
     const postUpdate = await postService.markAsFavorite(postDto);
     res.status(200).send({
       data: postUpdate
@@ -125,6 +120,29 @@ router.get("/posts/:id", async (req, res) => {
   }
 });
 
+router.get("/posts/listInteractions/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const interactionListIds = await postService.getPostById(id);
+
+    var interactions = []
+    await interactionListIds.interactions.forEach(async element => {
+      var interaction = ( postService.getInteractionsById(element._id.toString()));
+      interactions.push(interaction)
+    });
+
+    Promise.all(interactions).then(values => {
+      res.status(200).send({
+        values
+      });
+    });
+    
+
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+
+  }
+})
 
 router.get("/posts/interactions/:id", async (req, res) => {
   try {
@@ -141,6 +159,44 @@ router.get("/posts/interactions/:id", async (req, res) => {
 });
 
 
+router.delete("/posts/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const post = await postService.delete(id);
+    res.status(200).send({
+       post
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+
+  }
+})
+
+router.delete("/posts/interaction/:id/:idPost", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const idPost = req.params.idPost;
+
+    const post = await postService.getPostById(idPost);
+    var filtered = post.interactions.filter(function(interaction, index, arr){ 
+      return interaction._id.toString() != id;
+    });
+    await postService.updateInteractionsPost(idPost, filtered);
+
+    const interaction = await postService.deleteInteraction(id);
+    console.log(post.interactions)
+
+    
+    res.status(200).send({
+      interaction
+    });
+
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+
+  }
+})
 
 router.put('/posts/newInteraction/:id', async (req, res) => {
 

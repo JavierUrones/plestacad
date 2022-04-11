@@ -16,13 +16,15 @@ import { MatDividerModule }  from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { CustomBreadcrumbComponent } from './components/custom-breadcrumb/custom-breadcrumb.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    CustomBreadcrumbComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { AuthGuard } from './guards/auth.guard';
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    CustomBreadcrumbComponent
   ],
   providers:[
   ]

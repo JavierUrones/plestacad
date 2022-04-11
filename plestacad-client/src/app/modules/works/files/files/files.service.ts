@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TreeNode } from 'primeng/api';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { Work } from 'src/app/shared/models/work.model';
 import { saveAs } from 'file-saver';
 import { identifierName } from '@angular/compiler';
@@ -76,9 +76,24 @@ export class FilesService {
       })
       .pipe(
         map((response) => {
-          console.log(response);
-        })
+          console.log("ERRR", response.status)
+          return response;
+        }), catchError(this.handleError)
       );
+  }
+  handleError(error: any){
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+        return errorMessage;
+    });
   }
 
   addFile(id: string, path: string, file: any) {

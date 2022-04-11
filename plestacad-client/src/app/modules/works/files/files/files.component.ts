@@ -145,16 +145,29 @@ export interface DialogData {
 export class DialogOverviewExampleDialog {
 
   filename!: string;
-
+  invalidCreation!: boolean;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private filesService: FilesService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
 
+  ngOnInit(){
+    this.invalidCreation = false;
+
+  }
   onClick(path: string){
-    this.filesService.addDirectory(path+ "/" + this.filename).subscribe((response) => {
-      this.dialogRef.close();
+    this.filesService.addDirectory(path+ "/" + this.filename).subscribe({
+        next: (response) => {
+          console.log("RES STATUS", response.status)
+          this.invalidCreation = false;
+    
+          this.dialogRef.close();
+        },
+        error: (e) => {
+          this.invalidCreation = true;
+        },
+      
     })
   }
   onNoClick(): void {

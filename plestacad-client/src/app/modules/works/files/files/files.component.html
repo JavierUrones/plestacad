@@ -9,17 +9,21 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+
     <tr>
 
       <td>
-        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+        <div> 
+          <p-treeTableToggler  [rowNode]="rowNode"></p-treeTableToggler>
 
-        <span> <mat-icon color="secondary" *ngIf="rowData.isDirectory">
+          <mat-icon color="secondary" *ngIf="rowData.isDirectory">
           folder
         </mat-icon>
         <mat-icon color="primary" *ngIf="!rowData.isDirectory">
           insert_drive_file
-        </mat-icon> {{ rowData.filename }}</span>
+        </mat-icon> <span class="aligned-with-icon">{{ rowData.filename }}  </span></div>
+       
+
        
       </td>
       <td>{{ bytesToSize(rowData.size)}}</td>

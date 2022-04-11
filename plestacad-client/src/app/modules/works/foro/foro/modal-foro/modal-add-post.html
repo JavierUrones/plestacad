@@ -8,7 +8,7 @@
           formControlName="title"
           required
         />
-        <mat-error> Es obligatorio indicar un título</mat-error>
+        <mat-error  *ngIf="invalidTitle"> Es obligatorio indicar un título que no supere los 100 caracteres.</mat-error>
       </mat-form-field>
 
 
@@ -18,6 +18,6 @@
 <div id="buttonPanel">
     <button id="createButton" mat-raised-button color="primary" (click)="onClick()" cdkFocusInitial>Crear</button>
 
-    <button id="cancelButton" mat-raised-button color="primary" >Cancelar</button>
+    <button id="cancelButton" mat-raised-button color="primary" (click)="onNoClick()" >Cancelar</button>
 
 </div>

@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  mongo-db:
+    image: mongo
+    ports:
+      - '27017:27017'
+  server:
+    build: plestacad-back
+    image: image/plestacad-back
+    ports:
+      - '5200:5200'
+    links:
+      - mongo-db
+  
+  client:
+    build: plestacad-client
+    image: image/plestacad-client
+    ports:
+      - '80:80'

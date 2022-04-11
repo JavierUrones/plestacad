@@ -4,6 +4,28 @@ const PostInteraction = require("../models/PostInteraction");
 class PostService {
 
 
+  async delete(id){
+    try{
+      var post = await this.getPostById(id);
+      console.log("niteractions", post)
+      await post.interactions.forEach(async (interaction) => {
+         await this.deleteInteraction(interaction._id.toString())
+      })
+      var post = await Post.deleteOne({_id: id})
+      return post;
+    }catch(error){
+      throw error;
+    }
+  }
+
+  async deleteInteraction(id){
+    try{
+      var interaction = await PostInteraction.deleteOne({_id: id})
+      return interaction;
+    }catch(error){
+      throw error;
+    }
+  }
   async getInteractionsById(id){
     try {
       const interaction = PostInteraction.findById(id);
@@ -16,7 +38,7 @@ class PostService {
 
   async newInteraction(id, interaction) {
     try {
-      console.log("ID", id)
+
       const interactionDto = new PostInteraction({
         message: interaction.message,
         date: interaction.date,
@@ -28,9 +50,7 @@ class PostService {
       const postInteractionSave = await interactionDto.save()
 
       await Post.findById(id).then(post => {
-        console.log("POSTPOSTPOST", post)
         post.interactions.push(postInteractionSave)
-        console.log("POSH", post)
         post.save();
       });
       return postInteractionSave;
@@ -42,7 +62,6 @@ class PostService {
   async getPostById(id) {
     try {
       const post = Post.findById(id);
-
       return post;
     } catch (error) {
       throw error;
@@ -60,6 +79,19 @@ class PostService {
       throw error;
     }
   }
+
+  async updateInteractionsPost(id, interactions) {
+    try {
+      const filter = { _id: id };
+      const update = { interactions: interactions };
+      let post = await Post.findOneAndUpdate(filter, update);
+
+      return post;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 
   async getPostsLengthByWorkId(id) {
     try {

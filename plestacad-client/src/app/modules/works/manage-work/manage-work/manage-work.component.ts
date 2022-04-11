@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatTabGroup } from '@angular/material/tabs';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Breadcrumb } from 'src/app/shared/models/breadcumb.model';
 
 @Component({
@@ -9,15 +10,31 @@ import { Breadcrumb } from 'src/app/shared/models/breadcumb.model';
 })
 export class ManageWorkComponent implements OnInit {
   id!: string;
+  @ViewChild("tab", { static: false }) tab!: MatTabGroup;
+
   constructor(private route: ActivatedRoute, private router: Router ) { 
-    
+    this.router.events.subscribe(
+      params => {
+        if(params instanceof NavigationEnd && params.url.split('/')[1] !=undefined
+        && params.url.split('/')[2] != undefined && params.url.split('/')[3]==undefined){
+          if(this.tab != undefined && this.tab.selectedIndex == 1){
+            this.tab.selectedIndex = 0;
+
+          }
+          console.log("PARAMS", params.url.split('/') )
+
+        }
+        
+        //
+
+      }
+  );
 
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['idWork'];
-    console.log("ID", this.id)
-
+    
     
     
   }

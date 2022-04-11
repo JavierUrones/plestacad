@@ -226,10 +226,24 @@ router.post("/files/createDir", async (req, res) => {
   try{
     var path = req.body.path;
     var response = await fileService.createDirectory(path);
+    console.log(path.split("/").length)
+    if(path.trim().length == 0){
+      return res.status(400).json({
+        status: 400,
+        message: "Invalid directory name."
+      })
+    }
+    if(path.split("/").length > 8){
+      return res.status(400).json({
+        status: 400,
+        message: "Exceeded limit number of subdirectories."
+      })
+    }
     console.log(response)
     if(response=="Ok"){
       return res.status(200).json({
-        status: "Directory " + path + " created succesfully",
+        status: 200,
+        message: "Directory " + path + " created succesfully",
       });
     } else{
       return res
