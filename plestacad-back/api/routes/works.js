@@ -4,7 +4,7 @@ const WorkService = require("../../services/workService");
 const workService = new WorkService();
 
 const ValidationError = require("../../config/errors/customErrors");
-const FileService = require("../../services/FileService");
+const FileService = require("../../services/fileService");
 const fileService = new FileService();
 const rootProjectPath = require("path").resolve("./");
 const directoryFiles = "/userdata/";
@@ -54,7 +54,11 @@ router.post("/works", async (req, res) => {
 router.post("/worksByUser", async (req, res) => {
   try {
     const userDto = req.body;
-    const listWorks = await workService.getWorksByUserId(userDto.id);
+    var listWorks;
+    if(userDto.role == "student")
+       listWorks = await workService.getWorksByStudentId(userDto.id);
+    else
+        listWorks = await workService.getWorksByTeacherId(userDto.id)
     res.json({
       data: listWorks,
     });
@@ -64,10 +68,18 @@ router.post("/worksByUser", async (req, res) => {
 });
 
 
-router.post("/worksByStudentIdAndCategory", async (req, res) => {
+router.post("/worksByUserIdAndCategory", async (req, res) => {
   try {
-    const userDto = req.body;
-    const listWorks = await workService.getWorksByStudentIdAndCategory(userDto.id, req.body.category);
+    const id = req.body.id;
+    const category = req.body.category;
+    const role = req.body.role;
+    var listWorks;
+    console.log("ROLE", role)
+    if(role=="teacher")
+        listWorks = await workService.getWorksByTeacherIdAndCategory(id, category);
+    else
+        listWorks = await workService.getWorksByStudentIdAndCategory(id, category);
+
     res.json({
       data: listWorks,
     });
@@ -76,5 +88,17 @@ router.post("/worksByStudentIdAndCategory", async (req, res) => {
   }
 });
 
+
+router.delete("/works", async (req, res) => {
+  try {
+    const id = req.body.id;
+    // Del. work, files, posts, tasks, calendar events and notifications.
+    res.json({
+      data: id
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;

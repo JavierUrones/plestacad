@@ -21,6 +21,15 @@ class UserService {
       throw error;
     }
   }
+
+  async getUsersByRole(role){
+    try{
+      const listUsers = User.find({ role: role });
+      return listUsers;
+    }catch (error) {
+      throw error;
+    }
+  }
 }
 
 

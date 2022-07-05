@@ -73,7 +73,7 @@
               ><mat-form-field appearance="fill">
                 <mat-label>Selecciona tu rol</mat-label>
                 <mat-select [formControl]="roleControl" required>
-                  <mat-option *ngFor="let role of roles" [value]="role.title">
+                  <mat-option *ngFor="let role of roles" [value]="role.value">
                     {{ role.title }}
                   </mat-option>
                 </mat-select>

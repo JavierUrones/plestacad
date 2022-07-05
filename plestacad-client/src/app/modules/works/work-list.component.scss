@@ -1,9 +1,15 @@
 .work-card {
-  margin: 1em 1em 1em 1em;
-  display: flex;
-  flex-direction: column;
-  width: 75%;
+  margin: 1.5em 1.5em 5em 1.5em;
+  height: auto;
+  width: auto;
 }
+
+mat-card-title{
+  font-size: 150%;
+}
+
+
+
 
 .work-card:hover {
   box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14),
@@ -17,4 +23,16 @@
 .content-card {
   flex-grow: 1;
   overflow: auto;
+  height: auto;
+  width: auto;
 }
+
+mat-form-field {
+  display: block;
+}
+button{
+  display: block;
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+

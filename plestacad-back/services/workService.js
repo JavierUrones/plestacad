@@ -25,9 +25,12 @@ class WorkService {
   async createWork(workDto) {
     const newWork = new Work({
       title: workDto.title,
+      authorId: workDto.authorId,
       teachers: workDto.teachers,
       students: workDto.students,
-      category: workDto.category
+      category: workDto.category,
+      description: workDto.description,
+      course: workDto.course
     });
 
     try {
@@ -40,7 +43,7 @@ class WorkService {
   }
   
 
-  async getWorksByUserId(id){
+  async getWorksByStudentId(id){
     try{
       const listWorks  = await Work.find({
         'students': { $in: [
@@ -52,6 +55,20 @@ class WorkService {
       throw error;
     }
   }
+
+  async getWorksByTeacherId(id){
+    try{
+      const listWorks  = await Work.find({
+        'teachers': { $in: [
+            mongoose.Types.ObjectId(id)
+        ]}
+      })
+      return listWorks;
+    } catch(error){
+      throw error;
+    }
+  }
+
 
 
   async getWorksByStudentIdAndCategory(id, category){
@@ -70,6 +87,25 @@ class WorkService {
       throw error;
     }
   }
+
+
+  async getWorksByTeacherIdAndCategory(id, category){
+    try{
+      console.log(category)
+      console.log(id)
+
+      const listWorks  = await Work.find({
+        'category': category,
+        'teachers': { $in: [
+            mongoose.Types.ObjectId(id)
+        ]}
+      })
+      return listWorks;
+    } catch(error){
+      throw error;
+    }
+  }
+
 }
 
 

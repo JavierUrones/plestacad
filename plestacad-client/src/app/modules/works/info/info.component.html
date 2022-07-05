@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="dataWork">
+            <mat-label> Titulo </mat-label>
+            <mat-form-field class="full-width-input">
+                <input matInput formControlName="title" />
+            </mat-form-field>
+            <mat-label> Descripción </mat-label>
+            <mat-form-field>
+                <textarea matInput formControlName="description" ></textarea>
+            </mat-form-field>
+            <mat-label> Curso </mat-label>
+            <mat-form-field>
+                <input matInput formControlName="course" />
+            </mat-form-field>
+
+            <mat-label>Categoría</mat-label>
+
+            <mat-form-field>
+            <mat-select [formControl]="categoryControl" >
+              <mat-option *ngFor="let cat of categories" [value]="cat.value">
+                {{ cat.viewValue }}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+</form>
+    </mat-card-content>
+</mat-card>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WorkListComponent } from './work-list.component';
+import { DialogAddWork, WorkListComponent } from './work-list.component';
 import { WorkListRoutingModule } from './work-list-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
@@ -27,9 +27,12 @@ import {MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { QuillModule } from 'ngx-quill'
 import { ForoModule } from './foro/foro/foro.module';
-
+import {FullCalendarModule} from 'primeng/fullcalendar'
+import { CalendarWorkComponent } from './calendar/calendar.component';
+import { InfoComponent } from './info/info.component';
+import {  MatAutocompleteModule} from '@angular/material/autocomplete'
 @NgModule({
-  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile ],
+  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
   imports: [
     CommonModule,
     WorkListRoutingModule,
@@ -55,8 +58,10 @@ import { ForoModule } from './foro/foro/foro.module';
     MatPaginatorModule,
     QuillModule,
     MatProgressSpinnerModule,
-    ForoModule
-    
+    ForoModule,
+    MatAutocompleteModule,
+    FullCalendarModule,
+    MatListModule
     ],
 })
 export class WorkListModule {}

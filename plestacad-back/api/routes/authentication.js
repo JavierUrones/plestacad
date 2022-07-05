@@ -12,10 +12,11 @@ const authService = new AuthenticationService();
 router.post("/signup", async (req, res) => {
   const userDto = req.body;
   try {
-    const { token, userSave } = await authService.signUp(userDto);
+    const response = await authService.signUp(userDto);
+
     res.json({
-      data: userSave,
-      token: token,
+      user: response.user,
+      token: response.token,
     });
   } catch (error) {
     if (error instanceof ValidationError) {

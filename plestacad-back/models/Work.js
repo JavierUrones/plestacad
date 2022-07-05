@@ -7,17 +7,19 @@ const workScheema = mongoose.Schema({
     min: 1,
     max: 255,
   },
+  authorId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   teachers: [
     {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   ],
   students: [
     {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
   ],
-  course: { type: Date, default: Date.now },
+  course: { type: Number },
   category: {
     type: String,
     enum: ["tfg", "tfm", "tesis"]
-  }
+  },
+  description: { type: String, required: true}
 });
 
 module.exports = mongoose.model("Work", workScheema);

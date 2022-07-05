@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { last, map, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { PostInteraction } from './models/post.interaction';
 
 @Injectable({
@@ -21,7 +22,7 @@ export class PostService {
     }))
   }
 
-  uri = "http://localhost:5200/api/";
+  uri = environment.apiURL;
   constructor(private http: HttpClient) { }
 
 

@@ -1,20 +1,32 @@
 version: '3.7'
 
 services:
-  mongo-db:
+  client:
+    build: plestacad-client
+    image: plestacad-client
+    ports:
+      - '8000:80'
+    networks:
+      -  mean-app
+  server:
+    build: plestacad-back
+    image: plestacad-back
+    ports:
+      - '5200:5200'
+    depends_on:
+      - mongo
+    networks:
+      -  mean-app    
+  mongo:
     image: mongo
     ports:
       - '27017:27017'
-  server:
-    build: plestacad-back
-    image: image/plestacad-back
-    ports:
-      - '5200:5200'
-    links:
-      - mongo-db
-  
-  client:
-    build: plestacad-client
-    image: image/plestacad-client
-    ports:
-      - '80:80'
+    networks:
+      -  mean-app
+
+networks:
+  mean-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local

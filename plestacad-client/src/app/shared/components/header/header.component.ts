@@ -31,7 +31,12 @@ export class HeaderComponent implements OnInit {
 
   logout(){
       localStorage.removeItem('jwt');
-      sessionStorage.removeItem('currentUser');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('role');
+      sessionStorage.removeItem('id');
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('surname');
+
       this.authenticationService.logout();
       this.router.navigateByUrl("/login")
   }

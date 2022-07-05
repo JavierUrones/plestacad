@@ -7,7 +7,6 @@ import {MatCardModule} from '@angular/material/card';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import {MatInputModule} from '@angular/material/input'
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthenticationService } from './services/authentication.service';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';

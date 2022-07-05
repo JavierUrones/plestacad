@@ -1,12 +1,14 @@
 FROM node:14-alpine as build-step
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY package.json /app
+COPY package.json .
 
 RUN npm install
 
-COPY . /app
+COPY . .
+
+EXPOSE 5200
 
 CMD [ "npm","start" ]
 

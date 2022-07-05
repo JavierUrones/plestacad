@@ -65,8 +65,9 @@ export class SignupComponent implements OnInit {
     }
     const name = this.registerForm.get('name')?.value;
     const surname = this.registerForm.get('surname')?.value;
-    const role = this.registerForm.get('role')?.value;
+    const role = this.roleControl.value;
 
+    console.log("VALUE ROLE", role)
     const email = this.registerForm.get('email')?.value;
     const password = this.registerForm.get('password')?.value;
 
@@ -74,11 +75,20 @@ export class SignupComponent implements OnInit {
       .signup(name, surname, email, password, role)
       .subscribe({
         next: (response) => {
-          console.log("Execute authentication")
+          console.log("Execute authentication", response)
+
           const token = (<any>response).token;
+          const user = (<any> response).user;
+
           localStorage.setItem('jwt', token);
-          console.log('User is logged in ' + token);
+          console.log('User is logged in ' + user);
           this.router.navigateByUrl('/');
+
+          sessionStorage.setItem("name", user.name);
+          sessionStorage.setItem("surname", user.surname);
+          sessionStorage.setItem("email", user.email);
+          sessionStorage.setItem("id", user._id);
+          sessionStorage.setItem("role", user.role);
         },
         error: (e) => {
           this.errorMessage = e.error.error;

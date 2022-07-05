@@ -54,8 +54,9 @@ export class PostListComponent implements OnInit {
       this.selected = this.options[0].value;
       var nullEvent = {
         pageIndex: 0,
-        pageSize: this.pageSize
+        pageSize: 10
       }
+   
       this.getServerData(nullEvent)
       console.log("LONG", this.length)
     });
@@ -81,6 +82,7 @@ export class PostListComponent implements OnInit {
     //El Length se carga de la respuesta.
     console.log("EVENT", event)
     console.log("Page Size", this.pageSize, "page index", this.pageIndex)
+
     if (event != null) {
       this.pageIndex = event.pageIndex + 1;
       this.pageSize = event.pageSize;
@@ -97,8 +99,9 @@ export class PostListComponent implements OnInit {
         this.length = posts.data.numElems;
 
         console.log("LENGTH", this.length)
-        if (this.length <= 3) {
-          this.pageSizeOptions = [this.length]
+        if (this.length <= 10) {
+          this.pageSizeOptions = [10]
+          this.pageIndex = 1;
         } else {
           this.pageSizeOptions = [this.length / this.length, Math.floor(this.length / 2), this.length]
         }
@@ -157,10 +160,13 @@ export class PostListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogAddPost, config);
     dialogRef.afterClosed().subscribe(result => {
+
       var nullEvent = {
         pageIndex: 0,
         pageSize: this.pageSize
       }
+
+
       this.getServerData(nullEvent)
         });
   }

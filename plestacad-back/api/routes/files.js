@@ -7,7 +7,7 @@ const fastFolderSizeSync = require('fast-folder-size/sync')
 const { response } = require("express");
 
 
-const FileService = require("../../services/FileService");
+const FileService = require("../../services/fileService");
 
 const fileService = new FileService();
 
@@ -229,11 +229,11 @@ router.post("/files/createDir", async (req, res) => {
     console.log(path.split("/").length)
     if(path.trim().length == 0){
       return res.status(400).json({
-        status: 400,
+        status: 400, 
         message: "Invalid directory name."
       })
     }
-    if(path.split("/").length > 8){
+    if(path.split("/").length > 5){
       return res.status(400).json({
         status: 400,
         message: "Exceeded limit number of subdirectories."

@@ -81,7 +81,7 @@ export class PostManagementComponent implements OnInit {
     }
 
     sendInteraction() {
-        if (this.htmlContentEditor != undefined) {
+        if (this.htmlContentEditor != undefined && this.htmlContentEditor!.substring(3,this.htmlContentEditor!.length-4).trim().length > 0) {
             this.id = this.route.snapshot.params['id']
             const message = this.htmlContentEditor;
             const interaction = new Interaction(message,
