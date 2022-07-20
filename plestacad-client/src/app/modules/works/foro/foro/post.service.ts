@@ -10,6 +10,12 @@ import { PostInteraction } from './models/post.interaction';
 export class PostService {
 
 
+
+  uri = environment.apiURL;
+  constructor(private http: HttpClient) { }
+
+
+
   deleteInteraction(id: string | undefined, idPost: string) {
     return this.http.delete<any>(this.uri + "posts/interaction/" + id + "/" + idPost).pipe(map(response => {
       return response;
@@ -21,12 +27,7 @@ export class PostService {
       return response;
     }))
   }
-
-  uri = environment.apiURL;
-  constructor(private http: HttpClient) { }
-
-
-
+  
   getListInteractionsByPostId(id: string) {
     return this.http.get<any>(this.uri + "posts/listInteractions/" + id).pipe(map(response => {
       return response;

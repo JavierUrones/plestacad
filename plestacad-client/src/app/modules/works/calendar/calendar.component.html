@@ -1,4 +1,13 @@
+<script src='@fullcalendar/core/locales-all.js'></script>
 
-<div class="calendar">
-<p-fullCalendar locale="es" [events]="events" [options]="options"></p-fullCalendar>
+
+<div class="container">
+    <div>
+        <button mat-raised-button color="primary" (click)="newEvent()">Evento nuevo</button>
+    </div>
+    <div class="calendar-container">
+        <div class="calendar">
+            <p-fullCalendar #calendar locale="es" [events]="events" [options]="options"></p-fullCalendar>
+        </div>
+    </div>
 </div>

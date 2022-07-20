@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogAddWork, WorkListComponent } from './work-list.component';
 import { WorkListRoutingModule } from './work-list-routing.module';
@@ -28,11 +28,21 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { QuillModule } from 'ngx-quill'
 import { ForoModule } from './foro/foro/foro.module';
 import {FullCalendarModule} from 'primeng/fullcalendar'
-import { CalendarWorkComponent } from './calendar/calendar.component';
+import { CalendarWorkComponent, DialogNewEvent } from './calendar/calendar.component';
 import { InfoComponent } from './info/info.component';
 import {  MatAutocompleteModule} from '@angular/material/autocomplete'
+import { CalendarService } from './calendar/calendar.service';
+import { CalendarComponent } from '../calendar/calendar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatChipsModule} from '@angular/material/chips';
+
+import es from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(es);
 @NgModule({
-  declarations: [WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
+  declarations: [DialogNewEvent, CalendarComponent, WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
   imports: [
     CommonModule,
     WorkListRoutingModule,
@@ -61,7 +71,12 @@ import {  MatAutocompleteModule} from '@angular/material/autocomplete'
     ForoModule,
     MatAutocompleteModule,
     FullCalendarModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatChipsModule,
+    MatDatepickerModule
     ],
+    providers: [ { provide: LOCALE_ID, useValue: 'es-ES' }]
 })
 export class WorkListModule {}

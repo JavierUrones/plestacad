@@ -12,7 +12,6 @@ import { AuthenticationService } from './modules/session/services/authentication
 import { SessionModule } from './modules/session/session.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

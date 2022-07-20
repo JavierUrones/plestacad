@@ -77,20 +77,23 @@ export class FilesService {
       })
       .pipe(
         map((response) => {
-          console.log("ERRR", response.status)
+          console.log("ERRR", response)
           return response;
         }), catchError(this.handleError)
       );
   }
+
   handleError(error: any){
     let errorMessage = '';
+
     if (error.error instanceof ErrorEvent) {
       // client-side error
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage = `Error: ${error.error.message}` ;
     } else {
       // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    
     console.log(errorMessage);
     return throwError(() => {
         return errorMessage;

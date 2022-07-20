@@ -225,20 +225,24 @@ router.post("/files/delete/:id", async (req, res) => {
 router.post("/files/createDir", async (req, res) => {
   try{
     var path = req.body.path;
-    var response = await fileService.createDirectory(path);
-    console.log(path.split("/").length)
+    console.log("path", path)
+
+    console.log("path", path.split("/"))
+    console.log("length path", path.split("/").length)
     if(path.trim().length == 0){
       return res.status(400).json({
         status: 400, 
         message: "Invalid directory name."
       })
     }
-    if(path.split("/").length > 5){
+    if(path.split("/").length > 8){
       return res.status(400).json({
         status: 400,
         message: "Exceeded limit number of subdirectories."
       })
     }
+    var response = await fileService.createDirectory(path);
+
     console.log(response)
     if(response=="Ok"){
       return res.status(200).json({
