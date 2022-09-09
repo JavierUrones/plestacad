@@ -22,14 +22,16 @@ export class SignupComponent implements OnInit {
   registerForm!: FormGroup;
   loading = false;
   submitted = false;
-  roleControl = new FormControl('', Validators.required);
+  //roleControl = new FormControl('', Validators.required);
   errorMessage = '';
-  roles = [
+  /*roles = [
     { title: 'Estudiante', value: 'student' },
     { title: 'Profesor', value: 'teacher' },
-  ];
+  ];*/
   registerFormInvalid = false;
 
+
+  public signupDone!: boolean;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -37,6 +39,7 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.signupDone = false;
     this.registerForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
@@ -65,19 +68,19 @@ export class SignupComponent implements OnInit {
     }
     const name = this.registerForm.get('name')?.value;
     const surname = this.registerForm.get('surname')?.value;
-    const role = this.roleControl.value;
+    //const role = this.roleControl.value;
 
-    console.log("VALUE ROLE", role)
+    //console.log("VALUE ROLE", role)
     const email = this.registerForm.get('email')?.value;
     const password = this.registerForm.get('password')?.value;
 
     this.authenticationService
-      .signup(name, surname, email, password, role)
+      .signup(name, surname, email, password)
       .subscribe({
         next: (response) => {
           console.log("Execute authentication", response)
-
-          const token = (<any>response).token;
+          this.signupDone = true;
+          /*const token = (<any>response).token;
           const user = (<any> response).user;
 
           localStorage.setItem('jwt', token);
@@ -88,7 +91,7 @@ export class SignupComponent implements OnInit {
           sessionStorage.setItem("surname", user.surname);
           sessionStorage.setItem("email", user.email);
           sessionStorage.setItem("id", user._id);
-          sessionStorage.setItem("role", user.role);
+          //sessionStorage.setItem("role", user.role);*/
         },
         error: (e) => {
           this.errorMessage = e.error.error;

@@ -21,8 +21,8 @@
       margin-right: 20px;
     }
     li::after {
-      content: "->";
-      color: darkgrey;
+      content: ">";
+      color: lightgrey;
     }
     li:last-child::after {
       content: "";

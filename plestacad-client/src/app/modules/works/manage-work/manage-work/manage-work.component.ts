@@ -47,7 +47,7 @@ export class ManageWorkComponent implements OnInit {
       this.router.navigate(["/trabajos/"+this.id + "/posts"]);
 
     }
-      if(element.textContent=="Información General" || element.textContent=="Archivos" || element.textContent=="Calendario"  ){
+      if(element.textContent=="Información General" || element.textContent=="Archivos" || element.textContent=="Calendario" || element.textContent=="Tareas" ){
       this.router.navigate(["/trabajos/"+this.id]);
     }
 

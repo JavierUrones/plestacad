@@ -1,32 +1,34 @@
 const Post = require("../models/Post");
 const PostInteraction = require("../models/PostInteraction");
+const NotificationService = require("./notificationService");
+const notificationService = new NotificationService();
 
 class PostService {
 
 
-  async delete(id){
-    try{
+  async delete(id) {
+    try {
       var post = await this.getPostById(id);
       console.log("niteractions", post)
       await post.interactions.forEach(async (interaction) => {
-         await this.deleteInteraction(interaction._id.toString())
+        await this.deleteInteraction(interaction._id.toString())
       })
-      var post = await Post.deleteOne({_id: id})
+      var post = await Post.deleteOne({ _id: id })
       return post;
-    }catch(error){
+    } catch (error) {
       throw error;
     }
   }
 
-  async deleteInteraction(id){
-    try{
-      var interaction = await PostInteraction.deleteOne({_id: id})
+  async deleteInteraction(id) {
+    try {
+      var interaction = await PostInteraction.deleteOne({ _id: id })
       return interaction;
-    }catch(error){
+    } catch (error) {
       throw error;
     }
   }
-  async getInteractionsById(id){
+  async getInteractionsById(id) {
     try {
       const interaction = PostInteraction.findById(id);
 
@@ -46,14 +48,16 @@ class PostService {
         authorFullName: interaction.authorFullName
       });
 
-      console.log("interaction", interaction)
       const postInteractionSave = await interactionDto.save()
 
-      await Post.findById(id).then(post => {
+      const post = await Post.findById(id).then(post => {
         post.interactions.push(postInteractionSave)
         post.save();
+        notificationService.createNewNotification(post.workId, "new-interaction", interactionDto.authorId, post.title);
+
       });
-      return postInteractionSave;
+
+      return post;
 
     } catch (error) {
       throw error;
@@ -134,8 +138,11 @@ class PostService {
       interactions: []
     });
     try {
-      //Se guarda el nuevo trabajo.
+      //Se guarda el nuevo post.
       const postSave = await newPost.save();
+      //se crea la notificación respectiva.
+      await notificationService.createNewNotification(workId, "new-post", newPost.authorId, newPost.title);
+
       return postSave;
     } catch (error) {
       throw error;

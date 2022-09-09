@@ -1,0 +1,106 @@
+.main-board {
+    display: flex;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+}
+
+.task-classif {
+    background-color: #EEEEEE;
+    border-radius: 3px;
+    box-shadow: 0.1em 0.1em 0.2em lightgrey;
+    height: 100%;
+    margin: 5px;
+    width: 100%;
+}
+
+.task-board {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0.3em 0.3em 0.2em lightgrey;
+    margin: 2% 2% 2% 2%;
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+
+.task-content{
+    font-size: 0.7em;
+    margin: 2% 2% 2% 2%;
+}
+.task-board:hover{
+    cursor: pointer;
+}
+
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.main-board:last-child {
+    border: none;
+}
+
+
+.main-board.cdk-drop-list-dragging .task-classif:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.add-section {
+    margin: 5px;
+}
+
+.editableTitle {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 0.25em;
+    margin-left: 0.25em;
+}
+
+
+.editableTitle:focus {
+    border: 0.5px solid;
+    outline: inherit;
+}
+
+.classificatorHeader {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.optionMenu {
+    margin-right: 0.25em;
+    margin-top: 0.25em;
+    float:right;
+}
+
+.subMenu { 
+    width: 200px; 
+    max-width: unset !important;
+  }
+
+.selectorOrder{
+    width: 200px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+
+  

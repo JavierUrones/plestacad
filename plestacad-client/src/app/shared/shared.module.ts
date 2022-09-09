@@ -11,6 +11,8 @@ import { MatToolbarModule }  from '@angular/material/toolbar';
 import { MatIconModule }  from '@angular/material/icon';
 import { MatButtonModule }  from '@angular/material/button';
 import { MatMenuModule }  from '@angular/material/menu';
+import { MatBadgeModule }  from '@angular/material/badge';
+
 import { MatListModule }  from '@angular/material/list';
 import { MatDividerModule }  from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,7 +38,8 @@ import { CustomBreadcrumbComponent } from './components/custom-breadcrumb/custom
     FlexLayoutModule,
     MatMenuModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    MatBadgeModule
   ],
   exports: [
     TranslateModule,

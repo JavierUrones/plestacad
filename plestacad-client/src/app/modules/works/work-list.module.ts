@@ -27,22 +27,22 @@ import {MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { QuillModule } from 'ngx-quill'
 import { ForoModule } from './foro/foro/foro.module';
+import { TasksModule } from './tasks/tasks.module';
 import {FullCalendarModule} from 'primeng/fullcalendar'
 import { CalendarWorkComponent, DialogNewEvent } from './calendar/calendar.component';
 import { InfoComponent } from './info/info.component';
 import {  MatAutocompleteModule} from '@angular/material/autocomplete'
 import { CalendarService } from './calendar/calendar.service';
-import { CalendarComponent } from '../calendar/calendar.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(es);
 @NgModule({
-  declarations: [DialogNewEvent, CalendarComponent, WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
+  declarations: [DialogNewEvent, WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
   imports: [
     CommonModule,
     WorkListRoutingModule,
@@ -75,7 +75,9 @@ registerLocaleData(es);
     MatDatepickerModule,
     MatNativeDateModule,
     MatChipsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    TasksModule,
+    MatSnackBarModule
     ],
     providers: [ { provide: LOCALE_ID, useValue: 'es-ES' }]
 })

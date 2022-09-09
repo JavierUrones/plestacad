@@ -87,11 +87,11 @@ export class FilesComponent implements OnInit {
 
   deleteFile(path: string, isDirectory: boolean) {
     if (isDirectory) {
-      this.fileService.deleteDir(this.id, path).subscribe((response) => {
+      this.fileService.deleteDir(this.id, path, sessionStorage.getItem("id") as string).subscribe((response) => {
         this.getFilesFromWork();
       });
     } else {
-      this.fileService.deleteFile(this.id, path).subscribe((response) => {
+      this.fileService.deleteFile(this.id, path, sessionStorage.getItem("id") as string).subscribe((response) => {
         this.getFilesFromWork();
       });
     }
@@ -157,7 +157,7 @@ export class DialogOverviewExampleDialog {
 
   }
   onClick(path: string){
-    this.filesService.addDirectory(path+ "/" + this.filename).subscribe({
+    this.filesService.addDirectory(path+ "/" + this.filename, sessionStorage.getItem("id") as string).subscribe({
         next: (response) => {
           console.log("RES STATUS", response.status)
           this.invalidCreation = false;
@@ -220,7 +220,7 @@ export class DialogAddFile {
 
 
       this.uploadFiles.forEach((element: any) => {
-        this.filesService.addFile(id, path, element).subscribe(res => {
+        this.filesService.addFile(sessionStorage.getItem("id") as string, path, element).subscribe(res => {
           console.log(res);
         })
       })

@@ -20,16 +20,26 @@ const routes: Routes = [
           breadcrumb: 'Mis Trabajos'
         }
       },
-
       {
         path: 'perfil',
         loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule)
       },
       {
-        path: 'calendario',
-        loadChildren: () => import('./modules/calendar/calendar.module').then(m => m.CalendarModule)
+        path: 'solicitudes-trabajos',
+        loadChildren: () => import('./modules/work-requests/work-requests.module').then(m => m.WorkRequestsModule)
+  
       },
+      {
+        path: 'notificaciones',
+        loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule)
+      },
+      {
+        path: 'videollamadas',
+        loadChildren: () => import('./modules/videocalls/videocalls.module').then(m => m.VideocallsModule)
+
+      }
     ], canActivate: [AuthGuard],
+
   },
 ];
 

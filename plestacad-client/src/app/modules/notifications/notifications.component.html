@@ -1,0 +1,51 @@
+<h1 class="header-title"> Notificaciones </h1>
+
+
+<div class="notifications-wrapper">
+        <mat-form-field >
+            <mat-label>Filtrar por trabajo académico</mat-label>
+
+            <mat-select [(value)]="selectedWork" (selectionChange)="onFilterChange($event)">
+                <mat-option value="all">Todos</mat-option>
+
+                <mat-option *ngFor="let work of workOptions" [value]="work._id">
+                    {{ work.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button *ngIf="this.notifications.length>0" mat-raised-button id="button-all-read" color="primary"
+            (click)="markAllAsRead()">Marcar todo como leído</button>
+
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div class="no-notifications" *ngIf="this.notifications.length == 0 && !loading">
+        <h2> ¡Estás al día! </h2>
+        <h3> No tienes notificaciones pendientes </h3>
+    </div>
+    <div *ngIf="!loading">
+
+        <div *ngIf="this.notifications.length>0">
+            <div class="notification" *ngFor="let notification of this.notifications">
+                <div class="notification-content">
+                    <div class="icon-notification">
+                        <mat-icon>notifications</mat-icon>
+                        <p class="date-content">{{notification.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+                    </div>
+                    <div class="main-content">
+                        <span> {{notification.description}} </span> <a
+                            routerLink="/trabajos/{{notification.workId}}">Acceder al trabajo académico.</a>
+                    </div>
+                    <div class="button-content">
+                        <button mat-raised-button color="secondary" (click)="markNotificationAsRead(notification._id)">
+                            <mat-icon>check</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>

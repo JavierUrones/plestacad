@@ -1,0 +1,80 @@
+<button mat-raised-button color="primary" class="newTaskButton" (click)="newTask()">
+    <mat-icon>add</mat-icon>Nueva tarea
+</button>
+<table mat-table [dataSource]="tasks" matSort #sortElements="matSort">
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Start Column -->
+    <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de inicio </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <input matInput readonly [matDatepicker]="pickerStart" value="{{element.start}}">
+                <mat-datepicker-toggle disabled matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart></mat-datepicker>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- End Column -->
+    <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de fin </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <input matInput readonly [matDatepicker]="pickerEnd" value="{{element.end}}">
+                <mat-datepicker-toggle disabled matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEnd></mat-datepicker>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- Classification Column -->
+    <ng-container matColumnDef="taskClassificatorId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Clasificación </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <mat-select [value]="element.taskClassificatorId"
+                    (selectionChange)="onTaskClassificatorChange($event.value, element._id)">
+                    <mat-option *ngFor="let aptClass of taskClassificatorsSelector" [value]="aptClass._id">
+                        {{aptClass.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- Classification Column -->
+    <ng-container matColumnDef="userAssignedId">
+        <th mat-header-cell *matHeaderCellDef> Asignación </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <input matInput [value]="element.userAssignedId">
+                <!-- faltaria cargar aqui la lista de usuarios del trabajo académico -->
+
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let elem">
+            <div>
+                <button mat-raised-button (click)="updateTask(elem._id)">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="definedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: definedColumns;"></tr>
+
+</table>
+
+<mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons aria-label="Select page">
+</mat-paginator>

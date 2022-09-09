@@ -10,10 +10,10 @@ import { WorkListService } from '../work-list.service';
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import {FullCalendar} from 'primeng/fullcalendar';
+import { FullCalendar } from 'primeng/fullcalendar';
 
 import { CalendarService } from './calendar.service';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, Subscription } from 'rxjs';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -22,6 +22,8 @@ import { dateEndValidator } from './resources/dateValidator';
 import esLocale from '@fullcalendar/core/locales/es';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { DateMarker, formatDate } from '@fullcalendar/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NotifyNewTaskService } from 'src/app/shared/services/notify-new-task.service';
 @Component({
     selector: 'app-calendar-work',
     templateUrl: './calendar.component.html',
@@ -29,29 +31,33 @@ import { DateMarker, formatDate } from '@fullcalendar/core';
 })
 export class CalendarWorkComponent implements OnInit {
 
-    constructor(private calendarService: CalendarService, private route: ActivatedRoute, public dialog: MatDialog
+    constructor(private notifyNewTaskService: NotifyNewTaskService, private _notificationBar: MatSnackBar, private calendarService: CalendarService, private route: ActivatedRoute, public dialog: MatDialog
     ) { }
 
     events: any[] = [];
     options: any;
     idWork!: string;
+    selectedFilterValue!: string;
+    notifierNewTask: Subscription = this.notifyNewTaskService.subjectNotifier.subscribe(notice => {
+        //se ha creado una nueva tarea, se debe actualizar el evento.
+        console.log("ACTUALIZAMOS")
+        this.getCalendarEvents();
+    });
 
     ngOnInit(): void {
         this.idWork = this.route.snapshot.params['idWork'];
+        this.getCalendarEvents();
+        this.selectedFilterValue = "all";
 
-        this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-            response.data.forEach((element: { id: any; _id: any; }) => {
-                element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
-            });
-            this.events = response.data;
-        })
+        
+
 
 
         this.options = {
             plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
             initialView: 'timeGridWeek',
             defaultDate: new Date(),
-            height: 80,
+            height: "50%",
             dateClick: this.handleDateClick.bind(this),
             eventClick: this.handleEventClick.bind(this),
             eventDrop: this.handleEventDrop.bind(this),
@@ -66,17 +72,86 @@ export class CalendarWorkComponent implements OnInit {
             timezone: 'local'
         }
 
+
     }
 
-    handleEventResize(date: any){
-        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags).subscribe((response) => {
+    getCalendarEvents() {
+        this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
+            response.data.forEach((element: { id: any; _id: any; }) => {
+                element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
+            });
+            this.events = response.data;
+
+            this.events.forEach(element => {
+                if (element.taskOriginId != undefined) {
+                    element.color = "purple"
+                    element.editable = false;
+                    element.description = "Tarea"
+                }
+            })
+
+        })
+    }
+
+    getCalendarEventsFilteredTasks() {
+        //necesario hacerlo repitiendo el código de esta manera por motivos de funcionamiento de fullcalendar.
+        this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
+            response.data.forEach((element: { id: any; _id: any; }) => {
+                element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
+            });
+            this.events = response.data;
+
+            this.events.forEach(element => {
+                if (element.taskOriginId != undefined) {
+                    element.color = "purple"
+                    element.editable = false;
+                    element.description = "Tarea"
+
+                }
+            })
+
+            this.events = this.events.filter(element => element.taskOriginId!=undefined)
+
+        })
+    }
+
+    getCalendarEventsFilteredEvents() {
+        this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
+            response.data.forEach((element: { id: any; _id: any; }) => {
+                element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
+            });
+            this.events = response.data;
+
+            this.events.forEach(element => {
+                if (element.taskOriginId != undefined) {
+                    element.color = "purple"
+                    element.editable = false;
+                    element.description = "Tarea"
+
+                }
+            })
+
+            this.events = this.events.filter(element => element.taskOriginId==undefined)
+
+        })
+    }
+
+
+
+
+
+
+    handleEventResize(date: any) {
+
+        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags, sessionStorage.getItem("id") as string).subscribe((response) => {
             console.log("EVENT updated", response)
         });
 
+
     }
 
-    handleEventDrop(date: any){
-        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags).subscribe((response) => {
+    handleEventDrop(date: any) {
+        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags,  sessionStorage.getItem("id") as string).subscribe((response) => {
             console.log("EVENT updated", response)
         });
 
@@ -93,37 +168,36 @@ export class CalendarWorkComponent implements OnInit {
 
         const dialogRef = this.dialog.open(DialogNewEvent, config);
         dialogRef.afterClosed().subscribe(result => {
-            this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-                response.data.forEach((element: { id: any; _id: any; }) => {
-                    element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
-                });
-                this.events = response.data;
-            })
+            this.getCalendarEvents();
+
 
         });
     }
 
     handleEventClick(info: any) {
-        console.log(info.event.id)
+
+        console.log("evento", info.event.id)
         let config: MatDialogConfig = {
             height: "70%",
-            width: "100%",
+            width: "90%",
             panelClass: "dialog-responsive",
-            data: { workId: this.idWork, start: null, eventId: info.event.id }
+            data: { workId: this.idWork, start: null, eventId: info.event.id}
+        }
+        const eventClicked = this.events.find(element => element.id == info.event.id);
+        if (eventClicked.taskOriginId == undefined) {
+            const dialogRef = this.dialog.open(DialogNewEvent, config);
+            dialogRef.afterClosed().subscribe(result => {
+                this.getCalendarEvents();
+            });
+        } else {
+            this.openEventNotificationBar();
         }
 
-        const dialogRef = this.dialog.open(DialogNewEvent, config);
-        dialogRef.afterClosed().subscribe(result => {
-            this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-                response.data.forEach((element: { id: any; _id: any; }) => {
-                    element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
-                });
-                this.events = response.data;
-            })
-
-        });
     }
 
+    openEventNotificationBar() {
+        this._notificationBar.open('Accede al apartado de tareas para modificar este evento.', 'X',  {duration: 2000});
+    }
 
     newEvent() {
 
@@ -136,14 +210,27 @@ export class CalendarWorkComponent implements OnInit {
 
         const dialogRef = this.dialog.open(DialogNewEvent, config);
         dialogRef.afterClosed().subscribe(result => {
-            this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-                response.data.forEach((element: { id: any; _id: any; }) => {
-                    element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
-                });
-                this.events = response.data;
-            })
-
+            this.getCalendarEvents();
         });
+    }
+
+    onFilterChange(value: any){
+        switch(value){
+            case "all":
+                this.getCalendarEvents();
+                console.log("all", this.events)
+
+                break;
+            case "tasks":
+                this.getCalendarEventsFilteredTasks();
+                console.log("tasks", this.events)
+
+                break;
+            case "events":
+                this.getCalendarEventsFilteredEvents();
+                console.log("events")
+                break;
+        }
     }
 
 
@@ -177,7 +264,6 @@ export class DialogNewEvent {
     invalidDescription!: boolean;
 
     updating!: boolean;
-
     readonly separatorKeysCodes = [ENTER, COMMA] as const;
     tags: string[] = [];
     tagList: string[] = ['Reunión', 'Entrega', 'Videollamada', 'Recordatorio'];
@@ -314,6 +400,12 @@ export class DialogNewEvent {
         }
     }
 
+    deleteEvent(){
+        this.calendarService.deleteEvent(this.data.eventId, sessionStorage.getItem("id") as string).subscribe(() => {
+            this.dialogRef.close();
+
+        })
+    }
     onClick() {
         if (this.form.valid && !this.hasErrors) {
 
@@ -322,6 +414,7 @@ export class DialogNewEvent {
             const description = this.form.get('description')?.value;
             const start = this.form.get('pickerStart')?.value;
             const tags = this.tags;
+            const userIdResponsible = sessionStorage.getItem("id") as string;
             console.log("start", start)
             if (this.form.get('pickerEnd')?.value == "") {
                 var dateEnd = start.substring(0, 11) + "23:59:00";
@@ -330,11 +423,11 @@ export class DialogNewEvent {
             const end = this.form.get('pickerEnd')?.value;
 
             if (!this.updating) {
-                this.calendarService.createEvent(this.data.workId, title, description, start, end, tags).subscribe((response) => {
+                this.calendarService.createEvent(this.data.workId, title, description, start, end, tags, userIdResponsible).subscribe((response) => {
                     console.log("EVENT CREATED", response)
                 })
             } else {
-                this.calendarService.updateEvent(this.data.eventId, title, description, start, end, tags).subscribe((response) => {
+                this.calendarService.updateEvent(this.data.eventId, title, description, start, end, tags, userIdResponsible).subscribe((response) => {
                     console.log("EVENT updated", response)
                 })
             }

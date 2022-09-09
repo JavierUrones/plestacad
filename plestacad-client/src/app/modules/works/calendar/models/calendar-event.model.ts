@@ -6,4 +6,6 @@ export interface CalendarEvent {
     start: Date;
     end: Date;
     tag: string[];
+    taskOriginId: string;
+    color: string;
   }

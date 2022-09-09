@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +10,9 @@ import { AppComponent } from './app.component';
 import { MainModule } from './layout/main.module';
 import { AuthenticationService } from './modules/session/services/authentication.service';
 import { SessionModule } from './modules/session/session.module';
+import { WorkRequestsModule } from './modules/work-requests/work-requests.module';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AuthInterceptor } from './shared/guards/auth.interceptor';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MainModule,
     SessionModule,
+    WorkRequestsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -36,7 +39,8 @@ export function createTranslateLoader(http: HttpClient) {
       }
   })
   ],
-  providers: [TranslateService, AuthGuard],
+  providers: [TranslateService, AuthGuard, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

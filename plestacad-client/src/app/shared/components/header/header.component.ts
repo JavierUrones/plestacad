@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   logout(){
       localStorage.removeItem('jwt');
       sessionStorage.removeItem('email');
-      sessionStorage.removeItem('role');
       sessionStorage.removeItem('id');
       sessionStorage.removeItem('name');
       sessionStorage.removeItem('surname');

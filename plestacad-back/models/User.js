@@ -32,11 +32,13 @@ const userSchema = mongoose.Schema({
     type: String,
     required: false,
   },
-  role: {
-    type: String,
-    default: "student",
-    enum: ["student", "teacher", "admin"],
+  verified: {
+    type: Boolean,
+    default: false
   },
+  verifyToken: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -28,10 +28,11 @@ export class FilesService {
     );
   }
 
-  deleteFile(id: string, path: string) {
+  deleteFile(id: string, path: string, userIdResponsible: string) {
     return this.http
       .post<any>(this.uri + '/files/delete/' + id, {
         path: path,
+        userIdResponsible: userIdResponsible
       })
       .pipe(
         map((response) => {
@@ -40,10 +41,11 @@ export class FilesService {
       );
   }
 
-  deleteDir(id: string, path: string) {
+  deleteDir(id: string, path: string, userIdResponsible: string) {
     return this.http
       .post<any>(this.uri + '/files/deleteDir/' + id, {
         path: path,
+        userIdResponsible: userIdResponsible
       })
       .pipe(
         map((response) => {
@@ -70,10 +72,11 @@ export class FilesService {
       );
   }
 
-  addDirectory(path: string) {
+  addDirectory(path: string, userIdResponsible: string) {
     return this.http
       .post<any>(this.uri + 'files/createDir/', {
         path: path,
+        userIdResponsible: userIdResponsible
       })
       .pipe(
         map((response) => {
@@ -100,11 +103,12 @@ export class FilesService {
     });
   }
 
-  addFile(id: string, path: string, file: any) {
+  addFile(userIdResponsible: string, path: string, file: any) {
 
         let formData = new FormData();    
         formData.append('upload', file);
-        formData.append('path', path)
+        formData.append('path', path);
+        formData.append('userIdResponsible' , userIdResponsible)
         console.log(formData)
         return this.http.post(this.uri + 'files/add/', formData);
   }

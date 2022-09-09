@@ -4,8 +4,9 @@ const UserService = require("../../services/userService");
 const userService = new UserService();
 
 const ValidationError = require("../../config/errors/customErrors");
+const auth = require("../middleware/authMiddleware");
 
-router.get("/users", async (req, res) => {
+router.get("/users", auth, async (req, res) => {
     try{
       const listUsers =   await userService.getAllUsers();
       
@@ -19,12 +20,10 @@ router.get("/users", async (req, res) => {
   }
   );
 
-router.get("/users/role/:role", async (req, res) => {
+router.get("/users/role/:role", auth, async (req, res) => {
   try{
-    console.log("entra")
     var role = req.params.role;
     const listUsers =   await userService.getUsersByRole(role);
-    console.log("TEACHERS", listUsers)
     res.json({
       data: listUsers
     })
@@ -35,9 +34,23 @@ router.get("/users/role/:role", async (req, res) => {
 }
 );
 
+router.get("/users/email/:email", auth, async (req, res) => {
+  try{
+    var email = req.params.email;
+    const user =   await userService.getUserByEmail(email);
+    res.json({
+      data: user
+    })
+  }
+  catch(error){
+    return res.status(500).json({ error: error.message });
+  }
+}
+);
 
 
-router.get("/users/fullname/:id", async (req, res) => {
+
+router.get("/users/fullname/:id", auth, async (req, res) => {
     try{
       const user =   await userService.getUserById(req.params.id);
     

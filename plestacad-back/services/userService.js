@@ -30,6 +30,18 @@ class UserService {
       throw error;
     }
   }
+
+
+  async getUserByEmail(email){
+    try {
+      const user = User.find({
+        email: email
+      })
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 

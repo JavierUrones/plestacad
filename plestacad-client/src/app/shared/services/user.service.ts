@@ -28,13 +28,28 @@ export class UserService {
           var user = new User();
           user.name = x.name;
           user.surname = x.surname;
-          user.role = x.role;
+          //user.role = x.role;
           user.email = x.email;
           user._id = x._id;
           return user;
          }))
       )
   }
+
+  getUserByEmail(email: string){
+    return this.http.get<any>(this.uri + "users/email/"+email).pipe(
+      map((response) => response.data.map((x: { _id: string, name: string; surname: string; role: UserRole; email: string;}) => {
+        console.log("EO")
+        var user = new User();
+        user.name = x.name;
+        user.surname = x.surname;
+        //user.role = x.role;
+        user.email = x.email;
+        user._id = x._id;
+        return user;
+       }))
+    )
+}
 
 
 }

@@ -11,8 +11,7 @@ const schemaRegister = Joi.object({
     name: Joi.string().min(1).max(255).required(),
     surname: Joi.string().min(1).max(255).required(),
     email: Joi.string().min(6).max(1024).required().email(),
-    password: Joi.string().min(8).required(),
-    role: Joi.string().valid("student", "admin", "teacher"),
+    password: Joi.string().min(8).required()
   });
 
   //Se definen los validadores del login.
@@ -23,7 +22,7 @@ const schemaLogin = Joi.object({
 
 class AuthenticationService {
 
-   async signUp(userDto) {
+   async signUp(userDto, verifyToken) {
     //Se validan los parámetros de la petición.
     const { error } = schemaRegister.validate(userDto);
 
@@ -40,30 +39,22 @@ class AuthenticationService {
     const salt = await bcrypt.genSalt();
     const password = await bcrypt.hash(userDto.password, salt);
 
+
     //Se crea nuevo usuario
     const newUser = new User({
       name: userDto.name,
       surname: userDto.surname,
       email: userDto.email,
       password: password,
-      role: userDto.role,
+      verified: false,
+      verifyToken: verifyToken
     });
 
     try {
-      //Se guarda el nuevo usuario
+      //Se guarda el nuevo usuario como no verificado.
       const userSave = await newUser.save();
 
-      const user = await User.findOne({ email: userDto.email });
-      //Se genera el token asociado al usuario.
-      var token = jwt.sign({ id: user.id }, secret.key, {
-        expiresIn: 86400, // El token expira en 24 horas.
-      });
-      //Se genera el token asociado al usuario.
-      var token = jwt.sign({ id: user.id }, secret.key, {
-        expiresIn: 86400, // El token expira en 24 horas.
-      });
-
-      return {token: token, user: userSave};
+      return {data: userSave};
     } catch (error) {
         throw error;
     }
@@ -76,22 +67,39 @@ class AuthenticationService {
 
       if (error) throw new ValidationError(error.details[0].message);
       const user = await User.findOne({ email: userDto.email });
-      if (!user) throw new ValidationError("Usuario no encontrado");
+      if (!user) throw new ValidationError("not-found");
   
       //Se comprueba que el password sea la almacena en la base de datos.
       const checkPassword = await bcrypt.compare(
         userDto.password,
         user.password
       );
-      if (!checkPassword) throw new ValidationError("La contraseña no es válida");
+      if (!checkPassword) throw new ValidationError("wrong-password");
   
+      //Comprobar que el usuario haya verificado su cuenta.
+      if (!user.verified) throw new ValidationError("not-verified");
       //Se genera el token asociado al usuario.
       var token = jwt.sign({ id: user.id }, secret.key, {
-        expiresIn: 86400, // El token expira en 24 horas.
+        expiresIn: "300d", // El token expira en 300 días.
       });
 
       return {token: token, userLogged: user};
     } catch (error) {
+      throw error;
+    }
+  }
+
+  async verifyUser(token){
+    try{
+      //comprobar el usuario que tiene el token y validarlo.
+    const user =  await User.findOne({verifyToken: token});
+    if(!user.verified){
+      user.verified = true;
+      user.save();
+    } else{
+      throw new ValidationError("not-found")
+    }
+    }catch(error){
       throw error;
     }
   }

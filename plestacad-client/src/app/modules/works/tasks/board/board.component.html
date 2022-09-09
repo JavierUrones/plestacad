@@ -1,0 +1,66 @@
+<div class="main-board" cdkDropListGroup>
+    <div class="task-classif" *ngFor="let apt of taskClassificators" [cdkDropListData]="apt.tasks" cdkDropList
+        (cdkDropListDropped)="dropTask($event, apt)">
+
+        <div class="classificatorHeader">
+            <input #inputTitle (click)="inputTitle.select()" [(ngModel)]="apt.title" class="editableTitle"
+                (change)="checkTitle($event, inputTitle.value, apt._id)">
+            <button class="optionMenu" mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="subMenu">Mover a</button>
+
+                <button mat-menu-item style="color:red;" (click)="deleteTaskClassificator(apt._id)">Eliminar</button>
+
+            </mat-menu>
+
+            <mat-menu #subMenu="matMenu" class="subMenu">
+                <div class="selectorOrder">
+                    <mat-label> Posición </mat-label>
+                    <mat-select placeholder="Selecciona..." (click)="$event.stopPropagation();"
+                        (selectionChange)="onOrderChange($event)">
+                        <mat-option *ngFor="let tc of taskClassificators" [value]="[tc.order, apt._id]">
+                            <p *ngIf="tc.order==apt.order">{{ tc.order }} (actual)</p>
+                            <p *ngIf="tc.order!=apt.order">{{ tc.order }} </p>
+
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </mat-menu>
+
+
+
+        </div>
+
+
+        <div class="task-board" *ngFor="let task of apt.tasks" (click)="updateTask(task)" cdkDrag>
+
+            <div class="task-content">
+                <h5 >{{task.title}}</h5>
+                <div *ngIf="task.start!=null || task.end != null" style="display: flex;
+                align-items: center;color: grey;
+">
+                    <span><mat-icon  [inline]="true" style=" font-size: 15px;">access_time</mat-icon></span>
+                    <span  class="aligned-text" *ngIf="task.start!=null">{{task.start | date}}</span>
+                    <span  class="aligned-text" *ngIf="task.start==null">?</span>
+                    -
+                    <span  class="aligned-text" *ngIf="task.end!=null">{{task.end | date}}</span>
+                    <span  class="aligned-text" *ngIf="task.end==null">?</span>
+               </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="add-section">
+        <button *ngIf="largeScreen" mat-raised-button color="primary" (click)="newTaskClassificator()">
+            <mat-icon>add</mat-icon>Añadir nueva sección
+        </button>
+        <button *ngIf="!largeScreen" mat-raised-button color="primary" (click)="newTaskClassificator()">
+            <mat-icon>add</mat-icon>
+        </button>
+
+    </div>
+</div>

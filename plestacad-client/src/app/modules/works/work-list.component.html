@@ -50,10 +50,18 @@
     <mat-card-title
     >{{work.title}}</mat-card-title
   >
-  <mat-card-subtitle>{{showValueCategory(work.category)}}</mat-card-subtitle>
+  <mat-card-subtitle>{{showValueCategory(work.category)}} - 
+    Curso {{work.course}}
+  </mat-card-subtitle>
   <mat-card-content class="content-card">
     <p>{{work.description}}</p>
   </mat-card-content>
+  <div class="footer-card">
+    <span *ngIf="work.authorId==this.idUser">Propietario</span>
+    <span *ngIf="work.teachers.includes(this.idUser) && work.authorId!=this.idUser">Profesor</span>
+    <span *ngIf="work.students.includes(this.idUser)">Estudiante</span>
+
+  </div>
   </mat-card>
 </div>
 

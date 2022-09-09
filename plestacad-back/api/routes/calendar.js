@@ -2,8 +2,8 @@ const router = require("express").Router();
 const CalendarService = require("../../services/calendarService");
 
 const calendarService = new CalendarService();
-
-router.get("/calendar/:id", async (req, res) => {
+const auth = require("../middleware/authMiddleware");
+router.get("/calendar/:id", auth, async (req, res) => {
     try {
         id = req.params.id;
         const calendarEvents = await calendarService.getCalendarEventsByWorkId(id);
@@ -17,7 +17,7 @@ router.get("/calendar/:id", async (req, res) => {
 );
 
 
-router.get("/calendar/event/:id", async (req, res) => {
+router.get("/calendar/event/:id", auth, async (req, res) => {
   try{
     id = req.params.id;
     const event = await calendarService.getCalendarEventById(id);
@@ -31,11 +31,12 @@ router.get("/calendar/event/:id", async (req, res) => {
 
 
 
-router.post("/calendar/:id", async (req, res) => {
+router.post("/calendar/:id", auth, async (req, res) => {
     const idWork = req.params.id;
     const calendarEventDto = req.body;
+    const userIdResponsible = req.body.userIdResponsible;
     try {
-      const calendarEventSave = await calendarService.createCalendarEvent(calendarEventDto, idWork);
+      const calendarEventSave = await calendarService.createCalendarEvent(calendarEventDto, idWork, userIdResponsible);
       res.status(200).send({
         data: calendarEventSave
       });
@@ -45,10 +46,12 @@ router.post("/calendar/:id", async (req, res) => {
   });
 
 
-  router.put('/calendar/event', async (req, res) => {
+  router.put('/calendar/event', auth, async (req, res) => {
     const calendarEventDto = req.body;
+    const userIdResponsible = req.body.userIdResponsible;
+
     try {
-      const calendarUpdate = await calendarService.updateEvent(calendarEventDto);
+      const calendarUpdate = await calendarService.updateEvent(calendarEventDto, userIdResponsible);
       res.status(200).send({
         data: calendarUpdate
       })
@@ -57,6 +60,20 @@ router.post("/calendar/:id", async (req, res) => {
     }
   })
 
+
+  router.delete("/calendar/:id/:userIdResponsible", auth, async (req, res) => {
+    const id = req.params.id;
+    const userIdResponsible = req.params.userIdResponsible;
+    try {
+        const calendarEventDeleted = await calendarService.deleteCalendarEvent(id, userIdResponsible);
+        
+      res.status(200).send({
+        data: calendarEventDeleted,
+      });
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  });
 
   
 

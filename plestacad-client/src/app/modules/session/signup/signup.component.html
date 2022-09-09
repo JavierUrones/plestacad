@@ -1,6 +1,6 @@
 <div class="bg">
   <div class="center-div">
-    <mat-card>
+    <mat-card *ngIf="!signupDone">
       <mat-card-content>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <h3>{{ "register.main" | translate }}</h3>
@@ -69,7 +69,7 @@
                 <mat-error> Indica una dirección de correo válida </mat-error>
               </mat-form-field></mat-grid-tile
             >
-            <mat-grid-tile
+            <!--<mat-grid-tile
               ><mat-form-field appearance="fill">
                 <mat-label>Selecciona tu rol</mat-label>
                 <mat-select [formControl]="roleControl" required>
@@ -81,7 +81,7 @@
                   >Por favor selecciona tu rol</mat-error
                 >
               </mat-form-field></mat-grid-tile
-            >
+            >-->
           </mat-grid-list>
           <div class="mainError">
           <mat-error  *ngIf="this.registerForm.errors?.['invalidPassword'] && this.registerForm.get('repeatPassword')?.touched">
@@ -98,6 +98,11 @@
         <p>¿Ya estás registrado?</p>
         <a routerLink="/login" routerLinkActive="active">Inicia sesión</a>
       </mat-card>
+    </mat-card>
+    <mat-card *ngIf="signupDone">
+      <mat-card-content>
+        <p> Gracias por registrarte, comprueba la bandeja de entrada de tu correo electrónico para verificar tu cuenta.</p>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>

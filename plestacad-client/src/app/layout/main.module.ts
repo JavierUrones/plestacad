@@ -13,6 +13,7 @@ import { TranslateLoader } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WorkRequestsModule } from '../modules/work-requests/work-requests.module';
 
 
 

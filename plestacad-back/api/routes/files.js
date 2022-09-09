@@ -5,6 +5,7 @@ const directoryFiles = "/userdata/";
 const path = require("path");
 const fastFolderSizeSync = require('fast-folder-size/sync')
 const { response } = require("express");
+const auth = require("../middleware/authMiddleware");
 
 
 const FileService = require("../../services/fileService");
@@ -127,7 +128,7 @@ createResArray = function (responseArray, listPathsFile) {
 }
 
 
-router.get("/files/:id", async (req, res) => {
+router.get("/files/:id", auth, async (req, res) => {
   try {
     //id = id del work.
     id = req.params.id;
@@ -158,10 +159,9 @@ router.get("/files/:id", async (req, res) => {
   }
 });
 
-router.post("/files/add", async (req, res) => {
+router.post("/files/add", auth, async (req, res) => {
   try {
     var form = new formidable.IncomingForm();
-
     form.parse(req, async (err, fields, files) => {
       if (err) {
         return res.status(400).json({
@@ -169,51 +169,48 @@ router.post("/files/add", async (req, res) => {
         });
       }
       const uploadDirectory = fields.path + "/";
+      var userIdResponsible = fields.userIdResponsible;
+
+
       const file = files.upload;
 
       const fileName = encodeURIComponent(
         file.originalFilename.replace(/\s/g, "-")
       );
       try {
-        //Se cambia el directorio del archivo.
-        fs.renameSync(file.filepath, uploadDirectory + fileName);
+        fileService.createFile(file.filepath, uploadDirectory + fileName, userIdResponsible)
+        return res.status(200).json({
+          message: "File uploaded succesfully",
+        });
       } catch (error) {
         return res.status(400).json({
           message: "Error during directory parse",
         });
       }
-      try {
-        return res.status(200).json({
-          message: "File uploaded succesfully",
-        });
-      } catch (error) {
-        res.json({
-          error,
-        });
-      }
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 });
 
-router.post("/files/delete/:id", async (req, res) => {
+router.post("/files/delete/:id", auth, async (req, res) => {
   var id = req.params.id;
   var path = req.body.path;
+  var userIdResponsible = req.body.userIdResponsible;
   try {
-    fs.unlink(path, function (err) {
-      if (err) {
-        console.log(err)
-        return res
-          .status(500)
-          .json({
-            error: "Something was wrong trying to delete the file" + err,
-          });
-      }
+    var response = fileService.deleteFile(path, id, userIdResponsible);
+    if(response == "error-file"){
+      return res
+      .status(400)
+      .json({
+        error: "Error deleting file " + response,
+      });
+    } else{
       return res.status(200).json({
         status: "File deleted succesfully",
+        data: response,
       });
-    });
+    }
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -222,64 +219,63 @@ router.post("/files/delete/:id", async (req, res) => {
 
 
 
-router.post("/files/createDir", async (req, res) => {
-  try{
+router.post("/files/createDir", auth, async (req, res) => {
+  try {
     var path = req.body.path;
-    console.log("path", path)
-
-    console.log("path", path.split("/"))
-    console.log("length path", path.split("/").length)
-    if(path.trim().length == 0){
+    var userIdResponsible = req.body.userIdResponsible;
+    if (path.trim().length == 0) {
       return res.status(400).json({
-        status: 400, 
+        status: 400,
         message: "Invalid directory name."
       })
     }
-    if(path.split("/").length > 8){
+    if (path.split("/").length > 8) {
       return res.status(400).json({
         status: 400,
         message: "Exceeded limit number of subdirectories."
       })
     }
-    var response = await fileService.createDirectory(path);
+    var response = await fileService.createDirectory(path, userIdResponsible);
 
     console.log(response)
-    if(response=="Ok"){
+    if (response == "Ok") {
       return res.status(200).json({
         status: 200,
         message: "Directory " + path + " created succesfully",
       });
-    } else{
+    } else {
       return res
-      .status(400)
-      .json({
-        error: "Directory already exists",
-      });
+        .status(400)
+        .json({
+          error: "Directory already exists",
+        });
     }
-  }catch(error){
+  } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 
 })
 
-router.post("/files/deleteDir/:id", async (req, res) => {
+router.post("/files/deleteDir/:id", auth, async (req, res) => {
   var id = req.params.id;
   var path = req.body.path;
+  var userIdResponsible = req.body.userIdResponsible;
   try {
-    fs.rmdir(path, function (err) {
-      if (err) {
-        console.log(err)
-        return res
-          .status(400)
-          .json({
-            error: "Something was wrong trying to delete the directory" + err,
-          });
-      }
+
+    var response = fileService.deleteDirectory(path, id, userIdResponsible);
+
+    if (response == "directory-not-empty") {
+      return res
+        .status(400)
+        .json({
+          error: "Directory not empty: " + response,
+        });
+    } else {
       return res.status(200).json({
         status: "Directory deleted succesfully",
+        data: response,
       });
-    })
-
+    }
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -290,7 +286,7 @@ router.post("/files/deleteDir/:id", async (req, res) => {
 
 
 
-router.post("/files/download/:id", async (req, res) => {
+router.post("/files/download/:id", auth, async (req, res) => {
   res.download(req.body.path, (err) => {
     if (err)
       console.log(err)

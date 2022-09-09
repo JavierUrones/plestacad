@@ -1,7 +1,7 @@
 <mat-nav-list>
     <h1 matSubheader>Menu</h1>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/trabajos">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/trabajos" (click)="onClickedMenuItem()">
         <mat-icon>assignment</mat-icon>
         Mis Trabajos
     </a>
@@ -9,15 +9,18 @@
         <mat-icon>person</mat-icon>
         Perfil
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/calendario">
-        <mat-icon>calendar_today</mat-icon>
-        Calendario
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/videollamadas">
+        <mat-icon>call</mat-icon>
+        Videollamadas
     </a>
-    <a mat-list-item routerLink="/calendario">
-        <mat-icon>add</mat-icon>
-        Solicitudes pendientes</a>
-    <a mat-list-item routerLink="/calendario">
-        <mat-icon>notifications</mat-icon>
+    <a  mat-list-item routerLink="/solicitudes-trabajos">
+        <mat-icon *ngIf="this.newWorkRequests>0" matBadge="{{this.newWorkRequests}}" matBadgePosition="before" matBadgeColor="accent">add</mat-icon>
+        <mat-icon *ngIf="this.newWorkRequests==0">add</mat-icon>
+        Solicitudes pendientes</a> 
+    <a mat-list-item routerLink="/notificaciones">
+        <mat-icon *ngIf="this.newNotifications>0" matBadge="{{this.newNotifications}}" matBadgePosition="before" matBadgeColor="accent">notifications</mat-icon>
+        <mat-icon *ngIf="this.newNotifications==0" >notifications</mat-icon>
+
         Notificaciones</a>
     <a mat-list-item routerLink="/calendario">
         <mat-icon>help</mat-icon>

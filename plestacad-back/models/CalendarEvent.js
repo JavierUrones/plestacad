@@ -21,7 +21,9 @@ const calendarEventScheema = mongoose.Schema({
     type: [],
     required: false
   },
+  taskOriginId: { type: mongoose.Schema.Types.ObjectId, ref: "Task" },
   workId: { type: mongoose.Schema.Types.ObjectId, ref: "Work" }
+
 });
 
 module.exports = mongoose.model("CalendarEvent", calendarEventScheema);

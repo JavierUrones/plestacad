@@ -29,7 +29,7 @@
                   <mat-icon class="red-icon" *ngIf="post.isFavorite" (click)="markAsFavorite(post._id, false)">favorite</mat-icon>
                   <mat-icon class="red-icon" *ngIf="!post.isFavorite" (click)="markAsFavorite(post._id, true)">favorite_border</mat-icon>
             </div></button>
-              <button mat-button> <div class="icon-text"><mat-icon>comment</mat-icon><p>{{ post.interactions.length }} Respuestas</p>
+              <button mat-button> <div class="icon-text"><mat-icon>comment</mat-icon><span>{{ post.interactions.length }} Respuestas</span>
               </div></button>
         </div>
     </div>

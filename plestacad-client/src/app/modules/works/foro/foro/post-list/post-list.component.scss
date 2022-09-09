@@ -1,16 +1,17 @@
-
-h3{
+h3 {
     color: green;
     font-size: 1.3em;
-    
-}
-.post-card p, h3{
-    margin-left: 1%;
-    margin-top: 0.5%;
-    
+
 }
 
-.content{
+.post-card p,
+h3 {
+    margin-left: 1%;
+    margin-top: 0.5%;
+
+}
+
+.content {
     margin-left: 1%;
     margin-right: 1%;
     width: auto;
@@ -19,7 +20,7 @@ h3{
     word-wrap: break-word;
 }
 
-.author{
+.author {
     color: grey;
     font-size: 80%;
 }
@@ -32,84 +33,93 @@ h3{
     align-items: center;
 }
 
-.red-icon{
+.red-icon {
     color: rgb(250, 83, 83);
 }
-    .post-card{
-        background-color: white;
-        margin: 0 auto; float:none;
-        border-style: solid;
-        border-width: 0.25px 0.5px 0.25px 0.5px;
-        border-color: lightgrey;
-        width: 60%;
-        position: relative;
-        border-radius: 10px;
-        
-    }
 
-    .post-card:hover{
-        border-color: grey;
-    }
+.post-card {
+    background-color: white;
+    margin: 0 auto;
+    float: none;
+    border-style: solid;
+    border-width: 0.25px 0.5px 0.25px 0.5px;
+    border-color: lightgrey;
+    width: 60%;
+    position: relative;
+    border-radius: 10px;
 
-    .navigatorLink:hover{
-        cursor:pointer;
-    }
+}
+
+.post-card:hover {
+    border-color: grey;
+}
+
+.navigatorLink:hover {
+    cursor: pointer;
+}
 
 @media only screen and (min-width:765px) and (min-height: 765px) {
-    .paginator-custom{
+    .paginator-custom {
         background-color: white;
-        margin: 0 auto; float:none;
+        margin: 0 auto;
+        float: none;
         width: 60%;
         position: relative;
     }
 
-    .container{
-        position : relative;
+    .container {
+        position: relative;
         margin-top: 2%;
-        
+
     }
-    
+
     .add {
-        position:absolute;
+        position: absolute;
         top: 1%;
         right: 1%;
     }
 
-    #newPost{
+    #newPost {
         margin-left: 2%;
-    
+
     }
 
-    
+
 
 
 }
 
-.content-card{
+.content-card {
     margin-bottom: 2%;
 }
-button{
-    margin: 0 auto; float: none; position:relative;
+
+button {
+    margin: 0 auto;
+    float: none;
+    position: relative;
 }
 
 
-mat-form-field{
-    margin: 0 auto; float: none; position:relative;
+mat-form-field {
+    margin: 0 auto;
+    float: none;
+    position: relative;
 }
-.selector{
+
+.selector {
     margin-left: 20%;
 }
 
 
-.mat-spinner{
+.mat-spinner {
     position: relative;
     margin-left: 50%;
     margin-right: 50%;
 }
 
 
-.floatRight{
-    float:right;
+.floatRight {
+    float: right;
     margin-right: 2%;
     margin-top: 2%;
     color: grey;

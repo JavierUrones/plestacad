@@ -9,7 +9,7 @@ async function initialize(app) {
   console.log('Express Initialized');
 
 }
-module.exports.initialize = async (app) =>  {
+module.exports.initialize = async (app, server) =>  {
 
   const mongoConnection = await mongooseLoader.initializeMongoose();
   console.log('MongoDB Initialized');

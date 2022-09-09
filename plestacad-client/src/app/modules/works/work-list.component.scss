@@ -1,14 +1,22 @@
 .work-card {
   margin: 1.5em 1.5em 5em 1.5em;
-  height: auto;
-  width: auto;
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
 }
 
 mat-card-title{
-  font-size: 150%;
+  font-size: 180%;
+  margin-bottom: 2%;
 }
 
-
+.footer-card{
+  font-size: 70%;
+  color: lightgrey;
+  float: right;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
 
 
 .work-card:hover {
@@ -34,5 +42,6 @@ button{
   display: block;
   margin-bottom: 2%;
   margin-top: 2%;
+  margin-left: 1.5%;
 }
 

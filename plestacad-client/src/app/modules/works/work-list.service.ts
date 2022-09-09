@@ -13,11 +13,10 @@ export class WorkListService {
   uri = environment.apiURL;
   constructor(private http: HttpClient) { }
 
-  getWorksByUserId(id: string, roleUser: string){
+  getWorksByUserId(id: string){
     console.log("ID", id)
     return this.http.post<any>(this.uri+"worksByUser", {
-      "id": id,
-      "role": roleUser
+      "id": id
     }).pipe(map(response => {
       return response.data
     }));
@@ -38,14 +37,16 @@ export class WorkListService {
     return this.http.get<any>(this.uri+"works/"+id).pipe(map(response => { return response;}))
   }
 
-  createWork(authorId: string | null, title: string, description: string, category: string, course: number, teachers: any[]) {
+  createWork(authorId: string | null, title: string, description: string, category: string, course: number, teachers: any[], teachersInvited: any[], studentsInvited: any[]) {
     return this.http.post<any>(this.uri+"works", {
       authorId: authorId,
       title: title,
       description: description,
       category: category,
       course: course,
-      teachers: teachers
+      teachers: teachers,
+      teachersInvited: teachersInvited,
+      studentsInvited: studentsInvited
     })
   }
 

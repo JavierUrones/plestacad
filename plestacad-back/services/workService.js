@@ -1,4 +1,5 @@
 const Work = require("../models/Work");
+const WorkRequest = require("../models/WorkRequest");
 
 class WorkService {
 
@@ -41,67 +42,129 @@ class WorkService {
       throw error;
     }
   }
-  
 
-  async getWorksByStudentId(id){
-    try{
-      const listWorks  = await Work.find({
-        'students': { $in: [
-            mongoose.Types.ObjectId(id)
-        ]}
-      })
-      return listWorks;
-    } catch(error){
+  async updateWork(workDto) {
+    try {
+      const filter = { _id: workDto.id };
+      const update = {
+        title: workDto.title,
+        authorId: workDto.authorId,
+        teachers: workDto.teachers,
+        students: workDto.students,
+        category: workDto.category,
+        description: workDto.description,
+        course: workDto.course
+      };
+      let work = await Work.findOneAndUpdate(filter, update);
+      return work;
+    } catch (error) {
       throw error;
     }
   }
 
-  async getWorksByTeacherId(id){
-    try{
-      const listWorks  = await Work.find({
-        'teachers': { $in: [
+  async deleteWorkRequest(id) {
+    try {
+      var workRequest = await WorkRequest.deleteOne({ _id: id })
+      return workRequest;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getWorksByStudentId(id) {
+    try {
+      const listWorks = await Work.find({
+        'students': {
+          $in: [
             mongoose.Types.ObjectId(id)
-        ]}
+          ]
+        }
       })
       return listWorks;
-    } catch(error){
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getWorksByTeacherId(id) {
+    try {
+      const listWorks = await Work.find({
+        'teachers': {
+          $in: [
+            mongoose.Types.ObjectId(id)
+          ]
+        }
+      })
+      return listWorks;
+    } catch (error) {
       throw error;
     }
   }
 
 
 
-  async getWorksByStudentIdAndCategory(id, category){
-    try{
-      console.log(category)
-      console.log(id)
+  async getWorksByStudentIdAndCategory(id, category) {
+    try {
 
-      const listWorks  = await Work.find({
+
+      const listWorks = await Work.find({
         'category': category,
-        'students': { $in: [
+        'students': {
+          $in: [
             mongoose.Types.ObjectId(id)
-        ]}
+          ]
+        }
       })
       return listWorks;
-    } catch(error){
+    } catch (error) {
       throw error;
     }
   }
 
 
-  async getWorksByTeacherIdAndCategory(id, category){
-    try{
-      console.log(category)
-      console.log(id)
+  async getWorksByTeacherIdAndCategory(id, category) {
+    try {
 
-      const listWorks  = await Work.find({
+      const listWorks = await Work.find({
         'category': category,
-        'teachers': { $in: [
+        'teachers': {
+          $in: [
             mongoose.Types.ObjectId(id)
-        ]}
+          ]
+        }
       })
       return listWorks;
-    } catch(error){
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async generateWorkRequest(idWork, userIdReceiver, userIdSender, role) {
+    const newWorkRequest = new WorkRequest({
+      workId: idWork,
+      userIdReceiver: userIdReceiver,
+      userIdSender: userIdSender,
+      role: role,
+      date: new Date()
+    });
+
+    try {
+      //Se guarda el nuevo trabajo.
+      const workRequestSave = await newWorkRequest.save();
+      return workRequestSave;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getWorkRequestsByUserReceiverId(id) {
+    try {
+
+      const listRequests = await WorkRequest.find({
+        'userIdReceiver': id
+      })
+      return listRequests;
+    } catch (error) {
       throw error;
     }
   }

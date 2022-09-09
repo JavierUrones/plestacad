@@ -20,6 +20,7 @@ export class WorkListComponent implements OnInit {
   public workList: Work[] = []
   public options!: any[] | null;
   public selected!: string;
+  public idUser!: string;
   constructor(public dialog: MatDialog,
     private workListService: WorkListService, private router: Router, private route: ActivatedRoute) { }
 
@@ -43,9 +44,8 @@ export class WorkListComponent implements OnInit {
 
 
   loadWorksByUserSession() {
-    const idUser = sessionStorage.getItem("id") as string;
-    const roleUser = sessionStorage.getItem("role") as string;
-    this.workListService.getWorksByUserId(idUser, roleUser).subscribe(response => {
+    this.idUser = sessionStorage.getItem("id") as string;
+    this.workListService.getWorksByUserId(this.idUser).subscribe(response => {
       this.workList = response;
       console.log("RESPONSE", response)
     });
@@ -208,6 +208,9 @@ export class DialogAddWork {
       && this.teachersInvited.filter(teacher => teacher == teacherValue).length == 0) {
       this.teachersInvited.push(teacherValue);
       this.teachersCtrl.setValue("");
+      if(this.studentsInvited.filter(student =>  student == teacherValue).length > 0){
+        this.deleteStudentInvited(teacherValue)
+      }
     }
 
 
@@ -225,6 +228,9 @@ export class DialogAddWork {
       && this.studentsInvited.filter(student => student == studentValue).length == 0) {
       this.studentsInvited.push(studentValue);
       this.studentsCtrl.setValue("");
+      if(this.teachersInvited.filter(teacher =>  teacher == studentValue).length > 0){
+        this.deleteTeacherInvited(studentValue)
+      }
     }
 
 
@@ -248,7 +254,11 @@ export class DialogAddWork {
     teachers.push(sessionStorage.getItem("id"))
     var authorId = sessionStorage.getItem("id");
 
-    this.workService.createWork(authorId, title, description, category, course, teachers).subscribe({
+    console.log(this.teachersInvited, this.studentsInvited)
+
+
+
+    this.workService.createWork(authorId, title, description, category, course, teachers, this.teachersInvited, this.studentsInvited).subscribe({
       next: (response) => {
         console.log("Execute creation")
         this.dialogRef.close();

@@ -33,13 +33,12 @@ export class AuthenticationService {
     return decoded.iat! < Date.now();
   }
 
-  signup(name: string, surname: string, email:string, password: string, role:UserRole){
+  signup(name: string, surname: string, email:string, password: string){
     return this.http.post<any>(this.uri+'signup', {
       name: name,
       surname: surname,
       email: email,
-      password: password,
-      role: role
+      password: password
     });
   }
 }

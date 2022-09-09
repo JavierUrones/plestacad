@@ -3,10 +3,10 @@
 
 <mat-drawer-container>
     <mat-drawer mode="side" [opened]="sideBarOpen">
-        <app-sidenav></app-sidenav>
+        <app-sidenav (clickedMenuItem)="onClickedMenuItem($event)"></app-sidenav>
     </mat-drawer>
-    <mat-drawer-content>
-        <router-outlet></router-outlet>
+    <mat-drawer-content >
+        <router-outlet *ngIf="showContent"></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
 
