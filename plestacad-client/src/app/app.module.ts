@@ -30,7 +30,6 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     MainModule,
     SessionModule,
-    WorkRequestsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

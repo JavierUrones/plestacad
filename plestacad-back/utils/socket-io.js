@@ -3,7 +3,7 @@ let io;
 
 exports.socketConnection = (server) => {
   io = require('socket.io')(server, {   cors: {
-    origin: '*',
+    origins: '*:*',
   }});
 
   io.on('connection', (socket) => {
@@ -23,6 +23,14 @@ exports.socketConnection = (server) => {
       io.emit('videocall-request', message)
   
     })
+
+    socket.on('join', (data) => {
+      console.log("join to room", data)
+      const roomName = data.roomName;
+
+      socket.join(roomName);
+      socket.to(roomName).emit('new-user', data)
+    });
   });
 
 

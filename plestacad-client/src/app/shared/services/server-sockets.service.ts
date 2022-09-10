@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from "@angular/core";
+import { EventEmitter, Injectable, NgZone } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { io } from "socket.io-client";
 @Injectable({
@@ -33,6 +33,21 @@ export class ServerSocketsRequestsService {
 
   public getVideocallRequest = () => {
     this.socket.on('videocall-request', (message) =>{
+
+      this.message$.next(message);
+
+    });
+    return this.message$.asObservable();
+
+  }
+
+  joinRoom = (data: any) => {
+    this.socket.emit('join', data);
+  }
+
+  public getUser = () => {
+    this.socket.on('new-user', (message) =>{
+
       this.message$.next(message);
 
     });

@@ -14,6 +14,7 @@ async function run() {
   const app = express();
   const server = require('http').createServer(app);
 
+  
   await loaders.initialize(app);
   const { socketConnection } = require('./utils/socket-io');
   socketConnection(server);

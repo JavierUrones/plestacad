@@ -2,11 +2,9 @@ const router = require("express").Router();
 const Post = require("../../models/Post");
 const PostService = require("../../services/postService");
 
-const NotificationService = require("../../services/NotificationService");
 
 
 const postService = new PostService();
-const notificationService = new NotificationService();
 
 const auth = require("../middleware/authMiddleware");
 const { sendNewNotification } = require('../../utils/socket-io');
