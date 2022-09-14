@@ -39,7 +39,6 @@ export class UserService {
   getUserByEmail(email: string){
     return this.http.get<any>(this.uri + "users/email/"+email).pipe(
       map((response) => response.data.map((x: { _id: string, name: string; surname: string; role: UserRole; email: string;}) => {
-        console.log("EO")
         var user = new User();
         user.name = x.name;
         user.surname = x.surname;
@@ -49,6 +48,14 @@ export class UserService {
         return user;
        }))
     )
+}
+
+getUserContacts(userId: string){
+  return this.http.get<any>(this.uri + 'users/contacts/' + userId).pipe(
+    map((response) => {
+      return response;
+    })
+  );
 }
 
 

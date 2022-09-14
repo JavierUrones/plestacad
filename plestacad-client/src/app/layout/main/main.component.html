@@ -6,7 +6,10 @@
         <app-sidenav (clickedMenuItem)="onClickedMenuItem($event)"></app-sidenav>
     </mat-drawer>
     <mat-drawer-content >
-        <router-outlet *ngIf="showContent"></router-outlet>
+        <div *ngIf="showContent">
+            <router-outlet></router-outlet>
+
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
 

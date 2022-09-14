@@ -32,7 +32,6 @@ class NotificationService {
             const listNotificationsToReturn = []
             for await (const  notification of listNotifications){
                 //extraer titulo del trabajo y nombre del usuario responsable.
-                console.log("user, workid", notification.description, notification.userIdResponsible, notification.workId)
                 let user = await userService.getUserById(notification.userIdResponsible.toString());
                 let work = await workService.getWorkById(notification.workId.toString());
                 let userFullnameResponsible = user.name + " " + user.surname;

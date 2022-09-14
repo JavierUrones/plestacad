@@ -1,0 +1,157 @@
+.contacts-frame {
+    background-color: white;
+}
+
+#contact-title {
+
+    text-align: center;
+    border-bottom: 1px #f2f2f2 solid;
+
+}
+
+.contact {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    border-radius: 1px;
+    margin-bottom: 1%;
+    padding: 1% 1% 1% 1%;
+    margin-left: 2%;
+}
+
+.contact:hover {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+.icon-call:hover {
+
+    cursor: pointer;
+    color: black;
+
+
+}
+
+.icon-call {
+    float: right;
+    margin-right: 5%;
+    margin-left: auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    color: gray;
+
+
+
+}
+
+.circular-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 1%;
+}
+
+.info-user {
+    padding-left: 2%;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.contacts-grid {
+    grid-area: 1 / 1 / 6 / 2;
+}
+
+.call-grid {
+    grid-area: 1 / 2 / 6 / 6;
+}
+
+
+
+.image-user-container {
+
+    position: relative;
+    margin-right: 1%;
+}
+
+
+.badge-online {
+    background-color: green;
+
+}
+
+
+.badge-offline {
+    background-color: gray;
+
+}
+
+.badge-offline,
+.badge-online {
+    width: 12px;
+    height: 12px;
+    border-radius: 60%;
+    border: 1px solid white;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+
+}
+
+
+mat-form-field {
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.wrapper-video {
+    float: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+.video-user{
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-left: 5%;
+}
+video {
+    width: 100%;
+    border-radius: 10px; 
+
+    height: 100%;
+}
+
+.videocall-options{
+    margin-top: 5%;
+    float: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.call-options{
+    margin-left: 2%;
+}
+.call-background{
+    background-color: #313131;
+
+}

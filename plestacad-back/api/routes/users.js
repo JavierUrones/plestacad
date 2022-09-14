@@ -67,4 +67,23 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
   );
 
 
+  router.get("/users/contacts/:id", auth, async (req, res) => {
+    try{
+      const userId = req.params.id;
+      //Los contactos del usuario serán los usuarios con los que comparta trabajos académicos, tanto alumnos como profesores.
+      const listContacts = await userService.getContactsByUserId(userId)
+    
+      res.json({
+        data: listContacts
+        
+      })
+    }
+    catch(error){
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  );
+
+
+
   module.exports = router;

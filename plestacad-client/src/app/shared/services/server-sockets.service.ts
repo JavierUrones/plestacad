@@ -8,6 +8,56 @@ export class ServerSocketsRequestsService {
   public message$: BehaviorSubject<string> = new BehaviorSubject('');
   socket = io('http://localhost:5200');
 
+
+
+  public loginUserSocket(userId: string){
+    this.socket.emit('login', userId);
+
+  }
+
+  public sendUsersOnlineRequest(){
+    this.socket.emit('users-online');
+  }
+
+  public getUsersOnline(){
+    this.socket.on('users-online', (data) =>{
+  
+      this.message$.next(data);
+
+    });
+    return this.message$.asObservable();
+
+  }
+
+
+  public sendEndVideocall(request: any){
+    this.socket.emit('end-videocall', request);
+
+
+  }
+
+
+  public endVideocall(){
+    this.socket.on('end-videocall', (data) =>{
+  
+      this.message$.next(data);
+
+    });
+    return this.message$.asObservable();
+
+  }
+
+
+  public getUsersBusy(){
+    this.socket.on('users-busy', (data) =>{
+  
+      this.message$.next(data);
+
+    });
+    return this.message$.asObservable();
+
+  }
+
   public getNewWorkRequestNotification = () => {
     this.socket.on('workRequest', (message) =>{
       this.message$.next(message);
@@ -30,6 +80,11 @@ export class ServerSocketsRequestsService {
   public sendVideocallRequest(request: any){
     this.socket.emit('videocall-request', request);
   }
+
+  public sendUserStateBusy(request: any){
+    this.socket.emit('user-busy', request);
+  }
+
 
   public getVideocallRequest = () => {
     this.socket.on('videocall-request', (message) =>{
