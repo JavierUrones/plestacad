@@ -1,6 +1,6 @@
-<div class="grid" *ngIf="!this.onCall">
-    <div class="contacts-grid" >
-        <div class="contacts-frame" >
+<div class="grid" *ngIf="!this.videocallsService.onCall">
+    <div class="contacts-grid">
+        <div class="contacts-frame">
 
             <h2 id="contact-title">Contactos </h2>
             <mat-form-field>
@@ -9,8 +9,7 @@
 
             <div class="contact" *ngFor="let contact of contacts">
                 <div class="image-user-container">
-                    <img class="circular-photo"
-                        src="assets/images/profile-default.png" />
+                    <img class="circular-photo" src="assets/images/profile-default.png" />
                     <div *ngIf="!contact.isOnline" class='badge-offline'>
                     </div>
                     <div *ngIf="contact.isOnline" class='badge-online'>
@@ -30,32 +29,55 @@
 
 
 
-        </div>
     </div>
+</div>
 
 
 <div class="call-background">
-<div *ngIf="this.onCall" class="wrapper-video">
-    <div class="video-user" *ngFor="let user of listUser">
-        <video [srcObject]="user" autoplay></video>
-        <div class="label-name">
-            <span>{{user.idUser}}</span>
+    <div *ngIf="this.videocallsService.onCall" class="wrapper-video">
+        <div class="video-user">
+            <div *ngFor="let user of this.videocallsService.userListStream">
+                <video [srcObject]="user" autoplay></video>
+                <div class="label-name">
+                    <span *ngIf="user==this.videocallsService.userListStream[0]">
+                        Tú
+                    </span>
+                    <span *ngIf="user==this.videocallsService.userListStream[1]">
+                        <span>{{this.videocallsService.userNameOnCall}}</span>
+                    </span>
+                </div>
+            </div>
         </div>
-        <h1>{{user.idUser}}</h1>
+
+
     </div>
 
+    <div *ngIf="this.videocallsService.onCall" class="videocall-options">
 
-</div>
+        <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options" mat-raised-button
+            (click)="this.muteAudio()">
+            <mat-icon>mic</mat-icon>
+        </button>
+        <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options" mat-raised-button
+            (click)="this.muteAudio()">
+            <mat-icon>mic_off</mat-icon>
+        </button>
 
-<div  *ngIf="this.onCall" class="videocall-options">
+        <button class="call-options" mat-raised-button (click)="this.endCall()">
+            <mat-icon style="color: red">call_end</mat-icon>
+        </button>
+        <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options" mat-raised-button
+            (click)="this.stopVideo()">
+            <mat-icon>videocam</mat-icon>
+        </button>
 
-    <button class="call-options" mat-raised-button><mat-icon>microphone</mat-icon></button>
+        <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options" mat-raised-button
+            (click)="this.stopVideo()">
+            <mat-icon>videocam_off</mat-icon>
+        </button>
 
-    <button class="call-options" mat-raised-button (click)="this.endCall()"><mat-icon style="color: red">call_end</mat-icon></button>
-    <button class="call-options"  mat-raised-button><mat-icon >camera_alt</mat-icon></button>
 
-
-</div>
+    </div>
 </div>
 
 <!-- class="wrapper-video" >

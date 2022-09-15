@@ -5,16 +5,79 @@ import { environment } from 'src/environments/environment';
 import { Peer } from "peerjs";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class VideocallsService {
-  uri = environment.apiURL;
-  peer : any;
-  constructor(private http: HttpClient, private serverSocketsRequestsService: ServerSocketsRequestsService) {
-    this.peer = new Peer();
+    uri = environment.apiURL;
+
+    peer = new Peer();
+    idPeer: any;
+
+    myStream: any;
+    userListStream: any = [];
+
+    currentCall: any;
+    onCall!: boolean;
+
+
+    idUserOnCall!: string;
+    userNameOnCall!: string;
+    constructor(private http: HttpClient, private serverSocketsRequestsService: ServerSocketsRequestsService) {
     }
-  }
 
 
-  
+    initializePeer() {
+        this.peer.on('open', (id: any) => {
+            this.idPeer = id;
+
+        });
+
+        this.peer.on('call', (entryCall: any) => {
+
+
+            entryCall.answer(this.myStream);
+            this.currentCall = entryCall;
+
+            entryCall.on('stream', (remoteStream: any) => {
+
+                this.addStreamToUserList(remoteStream);
+            });
+        }, (error: any) => {
+            console.log('Error', error);
+        });
+
+    }
+
+    addStreamToUserList(stream: any) {
+        this.userListStream.push(stream);
+        const uniqueList = new Set(this.userListStream); //Para evitar repetidos en la lista.
+        this.userListStream = [...uniqueList];
+    }
+
+    initializeVideoAudioDevices() {
+
+        if (navigator && navigator.mediaDevices) {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+                this.myStream = stream;
+                this.addStreamToUserList(stream);
+
+            }).catch(() => {
+                console.log('No permissions to access audio/video devices.');
+            });
+        } else {
+            console.log('Not exists audio/video devices.');
+        }
+    }
+
+    sendCallToPeer(idPeer: any, stream: any){
+        this.onCall = true;
+        this.currentCall = this.peer.call(idPeer, stream).on('stream', (userStream: any) => {
+            this.addStreamToUserList(userStream);
+        });
+    }
+
+}
+
+
+
 

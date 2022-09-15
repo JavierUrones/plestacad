@@ -57,9 +57,9 @@ exports.socketConnection = (server) => {
 
     socket.on('join', (data) => {
       console.log("join to room, llega", data)
-      const roomName = data.roomName;
+      //const roomName = data.roomName;
 
-      socket.join(roomName);
+      //socket.join(roomName);
       io.emit('new-user', data)
     });
   });
