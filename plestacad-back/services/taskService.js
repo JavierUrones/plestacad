@@ -79,7 +79,7 @@ class TaskService {
     }
 
 
-    async createTaskClassificator(taskClassificatorDto, workId, userIdResponsible) {
+    async createTaskClassificator(taskClassificatorDto, workId, userIdResponsible, initialClassificator) {
         const newTaskClassificator = new TaskClassificator({
             title: taskClassificatorDto.title,
             order: taskClassificatorDto.order,
@@ -87,7 +87,8 @@ class TaskService {
         });
         try {
             const taskClassificatorSave = await newTaskClassificator.save();
-            notificationService.createNewNotification(workId, "new-task-classificator", userIdResponsible, newTaskClassificator.title);
+            if(!initialClassificator)
+                notificationService.createNewNotification(workId, "new-task-classificator", userIdResponsible, newTaskClassificator.title);
 
             return taskClassificatorSave;
         } catch (error) {

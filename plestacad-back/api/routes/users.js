@@ -6,6 +6,9 @@ const userService = new UserService();
 const ValidationError = require("../../config/errors/customErrors");
 const auth = require("../middleware/authMiddleware");
 
+const formidable = require("formidable");
+
+
 router.get("/users", auth, async (req, res) => {
     try{
       const listUsers =   await userService.getAllUsers();
@@ -20,10 +23,16 @@ router.get("/users", auth, async (req, res) => {
   }
   );
 
-router.get("/users/role/:role", auth, async (req, res) => {
+router.get("/users/role/:workId", auth, async (req, res) => {
   try{
-    var role = req.params.role;
-    const listUsers =   await userService.getUsersByRole(role);
+    var workId = req.params.workId;
+
+    let listUsers;
+    if(workId != ""){
+      listUsers =   await userService.getUsersForInvitationByRole(workId);
+    } else{
+      await userService.getAllUsers();
+    }
     res.json({
       data: listUsers
     })
@@ -48,7 +57,51 @@ router.get("/users/email/:email", auth, async (req, res) => {
 }
 );
 
+router.get("/users/:id", auth, async (req, res) => {
+  try{
+    const user =   await userService.getUserById(req.params.id);
+    
+    res.json({
+      data: {
+        user
+      }
+    })
+  }catch(error){
 
+  }
+})
+
+router.put("/users/updatePassword", auth, async (req, res) => {
+  try{
+
+    const userDto = { id: req.body.id, password: req.body.password}
+    const user =   await userService.updatePassword(userDto)
+    
+    res.json({
+      data: {
+        user
+      }
+    })
+  }catch(error){
+
+  }
+})
+
+router.put("/users/updateData", auth, async (req, res) => {
+  try{
+
+    const userDto = { id: req.body.id, name: req.body.name, surname: req.body.surname}
+    const user =   await userService.updateUserData(userDto)
+    
+    res.json({
+      data: {
+        user
+      }
+    })
+  }catch(error){
+
+  }
+})
 
 router.get("/users/fullname/:id", auth, async (req, res) => {
     try{
@@ -83,6 +136,65 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
     }
   }
   );
+
+  router.post("/users/profile-photo", auth, async (req, res) => {
+
+    try{
+      var form = new formidable.IncomingForm();
+      form.parse(req, async (err, fields, files) => {
+        if (err) {
+          return res.status(400).json({
+            message: "Error during file parse",
+          });
+        }
+        const userId = fields.userId;
+
+        const uploadDirectory = "userdata/profile-images/"+userId;
+        const file = files.upload;
+        const fileName = encodeURIComponent(
+          file.originalFilename = userId + ".jpg"
+        );
+        console.log("datos de la foto, uploadDirectory, file.filepath, uploaddirectory+filename", uploadDirectory, file.filepath,  uploadDirectory + "/" + fileName)
+        var response  = userService.uploadProfilePhoto(uploadDirectory, file.filepath, uploadDirectory + "/" + fileName);
+        res.json({
+          data: response
+          
+        })
+  
+  
+        
+      });
+
+      
+
+    } catch(error){
+      return res.status(500).json({ error: error.message });
+
+    }
+  });
+
+
+  router.get("/users/profile-photo/:userId", auth, async (req, res) => {
+    try{
+      const userId = req.params.userId;
+
+      res.sendFile("userdata/profile-images/"+userId+"/"+userId+".jpg", {root: '.' } ,(err)=>{
+        if (err){
+          console.log("no tiene foto", err);
+          res.json({
+            message: "no-photo"
+          })
+        } else{
+          console.log("si tiene foto");
+        }
+      })
+    }
+    catch(error){
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  );
+
 
 
 

@@ -1,28 +1,72 @@
 <mat-card>
-    <mat-card-content>
-        <form [formGroup]="dataWork">
-            <mat-label> Titulo </mat-label>
-            <mat-form-field class="full-width-input">
-                <input matInput formControlName="title" />
-            </mat-form-field>
-            <mat-label> Descripción </mat-label>
-            <mat-form-field>
-                <textarea matInput formControlName="description" ></textarea>
-            </mat-form-field>
-            <mat-label> Curso </mat-label>
-            <mat-form-field>
-                <input matInput formControlName="course" />
-            </mat-form-field>
+    <div class="info-general">
+        <h1>Información general</h1>
 
-            <mat-label>Categoría</mat-label>
+        <mat-card-content>
+            <form [formGroup]="dataWork">
+                <mat-label> Titulo </mat-label>
+                <mat-form-field class="full-width-input">
+                    <input matInput formControlName="title" />
+                </mat-form-field>
+                <mat-label> Descripción </mat-label>
+                <mat-form-field>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+                <mat-label> Curso </mat-label>
+                <mat-form-field>
+                    <input matInput formControlName="course" />
+                </mat-form-field>
 
-            <mat-form-field>
-            <mat-select [formControl]="categoryControl" >
-              <mat-option *ngFor="let cat of categories" [value]="cat.value">
-                {{ cat.viewValue }}
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
-</form>
-    </mat-card-content>
+                <mat-label>Categoría</mat-label>
+
+                <mat-form-field>
+                    <mat-select [formControl]="categoryControl">
+                        <mat-option *ngFor="let cat of categories" [value]="cat.value">
+                            {{ cat.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+    </div>
+
+
+    <div class="members">
+        <h1>Miembros</h1>
+
+        <button class="align-right" mat-raised-button color="primary" (click)="inviteNewUsers()"> Invitar nuevos miembros</button>
+        <div class="teachers">
+        <mat-card-content>
+            <mat-label> Profesores </mat-label>
+            <div *ngIf="this.teachersList.length>0" class="teachersList">
+                <ul *ngFor="let teacher of this.teachersList">
+                    <li> {{teacher.name}} {{teacher.surname}} | {{teacher.email}} </li>
+                </ul>
+            </div>
+            <div *ngIf="this.teachersList.length==0" class="teachersList">
+                <span> No hay profesores asignados en este trabajo académico. </span>
+            </div>
+        </mat-card-content>
+
+
+    </div>
+
+
+
+        <mat-card-content>
+            <mat-label> Estudiantes </mat-label>
+            <div *ngIf="this.studentsList.length>0" class="studentsList">
+                <ul  *ngFor="let student of this.studentsList">
+                    <li> {{student.name}} {{student.surname}} | {{student.email}} </li>
+                </ul>
+            </div>
+            <div *ngIf="this.studentsList.length==0" class="studentsList">
+                <span > No hay estudiantes asignados en este trabajo académico. </span>
+            </div>
+        </mat-card-content>
+        
+    </div>
+
+    <button color="warn" mat-raised-button> Eliminar trabajo académico</button>
 </mat-card>
+

@@ -158,7 +158,7 @@ export class DialogAddWork {
     });
 
 
-    this.userService.getUsersByRole("teacher").subscribe((dataTeachers: User[]) => {
+    this.userService.getUsersForInvitationByRole("teacher").subscribe((dataTeachers: User[]) => {
       this.teachers = dataTeachers;
       console.log("TEACHERS", this.teachers);
       this.teachersFiltered = this.teachersCtrl.valueChanges.pipe(
@@ -169,7 +169,7 @@ export class DialogAddWork {
     });
 
 
-    this.userService.getUsersByRole("student").subscribe((dataStudents: User[]) => {
+    this.userService.getUsersForInvitationByRole("student").subscribe((dataStudents: User[]) => {
       this.students = dataStudents;
       console.log(this.students)
       console.log("STUDENTS", this.students);
@@ -187,7 +187,6 @@ export class DialogAddWork {
   ngOnInit() {
 
   }
-
   private _filterTeachers(value: string): User[] {
     const filterValue = value.toLowerCase();
 

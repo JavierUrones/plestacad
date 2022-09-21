@@ -5,6 +5,7 @@ import { Peer } from "peerjs";
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EntryCallDialogComponent } from './entry-call-dialog/entry-call-dialog.component';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 
 @Component({
     selector: 'app-videocalls',
@@ -16,19 +17,32 @@ export class VideocallsComponent implements OnInit {
     contacts: any = [];
     allContacts: any = [];
 
+    entryCallSubscription: any;
     constructor(
         public videocallsService: VideocallsService,
         private serverSocketsRequestsService: ServerSocketsRequestsService,
         private userService: UserService,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private router: Router,
+        private route: ActivatedRoute
     ) { }
 
 
     ngOnInit(): void {
 
-        this.videocallsService.initializePeer();
-        this.initializeCallsEntryListener();
         this.serverSocketsRequestsService.loginUserSocket(sessionStorage.getItem("id") as string);
+
+        this.videocallsService.initializePeer();
+        this.route.queryParamMap.subscribe((param) => {
+            console.log("param", param)
+            if (param.get("entryCall")) {
+                let res = { idPeer: param.get("idPeer"), idUserOrigin: param.get("idUserOrigin"), idUserDestiny: param.get("idUserDestiny"), userNameOrigin: param.get("userNameOrigin") }
+                this.initializeCallsEntry(res);
+            }
+        })
+
+        //this.initializeCallsEntryListener();
+        //this.serverSocketsRequestsService.loginUserSocket(sessionStorage.getItem("id") as string);
         this.getStatusOfUsers();
         this.getUserContactsAndStatus();
         this.initializeCallsEndListener();
@@ -98,49 +112,52 @@ export class VideocallsComponent implements OnInit {
 
 
 
-    initializeCallsEntryListener() {
+    initializeCallsEntry(res: any) {
+        if (res.idPeer != undefined && res.idPeer != this.videocallsService.idPeer && res.idUserDestiny == sessionStorage.getItem("id") as string) {
+            this.dialog.open(EntryCallDialogComponent, {
+                data: "¡Estás recibiendo una llamada entrante de " + res.userNameOrigin + "!"
+            }).afterClosed().subscribe((confirm: boolean) => {
+                if (confirm) {
 
-
-        this.serverSocketsRequestsService.getVideocallRequest().subscribe((res: any) => {
-
-            if (res.idPeer != undefined && res.idPeer != this.videocallsService.idPeer && res.idUserDestiny == sessionStorage.getItem("id") as string) {
-                this.dialog.open(EntryCallDialogComponent, {
-                    data: "¡Estás recibiendo una llamada entrante de " + res.userNameOrigin + "!"
-                }).afterClosed().subscribe((confirm: boolean) => {
-                    if (confirm) {
-                        if (this.videocallsService.myStream == undefined) {
-                            if (navigator && navigator.mediaDevices) {
-                                navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
-                                    this.videocallsService.myStream = stream;
-                                    this.videocallsService.addStreamToUserList(stream);
-                                    this.videocallsService.idUserOnCall = res.idUserOrigin;
-                                    this.videocallsService.onCall = true;
-                                    this.userService.getFullNameById(res.idUserOrigin).subscribe((response: any) => {
-                                        this.videocallsService.userNameOnCall = response.data.fullname;
-                                    });
-                                    this.videocallsService.sendCallToPeer(res.idPeer, this.videocallsService.myStream);
-
-                                }).catch(() => {
-                                    console.log('No permissions to access audio/video devices.');
+                    if (this.videocallsService.myStream == undefined) {
+                        if (navigator && navigator.mediaDevices) {
+                            navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+                                this.videocallsService.myStream = stream;
+                                this.videocallsService.addStreamToUserList(stream);
+                                this.videocallsService.idUserOnCall = res.idUserOrigin;
+                                this.videocallsService.onCall = true;
+                                this.userService.getFullNameById(res.idUserOrigin).subscribe((response: any) => {
+                                    this.videocallsService.userNameOnCall = response.data.fullname;
                                 });
-                            } else {
-                                console.log('Not exists audio/video devices.');
-                            }
+                                this.videocallsService.sendCallToPeer(res.idPeer, this.videocallsService.myStream);
 
+                            }).catch(() => {
+                                console.log('No permissions to access audio/video devices.');
+                            });
+                        } else {
+                            console.log('Not exists audio/video devices.');
                         }
-                    }
-                    else {
-                        const body = {
-                            idPeer: this.videocallsService.idPeer,
-                            idUser: sessionStorage.getItem("id") as string
-                        }
-                        this.serverSocketsRequestsService.sendEndVideocall(body);
-                        window.location.reload();
-                    }
-                })
-            }
 
-        })
+                    }
+                }
+                else {
+                    const body = {
+                        idPeer: this.videocallsService.idPeer,
+                        idUser: sessionStorage.getItem("id") as string
+                    }
+                    this.serverSocketsRequestsService.sendEndVideocall(body);
+                    
+                    this.router.navigate(
+                        [], 
+                        {
+                          relativeTo: this.route,
+                          queryParams: {}
+                        });
+                        window.location.replace(location.pathname);
+                }
+            })
+        }
+
     }
 
     initializeCallsEndListener() {
@@ -148,14 +165,28 @@ export class VideocallsComponent implements OnInit {
             if (this.videocallsService.currentCall != undefined) {
                 if (this.videocallsService.currentCall.peer == response.idPeer) {
                     this.videocallsService.currentCall.close();
-                    window.location.reload();
+                    this.router.navigate(
+                        [], 
+                        {
+                          relativeTo: this.route,
+                          queryParams: {}
+                        });
+                        window.location.replace(location.pathname);
+
                 }
             }
-            if (this.videocallsService.currentCall == undefined && response[1][1] == this.videocallsService.idUserOnCall) {
-                window.location.reload();
+            if (this.videocallsService.currentCall == undefined && response[1] != undefined && response[1][1] == this.videocallsService.idUserOnCall) {
+                this.router.navigate(
+                    [], 
+                    {
+                      relativeTo: this.route,
+                      queryParams: {}
+                    });
+                    window.location.replace(location.pathname);
+
             }
 
-            
+
 
         });
     }
@@ -169,7 +200,16 @@ export class VideocallsComponent implements OnInit {
             idPeer: this.videocallsService.idPeer
         }
         this.serverSocketsRequestsService.sendEndVideocall(body);
-        window.location.reload();
+        //window.location.reload();
+        this.router.navigate(
+            [], 
+            {
+              relativeTo: this.route,
+              queryParams: {}
+            });
+            window.location.replace(location.pathname);
+
+
     }
 
     muteAudio() {
@@ -195,6 +235,8 @@ export class VideocallsComponent implements OnInit {
         if (this.videocallsService.onCall) {
             this.endCall();
         }
+        //this.entryCallSubscription.unsubscribe();
+
     }
 
 

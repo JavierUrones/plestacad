@@ -2,8 +2,19 @@ mat-card {
     max-width: auto;
   }
 
+  .info-general h1, .members h1{
+    justify-content: center;
+    text-align: center;
+    margin-top: 1%;
+  }
+mat-card-content{
+  margin-left: 2%;
+  margin-top: 2%;
+  margin-right: 2%;
+}
+
   mat-label{
-      font-size: 1.7em;
+      font-size: 1.2em;
   }
 
   input, mat-select, textarea {
@@ -15,3 +26,44 @@ mat-card {
   }
 
   
+  .info-general, .members{
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+
+  }
+
+  .teachersList, .studentsList{
+    
+    margin-top: 2%;
+    margin-left: 2%;
+  }
+
+
+.iconDelete{
+  color: red;
+}
+.iconDelete:hover{
+  cursor: pointer;
+}
+
+.align-right{
+  float: right;
+  position: relative;
+  margin-left: auto;
+  margin-right: 2%;
+}
+
+
+.studentsList, .teachersList{
+  background-color: rgb(249, 249, 249);
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 1%;
+}
+

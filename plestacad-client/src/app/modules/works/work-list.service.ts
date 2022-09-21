@@ -9,21 +9,31 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class WorkListService {
- 
+
+
   uri = environment.apiURL;
   constructor(private http: HttpClient) { }
 
-  getWorksByUserId(id: string){
+  getWorksByUserId(id: string) {
     console.log("ID", id)
-    return this.http.post<any>(this.uri+"worksByUser", {
+    return this.http.post<any>(this.uri + "worksByUser", {
       "id": id
     }).pipe(map(response => {
       return response.data
     }));
   }
 
-  getWorksByStudentAndCategory(id: string, category: string){
-    return this.http.post<any>(this.uri+"worksByUserIdAndCategory", {
+  generateWorkRequests(workId: string, userIdResponsible: string, teachers: any, students: any) {
+    let body = {
+      userIdResponsible: userIdResponsible, workId: workId, teachers: teachers, students: students
+    }
+    return this.http.post<any>(this.uri + "workRequests", body).pipe(map(response => {
+      return response
+    }));
+  }
+
+  getWorksByStudentAndCategory(id: string, category: string) {
+    return this.http.post<any>(this.uri + "worksByUserIdAndCategory", {
       "id": id,
       "category": category,
       "role": sessionStorage.getItem("role") as string
@@ -33,12 +43,12 @@ export class WorkListService {
   }
 
 
-    getWorkById(id: string){
-    return this.http.get<any>(this.uri+"works/"+id).pipe(map(response => { return response;}))
+  getWorkById(id: string) {
+    return this.http.get<any>(this.uri + "works/" + id).pipe(map(response => { return response; }))
   }
 
   createWork(authorId: string | null, title: string, description: string, category: string, course: number, teachers: any[], teachersInvited: any[], studentsInvited: any[]) {
-    return this.http.post<any>(this.uri+"works", {
+    return this.http.post<any>(this.uri + "works", {
       authorId: authorId,
       title: title,
       description: description,

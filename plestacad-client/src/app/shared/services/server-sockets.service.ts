@@ -15,9 +15,6 @@ export class ServerSocketsRequestsService {
 
   }
 
-  public sendUsersOnlineRequest(){
-    this.socket.emit('users-online');
-  }
 
   public getUsersOnline(){
     this.socket.on('users-online', (data) =>{
@@ -48,15 +45,6 @@ export class ServerSocketsRequestsService {
   }
 
 
-  public getUsersBusy(){
-    this.socket.on('users-busy', (data) =>{
-  
-      this.message$.next(data);
-
-    });
-    return this.message$.asObservable();
-
-  }
 
   public getNewWorkRequestNotification = () => {
     this.socket.on('workRequest', (message) =>{
@@ -81,9 +69,6 @@ export class ServerSocketsRequestsService {
     this.socket.emit('videocall-request', request);
   }
 
-  public sendUserStateBusy(request: any){
-    this.socket.emit('user-busy', request);
-  }
 
 
   public getVideocallRequest = () => {
@@ -96,19 +81,7 @@ export class ServerSocketsRequestsService {
 
   }
 
-  joinRoom = (data: any) => {
-    this.socket.emit('join', data);
-  }
 
-  public getUser = () => {
-    this.socket.on('new-user', (message) =>{
-
-      this.message$.next(message);
-
-    });
-    return this.message$.asObservable();
-
-  }
 
 
 

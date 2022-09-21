@@ -73,7 +73,7 @@ router.post("/taskclassificator/:id", auth, async (req, res) => {
   console.log(taskClassificatorDto)
   try {
     taskClassificatorDto.order = (await taskService.getTaskClassificatorsByWorkId(idWork)).length + 1;
-    const taskClassificatorSave = await taskService.createTaskClassificator(taskClassificatorDto, idWork, userIdResponsible);
+    const taskClassificatorSave = await taskService.createTaskClassificator(taskClassificatorDto, idWork, userIdResponsible, false);
     res.status(200).send({
       data: taskClassificatorSave,
     });

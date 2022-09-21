@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WorkRequestsModule } from '../modules/work-requests/work-requests.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -32,7 +33,8 @@ import { WorkRequestsModule } from '../modules/work-requests/work-requests.modul
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule, 
+    MatDialogModule
   ]
 })
 export class MainModule { }

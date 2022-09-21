@@ -39,10 +39,11 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { ModalAddUsers } from './info/modal-add-users/modal-add-users.component';
 
 registerLocaleData(es);
 @NgModule({
-  declarations: [DialogNewEvent, WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork],
+  declarations: [DialogNewEvent, WorkListComponent, ManageWorkComponent, FilesComponent, DialogOverviewExampleDialog, DialogAddFile, InfoComponent, CalendarWorkComponent, DialogAddWork, ModalAddUsers],
   imports: [
     CommonModule,
     WorkListRoutingModule,

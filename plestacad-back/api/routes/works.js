@@ -55,15 +55,15 @@ router.post("/works", auth, async (req, res) => {
 
     const workSave = await workService.createWork(workDto);
 
-    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id);
-    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id + "/" + workSave.title);
+    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id, workDto.authorId, true);
+    await fileService.createDirectory(rootProjectPath + directoryFiles + workSave.id + "/" + workSave.title, workDto.authorId, true);
 
     //Se crean los apartados de clasificación de tareas iniciales.
     var taskClassificators = [{ title: "Nuevas", order: 0 }, { title: "En progreso", order: 1 }, { title: "Bloqueadas", order: 2 }, { title: "Terminadas", order: 3 },]
-    await taskService.createTaskClassificator(taskClassificators[0], workSave.id)
-    await taskService.createTaskClassificator(taskClassificators[1], workSave.id)
-    await taskService.createTaskClassificator(taskClassificators[2], workSave.id)
-    await taskService.createTaskClassificator(taskClassificators[3], workSave.id)
+    await taskService.createTaskClassificator(taskClassificators[0], workSave.id, workDto.authorId, true)
+    await taskService.createTaskClassificator(taskClassificators[1], workSave.id, workDto.authorId, true)
+    await taskService.createTaskClassificator(taskClassificators[2], workSave.id, workDto.authorId, true)
+    await taskService.createTaskClassificator(taskClassificators[3], workSave.id, workDto.authorId, true)
 
 
     //Se crean las solicitudes de incorporación al trabajo académico.
@@ -150,6 +150,35 @@ router.delete("/works", auth, async (req, res) => {
 });
 
 
+
+router.post("/workRequests", auth, async (req, res) => {
+  try {
+    const id = req.body.workId;
+    const userIdResponsible = req.body.userIdResponsible;
+    const teachers = req.body.teachers;
+    const students = req.body.students;
+    //console.log(id, userIdResponsible, teachers, students)
+    for await(let student of students){
+      let studentInvited = await userService.getUserByEmail(student);
+      await workService.generateWorkRequest(id.toString(),studentInvited[0]._id.toString(), userIdResponsible, "student")
+      sendNewWorkRequestNotification(studentInvited[0]._id.toString());
+
+    }
+    for await(let teacher of teachers){
+      let teacherInvited = await userService.getUserByEmail(teacher);
+      await workService.generateWorkRequest(id.toString(), teacherInvited[0]._id.toString(), userIdResponsible, "teacher")
+      sendNewWorkRequestNotification(teacherInvited[0]._id.toString());
+
+    }
+
+    res.status(200).send({
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+
 router.get("/workRequestsByUserReceiverId/:id", auth, async (req, res) =>{
   try{
     const userReceiverId = req.params.id;
@@ -161,6 +190,7 @@ router.get("/workRequestsByUserReceiverId/:id", auth, async (req, res) =>{
     return res.status(500).json({ error: error.message });
   }
 })
+
 
 router.get("/workRequestsWithInfoByUserReceiverId/:id", auth, async (req, res) => {
   try{

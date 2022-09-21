@@ -235,7 +235,7 @@ router.post("/files/createDir", auth, async (req, res) => {
         message: "Exceeded limit number of subdirectories."
       })
     }
-    var response = await fileService.createDirectory(path, userIdResponsible);
+    var response = await fileService.createDirectory(path, userIdResponsible, false);
 
     console.log(response)
     if (response == "Ok") {

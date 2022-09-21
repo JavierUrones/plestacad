@@ -27,7 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    WorkListModule,
+    
     MatProgressSpinnerModule,
     MatSelectModule
 ]

@@ -13,6 +13,46 @@ export class UserService {
 
   
   constructor(private http: HttpClient) { }
+
+  getUserById(id: string){
+    return this.http.get<any>(this.uri + 'users/' + id).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  updateUserPassword(id: string, password: string){
+    return this.http.put<any>(this.uri + 'users/updatePassword', {
+      id: id,
+      password: password
+    }).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  updateUserData(id: string, name: string, surname: string){
+    return this.http.put<any>(this.uri + 'users/updateData', {
+      id: id,
+      name: name,
+      surname: surname
+    }).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  getPasswordDataByUserId(id: string){
+    return this.http.get<any>(this.uri + 'users/passwordData' + id).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
   getFullNameById(id: string){
       return this.http.get<any>(this.uri + 'users/fullname/' + id).pipe(
         map((response) => {
@@ -21,7 +61,7 @@ export class UserService {
       );
   }
 
-  getUsersByRole(role: string){
+  getUsersForInvitationByRole(role: string){
       return this.http.get<any>(this.uri + "users/role/"+role).pipe(
         map((response) => response.data.map((x: { _id: string, name: string; surname: string; role: UserRole; email: string;}) => {
           console.log("EO")
@@ -57,6 +97,30 @@ getUserContacts(userId: string){
     })
   );
 }
+
+
+uploadProfilePhoto(userId: string, file: any){
+    let formData = new FormData();    
+    formData.append('upload', file);
+    formData.append('userId' , userId)
+    console.log(formData)
+    return this.http.post(this.uri + 'users/profile-photo', formData);
+}
+
+getProfilePhoto(userId: string){
+  const options = {
+    responseType: 'blob' as const,
+  };
+  return this.http.get<any>(this.uri + 'users/profile-photo/' + userId, {responseType: 'blob' as 'json'}).pipe(
+    map((response) => {
+      console.log(response)
+      return response;
+    })
+    
+  );
+}
+
+
 
 
 }

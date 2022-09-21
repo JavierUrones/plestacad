@@ -6,14 +6,15 @@ const notificationService = new NotificationService();
 class FileService {
 
 
-  async createDirectory(path, userIdResponsible) {
+  async createDirectory(path, userIdResponsible, initialDirectory) {
 
     if (!fs.existsSync(path)) {
 
       fs.mkdirSync(path);
       var nameDirectory = path.split("/")[path.split("/").length-1];
       var workId = path.split("/")[2];
-      notificationService.createNewNotification(workId, "new-directory", userIdResponsible, nameDirectory);
+      if(!initialDirectory)
+        notificationService.createNewNotification(workId, "new-directory", userIdResponsible, nameDirectory);
       return "Ok";
     } else {
       return "Error";

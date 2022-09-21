@@ -3,6 +3,7 @@ import { ElementRef, Injectable } from '@angular/core';
 import { ServerSocketsRequestsService } from 'src/app/shared/services/server-sockets.service';
 import { environment } from 'src/environments/environment';
 import { Peer } from "peerjs";
+import { EntryCallDialogComponent } from './entry-call-dialog/entry-call-dialog.component';
 
 @Injectable({
     providedIn: 'root',
@@ -22,7 +23,13 @@ export class VideocallsService {
 
     idUserOnCall!: string;
     userNameOnCall!: string;
+
+
+    entryCallListener: any;
+
+
     constructor(private http: HttpClient, private serverSocketsRequestsService: ServerSocketsRequestsService) {
+        this.initializeEntryCallListener();
     }
 
 
@@ -75,6 +82,12 @@ export class VideocallsService {
             this.addStreamToUserList(userStream);
         });
     }
+
+
+    initializeEntryCallListener(){
+        this.entryCallListener =  this.serverSocketsRequestsService.getVideocallRequest();
+    }
+
 
 }
 
