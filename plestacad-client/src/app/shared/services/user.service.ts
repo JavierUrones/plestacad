@@ -61,8 +61,8 @@ export class UserService {
       );
   }
 
-  getUsersForInvitationByRole(role: string){
-      return this.http.get<any>(this.uri + "users/role/"+role).pipe(
+  getUsersForInvitationByRole(workId: string){
+      return this.http.get<any>(this.uri + "users/role/"+workId).pipe(
         map((response) => response.data.map((x: { _id: string, name: string; surname: string; role: UserRole; email: string;}) => {
           console.log("EO")
           var user = new User();
@@ -113,7 +113,6 @@ getProfilePhoto(userId: string){
   };
   return this.http.get<any>(this.uri + 'users/profile-photo/' + userId, {responseType: 'blob' as 'json'}).pipe(
     map((response) => {
-      console.log(response)
       return response;
     })
     

@@ -61,4 +61,39 @@ export class WorkListService {
   }
 
 
+  deleteUserFromWork(workId: string, userId: string, type: string){
+    return this.http.put<any>(this.uri + "works/deleteUser", {
+      userId: userId,
+      workId: workId,
+      type: type
+    }).pipe(map(response => {
+      return response;
+    }));
+  }
+
+  deleteWork(workId: string){
+    return this.http.delete<any>(this.uri + "works/" + workId).pipe(map(response => {
+      return response;
+    }))
+  }
+
+  updateWork(workId: string, title: string, description: string, course: number, category: string){
+    return this.http.put<any>(this.uri + "works/", { workId: workId, title: title, description: description, course: course, category: category}).pipe(map(response => {
+      return response;
+    }))
+  }
+
+  setWorkAsClassified(workId: string){
+    return this.http.put<any>(this.uri + "works/", { workId: workId, classified: true}).pipe(map(response => {
+      return response;
+    }))
+  }
+
+  setWorkAsDesclassified(workId: string){
+    return this.http.put<any>(this.uri + "works/", { workId: workId,classified: false}).pipe(map(response => {
+      return response;
+    }))
+  }
+
+
 }

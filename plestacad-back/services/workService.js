@@ -43,6 +43,15 @@ class WorkService {
     }
   }
 
+  async deleteWork(id){
+    try{
+      let work = await Work.deleteOne({_id: id});
+      return work;
+    } catch(error){
+      throw error;
+    }
+  }
+
   async updateWork(workDto) {
     try {
       const filter = { _id: workDto.id };
@@ -53,9 +62,12 @@ class WorkService {
         students: workDto.students,
         category: workDto.category,
         description: workDto.description,
-        course: workDto.course
+        course: workDto.course,
+        classified: workDto.classified
       };
+
       let work = await Work.findOneAndUpdate(filter, update);
+
       return work;
     } catch (error) {
       throw error;
@@ -169,7 +181,42 @@ class WorkService {
     }
   }
 
+
+  async getWorkRequestsByWorkId(id) {
+    try {
+
+      const listRequests = await WorkRequest.find({
+        'workId': id
+      })
+      return listRequests;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+
+  async deleteUserFromWork(workId, userId, type){
+    try {
+
+      const work = await Work.findById(workId);
+      console.log("work before", work)
+      if(type=="student"){
+        work.students = work.students.filter((student) => student.toString() != userId.toString())
+      }
+      if(type=="teacher"){
+        work.teachers = work.teachers.filter((teacher) => teacher.toString() != userId.toString())
+      }
+      console.log("work after", work)
+
+      work.save();
+      return work;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
+
 
 
 module.exports = WorkService;

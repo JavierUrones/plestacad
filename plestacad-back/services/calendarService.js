@@ -64,12 +64,13 @@ class CalendarService {
   }
 
 
-  async deleteCalendarEvent(idEvent, userIdResponsible) {
+  async deleteCalendarEvent(idEvent, userIdResponsible, initial) {
     try {
       var event = await this.getCalendarEventById(idEvent);
       var calendarEventDeleted = await CalendarEvent.deleteOne({ _id: idEvent })
 
-      notificationService.createNewNotification(event.workId.toString(), "delete-event-calendar", userIdResponsible, event.title);
+      if(!initial)
+        notificationService.createNewNotification(event.workId.toString(), "delete-event-calendar", userIdResponsible, event.title);
 
       return calendarEventDeleted;
     } catch (error) {

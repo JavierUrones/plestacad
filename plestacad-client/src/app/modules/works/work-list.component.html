@@ -41,6 +41,13 @@
 </mat-select>
 </mat-form-field>
 
+<mat-form-field>
+
+  <input matInput type="text"  placeholder="Buscar por título" (input)="onSearch($event.target)" />
+</mat-form-field>
+
+
+
 <button mat-raised-button color="primary" (click)="addWork()">Crear nuevo trabajo</button>
 
   <div *ngFor="let work of workList" >
@@ -52,6 +59,9 @@
   >
   <mat-card-subtitle>{{showValueCategory(work.category)}} - 
     Curso {{work.course}}
+  </mat-card-subtitle>
+  <mat-card-subtitle style="color: lightcoral" *ngIf="work.classified">
+      Archivado
   </mat-card-subtitle>
   <mat-card-content class="content-card">
     <p>{{work.description}}</p>

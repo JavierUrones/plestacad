@@ -1,64 +1,77 @@
 mat-card {
-    max-width: auto;
-  }
+  max-width: auto;
+}
 
-  .info-general h1, .members h1{
-    justify-content: center;
-    text-align: center;
-    margin-top: 1%;
-  }
-mat-card-content{
+.info-general h1,
+.members h1,
+.other-options h2 {
+  justify-content: center;
+  text-align: center;
+  margin-top: 1%;
+}
+
+mat-card-content {
+  margin-left: 2%;
+  margin-top: 3%;
+  margin-right: 2%;
+
+  margin-bottom: 1%;
+}
+
+mat-label {
+  font-size: 1.2em;
+}
+
+input,
+mat-select,
+textarea {
+  font-size: 1.4em;
+}
+
+mat-form-field {
+  display: block;
+}
+
+
+.info-general,
+.members,
+.other-options {
+  border-radius: 10px;
+  border: 1px solid lightgray;
   margin-left: 2%;
   margin-top: 2%;
   margin-right: 2%;
+  margin-bottom: 2%;
+
 }
 
-  mat-label{
-      font-size: 1.2em;
-  }
+.teachersList,
+.studentsList {
 
-  input, mat-select, textarea {
-      font-size: 1.4em;
-  }
-  
-  mat-form-field {
-    display: block;
-  }
-
-  
-  .info-general, .members{
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    margin-left: 2%;
-    margin-top: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-
-  }
-
-  .teachersList, .studentsList{
-    
-    margin-top: 2%;
-    margin-left: 2%;
-  }
+  margin-top: 2%;
+  margin-left: 2%;
+}
 
 
-.iconDelete{
+.iconDelete {
   color: red;
 }
-.iconDelete:hover{
+
+.iconDelete:hover {
   cursor: pointer;
 }
 
-.align-right{
-  float: right;
-  position: relative;
+.align-right {
+  justify-content: right;
+  text-align: right;
   margin-left: auto;
   margin-right: 2%;
+  margin-bottom: 2%;
 }
 
 
-.studentsList, .teachersList{
+.studentsList,
+.teachersList {
   background-color: rgb(249, 249, 249);
   border: 1px solid lightgrey;
   border-radius: 10px;
@@ -67,3 +80,74 @@ mat-card-content{
   padding-left: 1%;
 }
 
+ul {
+  list-style: none;
+}
+
+.profile-img {
+
+  position: relative;
+  overflow: hidden;
+
+
+
+  border-radius: 50%;
+  border: 2px solid;
+
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 1%;
+}
+
+.user-data {
+  align-items: center;
+  display: flex;
+}
+
+
+.other-options {
+  justify-content: center;
+  text-align: center;
+}
+
+#classifyWorkButton,
+#desclassifyWorkButton,
+#deleteWorkButton {
+
+  margin-right: 3%;
+}
+
+.delete-user-button {
+  position: relative;
+  margin-left: auto;
+  margin-right: 10%;
+  size: 0.5vh;
+}
+
+#star {
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: orange;
+
+
+
+
+}
+
+
+.image-user-container {
+
+  position: relative;
+  margin-right: 1%;
+}
+
+.edit-button-container {
+  display:flex;
+  justify-content:flex-end;
+  width:90%; 
+
+  margin-top: 1%;
+}

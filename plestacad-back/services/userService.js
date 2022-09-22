@@ -122,10 +122,6 @@ class UserService {
         for await (const user of work.teachers)
           listOfContactsIds.push(user.toString());
       };
-      for await (const work of worksOfUserAsTeacher) {
-        for await (const user of work.students)
-          listOfContactsIds.push(user.toString());
-      };
       for await (const work of worksOfUserAsStudent) {
         for await (const user of work.students)
           listOfContactsIds.push(user.toString());
@@ -134,13 +130,22 @@ class UserService {
         for await (const user of work.students)
           listOfContactsIds.push(user.toString());
       };
+      for await (const work of worksOfUserAsStudent) {
+        for await (const user of work.teachers)
+          listOfContactsIds.push(user.toString());
+      };
+
       let contactsSetIds = [...new Set(listOfContactsIds)];
 
       let listOfUserContacts = [];
+
       for await (const contactId of contactsSetIds) {
         if (contactId != id)
           listOfUserContacts.push(await this.getUserById(contactId));
       }
+
+      console.log("contactos", listOfUserContacts)
+
 
       return listOfUserContacts
 
@@ -154,11 +159,9 @@ class UserService {
   uploadProfilePhoto(pathDirectory, pathFile, filePath) {
     try {
       if (!fs.existsSync(pathDirectory)) {
-        console.log("aqui")
         fs.mkdirSync(pathDirectory);
         fs.renameSync(pathFile, filePath);
       } else {
-        console.log("aqui2")
 
         fs.renameSync(pathFile, filePath);
 

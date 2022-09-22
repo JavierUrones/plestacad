@@ -65,7 +65,7 @@ router.post("/calendar/:id", auth, async (req, res) => {
     const id = req.params.id;
     const userIdResponsible = req.params.userIdResponsible;
     try {
-        const calendarEventDeleted = await calendarService.deleteCalendarEvent(id, userIdResponsible);
+        const calendarEventDeleted = await calendarService.deleteCalendarEvent(id, userIdResponsible, false);
         
       res.status(200).send({
         data: calendarEventDeleted,

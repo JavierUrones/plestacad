@@ -1,7 +1,8 @@
+  
   <div class="breadcrumb">
   <ol>
     <li *ngFor="let breadcrumb of breadcrumbs">
-      <span *ngIf="breadcrumb.label!='idWork' &&breadcrumb.label!='idPost' " [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
+      <span *ngIf="breadcrumb.label!='idWork' && breadcrumb.label!='idPost' " [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
         {{ breadcrumb.label }}
       </span>
       <span *ngIf="breadcrumb.label=='idWork'" [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">

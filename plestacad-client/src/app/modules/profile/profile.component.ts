@@ -109,8 +109,13 @@ export class ProfileComponent implements OnInit {
 
   getProfilePhoto(){
     this.userService.getProfilePhoto(sessionStorage.getItem("id") as string).subscribe((photo) => {
-      let objectURL = URL.createObjectURL(photo);       
-      this.photoProfile = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      if(photo.type=="image/jpeg"){
+        let objectURL = URL.createObjectURL(photo);       
+        this.photoProfile = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+      } else{
+        this.photoProfile = undefined;
+      }
+
     })
   }
 

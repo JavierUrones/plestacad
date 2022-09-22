@@ -22,6 +22,7 @@
     "mongoose": "^6.1.7",
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.15",
+    "rimraf": "^3.0.2",
     "socket.io": "^4.5.1",
     "socketio-jwt": "^4.6.2",
     "swagger-jsdoc": "^6.1.0",

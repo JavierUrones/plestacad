@@ -90,7 +90,7 @@ router.delete("/taskclassificator/:idWork/:id/:userIdResponsible", auth,async (r
     //Se reordenan el resto de clasificadores
     const taskClassificators = await taskService.updateTasksClassificatorsOrders(idWork, id);
 
-    const taskClassificatorDeleted = await taskService.deleteTaskClassificator(id, idWork, userIdResponsible);
+    const taskClassificatorDeleted = await taskService.deleteTaskClassificator(id, idWork, userIdResponsible, false);
 
     res.status(200).send({
       data: taskClassificatorDeleted,
@@ -107,14 +107,14 @@ router.delete("/task/:id/:userIdResponsible", auth,async (req, res) => {
   try {
     const taskToDelete = await taskService.getTaskById(id);
     console.log( "tasktodelete!", userIdResponsible)
-    const taskDeleted = await taskService.deleteTask(id, taskToDelete.workId, userIdResponsible);
+    const taskDeleted = await taskService.deleteTask(id, taskToDelete.workId, userIdResponsible, false);
 
     
     if(taskToDelete.start != undefined && taskToDelete.end != undefined) { //esto significa que tiene un evento creado asociado.
       const calendarEventToDelete = await calendarService.getCalendarEventByTaskOriginId(taskToDelete._id);
       console.log("evento a boorar", calendarEventToDelete)
 
-      const calendarEventDeleted = await calendarService.deleteCalendarEvent(calendarEventToDelete._id);
+      const calendarEventDeleted = await calendarService.deleteCalendarEvent(calendarEventToDelete._id, false);
       console.log("borrado evento", calendarEventDeleted)
     }
 

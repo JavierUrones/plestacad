@@ -4,14 +4,18 @@ const UserService = require("../../services/userService");
 const ValidationError = require("../../config/errors/customErrors");
 const FileService = require("../../services/fileService");
 const TaskService = require("../../services/taskService");
+const PostService = require("../../services/postService");
+const CalendarService = require("../../services/calendarService");
+const NotificationService = require("../../services/notificationService");
 
 const userService = new UserService();
-
+const calendarService = new CalendarService();
 const workService = new WorkService();
-
-
 const fileService = new FileService();
 const taskService = new TaskService();
+const postService = new PostService();
+const notificationService = new NotificationService();
+
 
 const rootProjectPath = require("path").resolve("./");
 const directoryFiles = "/userdata/";
@@ -137,12 +141,52 @@ router.post("/worksByUserIdAndCategory", auth, async (req, res) => {
 });
 
 
-router.delete("/works", auth, async (req, res) => {
+router.delete("/works/:id", auth, async (req, res) => {
   try {
-    const id = req.body.id;
-    // Del. work, files, posts, tasks, calendar events and notifications.
+    const id = req.params.id;
+
+    let work = await workService.getWorkById(id);
+
+    fileService.deleteWorkDirectory(rootProjectPath + directoryFiles + id);
+
+    let taskClassificators = await taskService.getTaskClassificatorsByWorkId(id);
+    for await(let taskClassificator of taskClassificators){
+      await taskService.deleteTaskClassificator(taskClassificator._id, id, work.authorId, true)
+    }
+
+    let tasks = await taskService.getTasksByWorkId(id);
+    for await(let task of tasks){
+      await taskService.deleteTask(task._id, id, work.authorId, true)
+    }
+
+    let events = await calendarService.getCalendarEventsByWorkId(id);
+
+    for await(let event of events){
+      await calendarService.deleteCalendarEvent(event._id, work.authorId, true)
+    }
+
+    let posts = await postService.getPostsByWorkId(id);
+
+    for await(let post of posts){
+      await postService.delete(post._id);
+    }
+
+    let notifications = await notificationService.getNotificationsByWorkId(id);
+
+    for await (let notification of notifications){
+      await notificationService.deleteNotificationById(notification._id);
+    }
+
+    let workRequests = await workService.getWorkRequestsByWorkId(id);
+
+    for await (let request of workRequests){
+      await workService.deleteWorkRequest(request._id)
+    }
+
+    let workDeleted = await workService.deleteWork(id);
+
     res.json({
-      data: id
+      data: workDeleted
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -283,6 +327,47 @@ router.delete("/worksRequests/deny/:id/:userIdReceiver", auth, async (req, res) 
 })
 
 
+router.put("/works/deleteUser", auth, async (req, res) => {
+
+  try{
+    let workId = req.body.workId;
+    let userId = req.body.userId;
+    let type = req.body.type;
+    console.log("work id", workId)
+
+    let result = await workService.deleteUserFromWork(workId, userId, type);
+    console.log(result)
+    res.status(200).send({
+      data: result,
+    });
+
+  }catch(error){
+    return res.status(500).json({ error: error.message });
+  }
+
+});
+
+router.put("/works", auth, async (req, res) => {
+
+  try{
+    let work = await workService.getWorkById(req.body.workId);
+
+    console.log(work);
+    work.category = req.body.category;
+    work.course = req.body.course;
+    work.title = req.body.title;
+    work.description = req.body.description;
+    work.classified = req.body.classified;
+    let workUpdated = await workService.updateWork(work);
+    res.status(200).send({
+      data: workUpdated,
+    });
+
+  }catch(error){
+    return res.status(500).json({ error: error.message });
+  }
+
+});
 
 
 

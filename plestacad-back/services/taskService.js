@@ -131,7 +131,7 @@ class TaskService {
     }
 
 
-    async deleteTaskClassificator(id, workId, userIdResponsible) {
+    async deleteTaskClassificator(id, workId, userIdResponsible, initial) {
         try {
 
 
@@ -143,7 +143,8 @@ class TaskService {
                 task.taskClassificatorId = null;
             });
             var taskClassificator = await TaskClassificator.deleteOne({ _id: id });
-            notificationService.createNewNotification(workId, "delete-task-classificator", userIdResponsible, tc.title);
+            if(!initial)
+                notificationService.createNewNotification(workId, "delete-task-classificator", userIdResponsible, tc.title);
 
             return taskClassificator;
         } catch (error) {
@@ -151,11 +152,12 @@ class TaskService {
         }
     }
 
-    async deleteTask(id, workId, userIdResponsible){
+    async deleteTask(id, workId, userIdResponsible, initial){
         try {
             var taskToDelete = await this.getTaskById(id);
             var task = await Task.deleteOne({ _id: id })
-            notificationService.createNewNotification(workId, "delete-task", userIdResponsible, taskToDelete.title);
+            if(!initial)
+                notificationService.createNewNotification(workId, "delete-task", userIdResponsible, taskToDelete.title);
 
             return task;
         } catch (error) {

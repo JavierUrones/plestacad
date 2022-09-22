@@ -1,3 +1,4 @@
+const { boolean } = require("@hapi/joi");
 const mongoose = require("mongoose");
 
 const workScheema = mongoose.Schema({
@@ -19,7 +20,8 @@ const workScheema = mongoose.Schema({
     type: String,
     enum: ["tfg", "tfm", "tesis"]
   },
-  description: { type: String, required: true}
+  description: { type: String, required: true},
+  classified: { type: Boolean, default: false}
 });
 
 module.exports = mongoose.model("Work", workScheema);

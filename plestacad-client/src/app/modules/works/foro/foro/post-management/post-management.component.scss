@@ -1,5 +1,6 @@
 
 .grid{
+    padding-bottom: 2%;
     margin-top: 2%;
     margin-right: 5%;
     margin-bottom: 5%;
@@ -33,7 +34,7 @@
 }
 
 #titlePost, #messageContent, #interactionContent, #interactionsSection{
-    margin-left: 2%;
+    margin-left: 3%;
     margin-top: 2%;
     margin-right: 2%;
 }
@@ -60,13 +61,19 @@
 .date, .dateComment{
     color: grey;
     font-size: 0.9em;
+    margin-top: 1%;
+}
+.name{
+    margin-top: 1%;
+    margin-right: 1%;
 }
 
-.dateComment, .name, .content{
-    margin-left: 1%;
-    margin-top: 1%;
+ .content{
+    margin-left: 2%;
+    margin-top: 2%;
     margin-bottom: 1%;
     margin-right: 1%;
+
 }
 
 .full-width-input{
@@ -91,10 +98,6 @@ h4{
     font-weight: 100;
 }
 
-.pull-left {
-    float:left;
-    margin-right: 0.5%;
-}
 
 .mat-spinner{
     position: relative;
@@ -107,3 +110,34 @@ h4{
     margin-top: 2%;
     color: grey;
 }
+
+.profile-img {
+
+
+    margin-left: 3%;
+    margin-top: 3%;
+    border-radius: 50%;
+    border: 2px solid;
+  
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 1%;
+  }
+  
+
+
+
+  .image-user-container {
+    margin-left: 2%;
+    position: relative;
+    margin-right: 1%;
+    margin-top: 1%;
+  }
+
+  
+.user-data {
+    align-items: center;
+    display: flex;
+  }
+  

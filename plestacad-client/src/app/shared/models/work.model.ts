@@ -9,4 +9,5 @@ export class Work {
     category!: WorkCategory;
     course!: number;
     description!: string;
+    classified!: boolean;
   }

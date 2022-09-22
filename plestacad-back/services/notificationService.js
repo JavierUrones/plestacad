@@ -8,6 +8,7 @@ const userService = new UserService();
 const { sendNewNotification } = require("../utils/socket-io");
 class NotificationService {
 
+
     async getNotificationById(id){
         try{
             const notification = await Notification.findById(id);
@@ -16,6 +17,28 @@ class NotificationService {
             throw error;
         }
     }
+
+    async getNotificationsByWorkId(id){
+        try{
+            const notifications = await Notification.find({
+                'workId': id
+            });
+            return notifications;
+        } catch(error){
+            throw error;
+        }
+    }
+
+    async deleteNotificationById(id){
+        try{
+            const notification = await Notification.findByIdAndDelete(id);
+            return notification;
+        } catch(error){
+            throw error;
+        }
+    }
+
+
 
 
     async getNotificationsByUserIdReceiver(idUser) {

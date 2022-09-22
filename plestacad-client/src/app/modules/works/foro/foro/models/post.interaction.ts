@@ -4,4 +4,5 @@ export interface PostInteraction{
     authorId: string;
     date: Date;
     authorFullName: string;
+    photo: any;
 }

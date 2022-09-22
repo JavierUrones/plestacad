@@ -3,6 +3,8 @@ const fs = require("fs");
 
 const NotificationService = require("../services/notificationService");
 const notificationService = new NotificationService();
+const rimraf = require("rimraf");
+
 class FileService {
 
 
@@ -36,17 +38,22 @@ class FileService {
   }
 
 
-  deleteDirectory(path, workId, userIdResponsible) {
+  deleteDirectory(path, workId, userIdResponsible, initialDirectory) {
     fs.rmdir(path, function (err) {
       if (err) {
         return "directory-not-empty"
       } else{
         var nameDirectory = path.split("/")[path.split("/").length-1];
-        notificationService.createNewNotification(workId, "delete-directory", userIdResponsible, nameDirectory);
+        if(!initialDirectory)
+          notificationService.createNewNotification(workId, "delete-directory", userIdResponsible, nameDirectory);
 
         return "directory-deleted"
       }
     })
+  }
+
+  deleteWorkDirectory(path){
+    rimraf.sync(path);
   }
 
   deleteFile(path, workId, userIdResponsible){

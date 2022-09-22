@@ -28,10 +28,10 @@ router.get("/users/role/:workId", auth, async (req, res) => {
     var workId = req.params.workId;
 
     let listUsers;
-    if(workId != ""){
+    if(workId != "undefined"){
       listUsers =   await userService.getUsersForInvitationByRole(workId);
     } else{
-      await userService.getAllUsers();
+      listUsers = await userService.getAllUsers();
     }
     res.json({
       data: listUsers
@@ -154,7 +154,6 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
         const fileName = encodeURIComponent(
           file.originalFilename = userId + ".jpg"
         );
-        console.log("datos de la foto, uploadDirectory, file.filepath, uploaddirectory+filename", uploadDirectory, file.filepath,  uploadDirectory + "/" + fileName)
         var response  = userService.uploadProfilePhoto(uploadDirectory, file.filepath, uploadDirectory + "/" + fileName);
         res.json({
           data: response
@@ -180,12 +179,10 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
 
       res.sendFile("userdata/profile-images/"+userId+"/"+userId+".jpg", {root: '.' } ,(err)=>{
         if (err){
-          console.log("no tiene foto", err);
           res.json({
             message: "no-photo"
           })
         } else{
-          console.log("si tiene foto");
         }
       })
     }

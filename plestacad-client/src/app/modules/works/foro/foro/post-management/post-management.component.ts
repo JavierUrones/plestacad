@@ -1,9 +1,11 @@
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuillEditorComponent } from 'ngx-quill';
 import { Breadcrumb } from 'src/app/shared/models/breadcumb.model';
+import { UserService } from 'src/app/shared/services/user.service';
 import { PostInteraction } from '../models/post.interaction';
 import { PostService } from '../post.service';
 
@@ -21,7 +23,8 @@ export class PostManagementComponent implements OnInit {
     title!: string;
     authorFullName!: string;
     interactions!: string[];
-
+    authorId!: string;
+    authorPhotoProfile!: any;
     interactionsObjects: PostInteraction[] = [];
 
     form!: FormGroup;
@@ -30,7 +33,7 @@ export class PostManagementComponent implements OnInit {
     htmlContentEditor!: string | undefined;
     loading!: boolean;
 
-    constructor(private route: ActivatedRoute, private router: Router, private postService: PostService, private fb: FormBuilder) {
+    constructor(private sanitizer: DomSanitizer, private userService: UserService, private route: ActivatedRoute, private router: Router, private postService: PostService, private fb: FormBuilder) {
         this.form = this.fb.group({
             editorContent: ['', Validators.required]
         });
@@ -63,18 +66,43 @@ export class PostManagementComponent implements OnInit {
         this.id = this.route.snapshot.params['id']
         //Recuperar datos del post.
         this.postService.getPostById(this.id).subscribe((post) => {
+            console.log("post data", post.data)
             this.message = post.data.message;
             this.creationDate = post.data.creationDate;
             this.isFavorite = post.data.isFavorite;
             this.title = post.data.title;
-            this.authorFullName = post.data.authorFullName;
+            this.authorId = post.data.authorId;
+            this.userService.getFullNameById(this.authorId).subscribe((res) => {
+                this.authorFullName = res.data.fullname;
+            })
+            this.userService.getProfilePhoto(this.authorId).subscribe((photo) => {
+                if(photo.type=="image/jpeg"){
+                    let objectURL = URL.createObjectURL(photo);       
+                    this.authorPhotoProfile = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+                } else{
+                    this.authorPhotoProfile.photo = undefined;
+                }    
+            })
             this.interactions = post.data.interactions;
             this.interactionsObjects = []
 
             this.postService.getListInteractionsByPostId(this.id).subscribe(response => {
                 console.log(response.values)
                 this.interactionsObjects = response.values;
+                this.interactionsObjects.forEach((interaction) => {
+                    this.userService.getProfilePhoto(interaction.authorId).subscribe((photo) => {
+                        if(photo.type=="image/jpeg"){
+                            let objectURL = URL.createObjectURL(photo);       
+                            interaction.photo = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+                        } else{
+                            interaction.photo = undefined;
+                        }    
+                    })
+                })
+                
+
             });
+
             this.loading = false;
 
         });
@@ -133,5 +161,6 @@ class Interaction implements PostInteraction {
         this.date = date;
         this.authorFullName = authorFullName;
     }
+    photo: any;
 
 }

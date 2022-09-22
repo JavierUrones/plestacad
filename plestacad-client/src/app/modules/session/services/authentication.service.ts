@@ -28,9 +28,14 @@ export class AuthenticationService {
   }
 
   isLogged() {
-    const jwtToken = <string>localStorage.getItem("jwt");
-    const decoded = jwtDecode<JwtPayload>(jwtToken);
-    return decoded.iat! < Date.now();
+    const jwtToken = localStorage.getItem("jwt") as string;
+    if(jwtToken==null){
+      return false;
+    } else{
+      const decoded = jwtDecode<JwtPayload>(jwtToken);
+      return decoded.iat! < Date.now();
+    }
+
   }
 
   signup(name: string, surname: string, email:string, password: string){

@@ -3,9 +3,9 @@
     <div class="photo-profile-wrapper" >
         <h3 id="header-details">Foto de perfil</h3>
 
-       <!--<img class="profile-img" src="../../../assets/images/profile-default.png" />--> 
+       <img *ngIf="this.photoProfile==undefined" class="profile-img" src="assets/images/profile-default.png" />
 
-        <img class="profile-img" [src]="this.photoProfile" />
+        <img *ngIf="this.photoProfile!=undefined" class="profile-img" [src]="this.photoProfile" />
 
         <mat-card-content class="center-div">
         <mat-form-field class="upload-photo-field">

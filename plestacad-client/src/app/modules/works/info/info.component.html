@@ -1,5 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <mat-card>
     <div class="info-general">
+        <div class="edit-button-container">
+            <button color="primary" mat-raised-button *ngIf="this.authorId==this.userId" (click)="enableEdit()">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
         <h1>Información general</h1>
 
         <mat-card-content>
@@ -14,7 +22,11 @@
                 </mat-form-field>
                 <mat-label> Curso </mat-label>
                 <mat-form-field>
-                    <input matInput formControlName="course" />
+                    <mat-select [formControl]="courseControl">
+                        <mat-option *ngFor="let c of cursos" [value]="c.value">
+                            {{ c.value }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
 
                 <mat-label>Categoría</mat-label>
@@ -27,46 +39,100 @@
                     </mat-select>
                 </mat-form-field>
             </form>
+            <div class="edit-button-container">
+                <button color="primary" mat-raised-button *ngIf="this.authorId==this.userId && this.editingWork" (click)="saveEditWork()">
+                    Guardar cambios
+                </button>
+            </div>
         </mat-card-content>
+
     </div>
 
 
     <div class="members">
         <h1>Miembros</h1>
-
-        <button class="align-right" mat-raised-button color="primary" (click)="inviteNewUsers()"> Invitar nuevos miembros</button>
-        <div class="teachers">
         <mat-card-content>
-            <mat-label> Profesores </mat-label>
-            <div *ngIf="this.teachersList.length>0" class="teachersList">
-                <ul *ngFor="let teacher of this.teachersList">
-                    <li> {{teacher.name}} {{teacher.surname}} | {{teacher.email}} </li>
-                </ul>
-            </div>
-            <div *ngIf="this.teachersList.length==0" class="teachersList">
-                <span> No hay profesores asignados en este trabajo académico. </span>
-            </div>
+            <button class="align-right" mat-raised-button color="primary" (click)="inviteNewUsers()"> Invitar nuevos
+                miembros</button>
         </mat-card-content>
+        <div class="teachers">
+            <mat-card-content>
+                <mat-label> Profesores </mat-label>
+                <div *ngIf="this.teachersList.length>0" class="teachersList">
+                    <ul *ngFor="let teacher of this.teachersList">
+                        <li class="user-data">
+                            <div class="image-user-container" *ngIf="this.authorId == teacher._id">
+                                <img *ngIf="teacher.photo!=undefined" class="profile-img" [src]="teacher.photo">
+                                <img *ngIf="teacher.photo==undefined" class="profile-img"
+                                    src="assets/images/profile-default.png">
+
+                                <span id="star" class="fa fa-star"></span>
+
+                            </div>
+                            <img *ngIf="this.authorId != teacher._id && teacher.photo!=undefined" class="profile-img"
+                                [src]="teacher.photo">
+                            <img *ngIf="this.authorId != teacher._id && teacher.photo==undefined" class="profile-img"
+                                src="assets/images/profile-default.png">
 
 
-    </div>
+                            {{teacher.name}} {{teacher.surname}} |
+                            {{teacher.email}}
+
+                            <button *ngIf="teacher._id != this.authorId" class="delete-user-button" mat-raised-button
+                                color="warn" (click)="this.deleteUser(teacher._id, 'teacher')">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="this.teachersList.length==0" class="teachersList">
+                    <span> No hay profesores asignados en este trabajo académico. </span>
+                </div>
+            </mat-card-content>
+
+
+        </div>
 
 
 
         <mat-card-content>
             <mat-label> Estudiantes </mat-label>
             <div *ngIf="this.studentsList.length>0" class="studentsList">
-                <ul  *ngFor="let student of this.studentsList">
-                    <li> {{student.name}} {{student.surname}} | {{student.email}} </li>
+                <ul *ngFor="let student of this.studentsList">
+                    <li class="user-data">
+                        <img *ngIf="student.photo!=undefined" class="profile-img" [src]="student.photo">
+                        <img *ngIf="student.photo==undefined" class="profile-img"
+                            src="assets/images/profile-default.png">
+
+
+                        <span>{{student.name}} {{student.surname}} | {{student.email}} </span>
+
+                        <button class="delete-user-button" mat-raised-button color="warn"
+                            (click)="this.deleteUser(student._id, 'student')">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+
+                    </li>
                 </ul>
             </div>
             <div *ngIf="this.studentsList.length==0" class="studentsList">
-                <span > No hay estudiantes asignados en este trabajo académico. </span>
+                <span> No hay estudiantes asignados en este trabajo académico. </span>
             </div>
         </mat-card-content>
-        
+
     </div>
 
-    <button color="warn" mat-raised-button> Eliminar trabajo académico</button>
-</mat-card>
+    <div class="other-options" *ngIf="this.authorId == this.userId">
+        <h2>Opciones</h2>
+        <mat-card-content>
+            <button *ngIf="!this.isClassified" id="classifyWorkButton" color="accent" mat-raised-button (click)="this.setWorkAsClassified()"> Archivar trabajo académico</button>
+            <button *ngIf="this.isClassified" id="desclassifyWorkButton" color="accent" mat-raised-button (click)="this.setWorkAsDesclassified()"> Desarchivar trabajo académico</button>
 
+
+            <button id="deleteWorkButton" color="warn" mat-raised-button (click)="this.deleteWork()"> Eliminar trabajo
+                académico</button>
+
+        </mat-card-content>
+    </div>
+
+</mat-card>

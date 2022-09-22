@@ -6,6 +6,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EntryCallDialogComponent } from './entry-call-dialog/entry-call-dialog.component';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-videocalls',
@@ -24,7 +25,8 @@ export class VideocallsComponent implements OnInit {
         private userService: UserService,
         public dialog: MatDialog,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private sanitizer: DomSanitizer
     ) { }
 
 
@@ -74,7 +76,21 @@ export class VideocallsComponent implements OnInit {
                     }
                 })
                 this.allContacts.sort((a: any, b: any) => b.isOnline - a.isOnline);
+                this.allContacts.forEach((contact:any) => {
+                    this.userService.getProfilePhoto(contact._id).subscribe((photo) => {
+                        if(photo.type=="image/jpeg"){
+                            let objectURL = URL.createObjectURL(photo);       
+                            contact.photo = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+                        } else{
+                            contact.photo = undefined;
+                        }    
+                    })
+                })
+                
+                console.log("contactos", this.contacts)
+
                 this.contacts = this.allContacts;
+
 
             }
         })
@@ -115,7 +131,8 @@ export class VideocallsComponent implements OnInit {
     initializeCallsEntry(res: any) {
         if (res.idPeer != undefined && res.idPeer != this.videocallsService.idPeer && res.idUserDestiny == sessionStorage.getItem("id") as string) {
             this.dialog.open(EntryCallDialogComponent, {
-                data: "¡Estás recibiendo una llamada entrante de " + res.userNameOrigin + "!"
+                data: {message: "¡Estás recibiendo una llamada entrante de " + res.userNameOrigin + "!", idUser: res.idUserOrigin
+            },
             }).afterClosed().subscribe((confirm: boolean) => {
                 if (confirm) {
 

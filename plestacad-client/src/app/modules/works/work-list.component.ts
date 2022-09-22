@@ -21,6 +21,7 @@ export class WorkListComponent implements OnInit {
   public options!: any[] | null;
   public selected!: string;
   public idUser!: string;
+  public allWorks: Work[] = [];
   constructor(public dialog: MatDialog,
     private workListService: WorkListService, private router: Router, private route: ActivatedRoute) { }
 
@@ -47,7 +48,8 @@ export class WorkListComponent implements OnInit {
     this.idUser = sessionStorage.getItem("id") as string;
     this.workListService.getWorksByUserId(this.idUser).subscribe(response => {
       this.workList = response;
-      console.log("RESPONSE", response)
+      this.allWorks = this.workList ;
+      this.workList.sort((a: Work, b: Work) =>  Number(a.classified) - Number(b.classified))
     });
 
   }
@@ -66,17 +68,34 @@ export class WorkListComponent implements OnInit {
   onFilterChange(option: any) {
     let selectedOption = option;
     const idUser = sessionStorage.getItem("id") as string;
-    console.log("OPTION", selectedOption)
     if (selectedOption == "all") {
       this.loadWorksByUserSession();
     } else {
-      console.log("OPTION", selectedOption)
       this.workListService.getWorksByStudentAndCategory(idUser, selectedOption).subscribe(response => {
-        this.workList = response
+        this.workList = response;
+        this.allWorks = response;
+        this.workList.sort((a: Work, b: Work) =>  Number(a.classified) - Number(b.classified))
+
         console.log(response)
       });
     }
   }
+
+  onSearch(event: any) {
+    if (event.value == "") {
+        this.workList = this.allWorks;
+        this.workList.sort((a: Work, b: Work) =>  Number(a.classified) - Number(b.classified))
+
+    } else {
+        this.workList = this.allWorks.filter((work: any) =>
+            work.title.startsWith(event.value)
+        )
+        this.workList.sort((a: Work, b: Work) =>  Number(a.classified) - Number(b.classified))
+
+    }
+
+}
+
 
 
   addWork() {
@@ -158,27 +177,24 @@ export class DialogAddWork {
     });
 
 
-    this.userService.getUsersForInvitationByRole("teacher").subscribe((dataTeachers: User[]) => {
-      this.teachers = dataTeachers;
-      console.log("TEACHERS", this.teachers);
+    this.userService.getUsersForInvitationByRole("undefined").subscribe((dataUsers: User[]) => {
+      dataUsers = dataUsers.filter(user => user._id != sessionStorage.getItem("id") as string)
+      this.teachers = dataUsers;
+      this.students = dataUsers;
+
       this.teachersFiltered = this.teachersCtrl.valueChanges.pipe(
-        startWith(''),
-        map(teacher => (teacher ? this._filterTeachers(teacher) : this.teachers.slice()))
+          startWith(''),
+          map(teacher => (teacher ? this._filterTeachers(teacher) : this.teachers.slice()))
       );
-
-    });
-
-
-    this.userService.getUsersForInvitationByRole("student").subscribe((dataStudents: User[]) => {
-      this.students = dataStudents;
-      console.log(this.students)
-      console.log("STUDENTS", this.students);
       this.studentsFiltered = this.studentsCtrl.valueChanges.pipe(
-        startWith(''),
-        map(student => (student ? this._filterStudents(student) : this.students.slice()))
+          startWith(''),
+          map(student => (student ? this._filterStudents(student) : this.students.slice()))
       );
 
-    });
+  });
+
+
+    
 
 
   }
@@ -276,4 +292,6 @@ export class DialogAddWork {
   onSubmit() {
     console.log("Subimt!")
   }
+
+
 }
