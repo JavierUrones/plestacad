@@ -1,11 +1,11 @@
-h3 {
+.content h3 {
     color: green;
     font-size: 1.3em;
 
 }
 
 .post-card p,
-h3 {
+.content h3 {
     margin-left: 1%;
     margin-top: 0.5%;
 
@@ -27,6 +27,13 @@ h3 {
 
 
 
+.no-posts {
+
+    justify-content: center;
+    text-align: center;
+    margin-top: 2%;
+
+}
 
 .icon-text {
     display: flex;

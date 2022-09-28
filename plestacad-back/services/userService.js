@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Work = require("../models/Work");
 const WorkRequest = require("../models/WorkRequest");
+const ValidationError = require("../config/errors/customErrors");
 
 const fs = require("fs");
 const bcrypt = require("bcrypt");
@@ -177,15 +178,36 @@ class UserService {
 
   async updatePassword(userDto) {
     try {
-      const filter = { _id: userDto.id };
-      //Se encripta el password
-      const salt = await bcrypt.genSalt();
-      const password = await bcrypt.hash(userDto.password, salt);
-      const update = { password: password };
+      //se comprueba el password actual introducido por el usuario.
+      
+      const currentUser = await User.findById(userDto.id)
+      console.log("AQUI2", userDto, currentUser)
+
+      const checkPassword = await bcrypt.compare(
+        userDto.currentPassword,
+        currentUser.password
+      );
+
+      if (!checkPassword) {
+        console.log("error", checkPassword)
+
+        throw new ValidationError("wrong-password");
+      }
+      else{
+        console.log("AQUI", userDto)
+
+        const filter = { _id: userDto.id };
+        //Se encripta el password
+        const salt = await bcrypt.genSalt();
+        const password = await bcrypt.hash(userDto.password, salt);
+        const update = { password: password };
+  
+  
+        let user = await User.findOneAndUpdate(filter, update);
+        return user;
+      }
 
 
-      let user = await User.findOneAndUpdate(filter, update);
-      return user;
     }
     catch (error) {
       throw error;

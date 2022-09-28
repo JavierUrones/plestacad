@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("surname", user.surname);
           sessionStorage.setItem("email", user.email);
           sessionStorage.setItem("id", user._id);
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/trabajos');
 
         },
         error: (e) => {

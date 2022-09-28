@@ -67,6 +67,7 @@ router.get("/users/:id", auth, async (req, res) => {
       }
     })
   }catch(error){
+    return res.status(500).json({ error: error.message });
 
   }
 })
@@ -74,7 +75,8 @@ router.get("/users/:id", auth, async (req, res) => {
 router.put("/users/updatePassword", auth, async (req, res) => {
   try{
 
-    const userDto = { id: req.body.id, password: req.body.password}
+    console.log("BODY", req.body)
+    const userDto = { id: req.body.id, password: req.body.password, currentPassword: req.body.currentPassword}
     const user =   await userService.updatePassword(userDto)
     
     res.json({
@@ -83,6 +85,7 @@ router.put("/users/updatePassword", auth, async (req, res) => {
       }
     })
   }catch(error){
+    return res.status(500).json({ error: error.message });
 
   }
 })
@@ -99,6 +102,7 @@ router.put("/users/updateData", auth, async (req, res) => {
       }
     })
   }catch(error){
+      return res.status(500).json({ error: error.message });
 
   }
 })

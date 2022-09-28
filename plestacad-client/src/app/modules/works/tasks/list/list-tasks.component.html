@@ -1,7 +1,14 @@
 <button mat-raised-button color="primary" class="newTaskButton" (click)="newTask()">
     <mat-icon>add</mat-icon>Nueva tarea
 </button>
-<table mat-table [dataSource]="tasks" matSort #sortElements="matSort">
+
+<div class="no-tasks" *ngIf="this.tasks.data.length == 0">
+    <h2> No hay ninguna tarea creada todavía. </h2>
+    <h3> Puedes crear una nueva tarea pulsando el botón superior. </h3>
+  </div>
+
+
+<table *ngIf="this.tasks.data.length > 0" mat-table [dataSource]="tasks" matSort #sortElements="matSort">
 
     <!-- Title Column -->
     <ng-container matColumnDef="title">
@@ -53,9 +60,11 @@
         <th mat-header-cell *matHeaderCellDef> Asignación </th>
         <td mat-cell *matCellDef="let element">
             <mat-form-field>
-                <input matInput [value]="element.userAssignedId">
-                <!-- faltaria cargar aqui la lista de usuarios del trabajo académico -->
-
+                <mat-select disabled [value]="element.userAssignedId">
+                    <mat-option *ngFor="let user of this.usersOfWork" [value]="user._id">
+                        {{user.name}} {{user.surname}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </td>
     </ng-container>
@@ -76,5 +85,5 @@
 
 </table>
 
-<mat-paginator #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons aria-label="Select page">
+<mat-paginator *ngIf="this.tasks.data.length > 0" #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons aria-label="Select page">
 </mat-paginator>

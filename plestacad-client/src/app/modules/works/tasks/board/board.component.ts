@@ -12,6 +12,8 @@ import { NotifyTaskChangesService } from '../list/notify-task-changes.service';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogManageTask } from '../dialog-manage-task/dialog-manage-task';
+import { WorkListService } from '../../work-list.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
     selector: 'app-board',
@@ -22,11 +24,13 @@ export class BoardComponent implements OnInit {
     idWork!: string;
     largeScreen!: boolean;
     taskClassificators!: TaskClassificator[];
+    usersOfWork: any[] = [];
     @ViewChild('moveMenuButton') moveMenuButton: any;
 
     notifierSubscription: Subscription = this.notifyTaskChangeService.subjectNotifier.subscribe(notice => {
         //se ha producido cambios en las tareas, se debe recargar la lista de apartados de clasificación con sus tareas.
         this.getTaskClassificators();
+        this.getUsersOfWork();
     });
 
     constructor(
@@ -34,7 +38,9 @@ export class BoardComponent implements OnInit {
         private router: Router,
         private tasksService: TasksService,
         private notifyTaskChangeService: NotifyTaskChangesService,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private workService: WorkListService,
+        private userService: UserService
     ) {
 
     }
@@ -42,7 +48,7 @@ export class BoardComponent implements OnInit {
     ngOnInit(): void {
         this.idWork = this.route.snapshot.params['idWork'];
         this.getTaskClassificators();
-
+        this.getUsersOfWork()
 
         this.onResize(null);
 
@@ -85,7 +91,6 @@ export class BoardComponent implements OnInit {
 
     newTaskClassificator() {
         //Crea el nuevo clasificador.
-        console.log("new");
         this.tasksService.createTaskClassificator(this.idWork, sessionStorage.getItem("id") as string).subscribe(response => {
             this.getTaskClassificators();
             this.notifyTaskChangeService.notifyChangeTask();
@@ -96,7 +101,7 @@ export class BoardComponent implements OnInit {
     }
 
     deleteTaskClassificator(id: string) {
-        this.tasksService.deleteTaskClassificator(this.idWork, id,  sessionStorage.getItem("id") as string).subscribe(response => {
+        this.tasksService.deleteTaskClassificator(this.idWork, id, sessionStorage.getItem("id") as string).subscribe(response => {
             this.getTaskClassificators();
             this.notifyTaskChangeService.notifyChangeTask();
 
@@ -132,12 +137,12 @@ export class BoardComponent implements OnInit {
             height: "60%",
             width: "60%",
             panelClass: "dialog-responsive",
-            data: { workId: this.idWork, start: null, taskId: task._id, tasksClassificatorList: this.taskClassificators }
+            data: { workId: this.idWork, start: null, taskId: task._id, tasksClassificatorList: this.taskClassificators, usersOfWork: this.usersOfWork }
         }
 
         const dialogRef = this.dialog.open(DialogManageTask, config);
         dialogRef.afterClosed().subscribe(result => {
-            console.log("closed")
+            this.getUsersOfWork();
             this.getTaskClassificators();
             this.notifyTaskChangeService.notifyChangeTask();
 
@@ -166,6 +171,22 @@ export class BoardComponent implements OnInit {
             this.largeScreen = true;
 
         }
+    }
+
+    getUsersOfWork() {
+        this.usersOfWork = [];
+        this.workService.getWorkById(this.idWork).subscribe((res) => {
+            res.data.teachers.forEach((teacher: any) => {
+                this.userService.getUserById(teacher).subscribe(res => {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+            res.data.students.forEach((student: any) => {
+                this.userService.getUserById(student).subscribe(res => {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+        })
     }
 
 }

@@ -10,7 +10,7 @@
         <mat-card-content class="center-div">
         <mat-form-field class="upload-photo-field">
             <mat-label>Selecciona una foto...</mat-label>
-            <ngx-mat-file-input [formControl]="fileControl" [multiple]=false ></ngx-mat-file-input>
+            <ngx-mat-file-input [formControl]="fileControl" [multiple]=false  [accept]="accept"></ngx-mat-file-input>
         </mat-form-field>
     
         <button mat-raised-button color="primary" (click)="onClickUploadPhoto()">Actualizar foto</button>
@@ -72,7 +72,7 @@
             <mat-card-content>
                 <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
                     <mat-form-field class="full-width-input">
-                        <input [disabled]="true" readonly matInput type="password" placeholder="Contraseña actual" formControlName="currentPassword"
+                        <input [disabled]="true" matInput type="password" placeholder="Contraseña actual" formControlName="currentPassword"
                             required />
                     </mat-form-field>
 

@@ -166,7 +166,7 @@ router.put("/task", auth, async (req, res) => {
     if(calendarEventCheck != undefined){
       calendarEventCheck.start = req.body.start;
       calendarEventCheck.end = req.body.end;
-      await calendarService.updateEvent(calendarEventCheck);
+      await calendarService.updateEvent(calendarEventCheck, userIdResponsible);
     }
     else if (calendarEventDto.start != '' && calendarEventDto.end != '' ) {
       const taskEventCalendar = await calendarService.createCalendarEvent(calendarEventDto, idWork, userIdResponsible);
@@ -206,6 +206,9 @@ router.post("/task/:id", auth,  async (req, res) => {
   const userIdResponsible = req.body.userIdResponsible;
 
   try {
+    if(taskDto.userAssignedId==""){
+      taskDto.userAssignedId=null;
+    }
     const taskSave = await taskService.createTask(taskDto, idWork, userIdResponsible);
 
     const calendarEventDto = {

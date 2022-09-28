@@ -10,3 +10,19 @@ ul li{
 .img-logo {
     max-height: 2em;
   }
+
+.user-name{
+    color: rgb(180, 178, 178);
+    margin:auto; display:table; 
+    font-size: 0.9em;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+.circular-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: 1%;
+}

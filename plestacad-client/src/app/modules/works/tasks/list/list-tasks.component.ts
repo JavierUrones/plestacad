@@ -7,6 +7,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { NotifyNewTaskService } from "src/app/shared/services/notify-new-task.service";
+import { UserService } from "src/app/shared/services/user.service";
+import { WorkListService } from "../../work-list.service";
 import { DialogManageTask } from "../dialog-manage-task/dialog-manage-task";
 import { TaskClassificator } from "../models/TaskClassificator.model";
 import { TasksService } from "../tasks.service";
@@ -18,7 +20,7 @@ import { NotifyTaskChangesService } from "./notify-task-changes.service";
     styleUrls: ['./list-tasks.component.scss'],
 })
 export class ListTasksComponent implements OnInit, AfterViewInit {
-
+    usersOfWork: any[] = [];
     idWork!: string;
     //tasks!: Task[];
     taskClassificatorsSelector!: TaskClassificator[];
@@ -38,7 +40,7 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
 
 
       selectedOrderOption = this.optionsOrder[0].value;
-    constructor(private route: ActivatedRoute,
+    constructor(private route: ActivatedRoute, private userService: UserService, private workService: WorkListService,
         private tasksService: TasksService, private dateAdapter: DateAdapter<Date>,  public dialog: MatDialog, private notifyNewTaskService: NotifyNewTaskService, private notifyTaskChangeService: NotifyTaskChangesService) {
         this.dateAdapter.setLocale('es-Es');
 
@@ -59,6 +61,7 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
         this.idWork = this.route.snapshot.params['idWork'];
         this.getTasks();
         this.getTaskClassificators();
+        this.getUsersOfWork();
     }
 
     ngAfterViewInit() {
@@ -119,12 +122,12 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
             height: "70%",
             width: "100%",
             panelClass: "dialog-responsive",
-            data: { workId: this.idWork, start: null, taskId: null, tasksClassificatorList: this.taskClassificatorsSelector }
+            data: { workId: this.idWork, start: null, taskId: null, tasksClassificatorList: this.taskClassificatorsSelector, usersOfWork: this.usersOfWork }
         }
 
         const dialogRef = this.dialog.open(DialogManageTask, config);
         dialogRef.afterClosed().subscribe(result => {
-            console.log("closed")
+            this.getUsersOfWork();
             this.getTasks();
             this.notifyTaskChangeService.notifyChangeTask();
             this.notifyNewTaskService.notifyChangeTask();
@@ -138,7 +141,7 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
             height: "60%",
             width: "60%",
             panelClass: "dialog-responsive",
-            data: { workId: this.idWork, start: null, taskId: _id, tasksClassificatorList: this.taskClassificatorsSelector }
+            data: { workId: this.idWork, start: null, taskId: _id, tasksClassificatorList: this.taskClassificatorsSelector, usersOfWork: this.usersOfWork }
         }
 
         const dialogRef = this.dialog.open(DialogManageTask, config);
@@ -160,5 +163,29 @@ export class ListTasksComponent implements OnInit, AfterViewInit {
 
         }))
 
+    }
+
+    getUserName(userId: string){
+        this.userService.getFullNameById(userId).subscribe((res) => {
+            console.log("REs", res)
+            return res.data.fullname;
+        })
+    }
+
+    getUsersOfWork(){
+        this.usersOfWork = [];
+        this.workService.getWorkById(this.idWork).subscribe((res) => {
+            res.data.teachers.forEach((teacher: any) => {
+                this.userService.getUserById(teacher).subscribe(res => {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+            res.data.students.forEach((student: any) => {
+                this.userService.getUserById(student).subscribe(res => {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+            console.log("usersofWork", this.usersOfWork)
+        })
     }
 }

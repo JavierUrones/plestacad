@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   passwordForm!: FormGroup;
   fileControl!: FormControl ;
+  accept: string ="image/*";
   public uploadFiles: any;
   invalidUpload: boolean = false;
   photoProfile!: any;
@@ -61,7 +62,7 @@ export class ProfileComponent implements OnInit {
 
     this.getProfilePhoto();
     this.getUserData();
-    this.getPasswordData();
+    //this.getPasswordData();
   }
 
   get f() {
@@ -94,16 +95,24 @@ export class ProfileComponent implements OnInit {
       return;
     }
     const newPassword = this.passwordForm.get('password')?.value;
+    const currentPassword = this.passwordForm.get('currentPassword')?.value;
+
     this.changePasswordSuccess = false;
 
-    this.userService.updateUserPassword(sessionStorage.getItem("id") as string, newPassword).subscribe((res) => {
-      console.log("password udpated")
-      this.getPasswordData();
+    this.userService.updateUserPassword(sessionStorage.getItem("id") as string, newPassword, currentPassword).subscribe({
+        next: (response) => {
+      //this.getPasswordData();
       this.passwordForm.reset();
+      this.passwordForm.controls["currentPassword"].setErrors(null);
+
       this.passwordForm.controls["password"].setErrors(null);
       this.passwordForm.controls["repeatPassword"].setErrors(null);
       this.changePasswordSuccess = true;
-    })
+    },
+    error: (e) => {
+      this.passwordForm.setErrors({ 'invalidPassword': true })
+    }
+  })
     
   }
 
@@ -126,13 +135,6 @@ export class ProfileComponent implements OnInit {
       this.profileForm.controls["name"].setValue(res.data.user.name);
       this.profileForm.controls["surname"].setValue(res.data.user.surname);
 
-    })
-  }
-
-  getPasswordData(){
-    this.userService.getUserById(sessionStorage.getItem("id") as string).subscribe((res) => {
-        console.log("test", res.data.user.password)
-        this.passwordForm.controls["currentPassword"].setValue(res.data.user.password);
     })
   }
 

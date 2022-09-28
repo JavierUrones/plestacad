@@ -50,6 +50,10 @@
 
 <button mat-raised-button color="primary" (click)="addWork()">Crear nuevo trabajo</button>
 
+  <div class="no-works" *ngIf="workList.length==0">
+      <h2> No tienes ningún trabajo académico disponible. </h2>
+      <h3> Puedes crear un trabajo académico o comprobar tus solicitudes pendientes para ver si has sido invitado a formar parte de uno. </h3>
+  </div>
   <div *ngFor="let work of workList" >
 
   <mat-card class="work-card" (click)="navigateToWork(work._id)">

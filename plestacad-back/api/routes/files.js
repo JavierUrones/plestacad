@@ -262,7 +262,7 @@ router.post("/files/deleteDir/:id", auth, async (req, res) => {
   var userIdResponsible = req.body.userIdResponsible;
   try {
 
-    var response = fileService.deleteDirectory(path, id, userIdResponsible);
+    var response = fileService.deleteDirectory(path, id, userIdResponsible, false);
 
     if (response == "directory-not-empty") {
       return res

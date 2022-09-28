@@ -38,17 +38,27 @@
         <div class="task-board" *ngFor="let task of apt.tasks" (click)="updateTask(task)" cdkDrag>
 
             <div class="task-content">
-                <h5 >{{task.title}}</h5>
+                <h5>{{task.title}}</h5>
                 <div *ngIf="task.start!=null || task.end != null" style="display: flex;
-                align-items: center;color: grey;
-">
-                    <span><mat-icon  [inline]="true" style=" font-size: 15px;">access_time</mat-icon></span>
-                    <span  class="aligned-text" *ngIf="task.start!=null">{{task.start | date}}</span>
-                    <span  class="aligned-text" *ngIf="task.start==null">?</span>
+                align-items: center;color: grey;">
+                    <span>
+                        <mat-icon [inline]="true" style=" font-size: 15px;">access_time</mat-icon>
+                    </span>
+                    <span class="aligned-text" *ngIf="task.start!=null">{{task.start | date}}</span>
+                    <span class="aligned-text" *ngIf="task.start==null">?</span>
                     -
-                    <span  class="aligned-text" *ngIf="task.end!=null">{{task.end | date}}</span>
-                    <span  class="aligned-text" *ngIf="task.end==null">?</span>
-               </div>
+                    <span class="aligned-text" *ngIf="task.end!=null">{{task.end | date}}</span>
+                    <span class="aligned-text" *ngIf="task.end==null">?</span>
+                </div>
+                <div *ngIf="task.userAssignedId!=null" style="display: flex;
+                align-items: center;color: grey;">
+                    <div *ngFor="let user of this.usersOfWork">
+                        <span *ngIf="user._id == task.userAssignedId">
+                            <mat-icon [inline]="true" style=" font-size: 15px;">person_pin</mat-icon>
+                            {{user.name}} {{user.surname}}
+                        </span>
+                    </div>
+                </div>
             </div>
 
 

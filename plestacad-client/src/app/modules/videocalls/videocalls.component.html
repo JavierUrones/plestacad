@@ -6,14 +6,22 @@
             <mat-form-field>
                 <input matInput type="text" placeholder="Buscar contacto..." (input)="onSearch($event.target)" />
             </mat-form-field>
+            <div class="no-contacts" *ngIf="this.contacts.length == 0">
+                <span> No tienes ningún contacto debido a que no compartes trabajos académicos con otros
+                    usuarios.</span>
+            </div>
 
             <div class="contact" *ngFor="let contact of contacts">
-                <div class="image-user-container">
-                    <img *ngIf="contact.photo!=undefined" class="circular-photo" [src]="contact.photo">
-                    <img *ngIf="contact.photo==undefined" class="circular-photo" src="assets/images/profile-default.png">
-                    <div *ngIf="!contact.isOnline" class='badge-offline'>
-                    </div>
-                    <div *ngIf="contact.isOnline" class='badge-online'>
+         
+                <div *ngIf="this.contacts.length > 0">
+                    <div class="image-user-container">
+                        <img *ngIf="contact.photo!=undefined" class="circular-photo" [src]="contact.photo">
+                        <img *ngIf="contact.photo==undefined" class="circular-photo"
+                            src="assets/images/profile-default.png">
+                        <div *ngIf="!contact.isOnline" class='badge-offline'>
+                        </div>
+                        <div *ngIf="contact.isOnline" class='badge-online'>
+                        </div>
                     </div>
                 </div>
 
@@ -55,25 +63,25 @@
 
     <div *ngIf="this.videocallsService.onCall" class="videocall-options">
 
-        <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options" mat-raised-button
-            (click)="this.muteAudio()">
+        <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.muteAudio()">
             <mat-icon>mic</mat-icon>
         </button>
-        <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options" mat-raised-button
-            (click)="this.muteAudio()">
+        <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.muteAudio()">
             <mat-icon>mic_off</mat-icon>
         </button>
 
         <button class="call-options" mat-raised-button (click)="this.endCall()">
             <mat-icon style="color: red">call_end</mat-icon>
         </button>
-        <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options" mat-raised-button
-            (click)="this.stopVideo()">
+        <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.stopVideo()">
             <mat-icon>videocam</mat-icon>
         </button>
 
-        <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options" mat-raised-button
-            (click)="this.stopVideo()">
+        <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.stopVideo()">
             <mat-icon>videocam_off</mat-icon>
         </button>
 

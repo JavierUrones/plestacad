@@ -52,6 +52,17 @@
 
 
 
+    <mat-form-field class="full-width-input">
+      <mat-label> Asignación </mat-label>
+      <mat-select formControlName="userAssignedId">
+          <mat-option  *ngFor="let user of this.data.usersOfWork"
+           [value]="user._id">
+            {{user.name}} {{user.surname}}
+          </mat-option>
+        </mat-select>
+  </mat-form-field>
+
+
 
 
       

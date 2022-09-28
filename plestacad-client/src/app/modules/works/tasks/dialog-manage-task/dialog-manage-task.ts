@@ -4,6 +4,7 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ActivatedRoute } from "@angular/router";
+import { User } from "src/app/shared/models/user.model";
 import { NotifyNewTaskService } from "src/app/shared/services/notify-new-task.service";
 import { TaskClassificator } from "../models/TaskClassificator.model";
 import { TasksService } from "../tasks.service";
@@ -14,7 +15,7 @@ export interface DialogManageTaskData {
     start: any;
     taskId: string;
     tasksClassificatorList: TaskClassificator[]
-
+    usersOfWork: User[];
 }
 
 @Component({
@@ -50,7 +51,8 @@ export class DialogManageTask {
             description: ['', []],
             start: ['', []],
             end: ['', []],
-            taskClassificatorId: ['', []]
+            taskClassificatorId: ['', []],
+            userAssignedId: ['', []]
         });
 
         if (this.data.taskId != null) {  //el usuario esta modificando un evento.                  
@@ -73,6 +75,7 @@ export class DialogManageTask {
                 }
 
                 this.form.controls["taskClassificatorId"].setValue(task.taskClassificatorId);
+                this.form.controls["userAssignedId"].setValue(task.userAssignedId);
 
 
 
@@ -117,8 +120,8 @@ export class DialogManageTask {
             const start = this.form.get("start")?.value;
             const end = this.form.get("end")?.value;
             const taskClassificatorId = this.form.get("taskClassificatorId")?.value;
-            const userAssignedId = sessionStorage.getItem('id') as string; //Cambiar más adelante cuando se implementen los miembros del trabajo.
-
+            const userAssignedId = this.form.get("userAssignedId")?.value; //Cambiar más adelante cuando se implementen los miembros del trabajo.
+            console.log("usuario asignado", userAssignedId)
 
             if(!this.updating){
                 this.tasksService.createTask(this.data.workId, title, description, start, end, taskClassificatorId, userAssignedId, sessionStorage.getItem("id") as string).subscribe(result => {

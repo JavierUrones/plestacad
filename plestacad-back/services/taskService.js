@@ -108,6 +108,7 @@ class TaskService {
         });
 
         try {
+            console.log("tarea, " , newTask)
             const taskSave = await newTask.save();
             notificationService.createNewNotification(workId, "new-task", userIdResponsible, newTask.title);
 

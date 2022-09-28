@@ -22,10 +22,11 @@ export class UserService {
     );
   }
 
-  updateUserPassword(id: string, password: string){
+  updateUserPassword(id: string, password: string, currentPassword: string){
     return this.http.put<any>(this.uri + 'users/updatePassword', {
       id: id,
-      password: password
+      password: password,
+      currentPassword: currentPassword
     }).pipe(
       map((response) => {
         return response;
@@ -64,7 +65,6 @@ export class UserService {
   getUsersForInvitationByRole(workId: string){
       return this.http.get<any>(this.uri + "users/role/"+workId).pipe(
         map((response) => response.data.map((x: { _id: string, name: string; surname: string; role: UserRole; email: string;}) => {
-          console.log("EO")
           var user = new User();
           user.name = x.name;
           user.surname = x.surname;
