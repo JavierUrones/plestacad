@@ -1,3 +1,5 @@
+<h1 class="header-title"> Videollamadas </h1>
+
 <div class="grid" *ngIf="!this.videocallsService.onCall">
     <div class="contacts-grid">
         <div class="contacts-frame">
@@ -12,11 +14,12 @@
             </div>
 
             <div class="contact" *ngFor="let contact of contacts">
-         
+
                 <div *ngIf="this.contacts.length > 0">
                     <div class="image-user-container">
-                        <img *ngIf="contact.photo!=undefined" class="circular-photo" [src]="contact.photo">
-                        <img *ngIf="contact.photo==undefined" class="circular-photo"
+                        <img alt="Imagen de perfil" *ngIf="contact.photo!=undefined" class="circular-photo"
+                            [src]="contact.photo">
+                        <img alt="Imagen de perfil" *ngIf="contact.photo==undefined" class="circular-photo"
                             src="assets/images/profile-default.png">
                         <div *ngIf="!contact.isOnline" class='badge-offline'>
                         </div>
@@ -28,17 +31,15 @@
 
                 <span class="info-user">{{contact.name}} {{contact.surname}}
                 </span>
-                <mat-icon class="icon-call" (click)="initCall(contact._id)">call</mat-icon>
+                <mat-icon tabindex=0 (keydown.enter)="initCall(contact._id)" matTooltip="Iniciar videollamada"
+                    *ngIf="contact.isOnline" class="icon-call-online" (click)="initCall(contact._id)">call</mat-icon>
+                <mat-icon *ngIf="!contact.isOnline" class="icon-call-offline">call</mat-icon>
+
                 <mat-menu></mat-menu>
             </div>
         </div>
     </div>
-    <div class="call-grid">
 
-
-
-
-    </div>
 </div>
 
 
@@ -65,24 +66,24 @@
 
         <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
             mat-raised-button (click)="this.muteAudio()">
-            <mat-icon>mic</mat-icon>
+            <mat-icon matTooltip="Desactivar micrófono">mic</mat-icon>
         </button>
         <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
             mat-raised-button (click)="this.muteAudio()">
-            <mat-icon>mic_off</mat-icon>
+            <mat-icon matTooltip="Activar micrófono">mic_off</mat-icon>
         </button>
 
         <button class="call-options" mat-raised-button (click)="this.endCall()">
-            <mat-icon style="color: red">call_end</mat-icon>
+            <mat-icon matTooltip="Terminar videollamada" style="color: red">call_end</mat-icon>
         </button>
         <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
             mat-raised-button (click)="this.stopVideo()">
-            <mat-icon>videocam</mat-icon>
+            <mat-icon matTooltip="Apagar cámara">videocam</mat-icon>
         </button>
 
         <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
             mat-raised-button (click)="this.stopVideo()">
-            <mat-icon>videocam_off</mat-icon>
+            <mat-icon matTooltip="Encender cámara">videocam_off</mat-icon>
         </button>
 
 

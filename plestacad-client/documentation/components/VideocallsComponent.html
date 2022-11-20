@@ -1,0 +1,1779 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  VideocallsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/videocalls/videocalls.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-videocalls</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./videocalls.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./videocalls.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allContacts" >allContacts</a>
+                            </li>
+                            <li>
+                                <a href="#contacts" >contacts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                <a href="#entryCallSubscription" >entryCallSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#videocallsService" >videocallsService</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#endCall" >endCall</a>
+                            </li>
+                            <li>
+                                <a href="#getStatusOfUsers" >getStatusOfUsers</a>
+                            </li>
+                            <li>
+                                <a href="#getUserContactsAndStatus" >getUserContactsAndStatus</a>
+                            </li>
+                            <li>
+                                <a href="#initCall" >initCall</a>
+                            </li>
+                            <li>
+                                <a href="#initializeCallsEndListener" >initializeCallsEndListener</a>
+                            </li>
+                            <li>
+                                <a href="#initializeCallsEntry" >initializeCallsEntry</a>
+                            </li>
+                            <li>
+                                <a href="#muteAudio" >muteAudio</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
+                            </li>
+                            <li>
+                                <a href="#stopVideo" >stopVideo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(videocallsService: <a href="../injectables/VideocallsService.html" target="_self">VideocallsService</a>, serverSocketsRequestsService: <a href="../injectables/ServerSocketsRequestsService.html" target="_self">ServerSocketsRequestsService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, dialog: MatDialog, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>videocallsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VideocallsService.html" target="_self" >VideocallsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>servicio de videollamadas</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>serverSocketsRequestsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ServerSocketsRequestsService.html" target="_self" >ServerSocketsRequestsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>servicio de sockets</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>servicio de usuarios</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>dialogo de llamada entrante</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>sanitizer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="endCall"></a>
+                    <span class="name">
+                        <span ><b>endCall</b></span>
+                        <a href="#endCall"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>endCall()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Esta función se dispara cuando el usuario termina la llamada en curso. Se encarga de enviar el socket de llamada finalizada al otro usuario y de reniciar los atributos necesarios.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getStatusOfUsers"></a>
+                    <span class="name">
+                        <span ><b>getStatusOfUsers</b></span>
+                        <a href="#getStatusOfUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getStatusOfUsers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene el estado de los usuarios de la aplicación.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserContactsAndStatus"></a>
+                    <span class="name">
+                        <span ><b>getUserContactsAndStatus</b></span>
+                        <a href="#getUserContactsAndStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserContactsAndStatus()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene los contactos del usuario junto a su estado (en línea o desconectado)</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initCall"></a>
+                    <span class="name">
+                        <span ><b>initCall</b></span>
+                        <a href="#initCall"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initCall(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se dispara cuando el usuario intenta llamar a uno de sus contactos en línea.
+Se encarga de inicializar los dispositivos de audio y video del usuario y de, mediante sockets, enviar la notificación de llamada entrante a su contacto.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del usuario que se va a llamar</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeCallsEndListener"></a>
+                    <span class="name">
+                        <span ><b>initializeCallsEndListener</b></span>
+                        <a href="#initializeCallsEndListener"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initializeCallsEndListener()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="191"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:191</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Esta función se dispara cuando el contacto con el que el usuario está en llamada la finaliza. Se encarga de cerrar la llamada actual y de reiniciar todos los atributos necesraios.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initializeCallsEntry"></a>
+                    <span class="name">
+                        <span ><b>initializeCallsEntry</b></span>
+                        <a href="#initializeCallsEntry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initializeCallsEntry(res: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Esta función gestiona una llamada entrante. Se encarga de determinar si la llamada va dirigida al usuario y de abrir el diálogo de llamada entrante.
+Si el usuario acepta la llamada, se inicializan sus recuros de audio y video y el resto de atributos necesarios de la llamada y se notifica la respuesta a la llamada mediante el servicio de videollamadas.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>res</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>contiene los datos de la llamada entrante.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="muteAudio"></a>
+                    <span class="name">
+                        <span ><b>muteAudio</b></span>
+                        <a href="#muteAudio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>muteAudio()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:240</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deja de compartir audio en la videollamada en curso.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="261"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:261</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se ejecuta cunado se destruye el componente de videollamada. Cuelga la videollamada en curso si el usuario navega a otra parte de la aplicación.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se dispara cuando el usuario usa el filtro de buscar por nombre sus contactos.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos del evento de búsqueda</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stopVideo"></a>
+                    <span class="name">
+                        <span ><b>stopVideo</b></span>
+                        <a href="#stopVideo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>stopVideo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:251</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deja de compartir la señal de vídeo en la videollamda en curso.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allContacts"></a>
+                    <span class="name">
+                        <span ><b>allContacts</b></span>
+                        <a href="#allContacts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de todos los contactos del usuario, su contenido no varía.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="contacts"></a>
+                    <span class="name">
+                        <span ><b>contacts</b></span>
+                        <a href="#contacts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de contactos del usuario, su contenido es sensible al buscador por nombre del componente.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">- dialogo de llamada entrante</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="entryCallSubscription"></a>
+                    <span class="name">
+                        <span ><b>entryCallSubscription</b></span>
+                        <a href="#entryCallSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Suscripción para notificar llamadas entrantes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="videocallsService"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>videocallsService</b></span>
+                        <a href="#videocallsService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../injectables/VideocallsService.html" target="_self" >VideocallsService</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/videocalls/videocalls.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">- servicio de videollamadas</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, Input, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { ServerSocketsRequestsService } from &#x27;src/app/shared/services/server-sockets.service&#x27;;
+import { VideocallsService } from &#x27;./videocalls.service&#x27;;
+import { UserService } from &#x27;src/app/shared/services/user.service&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { EntryCallDialogComponent } from &#x27;./entry-call-dialog/entry-call-dialog.component&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { DomSanitizer } from &#x27;@angular/platform-browser&#x27;;
+
+@Component({
+    selector: &#x27;app-videocalls&#x27;,
+    templateUrl: &#x27;./videocalls.component.html&#x27;,
+    styleUrls: [&#x27;./videocalls.component.scss&#x27;]
+})
+/** Componente de gestión de las videollamadas */
+export class VideocallsComponent implements OnInit {
+    /** Lista de contactos del usuario, su contenido es sensible al buscador por nombre del componente. */
+    contacts: any &#x3D; [];
+    /** Lista de todos los contactos del usuario, su contenido no varía. */
+    allContacts: any &#x3D; [];
+
+    /** Suscripción para notificar llamadas entrantes. */
+    entryCallSubscription: any;
+    /**
+     * Constructor
+     * @param videocallsService - servicio de videollamadas
+     * @param serverSocketsRequestsService - servicio de sockets
+     * @param userService - servicio de usuarios
+     * @param dialog  - dialogo de llamada entrante
+     * @param router 
+     * @param route 
+     * @param sanitizer 
+     */
+    constructor(
+        public videocallsService: VideocallsService,
+        private serverSocketsRequestsService: ServerSocketsRequestsService,
+        private userService: UserService,
+        public dialog: MatDialog,
+        private router: Router,
+        private route: ActivatedRoute,
+        private sanitizer: DomSanitizer
+    ) { }
+    ngOnInit(): void {
+
+        this.serverSocketsRequestsService.loginUserSocket(sessionStorage.getItem(&quot;id&quot;) as string);
+        //this.videocallsService.initializePeer();
+        this.route.queryParamMap.subscribe((param) &#x3D;&gt; {
+            if (param.get(&quot;entryCall&quot;)) {
+                let res &#x3D; { idPeer: param.get(&quot;idPeer&quot;), idUserOrigin: param.get(&quot;idUserOrigin&quot;), idUserDestiny: param.get(&quot;idUserDestiny&quot;), userNameOrigin: param.get(&quot;userNameOrigin&quot;) }
+                this.initializeCallsEntry(res);
+            }
+        })
+        this.getStatusOfUsers();
+        this.getUserContactsAndStatus();
+        this.initializeCallsEndListener();
+    }
+
+    /** Obtiene los contactos del usuario junto a su estado (en línea o desconectado) */
+    getUserContactsAndStatus() {
+        this.userService.getUserContacts(sessionStorage.getItem(&quot;id&quot;) as string).subscribe((contacts) &#x3D;&gt; {
+            this.allContacts &#x3D; contacts.data;
+            this.getStatusOfUsers();
+        })
+    }
+
+    /** Obtiene el estado de los usuarios de la aplicación. */
+    getStatusOfUsers() {
+        this.serverSocketsRequestsService.getUsersOnline().subscribe((response: any) &#x3D;&gt; {
+            let usersOnline: any &#x3D; [];
+            if (Symbol.iterator in Object(response)) {
+                for (let user of (new Map(response))) {
+                    usersOnline.push(user[1]); //el id del usuario
+                }
+                this.allContacts.forEach((contact: any) &#x3D;&gt; {
+                    if (usersOnline.includes(contact._id)) {
+                        contact.isOnline &#x3D; true;
+                    } else {
+                        contact.isOnline &#x3D; false;
+                    }
+                })
+                this.allContacts.sort((a: any, b: any) &#x3D;&gt; b.isOnline - a.isOnline);
+                this.allContacts.forEach((contact: any) &#x3D;&gt; {
+                    this.userService.getProfilePhoto(contact._id).subscribe((photo) &#x3D;&gt; {
+                        if (photo.type &#x3D;&#x3D; &quot;image/jpeg&quot;) {
+                            let objectURL &#x3D; URL.createObjectURL(photo);
+                            contact.photo &#x3D; this.sanitizer.bypassSecurityTrustUrl(objectURL);
+                        } else {
+                            contact.photo &#x3D; undefined;
+                        }
+                    })
+                })
+                this.contacts &#x3D; this.allContacts;
+
+
+            }
+        })
+    }
+
+    /**
+     * Se dispara cuando el usuario usa el filtro de buscar por nombre sus contactos.
+     * @param event - datos del evento de búsqueda
+     */
+    onSearch(event: any) {
+        if (event.value &#x3D;&#x3D; &quot;&quot;) {
+            this.contacts &#x3D; this.allContacts;
+        } else {
+            this.contacts &#x3D; this.allContacts.filter((contact: any) &#x3D;&gt;
+                contact.name.startsWith(event.value)
+            )
+        }
+
+    }
+
+    /**
+     * Se dispara cuando el usuario intenta llamar a uno de sus contactos en línea.
+     * Se encarga de inicializar los dispositivos de audio y video del usuario y de, mediante sockets, enviar la notificación de llamada entrante a su contacto. 
+     * @param userId - id del usuario que se va a llamar
+     */
+    initCall(userId: string) {
+
+        this.videocallsService.onCall &#x3D; true;
+        this.videocallsService.initializeVideoAudioDevices();
+        this.videocallsService.idUserOnCall &#x3D; userId;
+        const body &#x3D; {
+            idPeer: this.videocallsService.idPeer,
+            idUserOrigin: sessionStorage.getItem(&quot;id&quot;) as string,
+            userNameOrigin: sessionStorage.getItem(&quot;name&quot;) as string,
+            idUserDestiny: userId
+        };
+        this.userService.getFullNameById(userId).subscribe((response: any) &#x3D;&gt; {
+            this.videocallsService.userNameOnCall &#x3D; response.data.fullname;
+        })
+        this.serverSocketsRequestsService.sendVideocallRequest(body)
+    }
+
+    /** Esta función gestiona una llamada entrante. Se encarga de determinar si la llamada va dirigida al usuario y de abrir el diálogo de llamada entrante.
+     * Si el usuario acepta la llamada, se inicializan sus recuros de audio y video y el resto de atributos necesarios de la llamada y se notifica la respuesta a la llamada mediante el servicio de videollamadas.
+     * @param res - contiene los datos de la llamada entrante.
+     */
+
+     initializeCallsEntry(res: any) {
+        if (res.idPeer !&#x3D; undefined &amp;&amp; res.idPeer !&#x3D; this.videocallsService.idPeer &amp;&amp; res.idUserDestiny &#x3D;&#x3D; sessionStorage.getItem(&quot;id&quot;) as string) {
+            this.dialog.open(EntryCallDialogComponent, {
+                data: {message: &quot;¡Estás recibiendo una llamada entrante de &quot; + res.userNameOrigin + &quot;!&quot;, idUser: res.idUserOrigin
+            },
+            }).afterClosed().subscribe((confirm: boolean) &#x3D;&gt; {
+                if (confirm) {
+
+                    if (this.videocallsService.myStream &#x3D;&#x3D; undefined) {
+                        if (navigator &amp;&amp; navigator.mediaDevices) {
+                            navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream &#x3D;&gt; {
+                                this.videocallsService.myStream &#x3D; stream;
+                                this.videocallsService.addStreamToUserList(stream);
+                                this.videocallsService.idUserOnCall &#x3D; res.idUserOrigin;
+                                this.videocallsService.onCall &#x3D; true;
+                                this.userService.getFullNameById(res.idUserOrigin).subscribe((response: any) &#x3D;&gt; {
+                                    this.videocallsService.userNameOnCall &#x3D; response.data.fullname;
+                                });
+                                this.videocallsService.sendCallToPeer(res.idPeer, this.videocallsService.myStream);
+
+                            }).catch(() &#x3D;&gt; {
+                                console.log(&#x27;No permissions to access audio/video devices.&#x27;);
+                            });
+                        } else {
+                            console.log(&#x27;Not exists audio/video devices.&#x27;);
+                        }
+
+                    }
+                }
+                else {
+                    const body &#x3D; {
+                        idPeer: this.videocallsService.idPeer,
+                        idUser: sessionStorage.getItem(&quot;id&quot;) as string
+                    }
+                    this.serverSocketsRequestsService.sendEndVideocall(body);
+                    
+                    this.router.navigate(
+                        [], 
+                        {
+                          relativeTo: this.route,
+                          queryParams: {}
+                        });
+                        window.location.replace(location.pathname);
+                }
+            })
+        }
+
+    }
+
+    /** Esta función se dispara cuando el contacto con el que el usuario está en llamada la finaliza. Se encarga de cerrar la llamada actual y de reiniciar todos los atributos necesraios. */
+    initializeCallsEndListener() {
+        this.serverSocketsRequestsService.endVideocall().subscribe((response: any) &#x3D;&gt; {
+            if (this.videocallsService.currentCall !&#x3D; undefined) {
+                if (this.videocallsService.currentCall.peer &#x3D;&#x3D; response.idPeer) {
+                    this.videocallsService.currentCall.close();
+                    this.router.navigate(
+                        [],
+                        {
+                            relativeTo: this.route,
+                            queryParams: {}
+                        });
+                    window.location.replace(location.pathname);
+
+                }
+            }
+            if (this.videocallsService.currentCall &#x3D;&#x3D; undefined &amp;&amp; response[1] !&#x3D; undefined &amp;&amp; response[1][1] &#x3D;&#x3D; this.videocallsService.idUserOnCall) {
+                this.router.navigate(
+                    [],
+                    {
+                        relativeTo: this.route,
+                        queryParams: {}
+                    });
+                window.location.replace(location.pathname);
+
+            }
+
+
+
+        });
+    }
+
+    /** Esta función se dispara cuando el usuario termina la llamada en curso. Se encarga de enviar el socket de llamada finalizada al otro usuario y de reniciar los atributos necesarios. */
+    endCall() {
+        const body &#x3D; {
+            idPeer: this.videocallsService.idPeer
+        }
+        this.serverSocketsRequestsService.sendEndVideocall(body);
+        this.router.navigate(
+            [],
+            {
+                relativeTo: this.route,
+                queryParams: {}
+            });
+        window.location.replace(location.pathname);
+
+
+    }
+
+    /** Deja de compartir audio en la videollamada en curso. */
+    muteAudio() {
+        if (this.videocallsService.userListStream[0].getAudioTracks()[0].enabled) {
+            this.videocallsService.userListStream[0].getAudioTracks()[0].enabled &#x3D; false;
+        } else {
+            this.videocallsService.userListStream[0].getAudioTracks()[0].enabled &#x3D; true;
+
+        }
+
+    }
+
+    /** Deja de compartir la señal de vídeo en la videollamda en curso. */
+    stopVideo() {
+        if (this.videocallsService.userListStream[0].getVideoTracks()[0].enabled) {
+            this.videocallsService.userListStream[0].getVideoTracks()[0].enabled &#x3D; false;
+        } else {
+            this.videocallsService.userListStream[0].getVideoTracks()[0].enabled &#x3D; true;
+
+        }
+    }
+
+    /** Se ejecuta cunado se destruye el componente de videollamada. Cuelga la videollamada en curso si el usuario navega a otra parte de la aplicación. */
+    ngOnDestroy() {
+        if (this.videocallsService.onCall) {
+            this.endCall();
+        }
+    }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1 class&#x3D;&quot;header-title&quot;&gt; Videollamadas &lt;/h1&gt;
+
+&lt;div class&#x3D;&quot;grid&quot; *ngIf&#x3D;&quot;!this.videocallsService.onCall&quot;&gt;
+    &lt;div class&#x3D;&quot;contacts-grid&quot;&gt;
+        &lt;div class&#x3D;&quot;contacts-frame&quot;&gt;
+
+            &lt;h2 id&#x3D;&quot;contact-title&quot;&gt;Contactos &lt;/h2&gt;
+            &lt;mat-form-field&gt;
+                &lt;input matInput type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;Buscar contacto...&quot; (input)&#x3D;&quot;onSearch($event.target)&quot; /&gt;
+            &lt;/mat-form-field&gt;
+            &lt;div class&#x3D;&quot;no-contacts&quot; *ngIf&#x3D;&quot;this.contacts.length &#x3D;&#x3D; 0&quot;&gt;
+                &lt;span&gt; No tienes ningún contacto debido a que no compartes trabajos académicos con otros
+                    usuarios.&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;contact&quot; *ngFor&#x3D;&quot;let contact of contacts&quot;&gt;
+
+                &lt;div *ngIf&#x3D;&quot;this.contacts.length &gt; 0&quot;&gt;
+                    &lt;div class&#x3D;&quot;image-user-container&quot;&gt;
+                        &lt;img alt&#x3D;&quot;Imagen de perfil&quot; *ngIf&#x3D;&quot;contact.photo!&#x3D;undefined&quot; class&#x3D;&quot;circular-photo&quot;
+                            [src]&#x3D;&quot;contact.photo&quot;&gt;
+                        &lt;img alt&#x3D;&quot;Imagen de perfil&quot; *ngIf&#x3D;&quot;contact.photo&#x3D;&#x3D;undefined&quot; class&#x3D;&quot;circular-photo&quot;
+                            src&#x3D;&quot;assets/images/profile-default.png&quot;&gt;
+                        &lt;div *ngIf&#x3D;&quot;!contact.isOnline&quot; class&#x3D;&#x27;badge-offline&#x27;&gt;
+                        &lt;/div&gt;
+                        &lt;div *ngIf&#x3D;&quot;contact.isOnline&quot; class&#x3D;&#x27;badge-online&#x27;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+
+                &lt;span class&#x3D;&quot;info-user&quot;&gt;{{contact.name}} {{contact.surname}}
+                &lt;/span&gt;
+                &lt;mat-icon tabindex&#x3D;0 (keydown.enter)&#x3D;&quot;initCall(contact._id)&quot; matTooltip&#x3D;&quot;Iniciar videollamada&quot;
+                    *ngIf&#x3D;&quot;contact.isOnline&quot; class&#x3D;&quot;icon-call-online&quot; (click)&#x3D;&quot;initCall(contact._id)&quot;&gt;call&lt;/mat-icon&gt;
+                &lt;mat-icon *ngIf&#x3D;&quot;!contact.isOnline&quot; class&#x3D;&quot;icon-call-offline&quot;&gt;call&lt;/mat-icon&gt;
+
+                &lt;mat-menu&gt;&lt;/mat-menu&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;div class&#x3D;&quot;call-background&quot;&gt;
+    &lt;div *ngIf&#x3D;&quot;this.videocallsService.onCall&quot; class&#x3D;&quot;wrapper-video&quot;&gt;
+        &lt;div class&#x3D;&quot;video-user&quot;&gt;
+            &lt;div *ngFor&#x3D;&quot;let user of this.videocallsService.userListStream&quot;&gt;
+                &lt;video [srcObject]&#x3D;&quot;user&quot; autoplay&gt;&lt;/video&gt;
+                &lt;div class&#x3D;&quot;label-name&quot;&gt;
+                    &lt;span *ngIf&#x3D;&quot;user&#x3D;&#x3D;this.videocallsService.userListStream[0]&quot;&gt;
+                        Tú
+                    &lt;/span&gt;
+                    &lt;span *ngIf&#x3D;&quot;user&#x3D;&#x3D;this.videocallsService.userListStream[1]&quot;&gt;
+                        &lt;span&gt;{{this.videocallsService.userNameOnCall}}&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+    &lt;/div&gt;
+
+    &lt;div *ngIf&#x3D;&quot;this.videocallsService.onCall&quot; class&#x3D;&quot;videocall-options&quot;&gt;
+
+        &lt;button *ngIf&#x3D;&quot;this.videocallsService.userListStream[0].getAudioTracks()[0].enabled&quot; class&#x3D;&quot;call-options&quot;
+            mat-raised-button (click)&#x3D;&quot;this.muteAudio()&quot;&gt;
+            &lt;mat-icon matTooltip&#x3D;&quot;Desactivar micrófono&quot;&gt;mic&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;button *ngIf&#x3D;&quot;!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled&quot; class&#x3D;&quot;call-options&quot;
+            mat-raised-button (click)&#x3D;&quot;this.muteAudio()&quot;&gt;
+            &lt;mat-icon matTooltip&#x3D;&quot;Activar micrófono&quot;&gt;mic_off&lt;/mat-icon&gt;
+        &lt;/button&gt;
+
+        &lt;button class&#x3D;&quot;call-options&quot; mat-raised-button (click)&#x3D;&quot;this.endCall()&quot;&gt;
+            &lt;mat-icon matTooltip&#x3D;&quot;Terminar videollamada&quot; style&#x3D;&quot;color: red&quot;&gt;call_end&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;button *ngIf&#x3D;&quot;this.videocallsService.userListStream[0].getVideoTracks()[0].enabled&quot; class&#x3D;&quot;call-options&quot;
+            mat-raised-button (click)&#x3D;&quot;this.stopVideo()&quot;&gt;
+            &lt;mat-icon matTooltip&#x3D;&quot;Apagar cámara&quot;&gt;videocam&lt;/mat-icon&gt;
+        &lt;/button&gt;
+
+        &lt;button *ngIf&#x3D;&quot;!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled&quot; class&#x3D;&quot;call-options&quot;
+            mat-raised-button (click)&#x3D;&quot;this.stopVideo()&quot;&gt;
+            &lt;mat-icon matTooltip&#x3D;&quot;Encender cámara&quot;&gt;videocam_off&lt;/mat-icon&gt;
+        &lt;/button&gt;
+
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- class&#x3D;&quot;wrapper-video&quot; &gt;
+    
+
+    &lt;div *ngFor&#x3D;&quot;let user of listUser&quot;&gt;
+        &lt;video [srcObject]&#x3D;&quot;user&quot; autoplay&gt;&lt;/video&gt;
+        &lt;div class&#x3D;&quot;label-name&quot;&gt;
+            &lt;span&gt;{{user.nameUser}}&lt;/span&gt;
+          &lt;/div&gt;
+    &lt;/div&gt;
+
+
+  &lt;/div&gt;
+
+
+  --&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./videocalls.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+.contacts-frame {
+    margin-top: 2%;
+      
+      
+      
+    background-color: white;
+}
+
+#contact-title {
+
+    text-align: center;
+    border-bottom: 1px #f2f2f2 solid;
+
+}
+
+.contact {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    border-radius: 1px;
+    margin-bottom: 1%;
+    padding: 1% 1% 1% 1%;
+    margin-left: 2%;
+}
+
+.contact:hover {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+.icon-call-online:hover {
+
+    cursor: pointer;
+    color: green;
+
+
+}
+
+.icon-call-online, .icon-call-offline {
+    float: right;
+    margin-right: 5%;
+    margin-left: auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    color: gray;
+
+
+
+}
+
+.circular-photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 1%;
+}
+
+.info-user {
+    padding-left: 2%;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.contacts-grid {
+    grid-area: 1 / 2 / 6 / 5;
+}
+
+.header-title{
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+
+.image-user-container {
+
+    position: relative;
+    margin-right: 1%;
+}
+
+
+.badge-online {
+    background-color: green;
+
+}
+
+
+.badge-offline {
+    background-color: gray;
+
+}
+
+.badge-offline,
+.badge-online {
+    width: 12px;
+    height: 12px;
+    border-radius: 60%;
+    border: 1px solid white;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+
+}
+
+
+mat-form-field {
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.wrapper-video {
+    float: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+.video-user{
+    border-radius: 10px; 
+    overflow: hidden; 
+    margin-left: 5%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+video {
+    height: 80%;
+    width: 80%;
+    border-radius: 10px; 
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    
+}
+
+.videocall-options{
+    margin-top: 15%;
+    float: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.call-options{
+    margin-left: 2%;
+}
+.call-background{
+    background-color: #313131;
+
+}
+
+.label-name{
+    color: white;
+    text-align: center;
+    justify-content: center;
+    float: center;
+    margin-bottom: 2%;
+}
+
+.no-contacts{
+    margin-left: 5%;
+    margin-right: 1%;
+    color: gray;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1 class="header-title"> Videollamadas </h1><div class="grid" *ngIf="!this.videocallsService.onCall">    <div class="contacts-grid">        <div class="contacts-frame">            <h2 id="contact-title">Contactos </h2>            <mat-form-field>                <input matInput type="text" placeholder="Buscar contacto..." (input)="onSearch($event.target)" />            </mat-form-field>            <div class="no-contacts" *ngIf="this.contacts.length == 0">                <span> No tienes ningún contacto debido a que no compartes trabajos académicos con otros                    usuarios.</span>            </div>            <div class="contact" *ngFor="let contact of contacts">                <div *ngIf="this.contacts.length > 0">                    <div class="image-user-container">                        <img alt="Imagen de perfil" *ngIf="contact.photo!=undefined" class="circular-photo"                            [src]="contact.photo">                        <img alt="Imagen de perfil" *ngIf="contact.photo==undefined" class="circular-photo"                            src="assets/images/profile-default.png">                        <div *ngIf="!contact.isOnline" class=\'badge-offline\'>                        </div>                        <div *ngIf="contact.isOnline" class=\'badge-online\'>                        </div>                    </div>                </div>                <span class="info-user">{{contact.name}} {{contact.surname}}                </span>                <mat-icon tabindex=0 (keydown.enter)="initCall(contact._id)" matTooltip="Iniciar videollamada"                    *ngIf="contact.isOnline" class="icon-call-online" (click)="initCall(contact._id)">call</mat-icon>                <mat-icon *ngIf="!contact.isOnline" class="icon-call-offline">call</mat-icon>                <mat-menu></mat-menu>            </div>        </div>    </div></div><div class="call-background">    <div *ngIf="this.videocallsService.onCall" class="wrapper-video">        <div class="video-user">            <div *ngFor="let user of this.videocallsService.userListStream">                <video [srcObject]="user" autoplay></video>                <div class="label-name">                    <span *ngIf="user==this.videocallsService.userListStream[0]">                        Tú                    </span>                    <span *ngIf="user==this.videocallsService.userListStream[1]">                        <span>{{this.videocallsService.userNameOnCall}}</span>                    </span>                </div>            </div>        </div>    </div>    <div *ngIf="this.videocallsService.onCall" class="videocall-options">        <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"            mat-raised-button (click)="this.muteAudio()">            <mat-icon matTooltip="Desactivar micrófono">mic</mat-icon>        </button>        <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"            mat-raised-button (click)="this.muteAudio()">            <mat-icon matTooltip="Activar micrófono">mic_off</mat-icon>        </button>        <button class="call-options" mat-raised-button (click)="this.endCall()">            <mat-icon matTooltip="Terminar videollamada" style="color: red">call_end</mat-icon>        </button>        <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"            mat-raised-button (click)="this.stopVideo()">            <mat-icon matTooltip="Apagar cámara">videocam</mat-icon>        </button>        <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"            mat-raised-button (click)="this.stopVideo()">            <mat-icon matTooltip="Encender cámara">videocam_off</mat-icon>        </button>    </div></div><!-- class="wrapper-video" >        <div *ngFor="let user of listUser">        <video [srcObject]="user" autoplay></video>        <div class="label-name">            <span>{{user.nameUser}}</span>          </div>    </div>  </div>  --></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BoardComponent', 'selector': 'app-board'},{'name': 'CalendarWorkComponent', 'selector': 'app-calendar-work'},{'name': 'ConfirmDialog', 'selector': 'confirm-dialog'},{'name': 'ContactoComponent', 'selector': 'app-contact'},{'name': 'CustomBreadcrumbComponent', 'selector': 'app-custom-breadcrumb'},{'name': 'DialogAddDirectory', 'selector': 'modal-add-directory.html'},{'name': 'DialogAddPost', 'selector': 'modal-add-post.html'},{'name': 'DialogAddWork', 'selector': 'add-work.html'},{'name': 'DialogManageTask', 'selector': 'dialog-manage-task.html'},{'name': 'DialogNewEvent', 'selector': 'modal-events.html'},{'name': 'DialogUploadFile', 'selector': 'modal-upload-file.html'},{'name': 'EntryCallDialogComponent', 'selector': 'app-entry-call-dialog'},{'name': 'FilesComponent', 'selector': 'app-files'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForoComponent', 'selector': 'app-foro'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'InfoComponent', 'selector': 'app-info-work'},{'name': 'LegalInfoComponent', 'selector': 'app-legal-info'},{'name': 'ListTasksComponent', 'selector': 'app-list-tasks'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ManageWorkComponent', 'selector': 'app-manage-work'},{'name': 'ModalAddUsers', 'selector': 'modal-add-users'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'Pagina404Component', 'selector': 'pagina404'},{'name': 'PostListComponent', 'selector': 'app-post-list'},{'name': 'PostManagementComponent', 'selector': 'app-post-management'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'VideocallsComponent', 'selector': 'app-videocalls'},{'name': 'WorkListComponent', 'selector': 'app-work-list'},{'name': 'WorkRequestsComponent', 'selector': 'app-work-requests'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'VideocallsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'VideocallsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

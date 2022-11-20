@@ -3,50 +3,57 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 import { distinctUntilChanged, filter } from 'rxjs/operators';
-import { PostService } from 'src/app/modules/works/foro/foro/post.service';
-import { WorkListService } from 'src/app/modules/works/work-list.service';
+import { PostService } from 'src/app/modules/works/foro/post.service';
+import { WorkService } from 'src/app/shared/services/work.service';
 
-import { Breadcrumb } from '../../models/breadcumb.model';
-
-export interface IBreadCrumb {
-  label: string;
-  url: string;
-}
 
 @Component({
   selector: 'app-custom-breadcrumb',
   templateUrl: './custom-breadcrumb.component.html',
   styleUrls: ['./custom-breadcrumb.component.scss'],
 })
+/**
+ * Define el componente de migas de pan.
+ */
 export class CustomBreadcrumbComponent implements OnInit {
 
+  /** Titulo del trabajo académico */
   titleWork!: string;
+  /** Titulo del tema */
   titlePost!: string;
 
+  /** Array con las migas de pan */
   breadcrumbs: any[] = [];
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private postService: PostService, private workListService: WorkListService) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private postService: PostService, private workService: WorkService) {
     this.router.events.subscribe((value) => {
       this.breadcrumbs = [];
       this.getContent()
     })
 
   }
-
-
-
+  /**
+   * Obtiene el titulo del trabajo académico.
+   * @param idWork id del trabajo académico
+   */
   async getTitleWork(idWork: string){
-    this.workListService.getWorkById(idWork).subscribe(async val => {
+    this.workService.getWorkById(idWork).subscribe(async val => {
       this.titleWork = await val.data.title;
     });
   }
-
+/**
+ * Obtiene el título del tema
+ * @param idPost id del tema.
+ */
   async getTitlePost(idPost: string){
      this.postService.getPostById(idPost).subscribe( async val => {
       this.titlePost = await val.data.title;
     })
   }
+
+  /**
+   * Calcula el contenido del componente migas de pan junto a los enlaces que debe tener cada uno de los elementos.
+   */
   getContent() {
-    ///trabajos/623c327bd7cb6eff80124959/posts
     var route = this.router.url.split("/");
 
     for (var i = 0; i < route.length; i++) {

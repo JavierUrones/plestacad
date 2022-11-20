@@ -1,4 +1,4 @@
-<mat-tab-group #tab animationDuration="1ms" >
+<mat-tab-group #tab animationDuration="1ms" [selectedIndex]="isActiveTab" >
     <mat-tab label="Lista" #listTab>
         <app-list-tasks></app-list-tasks>
     </mat-tab>

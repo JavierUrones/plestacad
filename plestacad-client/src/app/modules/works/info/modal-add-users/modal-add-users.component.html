@@ -29,7 +29,8 @@
         <p class="textEmpty" *ngIf="teachersInvited.length==0"> Ningún profesor invitado</p>
 
         <mat-list *ngIf="teachersInvited.length>0">
-            <mat-list-item *ngFor="let teacher of teachersInvited"> {{teacher}} <mat-icon class="iconDelete"
+            <mat-list-item  *ngFor="let teacher of teachersInvited"> {{teacher}}
+                 <mat-icon matToolTip="Eliminar profesor invitado" tabindex=0 (keydown.enter)="deleteTeacherInvited(teacher)" class="iconDelete"
                     (click)="deleteTeacherInvited(teacher)">highlight_remove</mat-icon>
             </mat-list-item>
         </mat-list>
@@ -59,7 +60,7 @@
         <p class="textEmpty" *ngIf="studentsInvited.length==0"> Ningún estudiante invitado</p>
 
         <mat-list *ngIf="studentsInvited.length>0">
-            <mat-list-item *ngFor="let student of studentsInvited"> {{student}} <mat-icon class="iconDelete"
+            <mat-list-item *ngFor="let student of studentsInvited"> {{student}} <mat-icon matToolTip="Eliminar estudiante invitado" tabindex=0 (keydown.enter)="deleteStudentInvited(student)"  class="iconDelete"
                     (click)="deleteStudentInvited(student)">highlight_remove</mat-icon>
             </mat-list-item>
         </mat-list>

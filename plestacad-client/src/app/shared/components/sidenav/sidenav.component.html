@@ -1,28 +1,28 @@
 <mat-nav-list>
     <h1 matSubheader>Menu</h1>
 
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/trabajos" (click)="onClickedMenuItem()">
+    <a id="worksOption" mat-list-item routerLinkActive="list-item-active" routerLink="/trabajos" (click)="onClickedMenuItem()">
         <mat-icon>assignment</mat-icon>
         Mis Trabajos
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/perfil">
+    <a id="profileOption" mat-list-item routerLinkActive="list-item-active" routerLink="/perfil/{{this.idUser}}" (click)="onClickedMenuItem()">
         <mat-icon>person</mat-icon>
         Perfil
     </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/videollamadas">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/videollamadas" (click)="onClickedMenuItem()">
         <mat-icon>call</mat-icon>
         Videollamadas
     </a>
-    <a  mat-list-item routerLink="/solicitudes-trabajos">
-        <mat-icon *ngIf="this.newWorkRequests>0" matBadge="{{this.newWorkRequests}}" matBadgePosition="before" matBadgeColor="accent">add</mat-icon>
+    <a  id="worksRequestsOption" mat-list-item routerLink="/solicitudes-trabajos" (click)="onClickedMenuItem()">
+        <mat-icon *ngIf="this.newWorkRequests>0" matBadge="{{this.newWorkRequests}}" matBadgePosition="before" matBadgeColor="accent" class="my-custom-badge-accent">add</mat-icon>
         <mat-icon *ngIf="this.newWorkRequests==0">add</mat-icon>
         Solicitudes pendientes</a> 
-    <a mat-list-item routerLink="/notificaciones">
-        <mat-icon *ngIf="this.newNotifications>0" matBadge="{{this.newNotifications}}" matBadgePosition="before" matBadgeColor="accent">notifications</mat-icon>
+    <a id="notificationsOption" mat-list-item routerLink="/notificaciones" (click)="onClickedMenuItem()">
+        <mat-icon *ngIf="this.newNotifications>0" matBadge="{{this.newNotifications}}" matBadgePosition="before" matBadgeColor="accent" class="my-custom-badge-accent">notifications</mat-icon>
         <mat-icon *ngIf="this.newNotifications==0" >notifications</mat-icon>
 
         Notificaciones</a>
-    <a mat-list-item routerLink="/calendario">
+    <a id="helpOption" mat-list-item routerLink="/ayuda" (click)="onClickedMenuItem()">
         <mat-icon>help</mat-icon>
         Ayuda</a>
     <mat-divider></mat-divider>

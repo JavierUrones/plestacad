@@ -1,18 +1,27 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Breadcrumb } from 'src/app/shared/models/breadcumb.model';
+import { WorkService } from 'src/app/shared/services/work.service';
 
 @Component({
   selector: 'app-manage-work',
   templateUrl: './manage-work.component.html',
   styleUrls: ['./manage-work.component.scss']
 })
+/** Define el esqueleto de la gestión de un trabajo académico*/
 export class ManageWorkComponent implements OnInit {
+  /** id  del trabajo académico*/
   id!: string;
+  /** Menú de pestañas del trabajo académico */
   @ViewChild("tab", { static: false }) tab!: MatTabGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router ) { 
+  titleWork!: string;
+  /**
+   * Constructor
+   * @param route 
+   * @param router 
+   */
+  constructor(private route: ActivatedRoute, private router: Router, private workService: WorkService ) { 
     this.router.events.subscribe(
       params => {
         if(params instanceof NavigationEnd && params.url.split('/')[1] !=undefined
@@ -21,25 +30,22 @@ export class ManageWorkComponent implements OnInit {
             this.tab.selectedIndex = 0;
 
           }
-          console.log("PARAMS", params.url.split('/') )
 
         }
-        
-        //
-
       }
   );
 
   }
 
+
+  /** Carga el id del trabajo académico consultado */
   ngOnInit(): void {
     this.id = this.route.snapshot.params['idWork'];
-    
-    
-    
+    this.workService.getWorkById(this.id).subscribe((response)=> this.titleWork=response.data.title)
   }
 
 
+  /** Evento que se dispara cuando el usuario pulsa sobre una pestaña del menú de pestañas */
   onClick(event: any){
     this.id = this.route.snapshot.params['idWork'];
     var element = event.target as Element;
@@ -50,10 +56,7 @@ export class ManageWorkComponent implements OnInit {
       if(element.textContent=="Información General" || element.textContent=="Archivos" || element.textContent=="Calendario" || element.textContent=="Tareas" ){
       this.router.navigate(["/trabajos/"+this.id]);
     }
-
-
   }
-
 
 
 }

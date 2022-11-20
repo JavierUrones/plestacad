@@ -1,8 +1,23 @@
+/** Router express que define el middleware de la API.
+ * @module middleware/authMiddleware
+ * @requires express
+ */
 const routesMiddlewareAuth = require("express").Router();
+/**
+ * Módulo JWT (JSON Web Token)
+ */
 const jwt = require("jsonwebtoken");
+/**
+ * Módulo secret
+ */
 const secret = require("../../config/index");
 
-
+/**
+ * @name use/signup
+ * @function
+ * Comprueba que el token de las peticiones que llegan a las rutas de la API sea válido.
+ * @memberof module:middleware/authMiddleware
+ */
 routesMiddlewareAuth.use((req, res, next) => {
   try {
       const token = req.header("access-token");
@@ -17,28 +32,6 @@ routesMiddlewareAuth.use((req, res, next) => {
   }
 });
 
-
-/*
-routesMiddlewareAuth.use((req, res, next) => {
-    const token = req.headers["access-token"];
-  
-    if (token) {
-      jwt.verify(token, app.get("key"), (err, decoded) => {
-        if (err) {
-          return res.json({ message: "Token invalido" });
-        } else {
-
-          req.decoded = decoded;
-          next();
-        }
-      });
-    } else {
-      res.send({
-        message: "No se ha incluido el token",
-      });
-    }
-  });
-*/
 
 
 module.exports = routesMiddlewareAuth;

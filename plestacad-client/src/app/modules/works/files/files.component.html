@@ -1,0 +1,41 @@
+<mat-spinner *ngIf="loading" color="primary"></mat-spinner>
+
+<p-treeTable *ngIf="!loading" [value]="files">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of cols">
+        {{ col.header }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+
+    <tr>
+
+      <td>
+        <div> 
+          <p-treeTableToggler  [rowNode]="rowNode"></p-treeTableToggler>
+
+          <mat-icon color="secondary" *ngIf="rowData.isDirectory">
+          folder
+        </mat-icon>
+        <mat-icon class="file-icon" *ngIf="!rowData.isDirectory">
+          insert_drive_file
+        </mat-icon> <span class="aligned-with-icon">{{ rowData.filename }}  </span></div>
+       
+
+       
+      </td>
+      <td>{{ bytesToSize(rowData.size)}}</td>
+      <td>{{ rowData.modification | date:'dd/MM/yyyy HH:mm:ss' }} </td>
+      <td>
+        <mat-icon matTooltip="Añadir archivo" class="operations" (click)="addFile(rowData.path)"  tabindex=0 (keydown.enter)="addFile(rowData.path)" *ngIf="rowData.isDirectory">upload_file</mat-icon>
+        <mat-icon matTooltip="Crear nueva carpeta" class="operations" (click)="addDirectory(rowData.path)" tabindex=0 (keydown.enter)="addDirectory(rowData.path)" *ngIf="rowData.isDirectory">create_new_folder</mat-icon>
+        <mat-icon matTooltip="Descargar archivo" class="operations" (click)="downloadFile(rowData.path, rowData.filename)" tabindex=0 (keydown.enter)="downloadFile(rowData.path, rowData.filename)"  *ngIf="!rowData.isDirectory" >download</mat-icon>
+        <mat-icon matTooltip="Eliminar recurso" class="operations"  (click)="deleteFile(rowData.path, rowData.isDirectory)" tabindex=0 (keydown.enter)="deleteFile(rowData.path, rowData.isDirectory)" *ngIf="(rowData.deepLevel>1)">delete</mat-icon>
+
+
+      </td>
+    </tr>
+  </ng-template>
+</p-treeTable>

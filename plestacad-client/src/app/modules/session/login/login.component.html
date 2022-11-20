@@ -3,8 +3,8 @@
     <mat-card>
       <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <img class="logo" src="assets/images/logo.svg" />
-          <h3>{{ "login.main" | translate }}</h3>
+          <img alt="Logo" class="logo" src="assets/images/logo.svg" />
+          <h3 id="loginTitle">Inicia sesión</h3>
           <mat-form-field class="full-width-input">
             <input
               matInput
@@ -35,7 +35,7 @@
           </div>
         </form>
       </mat-card-content>
-      <mat-card>
+      <mat-card id="registerCard" >
         <p>¿No estás registrado?</p>
         <a routerLink="/signup" routerLinkActive="active"
           >Crea tu cuenta ahora</a
@@ -44,3 +44,5 @@
     </mat-card>
   </div>
 </div>
+
+<app-footer></app-footer>

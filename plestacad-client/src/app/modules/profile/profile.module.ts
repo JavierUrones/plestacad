@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { ProfileComponent } from './profile.component';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -26,7 +27,8 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
     MatFormFieldModule,
     MatButtonModule,
     MatGridListModule,
-    NgxMatFileInputModule
+    NgxMatFileInputModule,
+    MatIconModule
   ]
 })
 export class ProfileModule { }

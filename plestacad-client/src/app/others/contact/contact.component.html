@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <img alt="Logo" class="img-logo" src="assets/images/logo-white.svg" />
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" >
+                <li>
+                    <button *ngIf="!userOnSession" mat-raised-button (click)="navigateToLogin()">
+                        Acceder
+                    </button>
+                    <button *ngIf="userOnSession" mat-raised-button (click)="navigateToWorks()">
+                        Volver a mis trabajos
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="content">
+   
+<h1> Contacto </h1>
+<p> Esta aplicación ha sido desarrollada como Trabajo de Fin de Grado del Grado de Ingeniería Informática del Software de la Universidad de Oviedo. </p>
+<p> Toda la aplicación ha sido desarrollada en exclusiva por Javier Urones Monteserín, puedes contactar con él a través del correo UO257703@uniovi.es. </p>
+</div>

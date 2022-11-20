@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Crear un nuevo directorio</h1>
+<div mat-dialog-content>
+  <mat-form-field class="full-width-input">
+    <mat-label>Nombre del directorio</mat-label>
+    <input id="nameDirectoryInput" 
+    matInput
+    placeholder="Nombre del directorio"
+    [(ngModel)]="filename"
+  />     </mat-form-field>
+</div>
+
+<div class="mainError">
+  <mat-error *ngIf="invalidCreation" id="errorCreateDirectory">
+    No se puede crear el directorio solicitado.
+  </mat-error>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button id="cancelButton" (click)="onNoClick()">Salir</button>
+  <button mat-raised-button color="primary" id="createButton" (click)="onClick(data.path)" cdkFocusInitial>Crear</button>
+
+
+</div>

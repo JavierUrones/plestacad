@@ -1,3 +1,15 @@
+.filter{
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+}
+.header-title{
+  margin-top: 2%;
+  justify-content: center;
+  text-align: center;
+}
+
+
 .work-card {
   margin: 1.5em 1.5em 5em 1.5em;
   height: 50%;
@@ -12,7 +24,7 @@ mat-card-title{
 
 .footer-card{
   font-size: 70%;
-  color: lightgrey;
+  color: rgb(67, 67, 67);
   float: right;
   margin-bottom: 2%;
   padding-bottom: 2%;
@@ -42,11 +54,13 @@ button{
   display: block;
   margin-bottom: 2%;
   margin-top: 2%;
-  margin-left: 1.5%;
+  margin-left: 25%;
 }
 
 
 .no-works{
   margin-top: 5%;
   margin-left: 5%;
+  justify-content: center;
+  text-align: center;
 }

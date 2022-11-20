@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Módulo principal de la aplicación que pone en marcha el funcionamiento de la misma.
+ * @module app
+ */
+/** Módulo loaders */
+const loaders = require("./loaders");
+/** Módulo express */
+const express = require("express");
+/** Módulo con las rutas de autenticación */
+const authRoutes = require("./api/routes/authentication");
+/** Módulo con las rutas de trabajos académicos */
+const workRoutes = require("./api/routes/works");
+/** Módulo con las rutas de los usuarios */
+const userRoutes = require("./api/routes/users");
+/** Módulo con las rutas de los archivos */
+const filesRoutes = require("./api/routes/files");
+/** Módulo con las rutas de los temas del foro */
+const postsRoutes = require("./api/routes/posts");
+/** Módulo con las rutas del calendario */
+const calendarRoutes = require("./api/routes/calendar");
+/** Módulo con las rutas de las tareas */
+const taskRoutes = require("./api/routes/task");
+/** Módulo con las rutas de las notificaciones */
+const notificationRoutes = require("./api/routes/notifications");
+
+require('dotenv').config();
+/** Servidor a inicializar */
+let server;
+/**
+ * Esta función llama a los loaders y luego establece las rutas de la API a partir de los módulos de rutas.
+ * También se encarag de llamar a la inicialización del servidor de los sockets.
+ */
+async function run() {
+  const app = express();
+  server = require('http').createServer(app);
+  module.exports = server;
+
+  await loaders.initialize(app);
+  const { socketConnection } = require('./utils/socket-io');
+  socketConnection(server);
+
+  app.get("/", (req, res) => {
+
+    res.send(req.session.email);
+  });
+  app.use("/api", authRoutes);
+  app.use("/api", workRoutes);
+  app.use("/api", userRoutes);
+  app.use("/api", filesRoutes);
+  app.use("/api", postsRoutes);
+  app.use("/api", calendarRoutes);
+  app.use("/api", taskRoutes);
+  app.use("/api", notificationRoutes);
+
+  const PORT = process.env.PORT || 5200;
+  server.listen(PORT, () => { console.log("Listening on port", PORT) });
+
+}
+
+run();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-config_index.html">config/index</a></li><li><a href="module-loaders_loaderExpress.html">loaders/loaderExpress</a></li><li><a href="module-loaders_loaderMongoose.html">loaders/loaderMongoose</a></li><li><a href="module-middleware_authMiddleware.html">middleware/authMiddleware</a></li><li><a href="module-models_CalendarEvent.html">models/CalendarEvent</a></li><li><a href="module-models_Notification.html">models/Notification</a></li><li><a href="module-models_Post.html">models/Post</a></li><li><a href="module-models_PostInteraction.html">models/PostInteraction</a></li><li><a href="module-models_Task.html">models/Task</a></li><li><a href="module-models_TaskClassificator.html">models/TaskClassificator</a></li><li><a href="module-models_User.html">models/User</a></li><li><a href="module-models_Work.html">models/Work</a></li><li><a href="module-models_WorkRequest.html">models/WorkRequest</a></li><li><a href="module-routes_authentication.html">routes/authentication</a></li><li><a href="module-routes_calendar.html">routes/calendar</a></li><li><a href="module-routes_files.html">routes/files</a></li><li><a href="module-routes_notifications.html">routes/notifications</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-routes_task.html">routes/task</a></li><li><a href="module-routes_users.html">routes/users</a></li><li><a href="module-routes_works.html">routes/works</a></li><li><a href="module-services_authService.html">services/authService</a></li><li><a href="module-services_calendarService.html">services/calendarService</a></li><li><a href="module-services_fileService.html">services/fileService</a></li><li><a href="module-services_notificationService.html">services/notificationService</a></li><li><a href="module-services_postService.html">services/postService</a></li><li><a href="module-services_taskService.html">services/taskService</a></li><li><a href="module-services_userService.html">services/userService</a></li><li><a href="module-services_workService.html">services/workService</a></li><li><a href="module-utils_email.html">utils/email</a></li><li><a href="module-utils_socket-io.html">utils/socket-io</a></li><li><a href="module-utils_token.html">utils/token</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Nov 16 2022 03:26:24 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

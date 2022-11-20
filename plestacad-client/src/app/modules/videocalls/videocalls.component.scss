@@ -1,4 +1,9 @@
+
 .contacts-frame {
+    margin-top: 2%;
+      
+      
+      
     background-color: white;
 }
 
@@ -26,15 +31,15 @@
     border-radius: 10px;
 }
 
-.icon-call:hover {
+.icon-call-online:hover {
 
     cursor: pointer;
-    color: black;
+    color: green;
 
 
 }
 
-.icon-call {
+.icon-call-online, .icon-call-offline {
     float: right;
     margin-right: 5%;
     margin-left: auto;
@@ -69,12 +74,14 @@
 }
 
 .contacts-grid {
-    grid-area: 1 / 1 / 6 / 2;
+    grid-area: 1 / 2 / 6 / 5;
 }
 
-.call-grid {
-    grid-area: 1 / 2 / 6 / 6;
-}
+.header-title{
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
+  }
 
 
 

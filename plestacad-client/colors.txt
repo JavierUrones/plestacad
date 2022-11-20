@@ -1,8 +1,0 @@
-Verde mar
-#0CC59B
-Verde apagado
-#609C88
-Azul clarisimo/muy blanco
-#E6FFF5
-Verde muy blanco
-#D9EDDF

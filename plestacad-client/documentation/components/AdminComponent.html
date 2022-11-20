@@ -1,0 +1,1502 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AdminComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/admin/admin.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-admin</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./admin.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#definedColumns" >definedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#definedColumns2" >definedColumns2</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#matDialog" >matDialog</a>
+                            </li>
+                            <li>
+                                <a href="#pageSizes" >pageSizes</a>
+                            </li>
+                            <li>
+                                <a href="#paginatorUsers" >paginatorUsers</a>
+                            </li>
+                            <li>
+                                <a href="#paginatorWorks" >paginatorWorks</a>
+                            </li>
+                            <li>
+                                <a href="#users" >users</a>
+                            </li>
+                            <li>
+                                <a href="#works" >works</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openUser" >openUser</a>
+                            </li>
+                            <li>
+                                <a href="#openWork" >openWork</a>
+                            </li>
+                            <li>
+                                <a href="#showValueCategory" >showValueCategory</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#matPaginatorWorks" >matPaginatorWorks</a>
+                                </li>
+                                <li>
+                                    <a href="#matPaginatorUsers" >matPaginatorUsers</a>
+                                </li>
+                                <li>
+                                    <a href="#matSort1" >matSort1</a>
+                                </li>
+                                <li>
+                                    <a href="#matSort2" >matSort2</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, dateAdapter: DateAdapter<Date>, matDialog: MatDialog, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>, workService: <a href="../injectables/WorkService.html" target="_self">WorkService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/admin/admin.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dateAdapter</td>
+                                                  
+                                                        <td>
+                                                                    <code>DateAdapter&lt;Date&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>matDialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>workService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/WorkService.html" target="_self" >WorkService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/modules/admin/admin.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openUser"></a>
+                    <span class="name">
+                        <span ><b>openUser</b></span>
+                        <a href="#openUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openUser(idUser: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/modules/admin/admin.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirecciona al perfil del usuario</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>idUser</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del usuario.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openWork"></a>
+                    <span class="name">
+                        <span ><b>openWork</b></span>
+                        <a href="#openWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openWork(idWork: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/modules/admin/admin.component.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirecciona al trabajo académico seleccionado</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>idWork</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del trabajo académico.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showValueCategory"></a>
+                    <span class="name">
+                        <span ><b>showValueCategory</b></span>
+                        <a href="#showValueCategory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showValueCategory(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/modules/admin/admin.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Muestra el valor de la categoría del trabajo académico</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>category</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;Trabajo Fin de Grado&quot; | &quot;Trabajo Fin de Master&quot; | &quot;Tésis doctoral&quot;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="definedColumns"></a>
+                    <span class="name">
+                        <span ><b>definedColumns</b></span>
+                        <a href="#definedColumns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;title&#x27;, &#x27;course&#x27;, &#x27;category&#x27;, &#x27;authorId&#x27;, &#x27;_id&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/admin/admin.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Columnas de la tabla trabajos</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="definedColumns2"></a>
+                    <span class="name">
+                        <span ><b>definedColumns2</b></span>
+                        <a href="#definedColumns2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;name&#x27;, &#x27;surname&#x27;, &#x27;email&#x27;, &#x27;_id&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/admin/admin.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Columnas de la tabla usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/admin/admin.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Atributo que indica si está cargando algún elemento</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="matDialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>matDialog</b></span>
+                        <a href="#matDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/modules/admin/admin.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageSizes"></a>
+                    <span class="name">
+                        <span ><b>pageSizes</b></span>
+                        <a href="#pageSizes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[5, 10, 15]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/admin/admin.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Posibles tamaños de cada página de la tabla</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginatorUsers"></a>
+                    <span class="name">
+                        <span ><b>paginatorUsers</b></span>
+                        <a href="#paginatorUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatPaginator)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/admin/admin.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Paginador usuarios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginatorWorks"></a>
+                    <span class="name">
+                        <span ><b>paginatorWorks</b></span>
+                        <a href="#paginatorWorks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatPaginator)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/admin/admin.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Paginador trabajos</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >MatTableDataSource&lt;User&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new MatTableDataSource()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/admin/admin.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="works"></a>
+                    <span class="name">
+                        <span ><b>works</b></span>
+                        <a href="#works"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Work.html" target="_self" >MatTableDataSource&lt;Work&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new MatTableDataSource()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/admin/admin.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Trabajos académicos de la plataforma</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matPaginatorWorks"></a>
+                        <span class="name"><b>matPaginatorWorks</b><a href="#matPaginatorWorks"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matPaginatorWorks(mp: MatPaginator)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/modules/admin/admin.component.ts:41</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Setter paginador trabajos</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>mp</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatPaginator</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matPaginatorUsers"></a>
+                        <span class="name"><b>matPaginatorUsers</b><a href="#matPaginatorUsers"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matPaginatorUsers(mp: MatPaginator)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/admin/admin.component.ts:46</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Setter paginador usuarios</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>mp</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatPaginator</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matSort1"></a>
+                        <span class="name"><b>matSort1</b><a href="#matSort1"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matSort1(ms: MatSort)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/modules/admin/admin.component.ts:52</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Ordenacion tabla usuarios</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>ms</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatSort</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="matSort2"></a>
+                        <span class="name"><b>matSort2</b><a href="#matSort2"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>matSort2(ms: MatSort)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/modules/admin/admin.component.ts:56</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Ordenacion tabla trabajos</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>ms</td>
+                                                    
+                                                            <td>
+                                                                        <code>MatSort</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, HostListener, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
+import { MatSort } from &#x27;@angular/material/sort&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+import { ManageWorkComponent } from &#x27;../works/manage-work/manage-work/manage-work.component&#x27;;
+import { User } from &#x27;../../shared/models/user.model&#x27;;
+import { Work } from &#x27;../../shared/models/work.model&#x27;;
+import { UserService } from &#x27;../../shared/services/user.service&#x27;;
+import { WorkService } from &#x27;../../shared/services/work.service&#x27;;
+import { DateAdapter } from &quot;@angular/material/core&quot;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+@Component({
+  selector: &#x27;app-admin&#x27;,
+  templateUrl: &#x27;./admin.component.html&#x27;,
+  styleUrls: [&#x27;./admin.component.scss&#x27;]
+})
+/** Define el componente Admin que establece la pantalla de administración de la aplicación */
+export class AdminComponent implements OnInit {
+
+  /** Columnas de la tabla trabajos */
+  definedColumns: string[] &#x3D; [&#x27;title&#x27;, &#x27;course&#x27;, &#x27;category&#x27;, &#x27;authorId&#x27;, &#x27;_id&#x27;];
+  /** Columnas de la tabla usuarios */
+  definedColumns2: string[] &#x3D; [&#x27;name&#x27;, &#x27;surname&#x27;, &#x27;email&#x27;, &#x27;_id&#x27;];
+
+  /** Trabajos académicos de la plataforma */
+  works: MatTableDataSource&lt;Work&gt; &#x3D; new MatTableDataSource();
+  /* Usuarios de la platforma */
+  users: MatTableDataSource&lt;User&gt; &#x3D; new MatTableDataSource();
+
+  /** Posibles tamaños de cada página de la tabla */
+  pageSizes &#x3D; [5, 10, 15];
+
+
+  /** Paginador trabajos */
+  @ViewChild(MatPaginator) paginatorWorks!: MatPaginator;
+  /** Paginador usuarios */
+  @ViewChild(MatPaginator) paginatorUsers!: MatPaginator;
+  /** Setter paginador trabajos */
+  @ViewChild(&#x27;paginatorWorks&#x27;) set matPaginatorWorks(mp: MatPaginator) {
+    this.paginatorWorks &#x3D; mp;
+    this.works.paginator &#x3D; this.paginatorWorks;
+  }
+  /** Setter paginador usuarios */
+  @ViewChild(&#x27;paginatorUsers&#x27;) set matPaginatorUsers(mp: MatPaginator) {
+    this.paginatorUsers &#x3D; mp;
+    this.users.paginator &#x3D; this.paginatorUsers;
+  }
+
+  /** Ordenacion tabla usuarios */
+  @ViewChild(&quot;sortElementsUsers&quot;) set matSort1(ms: MatSort) {
+    this.users.sort &#x3D; ms;
+  }
+  /** Ordenacion tabla trabajos */
+  @ViewChild(&quot;sortElementsWorks&quot;) set matSort2(ms: MatSort) {
+    this.works.sort &#x3D; ms;
+  }
+
+  /** Atributo que indica si está cargando algún elemento */
+  loading!: boolean;
+
+  constructor(private router: Router, private dateAdapter: DateAdapter&lt;Date&gt;, public matDialog: MatDialog, private userService: UserService, private workService: WorkService) {
+    this.dateAdapter.setLocale(&#x27;es-Es&#x27;);
+
+  }
+  ngOnInit(): void {
+    this.loading &#x3D; true;
+    this.workService.getAllWorks().subscribe((res) &#x3D;&gt; {
+      this.works.data &#x3D; res;
+      this.loading &#x3D; false;
+    })
+    this.userService.getAllUsers().subscribe((res) &#x3D;&gt; {
+      this.users.data &#x3D; res.data
+    })
+    this.loading &#x3D; false;
+  }
+
+  /** Muestra el valor de la categoría del trabajo académico */
+  showValueCategory(category: string) {
+    switch (category) {
+      case &quot;tfg&quot;:
+        return &quot;Trabajo Fin de Grado&quot;;
+      case &quot;tfm&quot;:
+        return &quot;Trabajo Fin de Master&quot;;
+      default:
+        return &quot;Tésis doctoral&quot;;
+    }
+  }
+
+  /** Redirecciona al trabajo académico seleccionado
+   * @param idWork - id del trabajo académico.
+   */
+  openWork(idWork: string) {
+    this.router.navigate([&#x27;trabajos/&#x27; + idWork])
+  }
+
+  /** Redirecciona al perfil del usuario
+   * @param idUser - id del usuario.
+   */
+  openUser(idUser: string) {
+    this.router.navigate([&#x27;perfil/&#x27; + idUser])
+  }
+
+
+
+
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-spinner *ngIf&#x3D;&quot;loading&quot; color&#x3D;&quot;primary&quot;&gt;&lt;/mat-spinner&gt;
+
+&lt;mat-tab-group #tab animationDuration&#x3D;&quot;1ms&quot;&gt;
+    &lt;mat-tab id&#x3D;&quot;works-tab&quot; label&#x3D;&quot;Trabajos académicos&quot; #worksTab&gt;
+
+        &lt;table mat-table [dataSource]&#x3D;&quot;works&quot; matSort #sortElementsWorks&#x3D;&quot;matSort&quot;&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;title&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Titulo &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.title}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;course&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Curso &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.course}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;category&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Categoría &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{this.showValueCategory(element.category)}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+
+            &lt;ng-container matColumnDef&#x3D;&quot;authorId&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef&gt; Autor &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+                    &lt;mat-form-field&gt;
+                        &lt;mat-select *ngIf&#x3D;&quot;element.authorId!&#x3D;undefined&quot; disabled [value]&#x3D;&quot;element.authorId&quot;&gt;
+                            &lt;mat-option *ngFor&#x3D;&quot;let user of this.users.data&quot; [value]&#x3D;&quot;user._id&quot;&gt;
+                                {{user.name}} {{user.surname}}
+                            &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+                    &lt;/mat-form-field&gt;
+                &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;_id&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef&gt; Opciones &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+                    &lt;div&gt;
+                        &lt;button matTooltip&#x3D;&quot;Gestionar trabajo&quot; mat-raised-button (click)&#x3D;&quot;openWork(element._id)&quot;&gt;
+                            &lt;mat-icon&gt;settings&lt;/mat-icon&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;definedColumns&quot;&gt;&lt;/tr&gt;
+            &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: definedColumns;&quot;&gt;&lt;/tr&gt;
+
+        &lt;/table&gt;
+
+        &lt;mat-paginator *ngIf&#x3D;&quot;this.works.data.length &gt; 0&quot; #paginatorWorks [pageSizeOptions]&#x3D;&quot;this.pageSizes&quot;
+            showFirstLastButtons aria-label&#x3D;&quot;Selecciona página&quot;&gt;
+        &lt;/mat-paginator&gt;
+    &lt;/mat-tab&gt;
+    &lt;mat-tab id&#x3D;&quot;users-tab&quot; label&#x3D;&quot;Usuarios de la plataforma&quot; #usersTab&gt;
+        &lt;table mat-table [dataSource]&#x3D;&quot;users&quot; matSort #sortElementsUsers&#x3D;&quot;matSort&quot;&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;name&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Nombre &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.name}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;surname&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Apellido &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.surname}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;email&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt; Correo electrónico &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt; {{element.email}} &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;ng-container matColumnDef&#x3D;&quot;_id&quot;&gt;
+                &lt;th mat-header-cell *matHeaderCellDef&gt; Opciones &lt;/th&gt;
+                &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+                    &lt;div&gt;
+                        &lt;button matTooltip&#x3D;&quot;Gestionar usuario&quot; mat-raised-button (click)&#x3D;&quot;openUser(element._id)&quot;&gt;
+                            &lt;mat-icon&gt;settings&lt;/mat-icon&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/ng-container&gt;
+
+            &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;definedColumns2&quot;&gt;&lt;/tr&gt;
+            &lt;tr mat-row *matRowDef&#x3D;&quot;let row; columns: definedColumns2;&quot;&gt;&lt;/tr&gt;
+
+        &lt;/table&gt;
+
+        &lt;mat-paginator *ngIf&#x3D;&quot;this.users.data.length &gt; 0&quot; #paginatorUsers [pageSizeOptions]&#x3D;&quot;this.pageSizes&quot;
+            showFirstLastButtons aria-label&#x3D;&quot;Selecciona página&quot;&gt;
+        &lt;/mat-paginator&gt;
+    &lt;/mat-tab&gt;
+
+&lt;/mat-tab-group&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./admin.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">table {
+  width: 100%;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-spinner *ngIf="loading" color="primary"></mat-spinner><mat-tab-group #tab animationDuration="1ms">    <mat-tab id="works-tab" label="Trabajos académicos" #worksTab>        <table mat-table [dataSource]="works" matSort #sortElementsWorks="matSort">            <ng-container matColumnDef="title">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>                <td mat-cell *matCellDef="let element"> {{element.title}} </td>            </ng-container>            <ng-container matColumnDef="course">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Curso </th>                <td mat-cell *matCellDef="let element"> {{element.course}} </td>            </ng-container>            <ng-container matColumnDef="category">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoría </th>                <td mat-cell *matCellDef="let element"> {{this.showValueCategory(element.category)}} </td>            </ng-container>            <ng-container matColumnDef="authorId">                <th mat-header-cell *matHeaderCellDef> Autor </th>                <td mat-cell *matCellDef="let element">                    <mat-form-field>                        <mat-select *ngIf="element.authorId!=undefined" disabled [value]="element.authorId">                            <mat-option *ngFor="let user of this.users.data" [value]="user._id">                                {{user.name}} {{user.surname}}                            </mat-option>                        </mat-select>                    </mat-form-field>                </td>            </ng-container>            <ng-container matColumnDef="_id">                <th mat-header-cell *matHeaderCellDef> Opciones </th>                <td mat-cell *matCellDef="let element">                    <div>                        <button matTooltip="Gestionar trabajo" mat-raised-button (click)="openWork(element._id)">                            <mat-icon>settings</mat-icon>                        </button>                    </div>                </td>            </ng-container>            <tr mat-header-row *matHeaderRowDef="definedColumns"></tr>            <tr mat-row *matRowDef="let row; columns: definedColumns;"></tr>        </table>        <mat-paginator *ngIf="this.works.data.length > 0" #paginatorWorks [pageSizeOptions]="this.pageSizes"            showFirstLastButtons aria-label="Selecciona página">        </mat-paginator>    </mat-tab>    <mat-tab id="users-tab" label="Usuarios de la plataforma" #usersTab>        <table mat-table [dataSource]="users" matSort #sortElementsUsers="matSort">            <ng-container matColumnDef="name">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>                <td mat-cell *matCellDef="let element"> {{element.name}} </td>            </ng-container>            <ng-container matColumnDef="surname">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>                <td mat-cell *matCellDef="let element"> {{element.surname}} </td>            </ng-container>            <ng-container matColumnDef="email">                <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>                <td mat-cell *matCellDef="let element"> {{element.email}} </td>            </ng-container>            <ng-container matColumnDef="_id">                <th mat-header-cell *matHeaderCellDef> Opciones </th>                <td mat-cell *matCellDef="let element">                    <div>                        <button matTooltip="Gestionar usuario" mat-raised-button (click)="openUser(element._id)">                            <mat-icon>settings</mat-icon>                        </button>                    </div>                </td>            </ng-container>            <tr mat-header-row *matHeaderRowDef="definedColumns2"></tr>            <tr mat-row *matRowDef="let row; columns: definedColumns2;"></tr>        </table>        <mat-paginator *ngIf="this.users.data.length > 0" #paginatorUsers [pageSizeOptions]="this.pageSizes"            showFirstLastButtons aria-label="Selecciona página">        </mat-paginator>    </mat-tab></mat-tab-group></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BoardComponent', 'selector': 'app-board'},{'name': 'CalendarWorkComponent', 'selector': 'app-calendar-work'},{'name': 'ConfirmDialog', 'selector': 'confirm-dialog'},{'name': 'ContactoComponent', 'selector': 'app-contact'},{'name': 'CustomBreadcrumbComponent', 'selector': 'app-custom-breadcrumb'},{'name': 'DialogAddDirectory', 'selector': 'modal-add-directory.html'},{'name': 'DialogAddPost', 'selector': 'modal-add-post.html'},{'name': 'DialogAddWork', 'selector': 'add-work.html'},{'name': 'DialogManageTask', 'selector': 'dialog-manage-task.html'},{'name': 'DialogNewEvent', 'selector': 'modal-events.html'},{'name': 'DialogUploadFile', 'selector': 'modal-upload-file.html'},{'name': 'EntryCallDialogComponent', 'selector': 'app-entry-call-dialog'},{'name': 'FilesComponent', 'selector': 'app-files'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForoComponent', 'selector': 'app-foro'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'InfoComponent', 'selector': 'app-info-work'},{'name': 'LegalInfoComponent', 'selector': 'app-legal-info'},{'name': 'ListTasksComponent', 'selector': 'app-list-tasks'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ManageWorkComponent', 'selector': 'app-manage-work'},{'name': 'ModalAddUsers', 'selector': 'modal-add-users'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'Pagina404Component', 'selector': 'pagina404'},{'name': 'PostListComponent', 'selector': 'app-post-list'},{'name': 'PostManagementComponent', 'selector': 'app-post-management'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'VideocallsComponent', 'selector': 'app-videocalls'},{'name': 'WorkListComponent', 'selector': 'app-work-list'},{'name': 'WorkRequestsComponent', 'selector': 'app-work-requests'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdminComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

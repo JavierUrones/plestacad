@@ -1,0 +1,1401 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  HelpComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/others/help/help.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-help</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./help.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./help.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#secciones" >secciones</a>
+                            </li>
+                            <li>
+                                <a href="#sideBarOpen" >sideBarOpen</a>
+                            </li>
+                            <li>
+                                <a href="#userOnSession" >userOnSession</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#navigateToLogin" >navigateToLogin</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToWorks" >navigateToWorks</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#scrollTo" >scrollTo</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSideBar" >toggleSideBar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, viewportScroller: <a href="https://angular.io/api/common/ViewportScroller" target="_blank">ViewportScroller</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/others/help/help.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>viewportScroller</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/ViewportScroller" target="_blank" >ViewportScroller</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToLogin"></a>
+                    <span class="name">
+                        <span ><b>navigateToLogin</b></span>
+                        <a href="#navigateToLogin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToLogin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/others/help/help.component.ts:29</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirige a la página de login</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToWorks"></a>
+                    <span class="name">
+                        <span ><b>navigateToWorks</b></span>
+                        <a href="#navigateToWorks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToWorks()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/others/help/help.component.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirige a la página de visualización de trabajos académicos</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/app/others/help/help.component.ts:19</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Carga el valor de userOnSession</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scrollTo"></a>
+                    <span class="name">
+                        <span ><b>scrollTo</b></span>
+                        <a href="#scrollTo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>scrollTo(fragment: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/others/help/help.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se desplaza a la sección seleccionada</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fragment</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>sección seleccionada.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSideBar"></a>
+                    <span class="name">
+                        <span ><b>toggleSideBar</b></span>
+                        <a href="#toggleSideBar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSideBar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/others/help/help.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cierra la barra lateral</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="secciones"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>secciones</b></span>
+                        <a href="#secciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;primera&#x27;, &#x27;segunda&#x27;, &#x27;tercera&#x27;, &#x27;cuarta&#x27;, &#x27;quinta&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/others/help/help.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sideBarOpen"></a>
+                    <span class="name">
+                        <span ><b>sideBarOpen</b></span>
+                        <a href="#sideBarOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/others/help/help.component.ts:12</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Comprueba si el usuario está en sesión o no</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userOnSession"></a>
+                    <span class="name">
+                        <span ><b>userOnSession</b></span>
+                        <a href="#userOnSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/others/help/help.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostListener, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { ViewportScroller } from &#x27;@angular/common&#x27;;
+@Component({
+  selector: &#x27;app-help&#x27;,
+  templateUrl: &#x27;./help.component.html&#x27;,
+  styleUrls: [&quot;./help.component.scss&quot;]
+})
+/** Componente de ayuda al usuario */
+export class HelpComponent implements OnInit {
+  /** Comprueba si el usuario está en sesión o no */
+  sideBarOpen: boolean &#x3D; true;
+  userOnSession!: boolean;
+  public secciones: Array&lt;string&gt; &#x3D; [&#x27;primera&#x27;, &#x27;segunda&#x27;, &#x27;tercera&#x27;, &#x27;cuarta&#x27;, &#x27;quinta&#x27;];
+  constructor(private router: Router, private route: ActivatedRoute, private viewportScroller: ViewportScroller) {
+  }
+
+  /** Carga el valor de userOnSession */
+  ngOnInit(): void {
+    let user &#x3D; sessionStorage.getItem(&quot;id&quot;) as string;
+    if (user !&#x3D; undefined) {
+      this.userOnSession &#x3D; true;
+    } else {
+      this.userOnSession &#x3D; false;
+    }
+  }
+
+  /** Redirige a la página de login */
+  navigateToLogin() {
+    this.router.navigateByUrl(&#x27;/login&#x27;);
+  }
+
+  /** Cierra la barra lateral */
+  toggleSideBar(){
+    this.sideBarOpen &#x3D; !this.sideBarOpen;
+  }
+  /** Redirige a la página de visualización de trabajos académicos */
+  navigateToWorks() {
+    this.router.navigateByUrl(&#x27;/trabajos&#x27;);
+  }
+
+  /** Se desplaza a la sección seleccionada
+   * @param fragment - sección seleccionada.
+   */
+  scrollTo(fragment: any): void {
+    this.router.navigate([], { fragment: fragment }).then(res &#x3D;&gt; {
+      const element &#x3D; document.getElementById(fragment);
+      if (element !&#x3D; undefined){ 
+        element.scrollIntoView();
+        this.toggleSideBar();
+
+       }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-toolbar class&#x3D;&quot;fixed-header&quot; color&#x3D;&quot;primary&quot;&gt;
+
+    &lt;mat-toolbar-row&gt;
+        &lt;button id&#x3D;&quot;toggleButton&quot; mat-icon-button (click)&#x3D;&quot;toggleSideBar()&quot;&gt;
+            &lt;mat-icon&gt;menu&lt;/mat-icon&gt;
+        &lt;/button&gt;
+        &lt;img alt&#x3D;&quot;Logo&quot; class&#x3D;&quot;img-logo&quot; src&#x3D;&quot;assets/images/logo-white.svg&quot; /&gt;
+        &lt;div fxFlex fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;flex-end&quot;&gt;
+            &lt;ul fxLayout&#x3D;&quot;row&quot;&gt;
+                &lt;li&gt;
+                    &lt;button *ngIf&#x3D;&quot;!userOnSession&quot; mat-raised-button (click)&#x3D;&quot;navigateToLogin()&quot;&gt;
+                        Acceder
+                    &lt;/button&gt;
+                    &lt;button *ngIf&#x3D;&quot;userOnSession&quot; mat-raised-button (click)&#x3D;&quot;navigateToWorks()&quot;&gt;
+                        Volver a mis trabajos
+                    &lt;/button&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/mat-toolbar-row&gt;
+&lt;/mat-toolbar&gt;
+
+
+
+
+
+
+
+&lt;mat-sidenav-container class&#x3D;&quot;example-container&quot;&gt;
+
+    &lt;mat-sidenav mode&#x3D;&quot;side&quot; [opened]&#x3D;&quot;sideBarOpen&quot;&gt;
+
+        &lt;mat-nav-list&gt;
+            &lt;h1 matSubheader&gt;Menu de ayuda&lt;/h1&gt;
+
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;inicio-sesion&#x27;)&quot;&gt;
+                Inicio de sesión
+            &lt;/a&gt;
+
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;registro&#x27;)&quot;&gt;
+                Registro
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-trabajos&#x27;)&quot;&gt;
+                Gestión de trabajos académicos
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-foro&#x27;)&quot;&gt;
+                Gestión del foro de un trabajo académico
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-archivos&#x27;)&quot;&gt;
+                Gestión de archivos de un trabajo académico
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-calendario&#x27;)&quot;&gt;
+                Gestión del calendario de un trabajo académico
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-tareas&#x27;)&quot;&gt;
+                Gestión de tareas de un trabajo académico
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;gestion-perfil&#x27;)&quot;&gt;
+                Gestión del perfil del usuario
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;videollamadas&#x27;)&quot;&gt;
+                Videollamadas
+            &lt;/a&gt;
+
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;notificaciones&#x27;)&quot;&gt;
+                Notificaciones
+            &lt;/a&gt;
+            &lt;mat-divider&gt;&lt;/mat-divider&gt;
+
+            &lt;a mat-list-item routerLinkActive&#x3D;&quot;list-item-active&quot; (click)&#x3D;&quot;scrollTo(&#x27;desconectarse&#x27;)&quot;&gt;
+                Desconectarse
+            &lt;/a&gt;
+
+
+        &lt;/mat-nav-list&gt;
+    &lt;/mat-sidenav&gt;
+
+    &lt;mat-sidenav-content class&#x3D;&quot;content&quot;&gt;
+
+        &lt;h1 id&#x3D;&quot;help-header&quot;&gt;Ayuda&lt;/h1&gt;
+        &lt;section id&#x3D;&quot;inicio-sesion&quot;&gt;
+            &lt;h1&gt;Inicio de sesión&lt;/h1&gt;
+            &lt;p&gt;La pantalla de inicio de sesión será la primera pantalla que se visita cuando se accede a la dirección de
+                Plestacad. Esta pantalla constará simplemente de un formulario donde el usuario deberá introducir su
+                correo y su contraseña. También se ofrece la posibilidad de acceder a la pantalla de registro si el
+                usuario no está registrado todavía.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Inicio sesion&quot; src&#x3D;&quot;../../../assets/images/user-manual/inicio-sesion.jpg&quot;&gt;
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;registro&quot;&gt;
+            &lt;h1&gt; Registro &lt;/h1&gt;
+            &lt;p&gt;Para poder registrarse en la aplicación es necesario acceder desde el enlace del login, aquí el usuario
+                podrá registrarse indicando: nombre, apellidos, correo electrónico y contraseña. Es necesario que la
+                contraseña tenga una longitud mínima de 8 caracteres y deberá ser introducida correctamente en los dos
+                campos indicados. Desde esta pantalla se podrá acceder en caso de que el usuario esté ya registrado a la
+                pantalla de login desde el enlace del final.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Registro&quot; src&#x3D;&quot;../../../assets/images/user-manual/registro.jpg&quot;&gt;
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-trabajos&quot;&gt;
+            &lt;h1&gt; Gestión de trabajos académicos &lt;/h1&gt;
+            &lt;p&gt;Una vez el usuario ha iniciado sesión por primera vez se mostrará la siguiente pantalla:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-1.jpg&quot;&gt;
+
+            &lt;h2&gt; Crear trabajo académico &lt;/h2&gt;
+            &lt;p&gt;Como puede comprobarse el usuario no tiene ningún trabajo académico disponible, por ello el siguiente
+                paso será crear un trabajo académico para ello será necesario pulsar el botón “Crear nuevo trabajo”.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 2&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-2.jpg&quot;&gt;
+            &lt;p&gt;En el diálogo modal que aparece será necesario introducir el título del trabajo, la descripción, la
+                categoría y el curso obligatoriamente. Si se desea invitar a un profesor o un alumno deberá
+                seleccionarse desde el componente indicado:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 3&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-3.jpg&quot;&gt;
+            &lt;p&gt;Desde este componente el usuario podrá filtrar escribiendo el correo del usuario a invitar. Una vez ha
+                seleccionado al usuario deseado deberá pulsar el botón de “Invitar profesor/estudiante” para que el
+                usuario sea invitado al crear el trabajo académico.&lt;/p&gt;
+            &lt;p&gt;Una vez el usuario pulsa el botón de “Crear” visualizará el nuevo trabajo académico creado en su lista.
+            &lt;/p&gt;
+
+            &lt;h2&gt; Ver lista de solicitudes de incorporación a trabajos académicos &lt;/h2&gt;
+            &lt;p&gt;Cuando el usuario reciba una solicitud de incorporación a un trabajo académico, es decir, haya sido
+                invitado por otro usuario, esta notificación aparecerá en la barra lateral de navegación con un icono
+                rojo indicando el número de solicitudes pendientes que tiene el usuario.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Trabajos académicos 4&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-4.jpg&quot;&gt;
+            &lt;p&gt;Para ver la lista de solicitudes pendientes es necesario pulsar sobre el botón “Solicitudes pendientes”
+                de la barra lateral de navegación, este redirigirá hasta la página de solicitudes pendientes.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 5&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-5.jpg&quot;&gt;
+            &lt;p&gt;Desde esta página el usuario podrá aceptar o rechazar las solicitudes, en ambos casos el símbolo con el
+                número de notificaciones pendientes en la barra lateral de navegación disminuirá hasta desaparecer
+                conforme vayan gestionándose dichas solicitudes. Para aceptar la solicitud el usuario deberá pulsar el
+                botón verde con un tick y para rechazarla el botón rojo con una cruz.&lt;/p&gt;
+            &lt;h2&gt; Lista de trabajos académicos &lt;/h2&gt;
+            &lt;p&gt;Para ver la lista de trabajos académicos el usuario deberá acceder pulsando el botón de la barra lateral
+                de navegación “Mis Trabajos” que redirigirá a la lista de los trabajos académicos a los que el usuario
+                pertenece ya sea porque es propietario o porque participa como estudiante o profesor. &lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 6&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-6.jpg&quot;&gt;
+            &lt;p&gt;El rol del estudiante aparecerá indicado abajo a la derecha de cada uno de los trabajos académicos. Los
+                trabajos que hayan sido archivados aparecerán siempre al final del listado.&lt;/p&gt;
+            &lt;h2&gt; Acceder a un trabajo académico &lt;/h2&gt;
+            &lt;p&gt;Pulsando sobre uno de los trabajos académicos del listado de trabajos académicos se accederá a sus
+                opciones.&lt;/p&gt;
+            &lt;p&gt;Si el usuario es propietario del trabajo la vista será la siguiente:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 7&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-7.jpg&quot;&gt;
+            &lt;p&gt;Se mostrarán los botones para editar la información del trabajo arriba a la derecha y para eliminar y
+                archivar el trabajo al final de la página.&lt;/p&gt;
+            &lt;p&gt;Si el usuario es profesor pero no es propietario del trabajo se mostrará la siguiente vista:
+            &lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 8&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-8.jpg&quot;&gt;
+            &lt;p&gt;Ya no se permite ni editar los datos del trabajo, ni invitar nuevos miembros ni eliminar/archivar el
+                trabajo académico. Únicamente el usuario podrá eliminarse a sí mismo, es decir, abandonar el trabajo
+                académico.&lt;/p&gt;
+            &lt;p&gt;El usuario marcado con una estrella amarilla hace referencia al propietario del trabajo académico.&lt;/p&gt;
+            &lt;p&gt;Si el profesor es estudiante se mostrará la siguiente pantalla:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 9&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-9.jpg&quot;&gt;
+            &lt;p&gt;De la misma manera que antes el usuario estudiante solo podrá eliminarse a sí mismo, saliendo del trabajo
+                académico.&lt;/p&gt;
+            &lt;h2&gt; Editar un trabajo académico &lt;/h2&gt;
+            &lt;p&gt;Para editar la información de un trabajo académico el usuario propietario deberá pulsar el botón con
+                forma de lápiz de la parte superior derecha de la información.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 10&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-10.jpg&quot;&gt;
+            &lt;p&gt;Este botón hará que los campos de la información sean editables y con el botón “Guardar cambios” guardará
+                los cambios realizados.&lt;/p&gt;
+            &lt;h2&gt; Invitar nuevos miembros a un trabajo académico &lt;/h2&gt;
+            &lt;p&gt;Para invitar nuevos miembros a un trabajo académico el usuario propietario deberá pulsar el botón
+                “Invitar nuevos miembros” lo que hará aparecer el diálogo modal para invitar nuevos miembros al trabajo
+                académico.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 11&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-11.jpg&quot;&gt;
+            &lt;p&gt;El funcionamiento de este diálogo es similar al que aparece en la creación del trabajo académico en el
+                apartado de creación de trabajos académicos.&lt;/p&gt;
+            &lt;h2&gt; Archivar/Desarchivar un trabajo académico &lt;/h2&gt;
+            &lt;p&gt;Para archivar un trabajo académico el usuario propietario del trabajo académico deberá pulsar el botón
+                “Archivar trabajo académico” situado al final de la página.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 12&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-12.jpg&quot;&gt;
+            &lt;p&gt;Cuando el usuario pulse sobre dicho botón aparecerá un diálogo de confirmación:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 13&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-13.jpg&quot;&gt;
+            &lt;p&gt;Si el usuario pulsa “Sí” el trabajo académico pasará a estar archivado y se mostrará al final de la lista
+                de trabajos académicos del usuario.&lt;/p&gt;
+            &lt;p&gt;Ahora en el menú de opciones aparecerá la opción de “Desarchivar trabajo académico” cuya funcionalidad es
+                similar a la anterior:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Trabajos académicos 14&quot;
+                src&#x3D;&quot;../../../assets/images/user-manual/trabajo-academico-14.jpg&quot;&gt;
+            &lt;h2&gt; Eliminar un trabajo académico &lt;/h2&gt;
+            &lt;p&gt;La funcionalidad de eliminar un trabajo académico será similar a la de archivarlo, cuando el usuario
+                acepte el diálogo de confirmación, el trabajo académico y todos sus recursos serán eliminados del
+                sistema. Dicha acción no se puede deshacer.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-foro&quot;&gt;
+            &lt;h1&gt;Gestión del foro de un trabajo académico&lt;/h1&gt;
+            &lt;p&gt;Si el usuario entra por primera vez al foro y no existen temas se mostrará el siguiente contenido.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-1.jpg&quot;&gt;
+
+            &lt;h2&gt;Crear nuevo tema&lt;/h2&gt;
+            &lt;p&gt;Para acceder al foro de un trabajo académico el usuario debe haber accedido previamente a un trabajo
+                académico. Una vez haya realizado esto deberá navegar al apartado de foro a través del menú de pestañas.
+            &lt;/p&gt;
+            &lt;p&gt;Para crear un nuevo tema el usuario deberá pulsar el botón “Nuevo tema” en la pantalla anterior de
+                listado de temas. Se abrirá un diálogo modal donde el usuario deberá especificar un título obligatorio y
+                un contenido del tema.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-2.jpg&quot;&gt;
+            &lt;p&gt;Una vez el usuario pulse el botón “Crear” se creará el nuevo tema y se mostrará en la lista de temas del
+                foro&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-3.jpg&quot;&gt;
+
+
+            &lt;h2&gt;Acceder a un tema existente del foro&lt;/h2&gt;
+            &lt;p&gt;Una vez un usuario haya creado un tema en el foro podrá ver su contenido accediendo desde la lista de
+                temas del foro. Para acceder deberá bien pulsar el título del tema o el botón de respuestas del tema.
+            &lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 4&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-4.jpg&quot;&gt;
+            &lt;p&gt;Una vez el usuario haya accedido se mostrará la información del tema y las respuestas al mismo.&lt;/p&gt;
+            &lt;h2&gt;Responder a un tema&lt;/h2&gt;
+            &lt;p&gt;Una vez se ha accedido a un tema utilizando la sección del editor de texto inferior el usuario podrá
+                escribir una respuesta al tema. Pulsando el botón “Comentar” se enviará la respuesta.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 5&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-5.jpg&quot;&gt;
+
+            &lt;h2&gt;Eliminar una respuesta&lt;/h2&gt;
+            &lt;p&gt;Un usuario solo podrá eliminar aquellas respuestas que ha escrito él utilizando el botón con forma de
+                papelera de la parte derecha de la respuesta. Se mostrará un diálogo de confirmación que deberá aceptar
+                para eliminar la respuesta.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 6&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-6.jpg&quot;&gt;
+            &lt;h2&gt;Marcar/Desmarcar un tema como favorito&lt;/h2&gt;
+            &lt;p&gt;Para marcar un tema como favorito el usuario tendrá que pulsar sobre el botón con forma de corazón del
+                tema mostrado en la lista de temas. &lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 7&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-7.jpg&quot;&gt;
+            &lt;p&gt;Para desmarcar un tema como favorito el usuario deberá pulsar el mismo botón que ahora se encontrará
+                relleno.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 8&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-8.jpg&quot;&gt;
+            &lt;h2&gt;Eliminar un tema&lt;/h2&gt;
+            &lt;p&gt;Para eliminar un tema el usuario deberá pulsar el botón que dice “Eliminar” a la derecha del tema. El
+                usuario deberá confirmar la eliminación con el botón “Sí” de la pantalla de confirmación que aparece.
+            &lt;/p&gt;
+
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Temas 9&quot; src&#x3D;&quot;../../../assets/images/user-manual/temas-9.jpg&quot;&gt;
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-archivos&quot;&gt;
+            &lt;h1&gt;Gestión de archivos de un trabajo académico&lt;/h1&gt;
+            &lt;p&gt;Para acceder a la gestión de archivos de un trabajo académico el usuario deberá ir a través del menú de
+                pestañas tras acceder a un trabajo académico. Por defecto y tras haber creado el trabajo académico se
+                mostrará así:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-1.jpg&quot;&gt;
+            &lt;p&gt;Únicamente aparece un directorio con el nombre del trabajo académico creado.&lt;/p&gt;
+            &lt;h2&gt;Crear un nuevo directorio&lt;/h2&gt;
+            &lt;p&gt;Para crear un directorio es necesario pulsar el botón con forma de carpeta que se encuentra a la derecha
+                del directorio raíz. Tras esto aparecerá una pantalla dónde se solicitará el nombre del directorio a
+                crear.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-2.jpg&quot;&gt;
+            &lt;p&gt;Cuando se pulse el botón “Crear” tras haber introducido un nombre se creará el directorio indicado.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-3.jpg&quot;&gt;
+
+            &lt;h2&gt;Subir un nuevo archivo&lt;/h2&gt;
+            &lt;p&gt;Para subir un nuevo archivo a la plataforma es necesario pulsar el botón con forma de archivo a la
+                derecha en el menú de opciones. Dependiendo de en qué directorio lo pulsemos se subirá en uno u otro
+                directorio.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 4&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-4.jpg&quot;&gt;
+            &lt;p&gt;Tras esto aparecerá la siguiente ventana modal que solicitará al usuario subir un nuevo archivo. Deberá
+                pulsarse el botón con forma de clip y el usuario deberá seleccionar de su ordenador el archivo a subir
+                con un tamaño menor a 20MB.&lt;/p&gt;
+            &lt;p&gt;Una vez se pulse el botón “Subir” aparecerá el nuevo archivo subido:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 5&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-5.jpg&quot;&gt;
+
+
+            &lt;h2&gt;Descargarse un archivo&lt;/h2&gt;
+            &lt;p&gt;Para descargarse un archivo subido el usuario deberá pulsar el botón con forma de flecha hacia abajo, una
+                vez haga esto el navegador descargará el archivo en su carpeta de descargas por defecto.&lt;/p&gt;
+            &lt;h2&gt;Eliminar un directorio&lt;/h2&gt;
+            &lt;p&gt;Para eliminar un directorio deberá pulsarse el botón con forma de papelera de su derecha, es necesario
+                que un directorio este previamente vacío, sin ningún archivo en su interior, si se intenta eliminar un
+                directorio con algún archivo o directorio en su interior surgirá el siguiente problema.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Archivos 6&quot; src&#x3D;&quot;../../../assets/images/user-manual/archivos-6.jpg&quot;&gt;
+
+            &lt;h2&gt;Eliminar un archivo&lt;/h2&gt;
+            &lt;p&gt;Para eliminar un archivo el procedimiento es el mismo que el anterior, pulsando el botón con forma de
+                papelera de la derecha.&lt;/p&gt;
+
+
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-calendario&quot;&gt;
+            &lt;h1&gt;Gestión del calendario de un trabajo académico&lt;/h1&gt;
+            &lt;p&gt;Para acceder a la sección del calendario el usuario deberá pulsar en el menú de pestañas de un trabajo
+                académico la opción “Calendario”. El calendario por defecto en un trabajo académico aparecerá vacío de
+                la siguiente manera:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-1.jpg&quot;&gt;
+            &lt;h2&gt;Crear un nuevo evento en el calendario&lt;/h2&gt;
+            &lt;p&gt;Para crear un nuevo evento el usuario tiene dos alternativas, pulsar sobre un día del calendario o pulsar
+                el botón “Nuevo evento”, ambos tienen el mismo comportamiento.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-2.jpg&quot;&gt;
+            &lt;p&gt;Para crear un evento el usuario deberá cumplimentar obligatoriamente el título, y la fecha de inicio.&lt;/p&gt;
+            &lt;p&gt;La fecha de fin es opcional, si no se rellena el evento finalizará al terminar el día.&lt;/p&gt;
+            &lt;p&gt;Se pueden asignar tags o categorías al evento para clasificarlo por defecto se muestran las siguientes
+                que son seleccionables:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-3.jpg&quot;&gt;
+            &lt;p&gt;Sin embargo el usuario puede crear su propia categoría escribiendo el nombre que quiera y pulsando la
+                tecla enter.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 4&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-4.jpg&quot;&gt;
+            &lt;p&gt;Una vez el usuario ha terminado de introducir los datos del evento debe pulsar el botón “Crear” para
+                finalizar la creación.&lt;/p&gt;
+
+            &lt;h2&gt;Visualizar los eventos del calendario&lt;/h2&gt;
+            &lt;p&gt;Una vez el usuario ha creado un evento estos pueden visualizarse en el calendario el día en que fueron
+                asignados.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 5&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-5.jpg&quot;&gt;
+            &lt;p&gt;El usuario puede cambiar la vista pulsando en los botones “Mes”, “Día” y “Semana”.&lt;/p&gt;
+            &lt;p&gt;La vista de día es la siguiente:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 6&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-6.jpg&quot;&gt;
+            &lt;p&gt;La vista de semana es la siguiente:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 7&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-7.jpg&quot;&gt;
+            &lt;p&gt;Si el calendario tiene eventos relacionados con tareas, estos se mostrarán en color naranja, si el
+                usuario intenta modificar alguno de estos eventos relacionados con tareas se mostrará el siguiente
+                mensaje de error:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 8&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-8.jpg&quot;&gt;
+
+
+            &lt;h2&gt;Modificar un evento del calendario&lt;/h2&gt;
+            &lt;p&gt;Para modificar un evento el usuario puede pulsar sobre el mismo en el calendario en cualquiera de las
+                vistas seleccionables.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Calendario 9&quot; src&#x3D;&quot;../../../assets/images/user-manual/calendario-9.jpg&quot;&gt;
+            &lt;p&gt;Se cargarán los datos del evento que el usuario podrá modificar y guardar pulsando el botón “Actualizar”.
+            &lt;/p&gt;
+            &lt;p&gt;El usuario también dispone de otras opciones para modificar los eventos como arrastrarlos por el
+                calendario o estirarlos usando el ratón.&lt;/p&gt;
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-tareas&quot;&gt;
+            &lt;h1&gt;Gestión de tareas de un trabajo académico&lt;/h1&gt;
+            &lt;p&gt;Para acceder a la gestión de tareas el usuario deberá utilizar el botón de pestañas con título “Tareas”
+                tras haber accedido a un trabajo académico.&lt;/p&gt;
+            &lt;p&gt;La vista por defecto en un trabajo recién creado será la siguiente:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-1.jpg&quot;&gt;
+
+            &lt;h2&gt;Crear una nueva tarea&lt;/h2&gt;
+            &lt;p&gt;Para crear una nueva tarea el usuario deberá pulsar el botón “Nueva tarea”. Se mostrará la siguiente
+                ventana:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-2.jpg&quot;&gt;
+
+            &lt;p&gt;El usuario deberá introducir obligatoriamente el título de la tarea únicamente.&lt;/p&gt;
+            &lt;p&gt;Opcionalmente el usuario podrá incluir la descripción, la fecha de inicio y de fin, cambiar la
+                clasificación de la tarea y cambiar el usuario al cual estará asignada (será una lista de los usuarios
+                del trabajo académico).&lt;/p&gt;
+            &lt;p&gt;Si el usuario introduce una fecha de inicio y de fin en una tarea esta generará un evento en el
+                calendario.&lt;/p&gt;
+            &lt;h2&gt;Visualizar la lista de tareas&lt;/h2&gt;
+            &lt;p&gt;Para visualizar la lista de tareas deberá accederse a la pestaña inferior “Lista” dentro del submenú de
+                tareas, si el trabajo tiene una o varias tareas creadas la lista se mostrará en una tabla de la
+                siguiente manera:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-3.jpg&quot;&gt;
+            &lt;p&gt;Desde las filas de la tabla el usuario podrá cambiar la clasificación de estas o acceder a la
+                modificación de la tarea mediante el botón en forma de rueda de ajustes.&lt;/p&gt;
+            &lt;h2&gt;Clasificar una tarea&lt;/h2&gt;
+            &lt;p&gt;Para clasificar una tarea el usuario tiene varias posibilidades, hacerlo desde la propia tabla de tareas,
+                desde la rueda de ajustes o accediendo al tablero de tareas.&lt;/p&gt;
+            &lt;p&gt;Para acceder al tablero de tareas el usuario deberá pulsar la pestaña “Tablero”, que se mostrará de la
+                siguiente manera:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 4&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-4.jpg&quot;&gt;
+            &lt;p&gt;Aquí se muestran las tareas clasificadas en apartados de clasificación de tareas, el usuario puede
+                clasificar las tareas en los distintos apartados pulsando sobre ellas y arrastrándolas al apartado
+                deseado.&lt;/p&gt;
+
+            &lt;h2&gt;Crear un nuevo apartado de clasificación de tareas&lt;/h2&gt;
+            &lt;p&gt;Para crear un nuevo apartado de clasificación de tareas el usuario deberá pulsar sobre el botón “Añadir
+                nueva sección” en la pestaña de “Tablero”. Cuando el usuario pulse dicho botón se creará un nuevo
+                apartado y permitirá al usuario modificar su título pulsando sobre él.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 5&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-5.jpg&quot;&gt;
+
+
+            &lt;h2&gt;Modificar un apartado de clasificación de tareas&lt;/h2&gt;
+            &lt;p&gt;Para modificar un apartado de clasificación de tareas el usuario solo tendrá que pulsar en el título que
+                quiera modificar y cambiarlo por el título nuevo que desee.&lt;/p&gt;
+            &lt;h2&gt;Cambiar el orden de un apartado de clasificación de tareas&lt;/h2&gt;
+            &lt;p&gt;Si el usuario desea mover un apartado de clasificación de tareas con todo su contenido a otra posición se
+                puede realizar pulsando el menú que tienen a la derecha después del título.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Tareas 6&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-6.jpg&quot;&gt;
+            &lt;p&gt;Desde el submenú “Posición” podrá seleccionarse la posición a la que se quiere mover.&lt;/p&gt;
+
+            &lt;h2&gt;Eliminar un apartado de clasificación de tareas&lt;/h2&gt;
+            &lt;p&gt;Si el usuario desea eliminar un apartado de clasificación de tareas solo deberá pulsar la opción
+                “Eliminar” en el menú mostrado en el apartado anterior. &lt;/p&gt;
+            &lt;p&gt;Si un usuario elimina un apartado de clasificación de tareas con tareas incluidas en él, estas quedarán
+                sin clasificación.&lt;/p&gt;
+            &lt;h2&gt;Modificar una tarea&lt;/h2&gt;
+            &lt;p&gt;Para modificar una tarea el usuario podrá pulsar en ella directamente desde la opción de “Tablero” o
+                podrá pulsar la rueda de ajustes desde la opción de “Lista”. Ambas opciones derivan en la siguiente
+                pantalla:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Tareas 7&quot; src&#x3D;&quot;../../../assets/images/user-manual/tareas-7.jpg&quot;&gt;
+            &lt;p&gt;Desde aquí el usuario podrá cambiar los datos de los campos del formulario al igual que cuando fue
+                creada. Con el botón “Actualizar” se guardarán los cambios del usuario.&lt;/p&gt;
+            &lt;h2&gt;Eliminar una tarea&lt;/h2&gt;
+            &lt;p&gt;Para eliminar una tarea el usuario podrá pulsar en ella directamente desde la opción de “Tablero” o podrá
+                pulsar la rueda de ajustes desde la opción de “Lista”. Ambas opciones derivan en la pantalla que se
+                mostró en el apartado anterior. Con el botón superior de la derecha con forma de papelera se puede
+                eliminar la tarea creada.&lt;/p&gt;
+
+
+
+
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;gestion-perfil&quot;&gt;
+            &lt;h1&gt;Gestión del perfil del usuario &lt;/h1&gt;
+            &lt;p&gt;El usuario podrá consultar su perfil accediendo a la opción “Perfil” del menú lateral de navegación o
+                desde el menú superior pulsando su foto de perfil y en la opción “Mi perfil”.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Perfil 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/perfil-1.jpg&quot;&gt;
+
+            &lt;p&gt;El aspecto del perfil del usuario será algo similar a lo siguiente:&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Perfil 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/perfil-2.jpg&quot;&gt;
+            &lt;p&gt;Desde aquí el usuario podrá cambiar su foto de perfil, actualizar sus datos y su contraseña.&lt;/p&gt;
+            &lt;h2&gt; Modificar el perfil&lt;/h2&gt;
+            &lt;p&gt;Para actualizar su nombre y apellidos el usuario simplemente tendrá que escribir los nuevos y pulsar el
+                botón “Actualizar datos”.&lt;/p&gt;
+            &lt;p&gt;Para cambiar la contraseña deberá escribir su contraseña actual y la nueva contraseña dos veces, esta
+                deberá tener longitud mayor a 8.&lt;/p&gt;
+            &lt;p&gt;Para cambiar su foto de perfil deberá pulsar sobre el botón con forma de clip, seleccionar una foto desde
+                su ordenador y pulsar el botón “Actualizar foto”. En la captura se muestra la foto por defecto del
+                usuario cuando se registra.&lt;/p&gt;
+
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;videollamadas&quot;&gt;
+            &lt;h1&gt; Videollamadas &lt;/h1&gt;
+
+            &lt;p&gt;Para acceder a las opciones de videollamadas el usuario deberá pulsar la opción “Videollamadas” del menú
+                lateral de navegación.
+            &lt;/p&gt;
+            &lt;h2&gt;Visualizar lista de contactos&lt;/h2&gt;
+            &lt;p&gt;La lista de contactos del usuario se mostrará al entrar a la opción de videollamadas. Desde aquí el
+                usuario verá sus contactos (usuarios con los que comparte un trabajo académico) y podrá llamarlos
+                pulsando el botón con forma de teléfono de su derecha.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Videollamadas 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/videollamadas-1.jpg&quot;&gt;
+            &lt;p&gt;Podrá filtrar el nombre del usuario utilizando el componente de búsqueda superior.&lt;/p&gt;
+            &lt;p&gt;Si un usuario se encuentra conectado aparecerá con un circulito verde como en la imagen anterior. Si el
+                usuario se encuentra desconectado aparecerá con un circulito gris.&lt;/p&gt;
+
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Videollamadas 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/videollamadas-2.jpg&quot;&gt;
+            &lt;h2&gt;Iniciar una videollamada&lt;/h2&gt;
+            &lt;p&gt;Para iniciar una videollamada con uno de sus contactos se requiere que este se encuentre online. El
+                usuario deberá pulsar el botón con forma de teléfono, una vez esto ocurra deberá aceptar los permisos de
+                audio y vídeo en una pantalla que variará dependiendo del navegador pero será similar a esta.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Videollamadas 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/videollamadas-3.jpg&quot;&gt;
+            &lt;h2&gt;Contestar una videollamada&lt;/h2&gt;
+            &lt;p&gt;Para aceptar una llamada entrante el usuario deberá haberse conectado previamente y otro usuario deberá
+                haber iniciado una videollamada con él. Cuando el usuario reciba una llamada entrante independientemente
+                de la parte de la aplicación en la que se encuentre aparecerá el siguiente cuadro de diálogo.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Videollamadas 4&quot; src&#x3D;&quot;../../../assets/images/user-manual/videollamadas-4.jpg&quot;&gt;
+            &lt;p&gt;Para aceptar la videollamada entrante el usuario deberá pulsar el icono con el teléfono verde y para
+                rechazarla el icono con el teléfono rojo.&lt;/p&gt;
+            &lt;h2&gt;Dejar de compartir recursos de audio y video en una videollamada en curso&lt;/h2&gt;
+            &lt;p&gt;Si el usuario que está en una llamada en curso decide dejar de compartir su audio o su señal de vídeo deberá pulsar el botón con forma de micrófono o el botón con forma de cámara.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Videollamadas 5&quot; src&#x3D;&quot;../../../assets/images/user-manual/videollamadas-5.jpg&quot;&gt;
+            &lt;p&gt;Para volver a compartir estos recursos deberá volver a pulsarlos. &lt;/p&gt;
+            &lt;h2&gt;Terminar una videollamada en curso&lt;/h2&gt;
+            &lt;p&gt;Para terminar una llamada en curso el usuario deberá pulsar el botón con el icono del teléfono rojo. Esto pondrá fin a la llamada.&lt;/p&gt;
+
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;notificaciones&quot;&gt;
+            &lt;h1&gt; Notificaciones &lt;/h1&gt;
+            &lt;p&gt; Cuando llegue una notificación al usuario esta se mostrará con un icono rojo sobre la barra lateral de navegación. Dicho icono contendrá el número de notificaciones que el usuario tiene pendientes.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Notificaciones 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/notificaciones-1.jpg&quot;&gt;
+            &lt;p&gt; Para consultar las notificaciones el usuario deberá pulsar sobre dicha opción y la aplicación le redirigirá a la pantalla de consulta de notificaciones.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Notificaciones 2&quot; src&#x3D;&quot;../../../assets/images/user-manual/notificaciones-2.jpg&quot;&gt;
+            &lt;p&gt;Una vez aquí el usuario podrá filtrar las notificaciones por trabajo académico. El usuario podrá acceder al trabajo académico en el cual se ha producido la notificación pulsando el enlace que la acompaña.&lt;/p&gt;
+            &lt;h2&gt;Marcar las notificaciones como leído&lt;/h2&gt;
+            &lt;p&gt;Para marcar una notificación como leído el usuario podrá utilizar el botón con forma de tick de la derecha de la notificación.&lt;/p&gt;
+            &lt;p&gt;Para marcar todas las notificaciones como leído puede pulsar el botón “Marcar todo como leído”. &lt;/p&gt;
+            &lt;p&gt;Una vez el usuario ha marcado todas las notificaciones como leído la pantalla se mostrará de la siguiente manera: &lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image&quot; alt&#x3D;&quot;Notificaciones 3&quot; src&#x3D;&quot;../../../assets/images/user-manual/notificaciones-3.jpg&quot;&gt;
+
+
+        &lt;/section&gt;
+        &lt;section id&#x3D;&quot;desconectarse&quot;&gt;
+            &lt;h1&gt; Desconectarse &lt;/h1&gt;
+
+            &lt;p&gt; Para desconectarse de la aplicación el usuario deberá pulsar el botón superior con su foto de perfil (en caso de que la tenga) o con el icono de usuario por defecto y pulsar el botón “Desconectarse”.&lt;/p&gt;
+            &lt;img class&#x3D;&quot;help-image-no-full&quot; alt&#x3D;&quot;Desconectarse 1&quot; src&#x3D;&quot;../../../assets/images/user-manual/desconectarse-1.jpg&quot;&gt;
+
+        &lt;/section&gt;
+
+
+
+
+
+
+
+    &lt;/mat-sidenav-content&gt;
+&lt;/mat-sidenav-container&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./help.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">ul li {
+    list-style: none;
+
+}
+
+
+
+.help-image {
+
+    width: 100%;
+    max-height: 800px;
+    max-width: 800px;
+
+
+}
+
+.content {
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+mat-sidenav {
+    max-height: 100vh;
+    position: fixed;
+    margin-top: 4%;
+    left: 0;
+}
+
+mat-sidenav {
+    margin-right: 20%;
+
+}
+
+#help-header {
+    font-size: 2.5em;
+    margin-top: 10vh;
+
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 1vh;
+    margin-bottom: 3%;
+    justify-content: center;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-style: bold;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    justify-content: center;
+    text-align: center;
+
+}
+
+p {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+.help-image, .help-image-no-full {
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    display: block;
+    height: auto;
+    
+
+}
+.help-image-no-full{
+    width: 50%;
+}
+
+.fixed-header {
+    position: fixed;
+    z-index: 999;
+    height: 50px;
+
+}
+.img-logo {
+    max-height: 2em;
+  }
+
+  section{
+    margin-bottom: 4%;
+    margin-left: 25%;
+
+    margin-right: 25%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+
+
+    border-radius: 10px;
+    border: 1px solid;
+    background-color: white;
+    border: 1px solid lightgrey;
+  }</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-toolbar class="fixed-header" color="primary">    <mat-toolbar-row>        <button id="toggleButton" mat-icon-button (click)="toggleSideBar()">            <mat-icon>menu</mat-icon>        </button>        <img alt="Logo" class="img-logo" src="assets/images/logo-white.svg" />        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">            <ul fxLayout="row">                <li>                    <button *ngIf="!userOnSession" mat-raised-button (click)="navigateToLogin()">                        Acceder                    </button>                    <button *ngIf="userOnSession" mat-raised-button (click)="navigateToWorks()">                        Volver a mis trabajos                    </button>                </li>            </ul>        </div>    </mat-toolbar-row></mat-toolbar><mat-sidenav-container class="example-container">    <mat-sidenav mode="side" [opened]="sideBarOpen">        <mat-nav-list>            <h1 matSubheader>Menu de ayuda</h1>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'inicio-sesion\')">                Inicio de sesión            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'registro\')">                Registro            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-trabajos\')">                Gestión de trabajos académicos            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-foro\')">                Gestión del foro de un trabajo académico            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-archivos\')">                Gestión de archivos de un trabajo académico            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-calendario\')">                Gestión del calendario de un trabajo académico            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-tareas\')">                Gestión de tareas de un trabajo académico            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'gestion-perfil\')">                Gestión del perfil del usuario            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'videollamadas\')">                Videollamadas            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'notificaciones\')">                Notificaciones            </a>            <mat-divider></mat-divider>            <a mat-list-item routerLinkActive="list-item-active" (click)="scrollTo(\'desconectarse\')">                Desconectarse            </a>        </mat-nav-list>    </mat-sidenav>    <mat-sidenav-content class="content">        <h1 id="help-header">Ayuda</h1>        <section id="inicio-sesion">            <h1>Inicio de sesión</h1>            <p>La pantalla de inicio de sesión será la primera pantalla que se visita cuando se accede a la dirección de                Plestacad. Esta pantalla constará simplemente de un formulario donde el usuario deberá introducir su                correo y su contraseña. También se ofrece la posibilidad de acceder a la pantalla de registro si el                usuario no está registrado todavía.</p>            <img class="help-image" alt="Inicio sesion" src="../../../assets/images/user-manual/inicio-sesion.jpg">        </section>        <section id="registro">            <h1> Registro </h1>            <p>Para poder registrarse en la aplicación es necesario acceder desde el enlace del login, aquí el usuario                podrá registrarse indicando: nombre, apellidos, correo electrónico y contraseña. Es necesario que la                contraseña tenga una longitud mínima de 8 caracteres y deberá ser introducida correctamente en los dos                campos indicados. Desde esta pantalla se podrá acceder en caso de que el usuario esté ya registrado a la                pantalla de login desde el enlace del final.</p>            <img class="help-image" alt="Registro" src="../../../assets/images/user-manual/registro.jpg">        </section>        <section id="gestion-trabajos">            <h1> Gestión de trabajos académicos </h1>            <p>Una vez el usuario ha iniciado sesión por primera vez se mostrará la siguiente pantalla:</p>            <img class="help-image" alt="Trabajos académicos"                src="../../../assets/images/user-manual/trabajo-academico-1.jpg">            <h2> Crear trabajo académico </h2>            <p>Como puede comprobarse el usuario no tiene ningún trabajo académico disponible, por ello el siguiente                paso será crear un trabajo académico para ello será necesario pulsar el botón “Crear nuevo trabajo”.</p>            <img class="help-image" alt="Trabajos académicos 2"                src="../../../assets/images/user-manual/trabajo-academico-2.jpg">            <p>En el diálogo modal que aparece será necesario introducir el título del trabajo, la descripción, la                categoría y el curso obligatoriamente. Si se desea invitar a un profesor o un alumno deberá                seleccionarse desde el componente indicado:</p>            <img class="help-image" alt="Trabajos académicos 3"                src="../../../assets/images/user-manual/trabajo-academico-3.jpg">            <p>Desde este componente el usuario podrá filtrar escribiendo el correo del usuario a invitar. Una vez ha                seleccionado al usuario deseado deberá pulsar el botón de “Invitar profesor/estudiante” para que el                usuario sea invitado al crear el trabajo académico.</p>            <p>Una vez el usuario pulsa el botón de “Crear” visualizará el nuevo trabajo académico creado en su lista.            </p>            <h2> Ver lista de solicitudes de incorporación a trabajos académicos </h2>            <p>Cuando el usuario reciba una solicitud de incorporación a un trabajo académico, es decir, haya sido                invitado por otro usuario, esta notificación aparecerá en la barra lateral de navegación con un icono                rojo indicando el número de solicitudes pendientes que tiene el usuario.</p>            <img class="help-image-no-full" alt="Trabajos académicos 4"                src="../../../assets/images/user-manual/trabajo-academico-4.jpg">            <p>Para ver la lista de solicitudes pendientes es necesario pulsar sobre el botón “Solicitudes pendientes”                de la barra lateral de navegación, este redirigirá hasta la página de solicitudes pendientes.</p>            <img class="help-image" alt="Trabajos académicos 5"                src="../../../assets/images/user-manual/trabajo-academico-5.jpg">            <p>Desde esta página el usuario podrá aceptar o rechazar las solicitudes, en ambos casos el símbolo con el                número de notificaciones pendientes en la barra lateral de navegación disminuirá hasta desaparecer                conforme vayan gestionándose dichas solicitudes. Para aceptar la solicitud el usuario deberá pulsar el                botón verde con un tick y para rechazarla el botón rojo con una cruz.</p>            <h2> Lista de trabajos académicos </h2>            <p>Para ver la lista de trabajos académicos el usuario deberá acceder pulsando el botón de la barra lateral                de navegación “Mis Trabajos” que redirigirá a la lista de los trabajos académicos a los que el usuario                pertenece ya sea porque es propietario o porque participa como estudiante o profesor. </p>            <img class="help-image" alt="Trabajos académicos 6"                src="../../../assets/images/user-manual/trabajo-academico-6.jpg">            <p>El rol del estudiante aparecerá indicado abajo a la derecha de cada uno de los trabajos académicos. Los                trabajos que hayan sido archivados aparecerán siempre al final del listado.</p>            <h2> Acceder a un trabajo académico </h2>            <p>Pulsando sobre uno de los trabajos académicos del listado de trabajos académicos se accederá a sus                opciones.</p>            <p>Si el usuario es propietario del trabajo la vista será la siguiente:</p>            <img class="help-image" alt="Trabajos académicos 7"                src="../../../assets/images/user-manual/trabajo-academico-7.jpg">            <p>Se mostrarán los botones para editar la información del trabajo arriba a la derecha y para eliminar y                archivar el trabajo al final de la página.</p>            <p>Si el usuario es profesor pero no es propietario del trabajo se mostrará la siguiente vista:            </p>            <img class="help-image" alt="Trabajos académicos 8"                src="../../../assets/images/user-manual/trabajo-academico-8.jpg">            <p>Ya no se permite ni editar los datos del trabajo, ni invitar nuevos miembros ni eliminar/archivar el                trabajo académico. Únicamente el usuario podrá eliminarse a sí mismo, es decir, abandonar el trabajo                académico.</p>            <p>El usuario marcado con una estrella amarilla hace referencia al propietario del trabajo académico.</p>            <p>Si el profesor es estudiante se mostrará la siguiente pantalla:</p>            <img class="help-image" alt="Trabajos académicos 9"                src="../../../assets/images/user-manual/trabajo-academico-9.jpg">            <p>De la misma manera que antes el usuario estudiante solo podrá eliminarse a sí mismo, saliendo del trabajo                académico.</p>            <h2> Editar un trabajo académico </h2>            <p>Para editar la información de un trabajo académico el usuario propietario deberá pulsar el botón con                forma de lápiz de la parte superior derecha de la información.</p>            <img class="help-image" alt="Trabajos académicos 10"                src="../../../assets/images/user-manual/trabajo-academico-10.jpg">            <p>Este botón hará que los campos de la información sean editables y con el botón “Guardar cambios” guardará                los cambios realizados.</p>            <h2> Invitar nuevos miembros a un trabajo académico </h2>            <p>Para invitar nuevos miembros a un trabajo académico el usuario propietario deberá pulsar el botón                “Invitar nuevos miembros” lo que hará aparecer el diálogo modal para invitar nuevos miembros al trabajo                académico.</p>            <img class="help-image" alt="Trabajos académicos 11"                src="../../../assets/images/user-manual/trabajo-academico-11.jpg">            <p>El funcionamiento de este diálogo es similar al que aparece en la creación del trabajo académico en el                apartado de creación de trabajos académicos.</p>            <h2> Archivar/Desarchivar un trabajo académico </h2>            <p>Para archivar un trabajo académico el usuario propietario del trabajo académico deberá pulsar el botón                “Archivar trabajo académico” situado al final de la página.</p>            <img class="help-image" alt="Trabajos académicos 12"                src="../../../assets/images/user-manual/trabajo-academico-12.jpg">            <p>Cuando el usuario pulse sobre dicho botón aparecerá un diálogo de confirmación:</p>            <img class="help-image" alt="Trabajos académicos 13"                src="../../../assets/images/user-manual/trabajo-academico-13.jpg">            <p>Si el usuario pulsa “Sí” el trabajo académico pasará a estar archivado y se mostrará al final de la lista                de trabajos académicos del usuario.</p>            <p>Ahora en el menú de opciones aparecerá la opción de “Desarchivar trabajo académico” cuya funcionalidad es                similar a la anterior:</p>            <img class="help-image" alt="Trabajos académicos 14"                src="../../../assets/images/user-manual/trabajo-academico-14.jpg">            <h2> Eliminar un trabajo académico </h2>            <p>La funcionalidad de eliminar un trabajo académico será similar a la de archivarlo, cuando el usuario                acepte el diálogo de confirmación, el trabajo académico y todos sus recursos serán eliminados del                sistema. Dicha acción no se puede deshacer.</p>        </section>        <section id="gestion-foro">            <h1>Gestión del foro de un trabajo académico</h1>            <p>Si el usuario entra por primera vez al foro y no existen temas se mostrará el siguiente contenido.</p>            <img class="help-image" alt="Temas 1" src="../../../assets/images/user-manual/temas-1.jpg">            <h2>Crear nuevo tema</h2>            <p>Para acceder al foro de un trabajo académico el usuario debe haber accedido previamente a un trabajo                académico. Una vez haya realizado esto deberá navegar al apartado de foro a través del menú de pestañas.            </p>            <p>Para crear un nuevo tema el usuario deberá pulsar el botón “Nuevo tema” en la pantalla anterior de                listado de temas. Se abrirá un diálogo modal donde el usuario deberá especificar un título obligatorio y                un contenido del tema.</p>            <img class="help-image" alt="Temas 2" src="../../../assets/images/user-manual/temas-2.jpg">            <p>Una vez el usuario pulse el botón “Crear” se creará el nuevo tema y se mostrará en la lista de temas del                foro</p>            <img class="help-image" alt="Temas 3" src="../../../assets/images/user-manual/temas-3.jpg">            <h2>Acceder a un tema existente del foro</h2>            <p>Una vez un usuario haya creado un tema en el foro podrá ver su contenido accediendo desde la lista de                temas del foro. Para acceder deberá bien pulsar el título del tema o el botón de respuestas del tema.            </p>            <img class="help-image" alt="Temas 4" src="../../../assets/images/user-manual/temas-4.jpg">            <p>Una vez el usuario haya accedido se mostrará la información del tema y las respuestas al mismo.</p>            <h2>Responder a un tema</h2>            <p>Una vez se ha accedido a un tema utilizando la sección del editor de texto inferior el usuario podrá                escribir una respuesta al tema. Pulsando el botón “Comentar” se enviará la respuesta.</p>            <img class="help-image" alt="Temas 5" src="../../../assets/images/user-manual/temas-5.jpg">            <h2>Eliminar una respuesta</h2>            <p>Un usuario solo podrá eliminar aquellas respuestas que ha escrito él utilizando el botón con forma de                papelera de la parte derecha de la respuesta. Se mostrará un diálogo de confirmación que deberá aceptar                para eliminar la respuesta.</p>            <img class="help-image" alt="Temas 6" src="../../../assets/images/user-manual/temas-6.jpg">            <h2>Marcar/Desmarcar un tema como favorito</h2>            <p>Para marcar un tema como favorito el usuario tendrá que pulsar sobre el botón con forma de corazón del                tema mostrado en la lista de temas. </p>            <img class="help-image" alt="Temas 7" src="../../../assets/images/user-manual/temas-7.jpg">            <p>Para desmarcar un tema como favorito el usuario deberá pulsar el mismo botón que ahora se encontrará                relleno.</p>            <img class="help-image" alt="Temas 8" src="../../../assets/images/user-manual/temas-8.jpg">            <h2>Eliminar un tema</h2>            <p>Para eliminar un tema el usuario deberá pulsar el botón que dice “Eliminar” a la derecha del tema. El                usuario deberá confirmar la eliminación con el botón “Sí” de la pantalla de confirmación que aparece.            </p>            <img class="help-image" alt="Temas 9" src="../../../assets/images/user-manual/temas-9.jpg">        </section>        <section id="gestion-archivos">            <h1>Gestión de archivos de un trabajo académico</h1>            <p>Para acceder a la gestión de archivos de un trabajo académico el usuario deberá ir a través del menú de                pestañas tras acceder a un trabajo académico. Por defecto y tras haber creado el trabajo académico se                mostrará así:</p>            <img class="help-image" alt="Archivos 1" src="../../../assets/images/user-manual/archivos-1.jpg">            <p>Únicamente aparece un directorio con el nombre del trabajo académico creado.</p>            <h2>Crear un nuevo directorio</h2>            <p>Para crear un directorio es necesario pulsar el botón con forma de carpeta que se encuentra a la derecha                del directorio raíz. Tras esto aparecerá una pantalla dónde se solicitará el nombre del directorio a                crear.</p>            <img class="help-image" alt="Archivos 2" src="../../../assets/images/user-manual/archivos-2.jpg">            <p>Cuando se pulse el botón “Crear” tras haber introducido un nombre se creará el directorio indicado.</p>            <img class="help-image" alt="Archivos 3" src="../../../assets/images/user-manual/archivos-3.jpg">            <h2>Subir un nuevo archivo</h2>            <p>Para subir un nuevo archivo a la plataforma es necesario pulsar el botón con forma de archivo a la                derecha en el menú de opciones. Dependiendo de en qué directorio lo pulsemos se subirá en uno u otro                directorio.</p>            <img class="help-image" alt="Archivos 4" src="../../../assets/images/user-manual/archivos-4.jpg">            <p>Tras esto aparecerá la siguiente ventana modal que solicitará al usuario subir un nuevo archivo. Deberá                pulsarse el botón con forma de clip y el usuario deberá seleccionar de su ordenador el archivo a subir                con un tamaño menor a 20MB.</p>            <p>Una vez se pulse el botón “Subir” aparecerá el nuevo archivo subido:</p>            <img class="help-image" alt="Archivos 5" src="../../../assets/images/user-manual/archivos-5.jpg">            <h2>Descargarse un archivo</h2>            <p>Para descargarse un archivo subido el usuario deberá pulsar el botón con forma de flecha hacia abajo, una                vez haga esto el navegador descargará el archivo en su carpeta de descargas por defecto.</p>            <h2>Eliminar un directorio</h2>            <p>Para eliminar un directorio deberá pulsarse el botón con forma de papelera de su derecha, es necesario                que un directorio este previamente vacío, sin ningún archivo en su interior, si se intenta eliminar un                directorio con algún archivo o directorio en su interior surgirá el siguiente problema.</p>            <img class="help-image" alt="Archivos 6" src="../../../assets/images/user-manual/archivos-6.jpg">            <h2>Eliminar un archivo</h2>            <p>Para eliminar un archivo el procedimiento es el mismo que el anterior, pulsando el botón con forma de                papelera de la derecha.</p>        </section>        <section id="gestion-calendario">            <h1>Gestión del calendario de un trabajo académico</h1>            <p>Para acceder a la sección del calendario el usuario deberá pulsar en el menú de pestañas de un trabajo                académico la opción “Calendario”. El calendario por defecto en un trabajo académico aparecerá vacío de                la siguiente manera:</p>            <img class="help-image" alt="Calendario 1" src="../../../assets/images/user-manual/calendario-1.jpg">            <h2>Crear un nuevo evento en el calendario</h2>            <p>Para crear un nuevo evento el usuario tiene dos alternativas, pulsar sobre un día del calendario o pulsar                el botón “Nuevo evento”, ambos tienen el mismo comportamiento.</p>            <img class="help-image" alt="Calendario 2" src="../../../assets/images/user-manual/calendario-2.jpg">            <p>Para crear un evento el usuario deberá cumplimentar obligatoriamente el título, y la fecha de inicio.</p>            <p>La fecha de fin es opcional, si no se rellena el evento finalizará al terminar el día.</p>            <p>Se pueden asignar tags o categorías al evento para clasificarlo por defecto se muestran las siguientes                que son seleccionables:</p>            <img class="help-image" alt="Calendario 3" src="../../../assets/images/user-manual/calendario-3.jpg">            <p>Sin embargo el usuario puede crear su propia categoría escribiendo el nombre que quiera y pulsando la                tecla enter.</p>            <img class="help-image" alt="Calendario 4" src="../../../assets/images/user-manual/calendario-4.jpg">            <p>Una vez el usuario ha terminado de introducir los datos del evento debe pulsar el botón “Crear” para                finalizar la creación.</p>            <h2>Visualizar los eventos del calendario</h2>            <p>Una vez el usuario ha creado un evento estos pueden visualizarse en el calendario el día en que fueron                asignados.</p>            <img class="help-image" alt="Calendario 5" src="../../../assets/images/user-manual/calendario-5.jpg">            <p>El usuario puede cambiar la vista pulsando en los botones “Mes”, “Día” y “Semana”.</p>            <p>La vista de día es la siguiente:</p>            <img class="help-image" alt="Calendario 6" src="../../../assets/images/user-manual/calendario-6.jpg">            <p>La vista de semana es la siguiente:</p>            <img class="help-image" alt="Calendario 7" src="../../../assets/images/user-manual/calendario-7.jpg">            <p>Si el calendario tiene eventos relacionados con tareas, estos se mostrarán en color naranja, si el                usuario intenta modificar alguno de estos eventos relacionados con tareas se mostrará el siguiente                mensaje de error:</p>            <img class="help-image" alt="Calendario 8" src="../../../assets/images/user-manual/calendario-8.jpg">            <h2>Modificar un evento del calendario</h2>            <p>Para modificar un evento el usuario puede pulsar sobre el mismo en el calendario en cualquiera de las                vistas seleccionables.</p>            <img class="help-image" alt="Calendario 9" src="../../../assets/images/user-manual/calendario-9.jpg">            <p>Se cargarán los datos del evento que el usuario podrá modificar y guardar pulsando el botón “Actualizar”.            </p>            <p>El usuario también dispone de otras opciones para modificar los eventos como arrastrarlos por el                calendario o estirarlos usando el ratón.</p>        </section>        <section id="gestion-tareas">            <h1>Gestión de tareas de un trabajo académico</h1>            <p>Para acceder a la gestión de tareas el usuario deberá utilizar el botón de pestañas con título “Tareas”                tras haber accedido a un trabajo académico.</p>            <p>La vista por defecto en un trabajo recién creado será la siguiente:</p>            <img class="help-image" alt="Tareas 1" src="../../../assets/images/user-manual/tareas-1.jpg">            <h2>Crear una nueva tarea</h2>            <p>Para crear una nueva tarea el usuario deberá pulsar el botón “Nueva tarea”. Se mostrará la siguiente                ventana:</p>            <img class="help-image" alt="Tareas 2" src="../../../assets/images/user-manual/tareas-2.jpg">            <p>El usuario deberá introducir obligatoriamente el título de la tarea únicamente.</p>            <p>Opcionalmente el usuario podrá incluir la descripción, la fecha de inicio y de fin, cambiar la                clasificación de la tarea y cambiar el usuario al cual estará asignada (será una lista de los usuarios                del trabajo académico).</p>            <p>Si el usuario introduce una fecha de inicio y de fin en una tarea esta generará un evento en el                calendario.</p>            <h2>Visualizar la lista de tareas</h2>            <p>Para visualizar la lista de tareas deberá accederse a la pestaña inferior “Lista” dentro del submenú de                tareas, si el trabajo tiene una o varias tareas creadas la lista se mostrará en una tabla de la                siguiente manera:</p>            <img class="help-image" alt="Tareas 3" src="../../../assets/images/user-manual/tareas-3.jpg">            <p>Desde las filas de la tabla el usuario podrá cambiar la clasificación de estas o acceder a la                modificación de la tarea mediante el botón en forma de rueda de ajustes.</p>            <h2>Clasificar una tarea</h2>            <p>Para clasificar una tarea el usuario tiene varias posibilidades, hacerlo desde la propia tabla de tareas,                desde la rueda de ajustes o accediendo al tablero de tareas.</p>            <p>Para acceder al tablero de tareas el usuario deberá pulsar la pestaña “Tablero”, que se mostrará de la                siguiente manera:</p>            <img class="help-image" alt="Tareas 4" src="../../../assets/images/user-manual/tareas-4.jpg">            <p>Aquí se muestran las tareas clasificadas en apartados de clasificación de tareas, el usuario puede                clasificar las tareas en los distintos apartados pulsando sobre ellas y arrastrándolas al apartado                deseado.</p>            <h2>Crear un nuevo apartado de clasificación de tareas</h2>            <p>Para crear un nuevo apartado de clasificación de tareas el usuario deberá pulsar sobre el botón “Añadir                nueva sección” en la pestaña de “Tablero”. Cuando el usuario pulse dicho botón se creará un nuevo                apartado y permitirá al usuario modificar su título pulsando sobre él.</p>            <img class="help-image" alt="Tareas 5" src="../../../assets/images/user-manual/tareas-5.jpg">            <h2>Modificar un apartado de clasificación de tareas</h2>            <p>Para modificar un apartado de clasificación de tareas el usuario solo tendrá que pulsar en el título que                quiera modificar y cambiarlo por el título nuevo que desee.</p>            <h2>Cambiar el orden de un apartado de clasificación de tareas</h2>            <p>Si el usuario desea mover un apartado de clasificación de tareas con todo su contenido a otra posición se                puede realizar pulsando el menú que tienen a la derecha después del título.</p>            <img class="help-image-no-full" alt="Tareas 6" src="../../../assets/images/user-manual/tareas-6.jpg">            <p>Desde el submenú “Posición” podrá seleccionarse la posición a la que se quiere mover.</p>            <h2>Eliminar un apartado de clasificación de tareas</h2>            <p>Si el usuario desea eliminar un apartado de clasificación de tareas solo deberá pulsar la opción                “Eliminar” en el menú mostrado en el apartado anterior. </p>            <p>Si un usuario elimina un apartado de clasificación de tareas con tareas incluidas en él, estas quedarán                sin clasificación.</p>            <h2>Modificar una tarea</h2>            <p>Para modificar una tarea el usuario podrá pulsar en ella directamente desde la opción de “Tablero” o                podrá pulsar la rueda de ajustes desde la opción de “Lista”. Ambas opciones derivan en la siguiente                pantalla:</p>            <img class="help-image" alt="Tareas 7" src="../../../assets/images/user-manual/tareas-7.jpg">            <p>Desde aquí el usuario podrá cambiar los datos de los campos del formulario al igual que cuando fue                creada. Con el botón “Actualizar” se guardarán los cambios del usuario.</p>            <h2>Eliminar una tarea</h2>            <p>Para eliminar una tarea el usuario podrá pulsar en ella directamente desde la opción de “Tablero” o podrá                pulsar la rueda de ajustes desde la opción de “Lista”. Ambas opciones derivan en la pantalla que se                mostró en el apartado anterior. Con el botón superior de la derecha con forma de papelera se puede                eliminar la tarea creada.</p>        </section>        <section id="gestion-perfil">            <h1>Gestión del perfil del usuario </h1>            <p>El usuario podrá consultar su perfil accediendo a la opción “Perfil” del menú lateral de navegación o                desde el menú superior pulsando su foto de perfil y en la opción “Mi perfil”.</p>            <img class="help-image-no-full" alt="Perfil 1" src="../../../assets/images/user-manual/perfil-1.jpg">            <p>El aspecto del perfil del usuario será algo similar a lo siguiente:</p>            <img class="help-image" alt="Perfil 2" src="../../../assets/images/user-manual/perfil-2.jpg">            <p>Desde aquí el usuario podrá cambiar su foto de perfil, actualizar sus datos y su contraseña.</p>            <h2> Modificar el perfil</h2>            <p>Para actualizar su nombre y apellidos el usuario simplemente tendrá que escribir los nuevos y pulsar el                botón “Actualizar datos”.</p>            <p>Para cambiar la contraseña deberá escribir su contraseña actual y la nueva contraseña dos veces, esta                deberá tener longitud mayor a 8.</p>            <p>Para cambiar su foto de perfil deberá pulsar sobre el botón con forma de clip, seleccionar una foto desde                su ordenador y pulsar el botón “Actualizar foto”. En la captura se muestra la foto por defecto del                usuario cuando se registra.</p>        </section>        <section id="videollamadas">            <h1> Videollamadas </h1>            <p>Para acceder a las opciones de videollamadas el usuario deberá pulsar la opción “Videollamadas” del menú                lateral de navegación.            </p>            <h2>Visualizar lista de contactos</h2>            <p>La lista de contactos del usuario se mostrará al entrar a la opción de videollamadas. Desde aquí el                usuario verá sus contactos (usuarios con los que comparte un trabajo académico) y podrá llamarlos                pulsando el botón con forma de teléfono de su derecha.</p>            <img class="help-image-no-full" alt="Videollamadas 1" src="../../../assets/images/user-manual/videollamadas-1.jpg">            <p>Podrá filtrar el nombre del usuario utilizando el componente de búsqueda superior.</p>            <p>Si un usuario se encuentra conectado aparecerá con un circulito verde como en la imagen anterior. Si el                usuario se encuentra desconectado aparecerá con un circulito gris.</p>            <img class="help-image-no-full" alt="Videollamadas 2" src="../../../assets/images/user-manual/videollamadas-2.jpg">            <h2>Iniciar una videollamada</h2>            <p>Para iniciar una videollamada con uno de sus contactos se requiere que este se encuentre online. El                usuario deberá pulsar el botón con forma de teléfono, una vez esto ocurra deberá aceptar los permisos de                audio y vídeo en una pantalla que variará dependiendo del navegador pero será similar a esta.</p>            <img class="help-image-no-full" alt="Videollamadas 3" src="../../../assets/images/user-manual/videollamadas-3.jpg">            <h2>Contestar una videollamada</h2>            <p>Para aceptar una llamada entrante el usuario deberá haberse conectado previamente y otro usuario deberá                haber iniciado una videollamada con él. Cuando el usuario reciba una llamada entrante independientemente                de la parte de la aplicación en la que se encuentre aparecerá el siguiente cuadro de diálogo.</p>            <img class="help-image" alt="Videollamadas 4" src="../../../assets/images/user-manual/videollamadas-4.jpg">            <p>Para aceptar la videollamada entrante el usuario deberá pulsar el icono con el teléfono verde y para                rechazarla el icono con el teléfono rojo.</p>            <h2>Dejar de compartir recursos de audio y video en una videollamada en curso</h2>            <p>Si el usuario que está en una llamada en curso decide dejar de compartir su audio o su señal de vídeo deberá pulsar el botón con forma de micrófono o el botón con forma de cámara.</p>            <img class="help-image" alt="Videollamadas 5" src="../../../assets/images/user-manual/videollamadas-5.jpg">            <p>Para volver a compartir estos recursos deberá volver a pulsarlos. </p>            <h2>Terminar una videollamada en curso</h2>            <p>Para terminar una llamada en curso el usuario deberá pulsar el botón con el icono del teléfono rojo. Esto pondrá fin a la llamada.</p>        </section>        <section id="notificaciones">            <h1> Notificaciones </h1>            <p> Cuando llegue una notificación al usuario esta se mostrará con un icono rojo sobre la barra lateral de navegación. Dicho icono contendrá el número de notificaciones que el usuario tiene pendientes.</p>            <img class="help-image-no-full" alt="Notificaciones 1" src="../../../assets/images/user-manual/notificaciones-1.jpg">            <p> Para consultar las notificaciones el usuario deberá pulsar sobre dicha opción y la aplicación le redirigirá a la pantalla de consulta de notificaciones.</p>            <img class="help-image" alt="Notificaciones 2" src="../../../assets/images/user-manual/notificaciones-2.jpg">            <p>Una vez aquí el usuario podrá filtrar las notificaciones por trabajo académico. El usuario podrá acceder al trabajo académico en el cual se ha producido la notificación pulsando el enlace que la acompaña.</p>            <h2>Marcar las notificaciones como leído</h2>            <p>Para marcar una notificación como leído el usuario podrá utilizar el botón con forma de tick de la derecha de la notificación.</p>            <p>Para marcar todas las notificaciones como leído puede pulsar el botón “Marcar todo como leído”. </p>            <p>Una vez el usuario ha marcado todas las notificaciones como leído la pantalla se mostrará de la siguiente manera: </p>            <img class="help-image" alt="Notificaciones 3" src="../../../assets/images/user-manual/notificaciones-3.jpg">        </section>        <section id="desconectarse">            <h1> Desconectarse </h1>            <p> Para desconectarse de la aplicación el usuario deberá pulsar el botón superior con su foto de perfil (en caso de que la tenga) o con el icono de usuario por defecto y pulsar el botón “Desconectarse”.</p>            <img class="help-image-no-full" alt="Desconectarse 1" src="../../../assets/images/user-manual/desconectarse-1.jpg">        </section>    </mat-sidenav-content></mat-sidenav-container></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BoardComponent', 'selector': 'app-board'},{'name': 'CalendarWorkComponent', 'selector': 'app-calendar-work'},{'name': 'ConfirmDialog', 'selector': 'confirm-dialog'},{'name': 'ContactoComponent', 'selector': 'app-contact'},{'name': 'CustomBreadcrumbComponent', 'selector': 'app-custom-breadcrumb'},{'name': 'DialogAddDirectory', 'selector': 'modal-add-directory.html'},{'name': 'DialogAddPost', 'selector': 'modal-add-post.html'},{'name': 'DialogAddWork', 'selector': 'add-work.html'},{'name': 'DialogManageTask', 'selector': 'dialog-manage-task.html'},{'name': 'DialogNewEvent', 'selector': 'modal-events.html'},{'name': 'DialogUploadFile', 'selector': 'modal-upload-file.html'},{'name': 'EntryCallDialogComponent', 'selector': 'app-entry-call-dialog'},{'name': 'FilesComponent', 'selector': 'app-files'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForoComponent', 'selector': 'app-foro'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'InfoComponent', 'selector': 'app-info-work'},{'name': 'LegalInfoComponent', 'selector': 'app-legal-info'},{'name': 'ListTasksComponent', 'selector': 'app-list-tasks'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ManageWorkComponent', 'selector': 'app-manage-work'},{'name': 'ModalAddUsers', 'selector': 'modal-add-users'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'Pagina404Component', 'selector': 'pagina404'},{'name': 'PostListComponent', 'selector': 'app-post-list'},{'name': 'PostManagementComponent', 'selector': 'app-post-management'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'VideocallsComponent', 'selector': 'app-videocalls'},{'name': 'WorkListComponent', 'selector': 'app-work-list'},{'name': 'WorkRequestsComponent', 'selector': 'app-work-requests'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HelpComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HelpComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

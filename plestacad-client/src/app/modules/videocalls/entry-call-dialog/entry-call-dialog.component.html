@@ -1,10 +1,10 @@
 <div mat-dialog-content>
     <div class="image-container">
-    <img *ngIf="this.photoProfile==undefined" class="circular-photo"
+    <img alt="Imagen de perfil" *ngIf="this.photoProfile==undefined" class="circular-photo"
     src="assets/images/profile-default.png" />
 
 
-    <img *ngIf="this.photoProfile!=undefined"  class="circular-photo" [src]="this.photoProfile">
+    <img  alt="Imagen de perfil" *ngIf="this.photoProfile!=undefined"  class="circular-photo" [src]="this.photoProfile">
 
     <p>{{data.message}}</p>
 

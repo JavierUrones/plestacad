@@ -1,14 +1,55 @@
+/** Router express que define las rutas relacionadas con la gestión de tareas de un trabajo académico.
+ * @module routes/users
+ * @requires express
+ */
+/**
+ * Router express.
+ * @type {object}
+ * @const
+ */
 const router = require("express").Router();
-const UserService = require("../../services/userService");
+/**
+ * Servicio de los usuarios
+ * @type {object}
+ * @const
+ */
+const userService = require("../../services/userService");
 
-const userService = new UserService();
-
+/**
+ * Error de validación
+ * @type {object}
+ * @const
+ */
 const ValidationError = require("../../config/errors/customErrors");
+
+/**
+ * Middleware para comprobar la autenticación de usuarios.
+ * @type {object}
+ * @const
+ */
 const auth = require("../middleware/authMiddleware");
 
+/**
+ * Módulo formidable.
+ * @type {object}
+ * @const
+ */
 const formidable = require("formidable");
 
+/**
+ * Token utils
+ * @type {object}
+ * @const
+ */
+const {getUserIdFromTokenRequest, checkIsAdmin} = require("../../utils/token")
 
+/**
+ * @name get/users
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/users", auth, async (req, res) => {
     try{
       const listUsers =   await userService.getAllUsers();
@@ -23,6 +64,13 @@ router.get("/users", auth, async (req, res) => {
   }
   );
 
+  /**
+ * @name get/users/role/:workId
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/users/role/:workId", auth, async (req, res) => {
   try{
     var workId = req.params.workId;
@@ -30,6 +78,7 @@ router.get("/users/role/:workId", auth, async (req, res) => {
     let listUsers;
     if(workId != "undefined"){
       listUsers =   await userService.getUsersForInvitationByRole(workId);
+
     } else{
       listUsers = await userService.getAllUsers();
     }
@@ -43,6 +92,13 @@ router.get("/users/role/:workId", auth, async (req, res) => {
 }
 );
 
+/**
+ * @name get/users/email/:email
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/users/email/:email", auth, async (req, res) => {
   try{
     var email = req.params.email;
@@ -57,6 +113,13 @@ router.get("/users/email/:email", auth, async (req, res) => {
 }
 );
 
+/**
+ * @name get/users/:id
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/users/:id", auth, async (req, res) => {
   try{
     const user =   await userService.getUserById(req.params.id);
@@ -72,11 +135,22 @@ router.get("/users/:id", auth, async (req, res) => {
   }
 })
 
+/**
+ * @name put/users/updatePassword
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.put("/users/updatePassword", auth, async (req, res) => {
   try{
 
-    console.log("BODY", req.body)
     const userDto = { id: req.body.id, password: req.body.password, currentPassword: req.body.currentPassword}
+    let reqUserId = getUserIdFromTokenRequest(req);
+    if(reqUserId != userDto.id && !await checkIsAdmin(reqUserId)){
+      return res.status(403).send("Access denied  ");
+
+    }
     const user =   await userService.updatePassword(userDto)
     
     res.json({
@@ -85,15 +159,33 @@ router.put("/users/updatePassword", auth, async (req, res) => {
       }
     })
   }catch(error){
+    if(error instanceof ValidationError){
+      return res.status(400).send(error.message);
+    }
     return res.status(500).json({ error: error.message });
 
   }
 })
 
+/**
+ * @name get/users/updateData
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.put("/users/updateData", auth, async (req, res) => {
   try{
 
     const userDto = { id: req.body.id, name: req.body.name, surname: req.body.surname}
+    let reqUserId = getUserIdFromTokenRequest(req);
+    if(reqUserId != userDto.id && !await checkIsAdmin(reqUserId)){
+      return res.status(403).send("Access denied");
+
+    }
+    if(userDto.name.trim().length == 0 && userDto.surname.trim().length == 0)
+      return res.status(400).send("Name or surname not valid.");
+
     const user =   await userService.updateUserData(userDto)
     
     res.json({
@@ -107,6 +199,13 @@ router.put("/users/updateData", auth, async (req, res) => {
   }
 })
 
+/**
+ * @name get/users/fullname/:id
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/users/fullname/:id", auth, async (req, res) => {
     try{
       const user =   await userService.getUserById(req.params.id);
@@ -141,6 +240,13 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
   }
   );
 
+  /**
+ * @name post/users/profile-photo
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
   router.post("/users/profile-photo", auth, async (req, res) => {
 
     try{
@@ -176,7 +282,13 @@ router.get("/users/fullname/:id", auth, async (req, res) => {
     }
   });
 
-
+/**
+ * @name get/users/profile-photo/:userId
+ * @function
+ * @memberof module:routes/users
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
   router.get("/users/profile-photo/:userId", auth, async (req, res) => {
     try{
       const userId = req.params.userId;

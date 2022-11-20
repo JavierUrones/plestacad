@@ -1,17 +1,16 @@
+/** Módulo que solicita la inicialización de los recursos.
+ * @module loaders/loaderMongoose
+ */
+
+/** Módulo loader de mongoose */
 const mongooseLoader = require("./loaderMongoose");
+/** Módulo loader de express */
 const expressLoader = require("./loaderExpress");
 
-async function initialize(app) {
-  const mongoConnection = await mongooseLoader.initializeMongoose();
-  console.log('MongoDB Initialized');
 
-  await expressLoader.initializeExpress(app);
-  console.log('Express Initialized');
-
-}
+/** Inicializa los recursos especificados en los loaders. */
 module.exports.initialize = async (app, server) =>  {
-
-  const mongoConnection = await mongooseLoader.initializeMongoose();
+  await mongooseLoader.initializeMongoose();
   console.log('MongoDB Initialized');
 
   await expressLoader.initializeExpress(app);

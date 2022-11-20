@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule, TranslateService, TranslateStore } from '@ngx-translate/core';
 
 import { SidenavComponent } from './sidenav.component';
 
@@ -8,7 +12,9 @@ describe('SidenavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidenavComponent ]
+      declarations: [ SidenavComponent ],
+      imports: [RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule,      TranslateModule.forRoot() ],
+      providers: [TranslateService, TranslateStore  ]
     })
     .compileComponents();
   });

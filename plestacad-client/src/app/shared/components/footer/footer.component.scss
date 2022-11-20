@@ -1,6 +1,6 @@
 ul {
     list-style-type: none;
-    
+    margin-top: 10px;
     text-align: center;
 }
 ul li{
@@ -11,7 +11,7 @@ ul li{
 
 ul li a{
     text-decoration: none;
-    color: lightgray;
+    color: rgb(67, 67, 67);
 }
 
 ul li a:hover{
@@ -19,8 +19,12 @@ ul li a:hover{
 }
 
 .bottom-subtitle{
-    color: lightgray;
+    color: rgb(67, 67, 67);
     margin:auto; display:table; 
     font-size: 0.7em;
     margin-top: 4px;
+}
+
+.divider{
+    margin-bottom: 1%;
 }

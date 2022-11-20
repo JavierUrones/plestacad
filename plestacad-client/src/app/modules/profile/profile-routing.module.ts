@@ -9,8 +9,9 @@ import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ProfileComponent,
+
     canActivate: [AuthGuard]
   }
 ];

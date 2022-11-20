@@ -29,8 +29,8 @@
 }
 
 button{
-    float: right;
-    position: relative;
+    display:flex;
+    justify-content: flex-end;
     margin-bottom: 2%;
     margin-right: 2%;
 }
@@ -40,8 +40,16 @@ button{
 .password-wrapper {
     border-radius: 10px;
     border: 1px solid;
-    border-color: lighgrey;
+    background-color: rgb(249, 249, 249);
+    border: 1px solid lightgrey;
+
 }
+
+.header-title{
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
+  }
 
 #header-details,
 #header-password {
@@ -72,9 +80,9 @@ mat-form-field {
     margin-top: 5%;
     margin-bottom: 5%;
     border-radius: 50%;
-    border: 2px solid;
+    border: 1px solid;
 
-    width: 40%;
+    width: 30%;
     height: auto;
 }
 

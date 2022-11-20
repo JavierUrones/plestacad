@@ -1,3 +1,9 @@
+mat-form-field{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
 .main-board {
     display: flex;
     height: auto;
@@ -25,13 +31,15 @@
 }
 
 .task-content{
-    font-size: 0.7em;
+    font-size: 0.9em;
     margin: 2% 2% 2% 2%;
 }
 .task-board:hover{
     cursor: pointer;
 }
-
+.task-title{
+    font-size: 1.2em;
+}
 
 .cdk-drag-preview {
     box-sizing: border-box;
@@ -66,7 +74,7 @@
     border: none;
     outline: none;
     background: transparent;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
     margin-top: 0.25em;
     margin-left: 0.25em;
@@ -86,7 +94,7 @@
 .optionMenu {
     margin-right: 0.25em;
     margin-top: 0.25em;
-    float:right;
+    float: right;
 }
 
 .subMenu { 

@@ -4,35 +4,35 @@
 <mat-card>
     <div class="info-general">
         <div class="edit-button-container">
-            <button color="primary" mat-raised-button *ngIf="this.authorId==this.userId" (click)="enableEdit()">
+            <button matTooltip="Editar información" id="editInfoButton" color="primary" mat-raised-button
+                *ngIf="this.authorId==this.userId" (click)="enableEdit()">
                 <mat-icon>edit</mat-icon>
+
             </button>
         </div>
         <h1>Información general</h1>
 
         <mat-card-content>
             <form [formGroup]="dataWork">
-                <mat-label> Titulo </mat-label>
                 <mat-form-field class="full-width-input">
+                    <mat-label label-for> Titulo </mat-label>
                     <input matInput formControlName="title" />
                 </mat-form-field>
-                <mat-label> Descripción </mat-label>
                 <mat-form-field>
+                    <mat-label> Descripción </mat-label>
                     <textarea matInput formControlName="description"></textarea>
                 </mat-form-field>
-                <mat-label> Curso </mat-label>
                 <mat-form-field>
-                    <mat-select [formControl]="courseControl">
+                    <mat-label> Curso </mat-label>
+                    <mat-select id="courseSelect" [formControl]="courseControl">
                         <mat-option *ngFor="let c of cursos" [value]="c.value">
                             {{ c.value }}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-label>Categoría</mat-label>
-
                 <mat-form-field>
-                    <mat-select [formControl]="categoryControl">
+                    <mat-label>Categoría</mat-label>
+                    <mat-select id="categorySelect" [formControl]="categoryControl">
                         <mat-option *ngFor="let cat of categories" [value]="cat.value">
                             {{ cat.viewValue }}
                         </mat-option>
@@ -40,7 +40,8 @@
                 </mat-form-field>
             </form>
             <div class="edit-button-container">
-                <button color="primary" mat-raised-button *ngIf="this.authorId==this.userId && this.editingWork" (click)="saveEditWork()">
+                <button color="primary" mat-raised-button *ngIf="this.authorId==this.userId && this.editingWork"
+                    (click)="saveEditWork()">
                     Guardar cambios
                 </button>
             </div>
@@ -52,7 +53,8 @@
     <div class="members">
         <h1>Miembros</h1>
         <mat-card-content>
-            <button class="align-right" mat-raised-button color="primary" (click)="inviteNewUsers()"> Invitar nuevos
+            <button class="align-right" mat-raised-button color="primary" (click)="inviteNewUsers()"
+                *ngIf="this.authorId==this.userId"> Invitar nuevos
                 miembros</button>
         </mat-card-content>
         <div class="teachers">
@@ -62,25 +64,34 @@
                     <ul *ngFor="let teacher of this.teachersList">
                         <li class="user-data">
                             <div class="image-user-container" *ngIf="this.authorId == teacher._id">
-                                <img *ngIf="teacher.photo!=undefined" class="profile-img" [src]="teacher.photo">
-                                <img *ngIf="teacher.photo==undefined" class="profile-img"
+                                <img alt="Imagen de perfil" *ngIf="teacher.photo!=undefined" class="profile-img"
+                                    [src]="teacher.photo">
+                                <img alt="Imagen de perfil" *ngIf="teacher.photo==undefined" class="profile-img"
                                     src="assets/images/profile-default.png">
 
                                 <span id="star" class="fa fa-star"></span>
 
                             </div>
-                            <img *ngIf="this.authorId != teacher._id && teacher.photo!=undefined" class="profile-img"
-                                [src]="teacher.photo">
-                            <img *ngIf="this.authorId != teacher._id && teacher.photo==undefined" class="profile-img"
-                                src="assets/images/profile-default.png">
+                            <img alt="Imagen de perfil" *ngIf="this.authorId != teacher._id && teacher.photo!=undefined"
+                                class="profile-img" [src]="teacher.photo">
+                            <img alt="Imagen de perfil" *ngIf="this.authorId != teacher._id && teacher.photo==undefined"
+                                class="profile-img" src="assets/images/profile-default.png">
 
 
                             {{teacher.name}} {{teacher.surname}} |
                             {{teacher.email}}
 
-                            <button *ngIf="teacher._id != this.authorId" class="delete-user-button" mat-raised-button
-                                color="warn" (click)="this.deleteUser(teacher._id, 'teacher')">
+                            <button matTooltip="Eliminar profesor"
+                                *ngIf="(teacher._id != this.authorId &&  this.authorId==this.userId) || isAdmin"
+                                class="delete-user-button" mat-raised-button color="warn"
+                                (click)="this.deleteUser(teacher._id, 'teacher')">
                                 <mat-icon>delete</mat-icon>
+                            </button>
+                            <button matTooltip="Salir del trabajo académico"
+                                *ngIf="teacher._id == this.userId && teacher._id!=this.authorId"
+                                class="delete-user-button" mat-raised-button color="warn"
+                                (click)="this.deleteUser(teacher._id, 'teacher')">
+                                <mat-icon>exit_to_app</mat-icon>
                             </button>
                         </li>
                     </ul>
@@ -100,17 +111,25 @@
             <div *ngIf="this.studentsList.length>0" class="studentsList">
                 <ul *ngFor="let student of this.studentsList">
                     <li class="user-data">
-                        <img *ngIf="student.photo!=undefined" class="profile-img" [src]="student.photo">
-                        <img *ngIf="student.photo==undefined" class="profile-img"
+                        <img alt="Imagen de perfil" *ngIf="student.photo!=undefined" class="profile-img"
+                            [src]="student.photo">
+                        <img alt="Imagen de perfil" *ngIf="student.photo==undefined" class="profile-img"
                             src="assets/images/profile-default.png">
 
 
                         <span>{{student.name}} {{student.surname}} | {{student.email}} </span>
 
                         <button class="delete-user-button" mat-raised-button color="warn"
-                            (click)="this.deleteUser(student._id, 'student')">
-                            <mat-icon>delete</mat-icon>
+                            (click)="this.deleteUser(student._id, 'student')"
+                            *ngIf="(this.authorId==this.userId) || isAdmin">
+                            <mat-icon matTooltip="Eliminar estudiante">delete</mat-icon>
                         </button>
+                        <button matTooltip="Salir del trabajo académico"
+                        *ngIf="(student._id == this.userId)"
+                        class="delete-user-button" mat-raised-button color="warn"
+                        (click)="this.deleteUser(student._id, 'student')">
+                        <mat-icon>exit_to_app</mat-icon>
+                    </button>
 
                     </li>
                 </ul>
@@ -122,11 +141,13 @@
 
     </div>
 
-    <div class="other-options" *ngIf="this.authorId == this.userId">
+    <div class="other-options" *ngIf="this.authorId == this.userId || isAdmin">
         <h2>Opciones</h2>
         <mat-card-content>
-            <button *ngIf="!this.isClassified" id="classifyWorkButton" color="accent" mat-raised-button (click)="this.setWorkAsClassified()"> Archivar trabajo académico</button>
-            <button *ngIf="this.isClassified" id="desclassifyWorkButton" color="accent" mat-raised-button (click)="this.setWorkAsDesclassified()"> Desarchivar trabajo académico</button>
+            <button *ngIf="!this.isClassified" id="classifyWorkButton" color="accent" mat-raised-button
+                (click)="this.setWorkAsClassified()"> Archivar trabajo académico</button>
+            <button *ngIf="this.isClassified" id="desclassifyWorkButton" color="accent" mat-raised-button
+                (click)="this.setWorkAsDesclassified()"> Desarchivar trabajo académico</button>
 
 
             <button id="deleteWorkButton" color="warn" mat-raised-button (click)="this.deleteWork()"> Eliminar trabajo

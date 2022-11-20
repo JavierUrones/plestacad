@@ -29,19 +29,20 @@
 </mat-grid-list>
 -->
 
+<h1 class="header-title"> Tu Lista de Trabajos Académicos </h1>
 
 
-<mat-form-field>
+<mat-form-field class="filter">
   <mat-label>Filtrar</mat-label>
 
-<mat-select [value]="selected" (selectionChange)="onFilterChange($event.value)">
+<mat-select  id="workCategorySelector" [value]="selected" (selectionChange)="onFilterChange($event.value)">
   <mat-option *ngFor="let option of options" [value]="option.value">
     {{ option.name }}
   </mat-option>
 </mat-select>
 </mat-form-field>
 
-<mat-form-field>
+<mat-form-field class="filter">
 
   <input matInput type="text"  placeholder="Buscar por título" (input)="onSearch($event.target)" />
 </mat-form-field>
@@ -56,14 +57,16 @@
   </div>
   <div *ngFor="let work of workList" >
 
-  <mat-card class="work-card" (click)="navigateToWork(work._id)">
+  <mat-card  tabindex=0 (keydown.enter)="navigateToWork(work._id)" class="work-card" (click)="navigateToWork(work._id)">
 
-    <mat-card-title
+    <mat-card-title class="card-title"
     >{{work.title}}</mat-card-title
   >
-  <mat-card-subtitle>{{showValueCategory(work.category)}} - 
-    Curso {{work.course}}
+  <mat-card-subtitle class="work-category" style="margin-top: 1%;">{{showValueCategory(work.category)}}
   </mat-card-subtitle>
+  <mat-card-subtitle class="course" >Curso {{work.course}}
+  </mat-card-subtitle>
+  
   <mat-card-subtitle style="color: lightcoral" *ngIf="work.classified">
       Archivado
   </mat-card-subtitle>

@@ -1,46 +1,39 @@
-import { DatePipe, DOCUMENT } from '@angular/common';
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { WorkCategory } from 'src/app/shared/models/category.enum';
-import { UserService } from 'src/app/shared/services/user.service';
-import { WorkListService } from '../work-list.service';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { FullCalendar } from 'primeng/fullcalendar';
 
 import { CalendarService } from './calendar.service';
-import { map, Observable, startWith, Subscription } from 'rxjs';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { dateEndValidator } from './resources/dateValidator';
+import { Subscription } from 'rxjs';
 //@ts-ignore
 import esLocale from '@fullcalendar/core/locales/es';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
-import { DateMarker, formatDate } from '@fullcalendar/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotifyNewTaskService } from 'src/app/shared/services/notify-new-task.service';
+import { DialogNewEvent } from './modal-events/modal-events';
+import { CalendarEvent } from './models/calendar-event.model';
 @Component({
     selector: 'app-calendar-work',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.scss'],
 })
+/** Define el componente de calendario de un trabajo académico. */
 export class CalendarWorkComponent implements OnInit {
 
     constructor(private notifyNewTaskService: NotifyNewTaskService, private _notificationBar: MatSnackBar, private calendarService: CalendarService, private route: ActivatedRoute, public dialog: MatDialog
     ) { }
 
-    events: any[] = [];
+    /** Lista de eventos del calendario */
+    events: CalendarEvent[] = [];
+    /** Opciones del selector de filtrado por evento o tarea. */
     options: any;
+    /** Id del trabajo académico */
     idWork!: string;
+    /** Valor seleccionado en el selector de filtrado */
     selectedFilterValue!: string;
+    /** Suscripción al servicio de notificación de nuevas tareas. */
     notifierNewTask: Subscription = this.notifyNewTaskService.subjectNotifier.subscribe(notice => {
-        //se ha creado una nueva tarea, se debe actualizar el evento.
-        console.log("ACTUALIZAMOS")
         this.getCalendarEvents();
     });
 
@@ -48,16 +41,11 @@ export class CalendarWorkComponent implements OnInit {
         this.idWork = this.route.snapshot.params['idWork'];
         this.getCalendarEvents();
         this.selectedFilterValue = "all";
-
-        
-
-
-
         this.options = {
             plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
             initialView: 'timeGridWeek',
             defaultDate: new Date(),
-            height: "50%",
+            height: 600,
             dateClick: this.handleDateClick.bind(this),
             eventClick: this.handleEventClick.bind(this),
             eventDrop: this.handleEventDrop.bind(this),
@@ -69,69 +57,82 @@ export class CalendarWorkComponent implements OnInit {
                 right: 'dayGridMonth,timeGridDay,timeGridWeek ',
             },
             editable: true,
-            timezone: 'local'
+            timezone: 'local',
+            eventInteractive: true
         }
 
 
     }
 
+
+    /** Llama al servicio para obtener los eventos del calendario del trabajo académico en cuestión. */
     getCalendarEvents() {
         this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-            response.data.forEach((element: { id: any; _id: any; }) => {
+            response.data.forEach((element: {
+                id: any; _id: any;
+            }) => {
                 element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
+
             });
             this.events = response.data;
 
             this.events.forEach(element => {
                 if (element.taskOriginId != undefined) {
-                    element.color = "purple"
+                    element.color = "orange"
                     element.editable = false;
                     element.description = "Tarea"
+
                 }
             })
 
         })
     }
 
+    /** Filtra los eventos del calendario que están relacionados con tareas. */
     getCalendarEventsFilteredTasks() {
         //necesario hacerlo repitiendo el código de esta manera por motivos de funcionamiento de fullcalendar.
         this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-            response.data.forEach((element: { id: any; _id: any; }) => {
+            response.data.forEach((element: {
+                id: any; _id: any;
+            }) => {
                 element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
+
             });
             this.events = response.data;
 
             this.events.forEach(element => {
                 if (element.taskOriginId != undefined) {
-                    element.color = "purple"
+                    element.color = "orange"
                     element.editable = false;
                     element.description = "Tarea"
 
                 }
             })
 
-            this.events = this.events.filter(element => element.taskOriginId!=undefined)
+            this.events = this.events.filter(element => element.taskOriginId != undefined)
 
         })
     }
 
+    /** Filtra los eventos del calendarios nativos, excluyendo los relacionados con las tareas. */
     getCalendarEventsFilteredEvents() {
         this.calendarService.getCalendarEventsByWorkId(this.idWork).subscribe((response) => {
-            response.data.forEach((element: { id: any; _id: any; }) => {
+            response.data.forEach((element: {
+                id: any; _id: any;
+            }) => {
                 element.id = element._id; //se hace esta asignación para que fullcalendar entienda el campo id.
             });
             this.events = response.data;
 
             this.events.forEach(element => {
                 if (element.taskOriginId != undefined) {
-                    element.color = "purple"
+                    element.color = "orange"
                     element.editable = false;
                     element.description = "Tarea"
-
                 }
             })
 
-            this.events = this.events.filter(element => element.taskOriginId==undefined)
+            this.events = this.events.filter(element => element.taskOriginId == undefined)
 
         })
     }
@@ -140,25 +141,28 @@ export class CalendarWorkComponent implements OnInit {
 
 
 
-
+    /** Evento que se dispara cuando se modifica el tamaño de un evento manualmente desde el componente fullcalendar
+     * @param date - nueva fecha del evento.
+     */
     handleEventResize(date: any) {
 
-        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags, sessionStorage.getItem("id") as string).subscribe((response) => {
-            console.log("EVENT updated", response)
+        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags, sessionStorage.getItem("id") as string, this.idWork).subscribe((response) => {
         });
-
-
     }
 
+    /** Evento que se dispara cuando se arrastra un evento en el componente fullcalendar
+     * @param date - nueva fecha del evento
+     */
     handleEventDrop(date: any) {
-        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags,  sessionStorage.getItem("id") as string).subscribe((response) => {
-            console.log("EVENT updated", response)
+        this.calendarService.updateEvent(date.event.id, date.event.title, date.event.description, date.event.start, date.event.end, date.event.tags, sessionStorage.getItem("id") as string, this.idWork).subscribe((response) => {
         });
 
     }
+
+    /** Evento que se dispara cuando se pulsa una fecha vacía del componente fullcalendar. Abre el diálogo de creación de eventos y recarga la lista de eventos del calendario cuando se cierra.
+     * @param date - fecha seleccionada para la creación del nuevo evento.
+     */
     handleDateClick(date: any) {
-        //open modal and load date argument.
-        console.log(date);
         let config: MatDialogConfig = {
             height: "70%",
             width: "100%",
@@ -174,17 +178,19 @@ export class CalendarWorkComponent implements OnInit {
         });
     }
 
+    /** Evento que se dispara cuando se pulsa un evento del componente fullcalendar. Abre el diálogo de modificación de eventos y recarga la lista de eventos del calendario cuando se cierra.
+    * @param info -información del evento pulsado.
+    */
     handleEventClick(info: any) {
 
-        console.log("evento", info.event.id)
         let config: MatDialogConfig = {
             height: "70%",
             width: "90%",
             panelClass: "dialog-responsive",
-            data: { workId: this.idWork, start: null, eventId: info.event.id}
+            data: { workId: this.idWork, start: null, eventId: info.event.id }
         }
         const eventClicked = this.events.find(element => element.id == info.event.id);
-        if (eventClicked.taskOriginId == undefined) {
+        if (eventClicked != undefined && eventClicked.taskOriginId == undefined) {
             const dialogRef = this.dialog.open(DialogNewEvent, config);
             dialogRef.afterClosed().subscribe(result => {
                 this.getCalendarEvents();
@@ -195,10 +201,12 @@ export class CalendarWorkComponent implements OnInit {
 
     }
 
+    /** Abre la barra snackbar de notificación de eventos */
     openEventNotificationBar() {
-        this._notificationBar.open('Accede al apartado de tareas para modificar este evento.', 'X',  {duration: 2000});
+        this._notificationBar.open('Accede al apartado de tareas para modificar este evento.', 'X', { duration: 2000 });
     }
 
+    /** Abre el diálogo de creación de eventos del calendario y recarga la lista de eventos cuando este se cierra. */
     newEvent() {
 
         let config: MatDialogConfig = {
@@ -214,236 +222,24 @@ export class CalendarWorkComponent implements OnInit {
         });
     }
 
-    onFilterChange(value: any){
-        switch(value){
+    /** Evento que se dispara cuando se filtran los eventos por Eventos o Tareas en el selector de filtrado.
+     * @param value - valor seleccionado en el selector.
+     */
+    onFilterChange(value: any) {
+        switch (value) {
             case "all":
                 this.getCalendarEvents();
-                console.log("all", this.events)
 
                 break;
             case "tasks":
                 this.getCalendarEventsFilteredTasks();
-                console.log("tasks", this.events)
 
                 break;
             case "events":
                 this.getCalendarEventsFilteredEvents();
-                console.log("events")
                 break;
         }
     }
 
 
 }
-
-
-export interface DialogData {
-    workId: string;
-    start: any;
-    eventId: string;
-
-}
-
-@Component({
-    selector: 'modal-events.html',
-    templateUrl: './modal-events/modal-events.html',
-    styleUrls: ['./modal-events/modal-events.scss']
-
-})
-
-
-
-export class DialogNewEvent {
-
-    form!: FormGroup;
-
-    htmlContent!: any;
-    formControl!: FormControl;
-
-    invalidTitle!: boolean;
-    invalidDescription!: boolean;
-
-    updating!: boolean;
-    readonly separatorKeysCodes = [ENTER, COMMA] as const;
-    tags: string[] = [];
-    tagList: string[] = ['Reunión', 'Entrega', 'Videollamada', 'Recordatorio'];
-    addOnBlur = true;
-    filteredTags!: Observable<string[]>;
-    inputTags: FormControl = new FormControl('');
-    hasErrors: boolean = false;
-    @ViewChild('inputTagsElement') inputTagsElement!: ElementRef<HTMLInputElement>;
-
-    constructor(private fb: FormBuilder,
-        public dialogRef: MatDialogRef<DialogNewEvent>, private route: ActivatedRoute, private calendarService: CalendarService,
-        @Inject(MAT_DIALOG_DATA) public data: DialogData
-    ) {
-
-        this.filteredTags = this.inputTags.valueChanges.pipe(
-            startWith(null),
-            map((myTag: string | null) => (myTag ? this._filter(myTag) : this.tagList.slice())),
-        );
-
-        this.form = this.fb.group({
-            title: ['', [Validators.required, Validators.maxLength(100)]],
-            description: ['', []],
-            pickerStart: ['', [Validators.required]],
-            pickerEnd: ['', []],
-            tagCntrl: ['', []]
-        });
-
-        console.log("ES NULL?", this.data.eventId)
-        if (this.data.eventId != null) {  //el usuario esta modificando un evento.      
-            //se cargan los datos del evento.
-            this.updating = true;
-            console.log("EVENTID", this.data.eventId)
-            this.calendarService.getCalendarEventById(this.data.eventId).subscribe(response => {
-                this.form.controls["title"].setValue(response.data.title);
-                this.form.controls["description"].setValue(response.data.description);
-                var startDateTime = (new Date(response.data.start));
-                var pipe = new DatePipe('es-ES');
-                this.form.controls["pickerStart"].setValue(pipe.transform(startDateTime, 'yyyy-MM-ddTHH:mm')); //se formatea la fecha del datepicker
-                if (response.data.end != null) {
-                    var endDateTime = (new Date(response.data.end));
-                    this.form.controls["pickerEnd"].setValue(pipe.transform(endDateTime, 'yyyy-MM-ddTHH:mm'));
-                }
-                this.tags = response.data.tags;
-            })
-        } else {
-            var localDate;
-            var date;
-            if (this.data.start == null) {
-                date = new Date().toISOString();
-                localDate = date.substring(0, date.length - 13) + "00:00";
-                this.form.controls["pickerStart"].setValue(localDate);
-            } else {
-                date = this.data.start;
-                if (date.length > 10) {
-                    localDate = date.substring(0, date.length - 6)
-                } else {
-                    localDate = date + "T00:00";
-                }
-                this.form.controls["pickerStart"].setValue(localDate);
-            }
-        }
-        this.form.controls["pickerEnd"].valueChanges.subscribe((form) => {
-            this.dateValidator();
-        })
-    }
-    ngOnInit() {
-
-    }
-
-    private dateValidator() {
-        var endDate = new Date(this.form.controls["pickerEnd"].value)
-        var startDate = new Date(this.form.controls["pickerStart"].value)
-
-        console.log("FECHJAS", endDate.getTime(), startDate.getTime())
-        if (endDate.getTime() < startDate.getTime()) {
-            this.hasErrors = true;
-
-        } else {
-            this.hasErrors = false;
-
-        }
-    }
-
-
-
-
-    selected(event: MatAutocompleteSelectedEvent): void {
-
-        if (!this.tags.includes(event.option.viewValue)) {
-            this.tags.push(event.option.viewValue);
-
-            this.inputTagsElement.nativeElement.value = '';
-            this.inputTags.setValue(null);
-            this.form.controls["tagCntrl"].setValue(this.tags)
-        } else {
-            this.inputTags.setValue(null);
-            this.inputTagsElement.nativeElement.value = '';
-
-        }
-    }
-
-    private _filter(value: string): string[] {
-
-        const filterValue = value.toLowerCase();
-
-
-
-        return this.tagList.filter(tag => {
-
-            tag.toLowerCase().includes(filterValue)
-        });
-    }
-
-
-
-
-    add(event: MatChipInputEvent): void {
-        const value = (event.value || '').trim();
-        if (value && !this.tags.includes(value)) {
-            this.tags.push(value);
-
-            event.chipInput!.clear();
-            this.form.controls["tagCntrl"].setValue(this.tags);
-            this.inputTags.setValue(null);
-
-        }
-    }
-
-    remove(tag: string): void {
-        const index = this.tags.indexOf(tag)
-
-        if (index >= 0) {
-            this.tags.splice(index, 1);
-        }
-    }
-
-    deleteEvent(){
-        this.calendarService.deleteEvent(this.data.eventId, sessionStorage.getItem("id") as string).subscribe(() => {
-            this.dialogRef.close();
-
-        })
-    }
-    onClick() {
-        if (this.form.valid && !this.hasErrors) {
-
-            //Llamar al servicio para crear events.
-            const title = this.form.get('title')?.value;
-            const description = this.form.get('description')?.value;
-            const start = this.form.get('pickerStart')?.value;
-            const tags = this.tags;
-            const userIdResponsible = sessionStorage.getItem("id") as string;
-            console.log("start", start)
-            if (this.form.get('pickerEnd')?.value == "") {
-                var dateEnd = start.substring(0, 11) + "23:59:00";
-                this.form.controls["pickerEnd"].setValue(dateEnd)
-            }
-            const end = this.form.get('pickerEnd')?.value;
-
-            if (!this.updating) {
-                this.calendarService.createEvent(this.data.workId, title, description, start, end, tags, userIdResponsible).subscribe((response) => {
-                    console.log("EVENT CREATED", response)
-                })
-            } else {
-                this.calendarService.updateEvent(this.data.eventId, title, description, start, end, tags, userIdResponsible).subscribe((response) => {
-                    console.log("EVENT updated", response)
-                })
-            }
-
-            this.dialogRef.close();
-        } else {
-            console.log("Error")
-        }
-
-
-    }
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
-
-
-
-}
-

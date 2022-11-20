@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <img alt="Logo" class="img-logo" src="assets/images/logo-white.svg" />
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" >
+                <li>
+                    <button *ngIf="!userOnSession" mat-raised-button (click)="navigateToLogin()">
+                        Acceder
+                    </button>
+                    <button *ngIf="userOnSession" mat-raised-button (click)="navigateToWorks()">
+                        Volver a mis trabajos
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="content">
+   
+<h1>Política de protección de datos</h1>
+
+<p>Con los límites establecidos en la ley, Plestacad no asume ninguna responsabilidad
+derivada de la falta de veracidad, integridad, actualización y precisión de los datos o informaciones que se contienen en
+sus páginas de Internet.</p>
+<p>Los contenidos e información no vinculan a Plestacad ni constituyen opiniones, consejos o
+asesoramiento legal de ningún tipo pues se trata meramente de un servicio ofrecido con carácter informativo y
+divulgativo.</p>
+
+<p>Los textos, imágenes, sonidos, animaciones, software y el resto de contenidos incluidos en este website son propiedad
+exclusiva de Plestacad o sus licenciantes. Cualquier acto de transmisión, distribución,
+cesión, reproducción, almacenamiento o comunicación pública total o parcial, debe contar con el consentimiento
+expreso de Javier Urones Monteserín.</p>
+<p>Asimismo, para acceder a algunos de los servicios que Plestacad ofrece a través del website
+deberá proporcionar algunos datos de carácter personal. En cumplimiento de lo establecido en el Reglamento (UE)
+2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas
+en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos le informamos que,
+mediante la cumplimentación de los presentes formularios, sus datos personales quedarán incorporados y serán
+tratados en los ficheros de Plestacad con el fin de poderle prestar y ofrecer nuestros servicios así
+como para informarle de las mejoras del sitio Web. Asimismo, le informamos de la posibilidad de que ejerza los
+derechos de acceso, rectificación, cancelación y oposición de sus datos de carácter personal, manera gratuita mediante
+email UO257703@uniovi.es</p>
+</div>

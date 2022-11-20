@@ -1,4 +1,6 @@
+/** Exporta las variables de entorno de la aplicación en producción */
 export const environment = {
   production: true,
-  apiURL: "http://192.168.5.206:5200/api/"
+  apiURL: "/api",
+  server: "/server"
 };

@@ -7,41 +7,60 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { WorkCategory } from 'src/app/shared/models/category.enum';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { WorkListService } from '../work-list.service';
+import { WorkService } from '../../../shared/services/work.service';
 import { map, Observable, startWith } from 'rxjs';
 import { ModalAddUsers } from './modal-add-users/modal-add-users.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ConfirmDialog } from 'src/app/shared/components/confirm-dialog/confirm-dialog';
 
 @Component({
     selector: 'app-info-work',
     templateUrl: './info.component.html',
     styleUrls: ['./info.component.scss'],
 })
+//** Define el componente de información de un trabajo académico. */
 export class InfoComponent implements OnInit {
 
+    /** FormGroup con los datos del trabajo académico */
     dataWork!: FormGroup;
+    /** Define si los valores del formulario se pueden modificar o no dependiendo de si el usuario está visualizando o editando un trbajo académico. */
     disabled = true;
+    /** Contiene los posibles cursos a los que puede pertenecer un trabajo académico. */
     cursos: any = [];
+    /** FormControl de la categoria del trabajo académico. */
     categoryControl = new FormControl({ value: "", disabled: this.disabled });
+    /** FormControl del curso del trabajo académico. */
     courseControl = new FormControl({ value: '', disabled: this.disabled }, [Validators.required]);
+    /** Lista de profesores del trabajo */
     teachersList: any = [];
+    /** Lista de alumnos del trabajo */
     studentsList: any = [];
+    /** id del autor del trabajo */
     authorId!: string;
+    /** id del usuario en sesión */
     userId!: string;
+    /** id del trabajo académico */
     workId!: string;
+    /** Define si el usuario está editando o no el trabajo académico */
     editingWork!: boolean;
+    /** Campo classified del trabajo académico que indica si está o no clasificado. */
     isClassified!: boolean;
-
+    /** OPosibles categorías del trabajo académico */
     categories = [
         { viewValue: 'Trabajo Fin de Grado', value: 'tfg' },
         { viewValue: 'Trabajo Fin de Master', value: 'tfm' },
         { viewValue: 'Tésis Doctoral', value: 'tesis' }
 
     ];
+    /* Modo administrador */
+    isAdmin!: boolean;
 
-    constructor(public router: Router, private sanitizer: DomSanitizer, public dialog: MatDialog, private formBuilder: FormBuilder, private workService: WorkListService, private route: ActivatedRoute, private userService: UserService) { }
+    constructor(public confirmDialog: MatDialog, public router: Router, private sanitizer: DomSanitizer, public dialog: MatDialog, private formBuilder: FormBuilder, private workService: WorkService, private route: ActivatedRoute, private userService: UserService) { }
 
     ngOnInit(): void {
+        this.userService.getUserById(sessionStorage.getItem("id") as string).subscribe((res) => {
+            if(res.data.user.isAdmin) this.isAdmin = true; else this.isAdmin= false;
+        })
         this.workId = this.route.snapshot.params['idWork'];
         this.dataWork = new FormGroup({
             title: new FormControl({ value: '', disabled: this.disabled }, [Validators.required]),
@@ -59,6 +78,7 @@ export class InfoComponent implements OnInit {
 
     }
 
+    /** Obtiene los datos del trabajo académico y los almacena en las variables requeridas */
     getWorkData() {
         this.teachersList = [];
         this.studentsList = [];
@@ -91,7 +111,6 @@ export class InfoComponent implements OnInit {
                         if (photo.type == "image/jpeg") {
                             let objectURL = URL.createObjectURL(photo);
                             res.data.user.photo = this.sanitizer.bypassSecurityTrustUrl(objectURL);
-                            console.log("photo",)
                         } else {
                             res.data.user.photo = undefined;
                         }
@@ -106,6 +125,7 @@ export class InfoComponent implements OnInit {
         })
     }
 
+    /** Permite al usuario entrar y salir del modo edición de la información del trabajo académico */
     enableEdit() {
         if (!this.editingWork) {
             this.dataWork.controls['title'].enable()
@@ -126,8 +146,8 @@ export class InfoComponent implements OnInit {
 
     }
 
+    /** Guarda la edición de un trabajo académico */
     saveEditWork() {
-        console.log("values",this.dataWork.controls['title'].value, this.dataWork.controls['description'].value, this.dataWork.controls['course'].value, this.dataWork.controls['category'].value )
         this.workService.updateWork(this.workId, this.dataWork.controls['title'].value, this.dataWork.controls['description'].value, this.dataWork.controls['course'].value, this.dataWork.controls['category'].value).subscribe((res) => {
             this.getWorkData();
             this.editingWork = false;
@@ -140,6 +160,7 @@ export class InfoComponent implements OnInit {
 
 
 
+    /** Abre el diálogo de añadir usuarios al trabajo académico */
     inviteNewUsers() {
         const dialogRef = this.dialog.open(ModalAddUsers, {
             width: '1000px',
@@ -148,37 +169,73 @@ export class InfoComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
         });
     }
 
+    /** Elimina a un usuario del trabajo académico. */
     deleteUser(userId: string, type: string) {
-        this.workService.deleteUserFromWork(this.workId, userId, type).subscribe(res => {
-            this.dataWork.reset();
-            this.studentsList = [];
-            this.teachersList = [];
-            this.getWorkData();
-        })
+        this.confirmDialog
+            .open(ConfirmDialog, {
+                data: '¿Estás seguro que quieres realizar esta acción?'
+            }).afterClosed().subscribe((confirm: Boolean) => {
+                if (confirm) {
+                    if (userId == this.authorId)
+                        this.workService.deleteUserFromWork(this.workId, userId, type).subscribe(res => {
+                            this.dataWork.reset();
+                            this.studentsList = [];
+                            this.teachersList = [];
+                            this.getWorkData();
+                        })
+                    else {
+                        this.workService.leaveFromWork(this.workId, userId, type).subscribe(res => {
+                            this.dataWork.reset();
+                            this.studentsList = [];
+                            this.teachersList = [];
+                            this.getWorkData();
+                        })
+                        this.router.navigateByUrl("/trabajos");
+                    }
+                }
+
+            })
+
     }
 
+    /** Elimina el trabajo académico. */
     deleteWork() {
+        this.confirmDialog
+            .open(ConfirmDialog, {
+                data: '¿Estás seguro que quieres eliminar este trabajo académico?'
+            }).afterClosed().subscribe((confirm: Boolean) => {
+                if (confirm) {
+                    this.workService.deleteWork(this.workId).subscribe((res) => {
+                        this.router.navigateByUrl('/trabajos');
+                    })
+                }
 
-        this.workService.deleteWork(this.workId).subscribe((res) => {
-            this.router.navigateByUrl('/trabajos');
-        })
+            })
     }
 
-    setWorkAsClassified(){
-        this.workService.setWorkAsClassified(this.workId).subscribe((res) => {
-            this.dataWork.reset();
-            this.studentsList = [];
-            this.teachersList = [];
-            this.getWorkData();
 
-        })
+    /** Marca el trabajo académico como clasificado. */
+    setWorkAsClassified() {
+        this.confirmDialog
+            .open(ConfirmDialog, {
+                data: '¿Estás seguro que quieres archivar este trabajo académico?'
+            }).afterClosed().subscribe((confirm: Boolean) => {
+                if (confirm) {
+                    this.workService.setWorkAsClassified(this.workId).subscribe((res) => {
+                        this.dataWork.reset();
+                        this.studentsList = [];
+                        this.teachersList = [];
+                        this.getWorkData();
+                    })
+                }
+            })
     }
 
-    setWorkAsDesclassified(){
+    /** Marca el trabajo académico como no clasificado. */
+    setWorkAsDesclassified() {
         this.workService.setWorkAsDesclassified(this.workId).subscribe((res) => {
             this.dataWork.reset();
             this.studentsList = [];

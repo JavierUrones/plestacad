@@ -31,7 +31,7 @@
       <mat-label>Fecha de fin</mat-label>
       <input matInput type="datetime-local" formControlName="pickerEnd">
     </mat-form-field>
-    <mat-error *ngIf="hasErrors">La fecha de fin no puede ser menor que la fecha de inicio del evento.</mat-error>
+    <mat-error id="errorDate" *ngIf="hasErrors">La fecha de fin no puede ser menor que la fecha de inicio del evento.</mat-error>
 
     <mat-form-field class="full-width-input">
       <mat-label>Categorías</mat-label>
@@ -64,9 +64,9 @@
   </form>
 
   <div id="buttonPanel">
-    <button *ngIf="!updating" id="createButton" mat-raised-button color="primary" (click)="onClick()"
+    <button type='button' *ngIf="!updating" id="createButton" mat-raised-button color="primary" (click)="onClick()"
       cdkFocusInitial>Crear</button>
-    <button *ngIf="updating" id="createButton" mat-raised-button color="primary" (click)="onClick()"
+    <button type='button' *ngIf="updating" id="createButton" mat-raised-button color="primary" (click)="onClick()"
       cdkFocusInitial>Actualizar</button>
 
     <button id="cancelButton" mat-raised-button (click)="onNoClick()">Cancelar</button>

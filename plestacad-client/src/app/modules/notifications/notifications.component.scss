@@ -1,13 +1,13 @@
 .header-title{
-    float: none;
-    margin-left: 50%;
-    margin-right: 50%;
-    position: relative;
-}
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
+  }
 
 .no-notifications{
-    margin-top: 5%;
-    margin-left: 5%;
+    margin-top: 2%;
+    justify-content: center;
+    text-align: center;
 }
 
 .notifications-wrapper{
@@ -41,7 +41,6 @@
 
 .icon-notification{
     display:flex;             
-    align-self:left; 
     margin-top:1%;
 }
 .main-content{
@@ -51,11 +50,10 @@
 }
 .date-content{
     font-size: 0.8em;
-    color: lightgrey;
+    color: rgb(67, 67, 67);
 }
 .button-content, #button-all-read{
     display:flex;             
-    align-self:right;
     margin-left: auto; 
     margin-right: 1%;
 }

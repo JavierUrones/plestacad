@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Work } from 'src/app/shared/models/work.model';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { WorkListService } from '../works/work-list.service';
-
+import { WorkService } from '../../shared/services/work.service';
+import { Notification } from './models/notification.model';
 @Component({
     selector: 'app-notifications',
     templateUrl: './notifications.component.html',
     styleUrls: ['./notifications.component.scss']
 })
+/** Define el componente de notificaciones del usuario */
 export class NotificationsComponent implements OnInit {
 
+    /** Lista con todas las notificaciones del usuario */
+    allNotifications: Notification[] = [];
+    /** Lista sensible al componente de filtrado por trabajo académico que contiene las notificaciones a mostrar al usuario. */
+    notifications: Notification[] = [];
 
-    allNotifications: any[] = [];
-    notifications: any[] = [];
-
+    /** Atributo que comprueba si el componente está cargando datos desde el servidor */
     loading: boolean = false;
+    /** Opciones de trbajos académicos seleccionables para poder filtrar por trabajo académico desde el componente selector. */
     workOptions: any[] = []
+    /** Trabajo académico seleccionado desde el componente selector */
     selectedWork!: any;
-    constructor(private notificationService: NotificationService, private userService: UserService, private workService: WorkListService) { }
+    constructor(private notificationService: NotificationService, private workService: WorkService) { }
 
 
     ngOnInit(): void {
@@ -30,8 +33,11 @@ export class NotificationsComponent implements OnInit {
         this.selectedWork = "all";
     }
 
+    /**
+     * Se dispara cuando el usuario filtra por trabajo académico desde el componente selector.
+     * @param event - datos del evento con el trabajo académico que ha filtrado el usuario.
+     */
     onFilterChange(event: any) {
-        console.log(this.selectedWork, event)
         if (event.value == "all") {
             this.loadNotifications();
         } else {
@@ -42,14 +48,13 @@ export class NotificationsComponent implements OnInit {
         }
     }
 
+    /** Carga todas las notificaciones del usuario a partir del servicio de notificaciones. */
     loadNotifications() {
         this.loading = true;
-
         this.allNotifications = [];
         this.notifications = [];
         this.notificationService.getNotificationsByUserReceiverId(sessionStorage.getItem("id") as string).subscribe(response => {
             response.data.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
             response.data.forEach((notification: any) => {
                 var formattedDescription = this.evaluateNotificationDescription(notification.description, notification.userFullnameResponsible, notification.workTitle, notification.workId, notification.mainContent)
                 notification.description = formattedDescription;
@@ -57,10 +62,6 @@ export class NotificationsComponent implements OnInit {
                 this.notifications.push(notification);
 
             })
-
-
-
-
             this.loading = false;
 
         }
@@ -68,6 +69,13 @@ export class NotificationsComponent implements OnInit {
     }
 
 
+    /** Evalúa la descripción de la notificación para mostrar el mensaje correcto al usuario.
+     * @param description - descripción de la notificación
+     * @param userFullnameResponsible - nombre del usuario que ha hecho que se dispare esa notificación
+     * @param workTitle - título del trabajo académico al que corresponde la notificación
+     * @param workId - id del trabajo académico al que corresponde la notificación.
+     * @param mainContent - información sobre donde se ha producido o la acción que ha producido esa notificación.
+     */
     evaluateNotificationDescription(description: string, userFullnameResponsible: string, workTitle: string, workId: string, mainContent: string) {
         switch (description) {
             case "new-post":
@@ -106,7 +114,10 @@ export class NotificationsComponent implements OnInit {
         }
     }
 
-
+    /**
+     * Marca una notificación como leída llamando al servicio de notificaciones.
+     * @param notificationId - id de la notificación a marcar como leída.
+     */
     markNotificationAsRead(notificationId: string) {
         this.notificationService.markAsRead(notificationId, sessionStorage.getItem("id") as string).subscribe(response => {
             this.allNotifications = [];
@@ -115,7 +126,7 @@ export class NotificationsComponent implements OnInit {
         })
     }
 
-
+    /** Marca todas las notificaciones como leídas. */
     markAllAsRead() {
         this.allNotifications.forEach((notification: any) => {
             this.markNotificationAsRead(notification._id)

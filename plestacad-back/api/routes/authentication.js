@@ -1,15 +1,46 @@
-const router = require("express").Router();
-const User = require("../../models/User");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const Joi = require("@hapi/joi");
-const secret = require("../../config/index");
-const AuthenticationService = require("../../services/authService");
+/** Router express que define las rutas relacionadas con la autenticación de los usuarios.
+ * @module routes/authentication
+ * @requires express
+ */
+
+/**
+ * Authentication service.
+ * @type {object}
+ * @const
+ */
+
+const authService = require("../../services/authService");
+
+/**
+ * Error de validación.
+ * @type {object}
+ * @const
+ */
 const ValidationError = require("../../config/errors/customErrors");
 
-const authService = new AuthenticationService();
+
+/**
+ * Email util functions
+ * @type {object}
+ * @const
+ */
 const {sendEmailConfirmation, generateVerifyToken} = require("../../utils/email");
 
+
+/**
+ * Router express.
+ * @type {object}
+ * @const
+ */
+const router = require("express").Router();
+
+/**
+ * @name post/signup
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.post("/signup", async (req, res) => {
   const userDto = req.body;
   try {
@@ -17,7 +48,7 @@ router.post("/signup", async (req, res) => {
 
     const response = await authService.signUp(userDto, verifyToken);
 
-    sendEmailConfirmation(userDto, verifyToken);
+    //sendEmailConfirmation(userDto, verifyToken); //comentar en pruebas
 
 
     res.json({
@@ -34,12 +65,18 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+/**
+ * @name post/login
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.post("/login", async (req, res) => {
   try {
     const { token, userLogged } = await authService.login(req.body);
     req.session.email = userLogged.email;
     req.session.id = userLogged.id;
-    
 
     //req.session.role = userLogged.role;
     //Se devuelve el token.
@@ -57,6 +94,13 @@ router.post("/login", async (req, res) => {
   }
 });
 
+/**
+ * @name get/logout
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/logout", async (req, res) => {
   try {
     email = req.session.email;
@@ -71,6 +115,13 @@ router.get("/logout", async (req, res) => {
   }
 });
 
+/**
+ * @name get/verify/:token
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
 router.get("/verify/:token", async (req, res) => {
   try {
     var token = req.params.token;
