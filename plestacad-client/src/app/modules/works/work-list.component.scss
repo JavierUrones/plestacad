@@ -1,0 +1,66 @@
+.filter{
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+}
+.header-title{
+  margin-top: 2%;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.work-card {
+  margin: 1.5em 1.5em 5em 1.5em;
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+}
+
+mat-card-title{
+  font-size: 180%;
+  margin-bottom: 2%;
+}
+
+.footer-card{
+  font-size: 70%;
+  color: rgb(67, 67, 67);
+  float: right;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
+
+
+.work-card:hover {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14),
+    0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;
+  transform: translate3d(0, 0, 0);
+  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.content-card {
+  flex-grow: 1;
+  overflow: auto;
+  height: auto;
+  width: auto;
+}
+
+mat-form-field {
+  display: block;
+}
+button{
+  display: block;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 25%;
+}
+
+
+.no-works{
+  margin-top: 5%;
+  margin-left: 5%;
+  justify-content: center;
+  text-align: center;
+}

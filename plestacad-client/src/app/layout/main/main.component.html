@@ -1,0 +1,17 @@
+<app-header  (toggleSideBarForMe)="sideBarToggler()"></app-header>
+
+<mat-drawer-container>
+    <mat-drawer *ngIf="!isAdmin" mode="side" [opened]="sideBarOpen">
+        <app-sidenav (clickedMenuItem)="onClickedMenuItem($event)"></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="content" *ngIf="showContent">
+            <router-outlet></router-outlet>
+
+        </div>
+        <div class="footer-site"  *ngIf="showContent">
+            <app-footer></app-footer>
+        </div>
+    </mat-drawer-content>
+
+</mat-drawer-container>

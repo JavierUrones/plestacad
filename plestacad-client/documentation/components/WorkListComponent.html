@@ -1,0 +1,1359 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  WorkListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/works/work-list.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-work-list</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./work-list.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./work-list.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#allWorks" >allWorks</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#idUser" >idUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#options" >options</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#selected" >selected</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#workList" >workList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addWork" >addWork</a>
+                            </li>
+                            <li>
+                                <a href="#loadWorksByUserSession" >loadWorksByUserSession</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToWork" >navigateToWork</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onFilterChange" >onFilterChange</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
+                            </li>
+                            <li>
+                                <a href="#showValueCategory" >showValueCategory</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog, workListService: <a href="../injectables/WorkService.html" target="_self">WorkService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/works/work-list.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>workListService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/WorkService.html" target="_self" >WorkService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addWork"></a>
+                    <span class="name">
+                        <span ><b>addWork</b></span>
+                        <a href="#addWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addWork()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Abre el diálogo de creación de trabajos académicos y recarga la lista de trabajos cuando este se cierra.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadWorksByUserSession"></a>
+                    <span class="name">
+                        <span ><b>loadWorksByUserSession</b></span>
+                        <a href="#loadWorksByUserSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadWorksByUserSession()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:58</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Carga los trabajos académicos del usuario en sesión.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToWork"></a>
+                    <span class="name">
+                        <span ><b>navigateToWork</b></span>
+                        <a href="#navigateToWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToWork(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirige a la página de gestión del trabajo académico.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del trbajo académico</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFilterChange"></a>
+                    <span class="name">
+                        <span ><b>onFilterChange</b></span>
+                        <a href="#onFilterChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFilterChange(option: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Modifica la lista de trabajos del usuario cuando se filtra por categoría.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>option</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>opción del selector de filtrado seleccionada.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:115</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Función que se dispara cuando se filtra por título la lista de trabajos académicos.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos del evento de búsqueda</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showValueCategory"></a>
+                    <span class="name">
+                        <span ><b>showValueCategory</b></span>
+                        <a href="#showValueCategory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showValueCategory(category: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/modules/works/work-list.component.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Traduce el nombre de las siglas de las categorías del trabajo al nombre completo de la categoría.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>category</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>siglas de la categoría</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;Trabajo Fin de Grado&quot; | &quot;Trabajo Fin de Master&quot; | &quot;Tésis doctoral&quot;</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Retorna el nombre completo de la categoría</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allWorks"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>allWorks</b></span>
+                        <a href="#allWorks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Work.html" target="_self" >Work[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/works/work-list.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de los trabajos académicos del usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/works/work-list.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idUser"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>idUser</b></span>
+                        <a href="#idUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/works/work-list.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Id del usuario  en sesión</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[] | null</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/works/work-list.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista ed opciones de filtrado por categoría</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selected"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>selected</b></span>
+                        <a href="#selected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/works/work-list.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Categoría seleccionada en el filtrado</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="workList"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>workList</b></span>
+                        <a href="#workList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Work.html" target="_self" >Work[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/works/work-list.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de los trabajos académicosdel usuario cuando se filtra por categoría.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from &#x27;@angular/material/dialog&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { map, Observable, startWith } from &#x27;rxjs&#x27;;
+import { User } from &#x27;src/app/shared/models/user.model&#x27;;
+import { Work } from &#x27;src/app/shared/models/work.model&#x27;;
+import { UserService } from &#x27;src/app/shared/services/user.service&#x27;;
+import { WorkService } from &#x27;../../shared/services/work.service&#x27;;
+import { DialogAddWork } from &#x27;./manage-work/manage-work/add-work-dialog/add-work.dialog&#x27;;
+
+@Component({
+  selector: &#x27;app-work-list&#x27;,
+  templateUrl: &#x27;./work-list.component.html&#x27;,
+  styleUrls: [&#x27;./work-list.component.scss&#x27;]
+})
+
+/** Define el componente de la lista de trabajos académicos. */
+export class WorkListComponent implements OnInit {
+
+  /** Lista de los trabajos académicosdel usuario cuando se filtra por categoría. */
+  public workList: Work[] &#x3D; []
+  /** Lista ed opciones de filtrado por categoría */
+  public options!: any[] | null;
+  /** Categoría seleccionada en el filtrado */
+  public selected!: string;
+  /** Id del usuario  en sesión*/
+  public idUser!: string;
+  /** Lista completa de los trabajos académicos del usuario. */
+  public allWorks: Work[] &#x3D; [];
+  constructor(public dialog: MatDialog,
+    private workListService: WorkService, private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.options &#x3D; [
+      { value: &#x27;all&#x27;, name: &#x27;Todos&#x27; },
+      { value: &#x27;tfg&#x27;, name: &#x27;Trabajos Fin de Grado&#x27; },
+      { value: &#x27;tfm&#x27;, name: &#x27;Trabajos Fin de Máster&#x27; },
+      { value: &#x27;tesis&#x27;, name: &#x27;Tésis Doctorales&#x27; },
+
+    ];
+    this.selected &#x3D; this.options[0].value;
+    this.loadWorksByUserSession();
+  }
+
+  /**
+   * Redirige a la página de gestión del trabajo académico.
+   * @param id - id del trbajo académico
+   */
+  navigateToWork(id: string) {
+    this.router.navigate([&#x27;/trabajos&#x27;, id]);
+  }
+
+
+  /**
+   * Carga los trabajos académicos del usuario en sesión.
+   */
+  loadWorksByUserSession() {
+    this.idUser &#x3D; sessionStorage.getItem(&quot;id&quot;) as string;
+    this.workListService.getWorksByUserId(this.idUser).subscribe(response &#x3D;&gt; {
+      this.workList &#x3D; response;
+      this.allWorks &#x3D; this.workList ;
+      this.workList.sort((a: Work, b: Work) &#x3D;&gt; { // se ordena alfabeticamente.
+        var titleA &#x3D; a.title.toLowerCase(), titleB &#x3D; b.title.toLowerCase();
+        if (titleA &lt; titleB)
+         return -1;
+        if (titleA &gt; titleB)
+         return 1;
+        return 0; 
+      })
+      this.workList.sort((a: Work, b: Work) &#x3D;&gt;  Number(a.classified) - Number(b.classified)) //se colocan los clasificados al final.
+    });
+
+  }
+
+
+  /**
+   * Traduce el nombre de las siglas de las categorías del trabajo al nombre completo de la categoría.
+   * @param category - siglas de la categoría
+   * @returns Retorna el nombre completo de la categoría
+   */
+  showValueCategory(category: string) {
+    switch (category) {
+      case &quot;tfg&quot;:
+        return &quot;Trabajo Fin de Grado&quot;;
+      case &quot;tfm&quot;:
+        return &quot;Trabajo Fin de Master&quot;;
+      default:
+        return &quot;Tésis doctoral&quot;;
+    }
+  }
+  /**
+   * Modifica la lista de trabajos del usuario cuando se filtra por categoría.
+   * @param option - opción del selector de filtrado seleccionada.
+   */
+  onFilterChange(option: any) {
+    let selectedOption &#x3D; option;
+    const idUser &#x3D; sessionStorage.getItem(&quot;id&quot;) as string;
+    if (selectedOption &#x3D;&#x3D; &quot;all&quot;) {
+      this.loadWorksByUserSession();
+    } else {
+      this.workListService.getWorksByStudentAndCategory(idUser, selectedOption).subscribe(response &#x3D;&gt; {
+        this.workList &#x3D; response;
+        this.allWorks &#x3D; response;
+        this.workList.sort((a: Work, b: Work) &#x3D;&gt;  Number(a.classified) - Number(b.classified))
+
+      });
+    }
+  }
+
+  /**
+   * Función que se dispara cuando se filtra por título la lista de trabajos académicos.
+   * @param event - datos del evento de búsqueda
+   */
+  onSearch(event: any) {
+    if (event.value &#x3D;&#x3D; &quot;&quot;) {
+        this.workList &#x3D; this.allWorks;
+        this.workList.sort((a: Work, b: Work) &#x3D;&gt;  Number(a.classified) - Number(b.classified))
+
+    } else {
+        this.workList &#x3D; this.allWorks.filter((work: any) &#x3D;&gt;
+            work.title.startsWith(event.value)
+        )
+        this.workList.sort((a: Work, b: Work) &#x3D;&gt;  Number(a.classified) - Number(b.classified))
+
+    }
+
+}
+
+
+/**
+ * Abre el diálogo de creación de trabajos académicos y recarga la lista de trabajos cuando este se cierra.
+ */
+  addWork() {
+    const dialogRef &#x3D; this.dialog.open(DialogAddWork, {
+      width: &#x27;1000px&#x27;
+    });
+
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      this.loadWorksByUserSession();
+    });
+  }
+
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!--
+&lt;mat-grid-list cols&#x3D;&quot;3&quot; rowHeight&#x3D;15em&gt;
+    &lt;mat-grid-tile&gt;
+  &lt;mat-card class&#x3D;&quot;work-card&quot;&gt;
+    &lt;mat-card-title
+      &gt;Plataforma de Gestión de Trabajos Académicos&lt;/mat-card-title
+    &gt;
+    &lt;mat-card-subtitle&gt;Trabajo Fin de Grado&lt;/mat-card-subtitle&gt;
+    &lt;mat-card-content class&#x3D;&quot;content-card&quot;&gt;
+      &lt;p&gt;Test descripción de prueba&lt;/p&gt;
+    &lt;/mat-card-content&gt;
+    &lt;mat-card-actions&gt;
+      &lt;button mat-raised-button&gt;Acceder&lt;/button&gt;
+    &lt;/mat-card-actions&gt;
+  &lt;/mat-card&gt;
+&lt;/mat-grid-tile&gt;
+&lt;mat-grid-tile&gt;
+  &lt;mat-card class&#x3D;&quot;work-card&quot;&gt;
+    &lt;mat-card-title&gt;Trazabilidad con inteligencia artificial&lt;/mat-card-title&gt;
+    &lt;mat-card-subtitle&gt;Trabajo Fin de Máster&lt;/mat-card-subtitle&gt;
+    &lt;mat-card-content&gt;
+      &lt;p&gt;Test descripción de prueba&lt;/p&gt;
+    &lt;/mat-card-content&gt;
+    &lt;mat-card-actions&gt;
+      &lt;button mat-raised-button&gt;Acceder&lt;/button&gt;
+    &lt;/mat-card-actions&gt;
+  &lt;/mat-card&gt;
+&lt;/mat-grid-tile&gt;
+&lt;/mat-grid-list&gt;
+--&gt;
+
+&lt;h1 class&#x3D;&quot;header-title&quot;&gt; Tu Lista de Trabajos Académicos &lt;/h1&gt;
+
+
+&lt;mat-form-field class&#x3D;&quot;filter&quot;&gt;
+  &lt;mat-label&gt;Filtrar&lt;/mat-label&gt;
+
+&lt;mat-select  id&#x3D;&quot;workCategorySelector&quot; [value]&#x3D;&quot;selected&quot; (selectionChange)&#x3D;&quot;onFilterChange($event.value)&quot;&gt;
+  &lt;mat-option *ngFor&#x3D;&quot;let option of options&quot; [value]&#x3D;&quot;option.value&quot;&gt;
+    {{ option.name }}
+  &lt;/mat-option&gt;
+&lt;/mat-select&gt;
+&lt;/mat-form-field&gt;
+
+&lt;mat-form-field class&#x3D;&quot;filter&quot;&gt;
+
+  &lt;input matInput type&#x3D;&quot;text&quot;  placeholder&#x3D;&quot;Buscar por título&quot; (input)&#x3D;&quot;onSearch($event.target)&quot; /&gt;
+&lt;/mat-form-field&gt;
+
+
+
+&lt;button mat-raised-button color&#x3D;&quot;primary&quot; (click)&#x3D;&quot;addWork()&quot;&gt;Crear nuevo trabajo&lt;/button&gt;
+
+  &lt;div class&#x3D;&quot;no-works&quot; *ngIf&#x3D;&quot;workList.length&#x3D;&#x3D;0&quot;&gt;
+      &lt;h2&gt; No tienes ningún trabajo académico disponible. &lt;/h2&gt;
+      &lt;h3&gt; Puedes crear un trabajo académico o comprobar tus solicitudes pendientes para ver si has sido invitado a formar parte de uno. &lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div *ngFor&#x3D;&quot;let work of workList&quot; &gt;
+
+  &lt;mat-card  tabindex&#x3D;0 (keydown.enter)&#x3D;&quot;navigateToWork(work._id)&quot; class&#x3D;&quot;work-card&quot; (click)&#x3D;&quot;navigateToWork(work._id)&quot;&gt;
+
+    &lt;mat-card-title class&#x3D;&quot;card-title&quot;
+    &gt;{{work.title}}&lt;/mat-card-title
+  &gt;
+  &lt;mat-card-subtitle class&#x3D;&quot;work-category&quot; style&#x3D;&quot;margin-top: 1%;&quot;&gt;{{showValueCategory(work.category)}}
+  &lt;/mat-card-subtitle&gt;
+  &lt;mat-card-subtitle class&#x3D;&quot;course&quot; &gt;Curso {{work.course}}
+  &lt;/mat-card-subtitle&gt;
+  
+  &lt;mat-card-subtitle style&#x3D;&quot;color: lightcoral&quot; *ngIf&#x3D;&quot;work.classified&quot;&gt;
+      Archivado
+  &lt;/mat-card-subtitle&gt;
+  &lt;mat-card-content class&#x3D;&quot;content-card&quot;&gt;
+    &lt;p&gt;{{work.description}}&lt;/p&gt;
+  &lt;/mat-card-content&gt;
+  &lt;div class&#x3D;&quot;footer-card&quot;&gt;
+    &lt;span *ngIf&#x3D;&quot;work.authorId&#x3D;&#x3D;this.idUser&quot;&gt;Propietario&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;work.teachers.includes(this.idUser) &amp;&amp; work.authorId!&#x3D;this.idUser&quot;&gt;Profesor&lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;work.students.includes(this.idUser)&quot;&gt;Estudiante&lt;/span&gt;
+
+  &lt;/div&gt;
+  &lt;/mat-card&gt;
+&lt;/div&gt;
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./work-list.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.filter{
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+}
+.header-title{
+  margin-top: 2%;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.work-card {
+  margin: 1.5em 1.5em 5em 1.5em;
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+}
+
+mat-card-title{
+  font-size: 180%;
+  margin-bottom: 2%;
+}
+
+.footer-card{
+  font-size: 70%;
+  color: rgb(67, 67, 67);
+  float: right;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
+
+
+.work-card:hover {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.2), 0 8px 8px 0 rgba(0, 0, 0, 0.14),
+    0 8px 8px 0 rgba(0, 0, 0, 0.12) !important;
+  transform: translate3d(0, 0, 0);
+  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.content-card {
+  flex-grow: 1;
+  overflow: auto;
+  height: auto;
+  width: auto;
+}
+
+mat-form-field {
+  display: block;
+}
+button{
+  display: block;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 25%;
+}
+
+
+.no-works{
+  margin-top: 5%;
+  margin-left: 5%;
+  justify-content: center;
+  text-align: center;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--<mat-grid-list cols="3" rowHeight=15em>    <mat-grid-tile>  <mat-card class="work-card">    <mat-card-title      >Plataforma de Gestión de Trabajos Académicos</mat-card-title    >    <mat-card-subtitle>Trabajo Fin de Grado</mat-card-subtitle>    <mat-card-content class="content-card">      <p>Test descripción de prueba</p>    </mat-card-content>    <mat-card-actions>      <button mat-raised-button>Acceder</button>    </mat-card-actions>  </mat-card></mat-grid-tile><mat-grid-tile>  <mat-card class="work-card">    <mat-card-title>Trazabilidad con inteligencia artificial</mat-card-title>    <mat-card-subtitle>Trabajo Fin de Máster</mat-card-subtitle>    <mat-card-content>      <p>Test descripción de prueba</p>    </mat-card-content>    <mat-card-actions>      <button mat-raised-button>Acceder</button>    </mat-card-actions>  </mat-card></mat-grid-tile></mat-grid-list>--><h1 class="header-title"> Tu Lista de Trabajos Académicos </h1><mat-form-field class="filter">  <mat-label>Filtrar</mat-label><mat-select  id="workCategorySelector" [value]="selected" (selectionChange)="onFilterChange($event.value)">  <mat-option *ngFor="let option of options" [value]="option.value">    {{ option.name }}  </mat-option></mat-select></mat-form-field><mat-form-field class="filter">  <input matInput type="text"  placeholder="Buscar por título" (input)="onSearch($event.target)" /></mat-form-field><button mat-raised-button color="primary" (click)="addWork()">Crear nuevo trabajo</button>  <div class="no-works" *ngIf="workList.length==0">      <h2> No tienes ningún trabajo académico disponible. </h2>      <h3> Puedes crear un trabajo académico o comprobar tus solicitudes pendientes para ver si has sido invitado a formar parte de uno. </h3>  </div>  <div *ngFor="let work of workList" >  <mat-card  tabindex=0 (keydown.enter)="navigateToWork(work._id)" class="work-card" (click)="navigateToWork(work._id)">    <mat-card-title class="card-title"    >{{work.title}}</mat-card-title  >  <mat-card-subtitle class="work-category" style="margin-top: 1%;">{{showValueCategory(work.category)}}  </mat-card-subtitle>  <mat-card-subtitle class="course" >Curso {{work.course}}  </mat-card-subtitle>    <mat-card-subtitle style="color: lightcoral" *ngIf="work.classified">      Archivado  </mat-card-subtitle>  <mat-card-content class="content-card">    <p>{{work.description}}</p>  </mat-card-content>  <div class="footer-card">    <span *ngIf="work.authorId==this.idUser">Propietario</span>    <span *ngIf="work.teachers.includes(this.idUser) && work.authorId!=this.idUser">Profesor</span>    <span *ngIf="work.students.includes(this.idUser)">Estudiante</span>  </div>  </mat-card></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BoardComponent', 'selector': 'app-board'},{'name': 'CalendarWorkComponent', 'selector': 'app-calendar-work'},{'name': 'ConfirmDialog', 'selector': 'confirm-dialog'},{'name': 'ContactoComponent', 'selector': 'app-contact'},{'name': 'CustomBreadcrumbComponent', 'selector': 'app-custom-breadcrumb'},{'name': 'DialogAddDirectory', 'selector': 'modal-add-directory.html'},{'name': 'DialogAddPost', 'selector': 'modal-add-post.html'},{'name': 'DialogAddWork', 'selector': 'add-work.html'},{'name': 'DialogManageTask', 'selector': 'dialog-manage-task.html'},{'name': 'DialogNewEvent', 'selector': 'modal-events.html'},{'name': 'DialogUploadFile', 'selector': 'modal-upload-file.html'},{'name': 'EntryCallDialogComponent', 'selector': 'app-entry-call-dialog'},{'name': 'FilesComponent', 'selector': 'app-files'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForoComponent', 'selector': 'app-foro'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'InfoComponent', 'selector': 'app-info-work'},{'name': 'LegalInfoComponent', 'selector': 'app-legal-info'},{'name': 'ListTasksComponent', 'selector': 'app-list-tasks'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ManageWorkComponent', 'selector': 'app-manage-work'},{'name': 'ModalAddUsers', 'selector': 'modal-add-users'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'Pagina404Component', 'selector': 'pagina404'},{'name': 'PostListComponent', 'selector': 'app-post-list'},{'name': 'PostManagementComponent', 'selector': 'app-post-management'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'VideocallsComponent', 'selector': 'app-videocalls'},{'name': 'WorkListComponent', 'selector': 'app-work-list'},{'name': 'WorkRequestsComponent', 'selector': 'app-work-requests'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'WorkListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'WorkListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

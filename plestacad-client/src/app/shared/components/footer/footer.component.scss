@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+    margin-top: 10px;
+    text-align: center;
+}
+ul li{
+    display: inline-block;
+    margin-right: 1%;
+    padding: 0 4px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: rgb(67, 67, 67);
+}
+
+ul li a:hover{
+    color: #c0c2c0;
+}
+
+.bottom-subtitle{
+    color: rgb(67, 67, 67);
+    margin:auto; display:table; 
+    font-size: 0.7em;
+    margin-top: 4px;
+}
+
+.divider{
+    margin-bottom: 1%;
+}

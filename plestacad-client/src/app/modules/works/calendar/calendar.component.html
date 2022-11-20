@@ -1,0 +1,32 @@
+<script src='@fullcalendar/core/locales-all.js'></script>
+
+
+<div class="container">
+    <div class="newButtonDiv">
+        <button mat-raised-button color="primary" id="newEvent" (click)="newEvent()"><mat-icon>add</mat-icon>Nuevo evento</button>
+    </div>
+    <mat-form-field class="selector">
+        <mat-label>Filtrar...</mat-label>
+        <mat-select id="filterSelector" [(ngModel)]="selectedFilterValue" (selectionChange)="onFilterChange($event.value)">
+            <mat-option value="all">Todos</mat-option>
+            <mat-option value="events">Eventos</mat-option>
+            <mat-option value="tasks">Tareas</mat-option>
+
+        </mat-select>
+    </mat-form-field>
+    <div class="leyenda">
+        <ul>
+            <li>
+                <mat-icon class="green-icon">circle</mat-icon><span class="aligned-text">Eventos</span>
+            </li>
+            <li>
+                <mat-icon class="orange-icon">circle</mat-icon><span class="aligned-text">Tareas</span>
+            </li>
+        </ul>
+    </div>
+    <div class="calendar-container">
+        <div class="calendar">
+            <p-fullCalendar #calendar locale="es" [events]="events" [options]="options" ></p-fullCalendar>
+        </div>
+    </div>
+</div>

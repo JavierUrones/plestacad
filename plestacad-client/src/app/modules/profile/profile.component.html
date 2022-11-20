@@ -1,0 +1,124 @@
+<h1 class="header-title"> Perfil </h1>
+
+<div class="profile-content">
+
+    <div class="photo-profile-wrapper">
+        <h3 id="header-details">Foto de perfil</h3>
+
+        <img alt="Imagen de perfil" *ngIf="this.photoProfile==undefined" class="profile-img" src="assets/images/profile-default.png" />
+
+        <img alt="Imagen de perfil" *ngIf="this.photoProfile!=undefined" class="profile-img" [src]="this.photoProfile" />
+
+        <div class="center-div">
+
+
+            <mat-card-content >
+                <form>
+
+
+                <mat-form-field class="upload-photo-field">
+                    <mat-label>Sube tu foto de perfil</mat-label>
+                    <ngx-mat-file-input [formControl]="fileControl"  [multiple]=false [accept]="accept">
+                    </ngx-mat-file-input>
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="onClickUploadPhoto()">Actualizar foto</button>
+
+
+                <div class="mainError">
+                    <p *ngIf="changePhotoSuccess" style="color: green"> Foto de actualizada con éxito.</p>
+
+                    <mat-error *ngIf="this.invalidUpload">
+                        Debes seleccionar una imagen para poder actualizar tu foto de perfil.
+                    </mat-error>
+                </div>
+            </form>
+
+            </mat-card-content>
+</div>
+
+
+    </div>
+
+    <div class="user-details-wrapper">
+        <h3 id="header-details">Tus datos personales</h3>
+
+        <div class="center-div">
+
+            <mat-card-content>
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmitData()">
+
+                    <mat-form-field class="full-width-input">
+                        <input  readonly matInput placeholder="Correo electrónico" formControlName="email" required />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width-input">
+                        <input id="inputName" matInput placeholder="Nombre" formControlName="name" required />
+                        <mat-error id="errorName" *ngIf="this.profileForm.get('name')?.errors?.['required']"> Indica un nombre váĺido
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input">
+                        <input matInput placeholder="Apellidos" formControlName="surname" required />
+                        <mat-error id="errorSurname" *ngIf="this.profileForm.get('surname')?.errors?.['required']"> Indica un apellido
+                            váĺido </mat-error>
+                    </mat-form-field>
+
+                    <p id="dataSuccess" *ngIf="changeDataSuccess" style="color: green"> Información actualizada con éxito.</p>
+                    <mat-error id="dataError"
+                    *ngIf="this.profileForm.errors?.['invalidData']">
+                    Error en los datos introducidos.
+                    </mat-error>
+
+                    <button mat-raised-button color="primary">
+                        Actualizar datos
+                    </button>
+                </form>
+            </mat-card-content>
+
+
+        </div>
+
+    </div>
+
+    <div class="password-wrapper">
+        <h3 id="header-password">Cambia tu contraseña</h3>
+
+        <div class="center-div">
+
+            <mat-card-content>
+                <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
+                    <mat-form-field class="full-width-input">
+                        <input [disabled]="true" matInput type="password" placeholder="Contraseña actual"
+                            formControlName="currentPassword" required />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width-input">
+                        <input matInput type="password" placeholder="Nueva contraseña" formControlName="password"
+                            required />
+                        <mat-error *ngIf="this.passwordForm.get('password')?.errors?.['required']"> Contraseña
+                            requerida.
+                        </mat-error>
+                        <mat-error id="passwordLengthError" *ngIf="this.passwordForm.get('password')?.errors?.['minlength']"> Contraseña
+                            demasiado
+                            corta. </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width-input">
+                        <input matInput type="password" placeholder="Repite la nueva contraseña"
+                            formControlName="repeatPassword" required />
+                    </mat-form-field>
+
+                    <div class="mainError">
+                        <p id="passwordSuccess" *ngIf="changePasswordSuccess" style="color: green"> Contraseña actualizada con éxito.</p>
+
+                        <mat-error id="passwordMatchError"
+                            *ngIf="this.passwordForm.errors?.['invalidPassword'] && this.passwordForm.get('repeatPassword')?.touched">
+                            Las contraseñas no coinciden.
+                        </mat-error>
+                    </div>
+                    <button mat-raised-button color="primary">
+                        Actualizar contraseña
+                    </button>
+                </form>
+            </mat-card-content>
+        </div>
+    </div>
+</div>

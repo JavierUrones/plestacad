@@ -1,0 +1,2099 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  BoardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/works/tasks/board/board.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-board</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./board.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./board.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                <a href="#focusClassificator" >focusClassificator</a>
+                            </li>
+                            <li>
+                                <a href="#idWork" >idWork</a>
+                            </li>
+                            <li>
+                                <a href="#largeScreen" >largeScreen</a>
+                            </li>
+                            <li>
+                                <a href="#notifierSubscription" >notifierSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#taskClassificators" >taskClassificators</a>
+                            </li>
+                            <li>
+                                <a href="#usersOfWork" >usersOfWork</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkTitle" >checkTitle</a>
+                            </li>
+                            <li>
+                                <a href="#closeMenu" >closeMenu</a>
+                            </li>
+                            <li>
+                                <a href="#deleteTaskClassificator" >deleteTaskClassificator</a>
+                            </li>
+                            <li>
+                                <a href="#dropTask" >dropTask</a>
+                            </li>
+                            <li>
+                                <a href="#getTaskClassificators" >getTaskClassificators</a>
+                            </li>
+                            <li>
+                                <a href="#getUsersOfWork" >getUsersOfWork</a>
+                            </li>
+                            <li>
+                                <a href="#newTaskClassificator" >newTaskClassificator</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onOrderChange" >onOrderChange</a>
+                            </li>
+                            <li>
+                                <a href="#onResize" >onResize</a>
+                            </li>
+                            <li>
+                                <a href="#updateTask" >updateTask</a>
+                            </li>
+                            <li>
+                                <a href="#updateTaskClassificator" >updateTaskClassificator</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:resize" >window:resize</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, tasksService: <a href="../injectables/TasksService.html" target="_self">TasksService</a>, notifyTaskChangeService: <a href="../injectables/NotifyTaskChangesService.html" target="_self">NotifyTaskChangesService</a>, dialog: MatDialog, workService: <a href="../injectables/WorkService.html" target="_self">WorkService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tasksService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TasksService.html" target="_self" >TasksService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notifyTaskChangeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotifyTaskChangesService.html" target="_self" >NotifyTaskChangesService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>workService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/WorkService.html" target="_self" >WorkService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:resize"></a>
+                    <span class="name">
+                        <span ><b>window:resize</b></span>
+                        <a href="#window:resize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:resize(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se dispara cuando el usuario cambia el tamaño de la pantalla y dependiendo del tamaño de esta cambia el valor del atributo largeScreen.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos del evento disparado.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkTitle"></a>
+                    <span class="name">
+                        <span ><b>checkTitle</b></span>
+                        <a href="#checkTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkTitle(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, title: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:134</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Comprueba si un título introducido es válido para un apartado de clasificación de tareas.
+Si el título es válido llama a la función para actualizar el apartado de clasificación, en caso contrario recarga los apartados de clasificación del trabajo académico.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>evento que se dispara al cambiar el título</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>title</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>nuevo título introducido</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del apartado de clasificación de tareas</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeMenu"></a>
+                    <span class="name">
+                        <span ><b>closeMenu</b></span>
+                        <a href="#closeMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeMenu(menuTrigger: MatMenuTrigger)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="186"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:186</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cierra el menú lateral de opciones de un apartado de clasificación de tareas.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>menuTrigger</td>
+                                    <td>
+                                            <code>MatMenuTrigger</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>permite cerrar el menú del apartado de clasificación.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteTaskClassificator"></a>
+                    <span class="name">
+                        <span ><b>deleteTaskClassificator</b></span>
+                        <a href="#deleteTaskClassificator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteTaskClassificator(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Elimina un apartado de clasificación de tareas a partir de su id llamando al servicio de tareas.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del apartado de clasificación</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropTask"></a>
+                    <span class="name">
+                        <span ><b>dropTask</b></span>
+                        <a href="#dropTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>dropTask(event: <a href="../interfaces/Task.html" target="_self">CdkDragDrop&lt;Task[]&gt;</a>, taskClassificator: <a href="../interfaces/TaskClassificator.html" target="_self">TaskClassificator</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:83</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mueve una tarea entre los distintos apartados de clasificacion. Se dispara cuando usuario suelta con el ratón la tarea en un apartado.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="../interfaces/Task.html" target="_self" >CdkDragDrop&lt;Task[]&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos de la tarea arrastrada que se acaba de soltar.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>taskClassificator</td>
+                                    <td>
+                                                <code><a href="../interfaces/TaskClassificator.html" target="_self" >TaskClassificator</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>nuevo apartado de clasificación de la tarea.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTaskClassificators"></a>
+                    <span class="name">
+                        <span ><b>getTaskClassificators</b></span>
+                        <a href="#getTaskClassificators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTaskClassificators()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene los apartados de clasificación de tareas del trabajo académico</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsersOfWork"></a>
+                    <span class="name">
+                        <span ><b>getUsersOfWork</b></span>
+                        <a href="#getUsersOfWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUsersOfWork()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:223</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene la lista de usuarios que son asignables a una tarea a partir de los servicios de trabajos y de usuarios. Almacena este valor en la variable usersOfWork.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newTaskClassificator"></a>
+                    <span class="name">
+                        <span ><b>newTaskClassificator</b></span>
+                        <a href="#newTaskClassificator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newTaskClassificator()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Llama al servicio de creación de nuevos apartados de clasificación de tareas pasándole los atributos requeridos. Se dispara cuando el usuario pulsa el botón de crear nuevo apartado de clasificación.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onOrderChange"></a>
+                    <span class="name">
+                        <span ><b>onOrderChange</b></span>
+                        <a href="#onOrderChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onOrderChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:195</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se dispara cuando el usuario cambia el orden de un apartado de clasificación de tareas en el tablero.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>evento que se dispara cuando el usuario cambia el orden.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onResize"></a>
+                    <span class="name">
+                        <span ><b>onResize</b></span>
+                        <a href="#onResize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onResize(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;window:resize&#x27;, [&#x27;$event&#x27;])<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Se dispara cuando el usuario cambia el tamaño de la pantalla y dependiendo del tamaño de esta cambia el valor del atributo largeScreen.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos del evento disparado.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateTask"></a>
+                    <span class="name">
+                        <span ><b>updateTask</b></span>
+                        <a href="#updateTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateTask(task: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Abre el diálogo para actualizar una tarea. Se dispara cuando el usuario pulsa sobre una tarea en el tablero.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>task</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>datos de la tarea.</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateTaskClassificator"></a>
+                    <span class="name">
+                        <span ><b>updateTaskClassificator</b></span>
+                        <a href="#updateTaskClassificator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateTaskClassificator(title: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="150"
+                            class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:150</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Llama al servicio para actualizar el título de un apartado de clasificación de tareas pasándole los atributos requeridos.
+ Luego recarga la lista de apartados de clasificación.
+ @param title - nuevo título del apartado de clasificación
+ @param id - id del apartado de clasificación</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>nuevo título del apartado de clasificación</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <ul>
+<li>id del apartado de clasificación</li>
+</ul>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="focusClassificator"></a>
+                    <span class="name">
+                        <span ><b>focusClassificator</b></span>
+                        <a href="#focusClassificator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Atributo que coloca el foco en el nuevo apartado de clasificación de tareas creado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="idWork"></a>
+                    <span class="name">
+                        <span ><b>idWork</b></span>
+                        <a href="#idWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Id del trabajo académico</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="largeScreen"></a>
+                    <span class="name">
+                        <span ><b>largeScreen</b></span>
+                        <a href="#largeScreen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Atributo que comprueba el tamaño de pantalla del cliente</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="notifierSubscription"></a>
+                    <span class="name">
+                        <span ><b>notifierSubscription</b></span>
+                        <a href="#notifierSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.notifyTaskChangeService.subjectNotifier.subscribe(notice &#x3D;&gt; {
+        //se ha producido cambios en las tareas, se debe recargar la lista de apartados de clasificación con sus tareas.
+        this.getTaskClassificators();
+        this.getUsersOfWork();
+    })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Suscripción al servicio de notificación de creación/actualización de tareas</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="taskClassificators"></a>
+                    <span class="name">
+                        <span ><b>taskClassificators</b></span>
+                        <a href="#taskClassificators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TaskClassificator[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Apartados de clasificación de tareas</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usersOfWork"></a>
+                    <span class="name">
+                        <span ><b>usersOfWork</b></span>
+                        <a href="#usersOfWork"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/works/tasks/board/board.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Usuarios del trabajo académico</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CdkDragDrop, moveItemInArray, transferArrayItem } from &#x27;@angular/cdk/drag-drop&#x27;;
+import { DOCUMENT } from &#x27;@angular/common&#x27;;
+import { StringMap } from &#x27;@angular/compiler/src/compiler_facade_interface&#x27;;
+import { Component, ElementRef, HostListener, Inject, Input, OnInit, QueryList, SimpleChanges, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { TasksService } from &#x27;../tasks.service&#x27;;
+import { Task } from &quot;../models/Task.model&quot;;
+import { TaskClassificator } from &quot;../models/TaskClassificator.model&quot;
+import { MatMenuTrigger } from &#x27;@angular/material/menu&#x27;;
+import { NotifyTaskChangesService } from &#x27;../list/notify-task-changes.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { MatDialog, MatDialogConfig } from &#x27;@angular/material/dialog&#x27;;
+import { DialogManageTask } from &#x27;../dialog-manage-task/dialog-manage-task&#x27;;
+import { WorkService } from &#x27;../../../../shared/services/work.service&#x27;;
+import { UserService } from &#x27;src/app/shared/services/user.service&#x27;;
+
+@Component({
+    selector: &#x27;app-board&#x27;,
+    templateUrl: &#x27;./board.component.html&#x27;,
+    styleUrls: [&#x27;./board.component.scss&#x27;],
+})
+
+/** Define el componente de tablero kanban de tareas */
+export class BoardComponent implements OnInit {
+    /** Id del trabajo académico */
+    idWork!: string;
+    /** Atributo que comprueba el tamaño de pantalla del cliente */
+    largeScreen!: boolean;
+    /** Apartados de clasificación de tareas */
+    taskClassificators!: TaskClassificator[];
+    /** Usuarios del trabajo académico */
+    usersOfWork: any[] &#x3D; [];
+    /** Atributo que coloca el foco en el nuevo apartado de clasificación de tareas creado. */
+    focusClassificator &#x3D;  false;
+
+    /** Suscripción al servicio de notificación de creación/actualización de tareas */
+    notifierSubscription: Subscription &#x3D; this.notifyTaskChangeService.subjectNotifier.subscribe(notice &#x3D;&gt; {
+        //se ha producido cambios en las tareas, se debe recargar la lista de apartados de clasificación con sus tareas.
+        this.getTaskClassificators();
+        this.getUsersOfWork();
+    });
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private tasksService: TasksService,
+        private notifyTaskChangeService: NotifyTaskChangesService,
+        public dialog: MatDialog,
+        private workService: WorkService,
+        private userService: UserService
+    ) {
+
+    }
+
+
+    ngOnInit(): void {
+        this.idWork &#x3D; this.route.snapshot.params[&#x27;idWork&#x27;];
+        this.getTaskClassificators();
+        this.getUsersOfWork()
+
+        this.onResize(null);
+
+
+    }
+
+    /** Obtiene los apartados de clasificación de tareas del trabajo académico */
+    getTaskClassificators() {
+        this.focusClassificator &#x3D; false;
+        this.tasksService.getTaskClassificatorsByWorkId(this.idWork).subscribe(res1 &#x3D;&gt; {
+            this.taskClassificators &#x3D; res1;
+            this.taskClassificators.sort((a, b) &#x3D;&gt; {
+                return a.order - b.order
+            })
+        })
+    }
+
+      /**
+     * Mueve una tarea entre los distintos apartados de clasificacion. Se dispara cuando usuario suelta con el ratón la tarea en un apartado.
+     * @param event - datos de la tarea arrastrada que se acaba de soltar.
+     * @param taskClassificator - nuevo apartado de clasificación de la tarea.
+     */
+    dropTask(event: CdkDragDrop&lt;Task[]&gt;, taskClassificator: TaskClassificator) {
+        this.focusClassificator &#x3D; false;
+        if (event.previousContainer &#x3D;&#x3D;&#x3D; event.container) {
+            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+            transferArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex)
+            var taskMoved &#x3D; event.container.data[event.currentIndex.valueOf()];
+
+            this.tasksService.updateTaskClassification(taskClassificator._id, taskMoved._id, sessionStorage.getItem(&quot;id&quot;) as string).subscribe(updated &#x3D;&gt; {
+                this.notifyTaskChangeService.notifyChangeTask();
+
+            })
+        }
+
+    }
+
+    /** Llama al servicio de creación de nuevos apartados de clasificación de tareas pasándole los atributos requeridos. Se dispara cuando el usuario pulsa el botón de crear nuevo apartado de clasificación. */
+    newTaskClassificator() {
+        //Crea el nuevo clasificador.
+        this.tasksService.createTaskClassificator(this.idWork, sessionStorage.getItem(&quot;id&quot;) as string).subscribe(response &#x3D;&gt; {
+            this.getTaskClassificators();
+            this.notifyTaskChangeService.notifyChangeTask();
+            this.focusClassificator &#x3D; true;
+
+        });
+
+    }
+
+    /**
+     * Elimina un apartado de clasificación de tareas a partir de su id llamando al servicio de tareas.
+     * @param id - id del apartado de clasificación
+     */
+    deleteTaskClassificator(id: string) {
+        this.tasksService.deleteTaskClassificator(this.idWork, id, sessionStorage.getItem(&quot;id&quot;) as string).subscribe(response &#x3D;&gt; {
+            this.getTaskClassificators();
+            this.notifyTaskChangeService.notifyChangeTask();
+
+        });
+
+    }
+
+    /**
+     * Comprueba si un título introducido es válido para un apartado de clasificación de tareas.
+     * Si el título es válido llama a la función para actualizar el apartado de clasificación, en caso contrario recarga los apartados de clasificación del trabajo académico.
+     * @param event - evento que se dispara al cambiar el título
+     * @param title - nuevo título introducido
+     * @param id - id del apartado de clasificación de tareas
+     */
+    checkTitle(event: any, title: string, id: string) {
+
+        if (title.trim().length &lt;&#x3D; 30 &amp;&amp; title.trim().length &gt; 0) {
+            this.updateTaskClassificator(title, id)
+        }
+        else {
+            this.getTaskClassificators();
+        }
+    }
+
+
+    /** Llama al servicio para actualizar el título de un apartado de clasificación de tareas pasándole los atributos requeridos.
+     *  Luego recarga la lista de apartados de clasificación.
+     *  @param title - nuevo título del apartado de clasificación
+     *  @param id - id del apartado de clasificación
+     *   */
+    updateTaskClassificator(title: string, id: string) {
+        this.focusClassificator &#x3D; false;
+        this.tasksService.updateTaskClassificator(title, id, sessionStorage.getItem(&quot;id&quot;) as string).subscribe(res &#x3D;&gt; {
+            this.getTaskClassificators();
+            this.notifyTaskChangeService.notifyChangeTask();
+
+
+        })
+
+    }
+
+    /**
+     * Abre el diálogo para actualizar una tarea. Se dispara cuando el usuario pulsa sobre una tarea en el tablero.
+     * @param task - datos de la tarea.
+     */
+    updateTask(task: any) {
+        this.focusClassificator &#x3D; false;
+        let config: MatDialogConfig &#x3D; {
+            height: &quot;60%&quot;,
+            width: &quot;60%&quot;,
+            panelClass: &quot;dialog-responsive&quot;,
+            data: { workId: this.idWork, start: null, taskId: task._id, tasksClassificatorList: this.taskClassificators, usersOfWork: this.usersOfWork }
+        }
+
+        const dialogRef &#x3D; this.dialog.open(DialogManageTask, config);
+        dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+
+            this.notifyTaskChangeService.notifyChangeTask();
+
+        });
+    }
+
+    /**
+     * Cierra el menú lateral de opciones de un apartado de clasificación de tareas.
+     * @param menuTrigger - permite cerrar el menú del apartado de clasificación.
+     */
+    closeMenu(menuTrigger: MatMenuTrigger) {
+        this.focusClassificator &#x3D; false;
+        menuTrigger.closeMenu();
+    }
+
+    /**
+     * Se dispara cuando el usuario cambia el orden de un apartado de clasificación de tareas en el tablero.
+     * @param event - evento que se dispara cuando el usuario cambia el orden.
+     */
+    onOrderChange(event: any) {
+        this.focusClassificator &#x3D; false;
+        this.tasksService.updateTaskClassificatorsOrder(this.idWork, event.value[1], event.value[0]).subscribe(res &#x3D;&gt; {
+            this.getTaskClassificators();
+            this.notifyTaskChangeService.notifyChangeTask();
+
+        })
+
+
+    }
+
+    /**
+     * Se dispara cuando el usuario cambia el tamaño de la pantalla y dependiendo del tamaño de esta cambia el valor del atributo largeScreen.
+     * @param event - datos del evento disparado.
+     */
+    @HostListener(&#x27;window:resize&#x27;, [&#x27;$event&#x27;])
+    onResize(event: any) {
+        if (window.innerWidth &lt; 800) {
+            this.largeScreen &#x3D; false;
+        } else {
+            this.largeScreen &#x3D; true;
+
+        }
+    }
+
+    /**
+     * Obtiene la lista de usuarios que son asignables a una tarea a partir de los servicios de trabajos y de usuarios. Almacena este valor en la variable usersOfWork.
+     */
+    getUsersOfWork() {
+        this.focusClassificator &#x3D; false;
+        this.usersOfWork &#x3D; [];
+        this.workService.getWorkById(this.idWork).subscribe((res) &#x3D;&gt; {
+            res.data.teachers.forEach((teacher: any) &#x3D;&gt; {
+                this.userService.getUserById(teacher).subscribe(res &#x3D;&gt; {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+            res.data.students.forEach((student: any) &#x3D;&gt; {
+                this.userService.getUserById(student).subscribe(res &#x3D;&gt; {
+                    this.usersOfWork.push(res.data.user)
+                })
+            })
+        })
+    }
+
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-board&quot; cdkDropListGroup&gt;
+    &lt;div class&#x3D;&quot;task-classif&quot; *ngFor&#x3D;&quot;let apt of taskClassificators&quot; [cdkDropListData]&#x3D;&quot;apt.tasks&quot; cdkDropList
+        (cdkDropListDropped)&#x3D;&quot;dropTask($event, apt)&quot;&gt;
+
+        &lt;div class&#x3D;&quot;classificatorHeader&quot;&gt;
+            &lt;mat-form-field&gt;
+                &lt;mat-label&gt;Título&lt;/mat-label&gt;
+
+                &lt;input matInput [cdkTrapFocusAutoCapture]&#x3D;&quot;focusClassificator&quot;
+                    [cdkTrapFocus]&#x3D;&quot;focusClassificator&quot; #inputTitle (click)&#x3D;&quot;inputTitle.select()&quot;
+                    [(ngModel)]&#x3D;&quot;apt.title&quot; class&#x3D;&quot;editableTitle&quot;
+                    (change)&#x3D;&quot;checkTitle($event, inputTitle.value, apt._id)&quot;&gt;
+            &lt;/mat-form-field&gt;
+            &lt;button class&#x3D;&quot;optionMenu&quot; mat-icon-button [matMenuTriggerFor]&#x3D;&quot;menu&quot;&gt;
+                &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+            &lt;/button&gt;
+
+            &lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+                &lt;button mat-menu-item [matMenuTriggerFor]&#x3D;&quot;subMenu&quot;&gt;Mover a&lt;/button&gt;
+
+                &lt;button id&#x3D;&quot;deleteTaskClassificator&quot; mat-menu-item style&#x3D;&quot;color:red;&quot;
+                    (click)&#x3D;&quot;deleteTaskClassificator(apt._id)&quot;&gt;Eliminar&lt;/button&gt;
+
+            &lt;/mat-menu&gt;
+
+            &lt;mat-menu #subMenu&#x3D;&quot;matMenu&quot; class&#x3D;&quot;subMenu&quot;&gt;
+                &lt;div class&#x3D;&quot;selectorOrder&quot;&gt;
+                    &lt;mat-label&gt; Posición &lt;/mat-label&gt;
+                    &lt;mat-select placeholder&#x3D;&quot;Selecciona...&quot; (click)&#x3D;&quot;$event.stopPropagation();&quot;
+                        (selectionChange)&#x3D;&quot;onOrderChange($event)&quot;&gt;
+                        &lt;mat-option *ngFor&#x3D;&quot;let tc of taskClassificators&quot; [value]&#x3D;&quot;[tc.order, apt._id]&quot;&gt;
+                            &lt;p *ngIf&#x3D;&quot;tc.order&#x3D;&#x3D;apt.order&quot;&gt;{{ tc.order }} (actual)&lt;/p&gt;
+                            &lt;p *ngIf&#x3D;&quot;tc.order!&#x3D;apt.order&quot;&gt;{{ tc.order }} &lt;/p&gt;
+
+                        &lt;/mat-option&gt;
+                    &lt;/mat-select&gt;
+                &lt;/div&gt;
+            &lt;/mat-menu&gt;
+
+
+
+        &lt;/div&gt;
+
+
+        &lt;div class&#x3D;&quot;task-board&quot; *ngFor&#x3D;&quot;let task of apt.tasks&quot; (click)&#x3D;&quot;updateTask(task)&quot; cdkDrag&gt;
+
+            &lt;div class&#x3D;&quot;task-content&quot;&gt;
+                &lt;h5 class&#x3D;&quot;task-title&quot;&gt;{{task.title}}&lt;/h5&gt;
+                &lt;div *ngIf&#x3D;&quot;task.start!&#x3D;null || task.end !&#x3D; null&quot; style&#x3D;&quot;display: flex;
+                align-items: center;color: rgb(67, 67, 67);&quot;&gt;
+                    &lt;span&gt;
+                        &lt;mat-icon [inline]&#x3D;&quot;true&quot; style&#x3D;&quot; font-size: 20px;&quot;&gt;access_time&lt;/mat-icon&gt;
+                    &lt;/span&gt;
+                    &lt;span class&#x3D;&quot;aligned-text&quot; *ngIf&#x3D;&quot;task.start!&#x3D;null&quot;&gt;{{task.start | date}}&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;aligned-text&quot; *ngIf&#x3D;&quot;task.start&#x3D;&#x3D;null&quot;&gt;?&lt;/span&gt;
+                    -
+                    &lt;span class&#x3D;&quot;aligned-text&quot; *ngIf&#x3D;&quot;task.end!&#x3D;null&quot;&gt;{{task.end | date}}&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;aligned-text&quot; *ngIf&#x3D;&quot;task.end&#x3D;&#x3D;null&quot;&gt;?&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;task.userAssignedId!&#x3D;null&quot; style&#x3D;&quot;display: flex;
+                align-items: center;color: rgb(67, 67, 67);&quot;&gt;
+                    &lt;div *ngFor&#x3D;&quot;let user of this.usersOfWork&quot;&gt;
+                        &lt;span *ngIf&#x3D;&quot;user._id &#x3D;&#x3D; task.userAssignedId&quot;&gt;
+                            &lt;mat-icon [inline]&#x3D;&quot;true&quot; style&#x3D;&quot; font-size: 20px;&quot;&gt;person_pin&lt;/mat-icon&gt;
+                            {{user.name}} {{user.surname}}
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;add-section&quot;&gt;
+        &lt;button id&#x3D;&quot;newTaskClassificator&quot; *ngIf&#x3D;&quot;largeScreen&quot; mat-raised-button color&#x3D;&quot;primary&quot;
+            (click)&#x3D;&quot;newTaskClassificator()&quot;&gt;
+            &lt;mat-icon&gt;add&lt;/mat-icon&gt;Añadir nueva sección
+        &lt;/button&gt;
+        &lt;button id&#x3D;&quot;newTaskClassificator&quot; *ngIf&#x3D;&quot;!largeScreen&quot; mat-raised-button color&#x3D;&quot;primary&quot;
+            (click)&#x3D;&quot;newTaskClassificator()&quot;&gt;
+            &lt;mat-icon&gt;add&lt;/mat-icon&gt;
+        &lt;/button&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./board.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-form-field{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.main-board {
+    display: flex;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+}
+
+.task-classif {
+    background-color: #EEEEEE;
+    border-radius: 3px;
+    box-shadow: 0.1em 0.1em 0.2em lightgrey;
+    height: 100%;
+    margin: 5px;
+    width: 100%;
+}
+
+.task-board {
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0.3em 0.3em 0.2em lightgrey;
+    margin: 2% 2% 2% 2%;
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+
+.task-content{
+    font-size: 0.9em;
+    margin: 2% 2% 2% 2%;
+}
+.task-board:hover{
+    cursor: pointer;
+}
+.task-title{
+    font-size: 1.2em;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.main-board:last-child {
+    border: none;
+}
+
+
+.main-board.cdk-drop-list-dragging .task-classif:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.add-section {
+    margin: 5px;
+}
+
+.editableTitle {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 0.25em;
+    margin-left: 0.25em;
+}
+
+
+.editableTitle:focus {
+    border: 0.5px solid;
+    outline: inherit;
+}
+
+.classificatorHeader {
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.optionMenu {
+    margin-right: 0.25em;
+    margin-top: 0.25em;
+    float: right;
+}
+
+.subMenu { 
+    width: 200px; 
+    max-width: unset !important;
+  }
+
+.selectorOrder{
+    width: 200px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+
+  </code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="main-board" cdkDropListGroup>    <div class="task-classif" *ngFor="let apt of taskClassificators" [cdkDropListData]="apt.tasks" cdkDropList        (cdkDropListDropped)="dropTask($event, apt)">        <div class="classificatorHeader">            <mat-form-field>                <mat-label>Título</mat-label>                <input matInput [cdkTrapFocusAutoCapture]="focusClassificator"                    [cdkTrapFocus]="focusClassificator" #inputTitle (click)="inputTitle.select()"                    [(ngModel)]="apt.title" class="editableTitle"                    (change)="checkTitle($event, inputTitle.value, apt._id)">            </mat-form-field>            <button class="optionMenu" mat-icon-button [matMenuTriggerFor]="menu">                <mat-icon>more_vert</mat-icon>            </button>            <mat-menu #menu="matMenu">                <button mat-menu-item [matMenuTriggerFor]="subMenu">Mover a</button>                <button id="deleteTaskClassificator" mat-menu-item style="color:red;"                    (click)="deleteTaskClassificator(apt._id)">Eliminar</button>            </mat-menu>            <mat-menu #subMenu="matMenu" class="subMenu">                <div class="selectorOrder">                    <mat-label> Posición </mat-label>                    <mat-select placeholder="Selecciona..." (click)="$event.stopPropagation();"                        (selectionChange)="onOrderChange($event)">                        <mat-option *ngFor="let tc of taskClassificators" [value]="[tc.order, apt._id]">                            <p *ngIf="tc.order==apt.order">{{ tc.order }} (actual)</p>                            <p *ngIf="tc.order!=apt.order">{{ tc.order }} </p>                        </mat-option>                    </mat-select>                </div>            </mat-menu>        </div>        <div class="task-board" *ngFor="let task of apt.tasks" (click)="updateTask(task)" cdkDrag>            <div class="task-content">                <h5 class="task-title">{{task.title}}</h5>                <div *ngIf="task.start!=null || task.end != null" style="display: flex;                align-items: center;color: rgb(67, 67, 67);">                    <span>                        <mat-icon [inline]="true" style=" font-size: 20px;">access_time</mat-icon>                    </span>                    <span class="aligned-text" *ngIf="task.start!=null">{{task.start | date}}</span>                    <span class="aligned-text" *ngIf="task.start==null">?</span>                    -                    <span class="aligned-text" *ngIf="task.end!=null">{{task.end | date}}</span>                    <span class="aligned-text" *ngIf="task.end==null">?</span>                </div>                <div *ngIf="task.userAssignedId!=null" style="display: flex;                align-items: center;color: rgb(67, 67, 67);">                    <div *ngFor="let user of this.usersOfWork">                        <span *ngIf="user._id == task.userAssignedId">                            <mat-icon [inline]="true" style=" font-size: 20px;">person_pin</mat-icon>                            {{user.name}} {{user.surname}}                        </span>                    </div>                </div>            </div>        </div>    </div>    <div class="add-section">        <button id="newTaskClassificator" *ngIf="largeScreen" mat-raised-button color="primary"            (click)="newTaskClassificator()">            <mat-icon>add</mat-icon>Añadir nueva sección        </button>        <button id="newTaskClassificator" *ngIf="!largeScreen" mat-raised-button color="primary"            (click)="newTaskClassificator()">            <mat-icon>add</mat-icon>        </button>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BoardComponent', 'selector': 'app-board'},{'name': 'CalendarWorkComponent', 'selector': 'app-calendar-work'},{'name': 'ConfirmDialog', 'selector': 'confirm-dialog'},{'name': 'ContactoComponent', 'selector': 'app-contact'},{'name': 'CustomBreadcrumbComponent', 'selector': 'app-custom-breadcrumb'},{'name': 'DialogAddDirectory', 'selector': 'modal-add-directory.html'},{'name': 'DialogAddPost', 'selector': 'modal-add-post.html'},{'name': 'DialogAddWork', 'selector': 'add-work.html'},{'name': 'DialogManageTask', 'selector': 'dialog-manage-task.html'},{'name': 'DialogNewEvent', 'selector': 'modal-events.html'},{'name': 'DialogUploadFile', 'selector': 'modal-upload-file.html'},{'name': 'EntryCallDialogComponent', 'selector': 'app-entry-call-dialog'},{'name': 'FilesComponent', 'selector': 'app-files'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForoComponent', 'selector': 'app-foro'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'InfoComponent', 'selector': 'app-info-work'},{'name': 'LegalInfoComponent', 'selector': 'app-legal-info'},{'name': 'ListTasksComponent', 'selector': 'app-list-tasks'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainComponent', 'selector': 'app-main'},{'name': 'ManageWorkComponent', 'selector': 'app-manage-work'},{'name': 'ModalAddUsers', 'selector': 'modal-add-users'},{'name': 'NotificationsComponent', 'selector': 'app-notifications'},{'name': 'Pagina404Component', 'selector': 'pagina404'},{'name': 'PostListComponent', 'selector': 'app-post-list'},{'name': 'PostManagementComponent', 'selector': 'app-post-management'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignupComponent', 'selector': 'app-signup'},{'name': 'TasksComponent', 'selector': 'app-tasks'},{'name': 'VideocallsComponent', 'selector': 'app-videocalls'},{'name': 'WorkListComponent', 'selector': 'app-work-list'},{'name': 'WorkRequestsComponent', 'selector': 'app-work-requests'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'BoardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BoardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

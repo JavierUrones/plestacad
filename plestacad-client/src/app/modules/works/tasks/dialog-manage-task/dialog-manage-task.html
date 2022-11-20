@@ -1,0 +1,79 @@
+<h1 class="title-dialog" mat-dialog-title  *ngIf="!updating" >Crear nueva tarea</h1>
+<h1 class="title-dialog" mat-dialog-title  *ngIf="updating" >Actualizar tarea</h1>
+<button matTooltip="Eliminar tarea" *ngIf="updating"  id="deleteButton" mat-raised-button color="warn" (click)="deleteTask()" ><mat-icon class="icon-button">delete</mat-icon></button>
+
+
+<!-- Titulo, descripción, fecha start, fecha end (opcional), Clasificación (taskClassificatorId), Responsable (userAssignedId), -->
+<div mat-dialog-content>
+    <form [formGroup]="form">
+    <mat-form-field class="full-width-input">
+        <mat-label>Título</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          required
+        />
+        <mat-error  *ngIf="invalidTitle"> Es obligatorio indicar un título que no supere los 100 caracteres.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Descripción</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          
+        ></textarea>
+        <mat-error  *ngIf="invalidDescription"> Es obligatorio indicar una descripción que no supere los 100 caracteres.</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="full-width-input">
+        <mat-label>Fecha de inicio</mat-label>
+        <input matInput type="datetime-local" formControlName="start">
+
+    </mat-form-field>
+
+    <mat-form-field class="full-width-input">
+
+      <mat-label>Fecha de fin</mat-label>
+      <input matInput type="datetime-local" formControlName="end">
+    </mat-form-field>
+    <mat-error *ngIf="hasErrors" id="errorDate">La fecha de fin no puede ser menor que la fecha de inicio de la tarea.</mat-error>
+
+    <mat-form-field class="full-width-input">
+        <mat-label> Clasificación </mat-label>
+        <mat-select id="selectorClassification" formControlName="taskClassificatorId">
+            <mat-option  *ngFor="let aptClass of this.data.tasksClassificatorList"
+             [value]="aptClass._id">
+              {{aptClass.title}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="full-width-input">
+      <mat-label> Asignación </mat-label>
+      <mat-select formControlName="userAssignedId">
+          <mat-option  *ngFor="let user of this.data.usersOfWork"
+           [value]="user._id">
+            {{user.name}} {{user.surname}}
+          </mat-option>
+        </mat-select>
+  </mat-form-field>
+
+
+
+
+      
+
+</form>
+
+<div id="buttonPanel">
+    <button *ngIf="!updating" id="createButton" mat-raised-button color="primary" (click)="onClick()" cdkFocusInitial>Crear</button>
+    <button *ngIf="updating" id="createButton" mat-raised-button color="primary" (click)="onClick()" cdkFocusInitial>Actualizar</button>
+
+    <button id="cancelButton" mat-raised-button (click)="onNoClick()" >Cancelar</button>
+
+</div>
+</div>

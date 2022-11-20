@@ -1,0 +1,60 @@
+<h1 class="header-title"> Solicitudes Pendientes </h1>
+
+<mat-spinner *ngIf="loading" color="primary"></mat-spinner>
+
+
+<div class="no-requests" *ngIf="this.workRequests.data.length == 0 && !loading">
+    <h2> No tienes ninguna solicitud de incorporación a trabajos académicos pendiente. </h2>
+</div>
+
+<table *ngIf="!loading && this.workRequests.data.length > 0" mat-table [dataSource]="workRequests" >
+
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+        <td mat-cell *matCellDef="let element"> 
+            <p *ngIf="element.description=='teacher'">Solicitud de incorporación a trabajo académico como PROFESOR</p> 
+            <p *ngIf="element.description=='student'">Solicitud de incorporación a trabajo académico como ESTUDIANTE</p> 
+        </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Título del trabajo académico </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.title}}
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userSenderFullname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Propietario </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.userSenderFullname}}
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha  </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.date | date}}
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones  </th>
+        <td mat-cell *matCellDef="let element"> 
+            <button  color="primary" class="button-icon" mat-raised-button (click)="acceptWorkRequest(element)">
+                <mat-icon >check</mat-icon>
+            </button>
+            <button color="warn" mat-raised-button (click)="denyWorkRequest(element)">
+                <mat-icon>clear</mat-icon>
+            </button>
+
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="definedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: definedColumns;"></tr>
+
+</table>

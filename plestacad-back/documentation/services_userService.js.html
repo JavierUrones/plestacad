@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/userService.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/userService.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Servicio encargado de gestionar los usuarios.
+ * @module services/userService
+ */
+/**
+ * Modelo User
+ */
+const User = require("../models/User");
+/**
+ * Modelo Work
+ */
+const Work = require("../models/Work");
+/**
+ * Modelo WorkRequest
+ */
+const WorkRequest = require("../models/WorkRequest");
+/**
+ * ValidationError
+ */
+const ValidationError = require("../config/errors/customErrors");
+
+/**
+ * Módulo fs (file system)
+ */
+const fs = require("fs");
+
+/**
+ * Módulo brcrypt para encriptado y desencriptado de contraseñas
+ */
+const bcrypt = require("bcrypt");
+
+
+/**
+ * Devuelve la lista de todos los usuarios de la aplicación.
+ * @returns Retorna la lista de todos los usuarios de la aplicación
+ */
+async function getAllUsers() {
+  try {
+    const listUsers = User.find({});
+    return listUsers;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene un usuario a partir de su id.
+ * @param {string} id - id del usuario
+ * @returns El usuario correspondiente con el id
+ */
+async function getUserById(id) {
+  try {
+    const user = User.findById(id)
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene la lista de usuarios que pueden ser invitados al trabajo académico.
+ * @param {string} workId - id del trabajo académico 
+ * @returns Retorna la lista de usuarios invitables al trabajo académico
+ */
+async function getUsersForInvitationByRole(workId) {
+  try {
+    let listUsers = await User.find();
+
+    
+    for await (const user of listUsers) {
+      //no deben pertenecer al trabajo academico ni tener invitaciones ya generadas.
+
+      const requests = await WorkRequest.find({
+        'userIdReceiver': user._id,
+        'workId': workId
+      });
+
+      for await (const req of requests) {
+        if (user._id.toString() == req.userIdReceiver.toString()) {
+
+          listUsers = listUsers.filter(function (item) {
+            return item._id.toString() != user._id.toString()
+          }
+          );
+        }
+      }
+
+      const work = await Work.findById(workId);
+
+      for await (const teacher of work.teachers) {
+
+        if (teacher.toString() == user._id.toString()) {
+
+          listUsers = listUsers.filter(function (item) {
+            return item._id.toString() != user._id.toString()
+          }
+          );
+        }
+
+        for await (const student of work.students) {
+          if (student.toString() == user._id.toString()) {
+            listUsers = listUsers.filter(function (item) {
+              return item._id.toString() != user._id.toString()
+            }
+            );
+          }
+        }
+
+      }
+    }
+    return listUsers;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+/**
+ * Obtiene un usuario a partir de su correo electrónico.
+ * @param {string} email - correo electrónico del usuario.
+ * @returns el usuario correspondiente al email indicado.
+ */
+async function getUserByEmail(email) {
+  try {
+    const user = User.find({
+      email: email
+    })
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Devuelve la lista de contactos del usuario con el id especificado.
+ * @param {string} id - id del usuario
+ * @returns Retorna la lista de contactos del usuario
+ */
+async function getContactsByUserId(id) {
+  try {
+    const worksOfUserAsTeacher = await Work.find({
+      'teachers': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    });
+
+    const worksOfUserAsStudent = await Work.find({
+      'students': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    });
+
+    var listOfContactsIds = [];
+    for await (const work of worksOfUserAsTeacher) {
+      for await (const user of work.teachers)
+        listOfContactsIds.push(user.toString());
+    };
+    for await (const work of worksOfUserAsStudent) {
+      for await (const user of work.students)
+        listOfContactsIds.push(user.toString());
+    };
+    for await (const work of worksOfUserAsTeacher) {
+      for await (const user of work.students)
+        listOfContactsIds.push(user.toString());
+    };
+    for await (const work of worksOfUserAsStudent) {
+      for await (const user of work.teachers)
+        listOfContactsIds.push(user.toString());
+    };
+
+    let contactsSetIds = [...new Set(listOfContactsIds)];
+
+    let listOfUserContacts = [];
+
+    for await (const contactId of contactsSetIds) {
+      if (contactId != id)
+        listOfUserContacts.push(await this.getUserById(contactId));
+    }
+
+
+
+    return listOfUserContacts
+
+
+  } catch (error) {
+    console.error(error)
+    throw error;
+  }
+}
+
+/**
+ * Permite actualizar la foto de perfil del usuario.
+ * @param {string} pathDirectory - ruta raíz donde se almacenara la foto (por defecto "/userdata/profile-images/").
+ * @param {*} pathFile - ruta de la foto subida por el usuario.
+ * @param {*} filePath - ruta donde se almacenará la foto del usuario.
+ */
+function uploadProfilePhoto(pathDirectory, pathFile, filePath) {
+  try {
+    if (!fs.existsSync(pathDirectory)) {
+      fs.mkdirSync(pathDirectory);
+      fs.renameSync(pathFile, filePath);
+    } else {
+
+      fs.renameSync(pathFile, filePath);
+
+    }
+  }
+  catch (error) {
+    throw error;
+  }
+
+}
+
+
+/**
+ * Actualiza la contraseña del usuario.
+ * @param {User} userDto - datos del usuario a actualizar con la nueva contraseña.
+ * @returns Retorna el usuario actualizado
+ */
+async function updatePassword(userDto) {
+  try {
+    //se comprueba el password actual introducido por el usuario.
+
+    const currentUser = await User.findById(userDto.id)
+
+    const checkPassword = await bcrypt.compare(
+      userDto.currentPassword,
+      currentUser.password
+    );
+
+    if (!checkPassword || userDto.password.length &lt; 8) {
+
+      throw new ValidationError("wrong-password");
+    }
+    else {
+
+      const filter = { _id: userDto.id };
+      //Se encripta el password
+      const salt = await bcrypt.genSalt();
+      const password = await bcrypt.hash(userDto.password, salt);
+      const update = { password: password };
+
+
+      let user = await User.findOneAndUpdate(filter, update);
+      return user;
+    }
+
+
+  }
+  catch (error) {
+    throw error;
+  }
+
+}
+
+/**
+ * Actualiza los datos de un usuario.
+ * @param {User} userDto - datos del usuario a actualizar.
+ * @returns retorna el usuario actualizado
+ */
+async function updateUserData(userDto) {
+  try {
+    const filter = { _id: userDto.id };
+    const update = { name: userDto.name, surname: userDto.surname };
+
+
+    let user = await User.findOneAndUpdate(filter, update);
+    return user;
+  }
+  catch (error) {
+    throw error;
+  }
+
+
+}
+
+
+
+
+
+module.exports = {getUsersForInvitationByRole, getUserById, getAllUsers, updateUserData, updatePassword, uploadProfilePhoto, getContactsByUserId, getUserByEmail,  };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-config_index.html">config/index</a></li><li><a href="module-loaders_loaderExpress.html">loaders/loaderExpress</a></li><li><a href="module-loaders_loaderMongoose.html">loaders/loaderMongoose</a></li><li><a href="module-middleware_authMiddleware.html">middleware/authMiddleware</a></li><li><a href="module-models_CalendarEvent.html">models/CalendarEvent</a></li><li><a href="module-models_Notification.html">models/Notification</a></li><li><a href="module-models_Post.html">models/Post</a></li><li><a href="module-models_PostInteraction.html">models/PostInteraction</a></li><li><a href="module-models_Task.html">models/Task</a></li><li><a href="module-models_TaskClassificator.html">models/TaskClassificator</a></li><li><a href="module-models_User.html">models/User</a></li><li><a href="module-models_Work.html">models/Work</a></li><li><a href="module-models_WorkRequest.html">models/WorkRequest</a></li><li><a href="module-routes_authentication.html">routes/authentication</a></li><li><a href="module-routes_calendar.html">routes/calendar</a></li><li><a href="module-routes_files.html">routes/files</a></li><li><a href="module-routes_notifications.html">routes/notifications</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-routes_task.html">routes/task</a></li><li><a href="module-routes_users.html">routes/users</a></li><li><a href="module-routes_works.html">routes/works</a></li><li><a href="module-services_authService.html">services/authService</a></li><li><a href="module-services_calendarService.html">services/calendarService</a></li><li><a href="module-services_fileService.html">services/fileService</a></li><li><a href="module-services_notificationService.html">services/notificationService</a></li><li><a href="module-services_postService.html">services/postService</a></li><li><a href="module-services_taskService.html">services/taskService</a></li><li><a href="module-services_userService.html">services/userService</a></li><li><a href="module-services_workService.html">services/workService</a></li><li><a href="module-utils_email.html">utils/email</a></li><li><a href="module-utils_socket-io.html">utils/socket-io</a></li><li><a href="module-utils_token.html">utils/token</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Nov 16 2022 03:26:24 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

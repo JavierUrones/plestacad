@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+    <div class="image-container">
+    <img alt="Imagen de perfil" *ngIf="this.photoProfile==undefined" class="circular-photo"
+    src="assets/images/profile-default.png" />
+
+
+    <img  alt="Imagen de perfil" *ngIf="this.photoProfile!=undefined"  class="circular-photo" [src]="this.photoProfile">
+
+    <p>{{data.message}}</p>
+
+
+</div>
+   
+</div>
+<div  class="centered">
+    <button mat-button (click)="close()"><mat-icon class="red-icon">call_end</mat-icon></button>
+    <button mat-button (click)="confirm()" cdkFocusInitial><mat-icon class="green-icon">phone_in_talk</mat-icon></button>
+</div>

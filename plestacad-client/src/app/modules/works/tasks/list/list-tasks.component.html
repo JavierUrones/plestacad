@@ -1,0 +1,94 @@
+<button mat-raised-button color="primary" class="newTaskButton" id="newTask" (click)="newTask()">
+    <mat-icon>add</mat-icon>Nueva tarea
+</button>
+
+<div class="no-tasks" *ngIf="this.tasks.data.length == 0">
+    <h2 id="no-tasks-header"> No hay ninguna tarea creada todavía. </h2>
+    <h3> Puedes crear una nueva tarea pulsando el botón superior. </h3>
+  </div>
+
+
+<table *ngIf="this.tasks.data.length > 0" mat-table [dataSource]="tasks" matSort #sortElements="matSort">
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Start Column -->
+    <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de inicio </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <mat-label> Inicio </mat-label>
+                <input disabled matInput readonly [matDatepicker]="pickerStart" value="{{element.start}}">
+
+                <mat-datepicker-toggle disabled matSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart></mat-datepicker>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- End Column -->
+    <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de fin </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <mat-label>Fin</mat-label>
+
+                <input disabled  matInput readonly [matDatepicker]="pickerEnd" value="{{element.end}}">
+
+                <mat-datepicker-toggle disabled matSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEnd></mat-datepicker>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="taskClassificatorId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Clasificación </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <mat-select id="selectorClassification" [value]="element.taskClassificatorId"
+                    (selectionChange)="onTaskClassificatorChange($event.value, element._id)">
+                    <mat-option *ngFor="let aptClass of taskClassificatorsSelector" [value]="aptClass._id">
+                        {{aptClass.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userAssignedId">
+        <th mat-header-cell *matHeaderCellDef> Asignación </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field>
+                <mat-select *ngIf="element.userAssignedId!=undefined" disabled [value]="element.userAssignedId">
+                    <mat-option *ngFor="let user of this.usersOfWork" [value]="user._id">
+                        {{user.name}} {{user.surname}}
+                    </mat-option>
+                </mat-select>
+                <mat-label *ngIf="element.userAssignedId==undefined"> Sin asignar</mat-label>
+                <input disabled *ngIf="element.userAssignedId==undefined" matInput readonly value="">
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> Opciones </th>
+        <td mat-cell *matCellDef="let elem">
+            <div>
+                <button matTooltip="Modificar tarea" mat-raised-button (click)="updateTask(elem._id)">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="definedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: definedColumns;"></tr>
+
+</table>
+
+<mat-paginator *ngIf="this.tasks.data.length > 0" #paginator [pageSizeOptions]="pageSizes" showFirstLastButtons aria-label="Select page">
+</mat-paginator>

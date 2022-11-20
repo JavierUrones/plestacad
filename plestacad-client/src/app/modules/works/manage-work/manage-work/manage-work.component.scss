@@ -1,0 +1,14 @@
+.none{
+    visibility: hidden;
+}
+
+.wrapper{
+    display:grid;
+    grid-template-columns: 100%;
+
+}
+.header-title{
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3em;
+  }

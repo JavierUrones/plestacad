@@ -1,0 +1,8 @@
+<mat-tab-group #tab animationDuration="1ms" [selectedIndex]="isActiveTab" >
+    <mat-tab label="Lista" #listTab>
+        <app-list-tasks></app-list-tasks>
+    </mat-tab>
+    <mat-tab label="Tablero" #boardTab>
+        <app-board></app-board>
+    </mat-tab>
+</mat-tab-group>

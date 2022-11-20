@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/notificationService.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/notificationService.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Servicio encargado de gestionar las notificaciones.
+ * @module services/notificationService
+ */
+
+/**
+ * Modelo Notification.
+ * @type {object}
+ * @const
+ */
+const Notification = require("../models/Notification");
+
+/**
+ * Work service
+ * @type {object}
+ * @const
+ */
+const workService = require("../services/workService");
+
+/**
+ * User service
+ * @type {object}
+ * @const
+ */
+const userService = require("../services/userService");
+
+/**
+ * Socket.io utils
+ * @type {object}
+ * @const
+ */
+const { sendNewNotification } = require("../utils/socket-io");
+
+
+/**
+ * Obtener notificación por id.
+ * @param {string} id - id de la notificación
+ * @returns {Notification} Retorna la notificación.
+ */
+async function getNotificationById(id) {
+    try {
+        const notification = await Notification.findById(id);
+        return notification;
+    } catch (error) {
+        throw error;
+    }
+}
+/**
+ * Obtener lista de notificaciones por id del trabajo académico.
+ * @param {string} id - id del trabajo académico.
+ * @returns Retorna la lista de notificaciones asociadas al trabajo académico.
+ */
+async function getNotificationsByWorkId(id) {
+    try {
+        const notifications = await Notification.find({
+            'workId': id
+        });
+        return notifications;
+    } catch (error) {
+        throw error;
+    }
+}
+
+/**
+ * Borra la notificación indicada.
+ * @param {string} id - id de la notificación.
+ * @returns Retorna la notificación borrada.
+ */
+async function deleteNotificationById(id) {
+    try {
+        const notification = await Notification.findByIdAndDelete(id);
+        return notification;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+
+async function getNotificationsByUserIdReceiver(idUser) {
+    try {
+        const listNotifications = await Notification.find({
+            'usersIdReceivers': {
+                $in: [
+                    mongoose.Types.ObjectId(idUser)
+                ]
+            }
+        });
+
+
+        const listNotificationsToReturn = []
+        for await (const notification of listNotifications) {
+            //extraer titulo del trabajo y nombre del usuario responsable.
+            let user = await userService.getUserById(notification.userIdResponsible.toString());
+            let work = await workService.getWorkById(notification.workId.toString());
+            let userFullnameResponsible = user.name + " " + user.surname;
+            let workTitle = work.title;
+
+            listNotificationsToReturn.push({ _id: notification._id, description: notification.description, workId: notification.workId, userIdResponsible: notification.userIdResponsible, usersIdReceivers: notification.usersIdReceivers, date: notification.date, workTitle: workTitle, userFullnameResponsible: userFullnameResponsible, mainContent: notification.mainContent })
+        }
+
+        return listNotificationsToReturn;
+
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+async function createNewNotification(workId, description, userIdResponsible, mainContent) {
+    const newNotificationDto = new Notification({
+        description: description,
+        date: new Date(),
+        userIdResponsible: userIdResponsible,
+        workId: workId,
+        mainContent: mainContent
+    });
+    try {
+        const work = await workService.getWorkById(workId);
+
+        newNotificationDto.usersIdReceivers = work.teachers.concat(work.students); //reciben la notificación los alumnos y profesores del trabajo académico.
+
+        const notificationSave = await newNotificationDto.save();
+
+
+        for await (const userIdReceiver of newNotificationDto.usersIdReceivers) {
+            sendNewNotification(userIdReceiver.toString());
+        };
+
+
+        return notificationSave;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function markAsRead(idNotification, userIdReceiver) {
+    try {
+        const notification = await this.getNotificationById(idNotification);
+
+        notification.usersIdReceivers = notification.usersIdReceivers.filter(id => id != userIdReceiver);
+
+        if (notification.usersIdReceivers.length == 0) //si ya todos los usuarios han leido la notificacion, se borra del sistema.
+            await Notification.findByIdAndDelete(idNotification);
+        else {
+            // se actualiza la lista de los recibidores, si ya se ha comprobado que quedan usuarios sin leerla.
+            await notification.save();
+        }
+        sendNewNotification(userIdReceiver.toString()); //se manda notificación de que se han actualizado las notificaciones pendientes.
+        return notification;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
+
+
+module.exports = { getNotificationsByWorkId, getNotificationById, markAsRead, createNewNotification, getNotificationsByUserIdReceiver, deleteNotificationById };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-config_index.html">config/index</a></li><li><a href="module-loaders_loaderExpress.html">loaders/loaderExpress</a></li><li><a href="module-loaders_loaderMongoose.html">loaders/loaderMongoose</a></li><li><a href="module-middleware_authMiddleware.html">middleware/authMiddleware</a></li><li><a href="module-models_CalendarEvent.html">models/CalendarEvent</a></li><li><a href="module-models_Notification.html">models/Notification</a></li><li><a href="module-models_Post.html">models/Post</a></li><li><a href="module-models_PostInteraction.html">models/PostInteraction</a></li><li><a href="module-models_Task.html">models/Task</a></li><li><a href="module-models_TaskClassificator.html">models/TaskClassificator</a></li><li><a href="module-models_User.html">models/User</a></li><li><a href="module-models_Work.html">models/Work</a></li><li><a href="module-models_WorkRequest.html">models/WorkRequest</a></li><li><a href="module-routes_authentication.html">routes/authentication</a></li><li><a href="module-routes_calendar.html">routes/calendar</a></li><li><a href="module-routes_files.html">routes/files</a></li><li><a href="module-routes_notifications.html">routes/notifications</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-routes_task.html">routes/task</a></li><li><a href="module-routes_users.html">routes/users</a></li><li><a href="module-routes_works.html">routes/works</a></li><li><a href="module-services_authService.html">services/authService</a></li><li><a href="module-services_calendarService.html">services/calendarService</a></li><li><a href="module-services_fileService.html">services/fileService</a></li><li><a href="module-services_notificationService.html">services/notificationService</a></li><li><a href="module-services_postService.html">services/postService</a></li><li><a href="module-services_taskService.html">services/taskService</a></li><li><a href="module-services_userService.html">services/userService</a></li><li><a href="module-services_workService.html">services/workService</a></li><li><a href="module-utils_email.html">utils/email</a></li><li><a href="module-utils_socket-io.html">utils/socket-io</a></li><li><a href="module-utils_token.html">utils/token</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Nov 16 2022 03:26:24 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

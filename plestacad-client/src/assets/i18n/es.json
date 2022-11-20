@@ -1,0 +1,10 @@
+{
+  "title": "Plestacad",
+  "login": {
+    "main": "Inicia sesión",
+    "button": "Entrar"
+  },
+  "register": {
+    "main": "Crea tu cuenta ahora"
+  }
+}

@@ -1,0 +1,19 @@
+
+<h1 class="header-title"> {{this.titleWork}} </h1>
+
+<div class="wrapper">
+
+<div class="breadcrumb-div"> 
+    <app-custom-breadcrumb></app-custom-breadcrumb>  
+</div>
+<div class="tab-div">
+<mat-tab-group #tab animationDuration="1ms" (click)="onClick($event)" (keydown.enter)="onClick($event)">
+  <mat-tab id="info-tab" label="Información General" #infoTab> <app-info-work> </app-info-work></mat-tab>
+  <mat-tab id="foro-tab" label="Foro" #foroTab><app-foro></app-foro></mat-tab>
+  <mat-tab id="files-tab" label="Archivos" #filesTab> <app-files></app-files></mat-tab>
+  <mat-tab id="calendar-tab" label="Calendario" #calendarTab><app-calendar-work></app-calendar-work></mat-tab>
+  <mat-tab id="tasks-tab" label="Tareas" #tasksTab><app-tasks></app-tasks></mat-tab>
+
+</mat-tab-group>
+</div>
+</div>

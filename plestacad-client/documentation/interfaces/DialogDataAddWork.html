@@ -1,0 +1,473 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>plestacad-client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">plestacad-client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li
+  >
+  DialogDataAddWork</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/modules/works/manage-work/manage-work/add-work-dialog/add-work.dialog.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interfaz para el intercambio de datos con el diálogo de creación de un trabajo académico</p>
+
+            </p>
+
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#path" 
+>
+                                            path
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>id del trabajo académico</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="path"></a>
+                                        <span class="name "><b>path</b>
+                                            <a href="#path">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>path:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>ruta del trabajo académico</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &quot;@angular/core&quot;;
+import { FormControl, FormGroup, Validators } from &quot;@angular/forms&quot;;
+import { MatDialogRef, MAT_DIALOG_DATA } from &quot;@angular/material/dialog&quot;;
+import { map, Observable, startWith } from &quot;rxjs&quot;;
+import { User } from &quot;src/app/shared/models/user.model&quot;;
+import { UserService } from &quot;src/app/shared/services/user.service&quot;;
+import { WorkService } from &quot;src/app/shared/services/work.service&quot;;
+
+/** Interfaz para el intercambio de datos con el diálogo de creación de un trabajo académico */
+export interface DialogDataAddWork {
+  /** ruta del trabajo académico  */
+  path: string;
+  /** id del trabajo académico */
+  id: string;
+}
+
+
+
+@Component({
+  selector: &#x27;add-work.html&#x27;,
+  styleUrls: [&#x27;add-work-dialog.scss&#x27;],
+  templateUrl: &#x27;add-work-dialog.html&#x27;,
+})
+/** Define el diálogo de creación de un trabajo académico */
+export class DialogAddWork {
+  /** Formulario con los datos del trabajo académico. */
+  createWorkForm: FormGroup;
+
+
+  /** FormControl de los profesores */
+  teachersCtrl!: FormControl;
+  /** Lista de profesores filtrados a partir de la variable teachers cuando el usuario escribe sobre el componente de selección de profesores */
+  teachersFiltered!: Observable&lt;User[]&gt;;
+  /** Lista de profesores invitables al trabajo académico. */
+  teachers!: User[];
+  /** Lista de profesores invitados. */
+  teachersInvited: User[] &#x3D; [];
+
+
+  /** FormControl de los estudiantes */
+  studentsCtrl!: FormControl;
+  /** Lista de estudiantes filtrados a partir de la variable students cuando el usuario escribe sobre el componente de selección de estudiantes */
+  studentsFiltered!: Observable&lt;User[]&gt;;
+  /** Lista de estudiantes invitables al trabajo académico. */
+  students!: User[];
+  /** Lista de estudiantes invitados. */
+  studentsInvited: User[] &#x3D; [];
+
+  /** Posibles categorías del trabajo académico creado. */
+  categories &#x3D; [
+    { value: &#x27;tfg&#x27;, name: &#x27;Trabajo Fin de Grado&#x27; },
+    { value: &#x27;tfm&#x27;, name: &#x27;Trabajo Fin de Máster&#x27; },
+    { value: &#x27;tesis&#x27;, name: &#x27;Tésis Doctoral&#x27; },
+
+  ];
+  /** FormControl de las categorías. */
+  categoryControl: FormControl;
+  /** FormControl del curso */
+  cursoControl: FormControl;
+  /** Lista de posibles cursos seleccionables por el usuario. */
+  cursos: any[] &#x3D; [];
+  constructor(private userService: UserService,
+    public dialogRef: MatDialogRef&lt;DialogAddWork&gt;, private workService: WorkService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataAddWork
+  ) {
+    this.categoryControl &#x3D; new FormControl(&#x27;&#x27;, Validators.required);
+    this.teachersCtrl &#x3D; new FormControl();
+    this.studentsCtrl &#x3D; new FormControl();
+    this.cursoControl &#x3D; new FormControl(&#x27;&#x27;, Validators.required);
+
+    for (var i &#x3D; 2000; i &lt; 2050; i++) {
+      this.cursos.push({ value: i })
+    }
+
+    this.createWorkForm &#x3D; new FormGroup({
+      title: new FormControl(&#x27;&#x27;, [
+        Validators.required,
+        Validators.minLength(1),
+      ]),
+      description: new FormControl(&#x27;&#x27;, [
+        Validators.required,
+        Validators.minLength(1)
+      ]),
+      category: this.categoryControl,
+      course: this.cursoControl,
+    });
+
+
+    this.userService.getUsersForInvitationByRole(&quot;undefined&quot;).subscribe((dataUsers: User[]) &#x3D;&gt; {
+      dataUsers &#x3D; dataUsers.filter(user &#x3D;&gt; user._id !&#x3D; sessionStorage.getItem(&quot;id&quot;) as string)
+      this.teachers &#x3D; dataUsers;
+      this.students &#x3D; dataUsers;
+
+      this.teachersFiltered &#x3D; this.teachersCtrl.valueChanges.pipe(
+        startWith(&#x27;&#x27;),
+        map(teacher &#x3D;&gt; (teacher ? this._filterTeachers(teacher) : this.teachers.slice()))
+      );
+      this.studentsFiltered &#x3D; this.studentsCtrl.valueChanges.pipe(
+        startWith(&#x27;&#x27;),
+        map(student &#x3D;&gt; (student ? this._filterStudents(student) : this.students.slice()))
+      );
+
+    });
+  }
+
+
+  ngOnInit() {
+
+  }
+  /** Filtra la lista de profesores invitables a partir del contenido del parámetro value.
+   * @param value - input escrito por el usuario para filtrar la lista de profesores.
+   */
+  private _filterTeachers(value: string): User[] {
+    const filterValue &#x3D; value.toLowerCase();
+
+    return this.teachers.filter(teacher &#x3D;&gt; teacher.email.toLowerCase().includes(filterValue));
+  }
+  /** Filtra la lista de estudiantes invitables a partir del contenido del parámetro value.
+   * @param value - input escrito por el usuario para filtrar la lista de estudiantes.
+   */
+  private _filterStudents(value: string): User[] {
+    const filterValue &#x3D; value.toLowerCase();
+
+    return this.students.filter(student &#x3D;&gt; student.email.toLowerCase().includes(filterValue));
+  }
+
+
+  /** Añade a un profesor a la lista de invitados del trabajo académico. */
+  addTeacherToList() {
+    var teacherValue &#x3D; this.teachersCtrl.value;
+    if (teacherValue !&#x3D; undefined &amp;&amp; teacherValue.trim() !&#x3D; &quot;&quot;
+      &amp;&amp; this.teachers.filter(teacher &#x3D;&gt; teacher.email &#x3D;&#x3D; this.teachersCtrl.value).length &gt; 0
+      &amp;&amp; this.teachersInvited.filter(teacher &#x3D;&gt; teacher &#x3D;&#x3D; teacherValue).length &#x3D;&#x3D; 0) {
+      this.teachersInvited.push(teacherValue);
+      this.teachersCtrl.setValue(&quot;&quot;);
+      if (this.studentsInvited.filter(student &#x3D;&gt; student &#x3D;&#x3D; teacherValue).length &gt; 0) {
+        this.deleteStudentInvited(teacherValue)
+      }
+    }
+
+
+  }
+
+  /** Elimina a un profesor de la lista de invitados del trabajo académico. */
+  deleteTeacherInvited(teacher: any) {
+    this.teachersInvited &#x3D; this.teachersInvited.filter(t &#x3D;&gt; t !&#x3D;&#x3D; teacher);
+  }
+
+  /** Añade a un estudiante a la lista de invitados del trabajo académico. */
+  addStudentToList() {
+    var studentValue &#x3D; this.studentsCtrl.value;
+    if (studentValue !&#x3D; undefined &amp;&amp; studentValue.trim() !&#x3D; &quot;&quot;
+      &amp;&amp; this.students.filter(student &#x3D;&gt; student.email &#x3D;&#x3D; this.studentsCtrl.value).length &gt; 0
+      &amp;&amp; this.studentsInvited.filter(student &#x3D;&gt; student &#x3D;&#x3D; studentValue).length &#x3D;&#x3D; 0) {
+      this.studentsInvited.push(studentValue);
+      this.studentsCtrl.setValue(&quot;&quot;);
+      if (this.teachersInvited.filter(teacher &#x3D;&gt; teacher &#x3D;&#x3D; studentValue).length &gt; 0) {
+        this.deleteTeacherInvited(studentValue)
+      }
+    }
+  }
+
+  /** Elimina a un estudiante de la lista de invitados del trabajo académico. */
+  deleteStudentInvited(student: any) {
+    this.studentsInvited &#x3D; this.studentsInvited.filter(e &#x3D;&gt; e !&#x3D;&#x3D; student);
+  }
+
+
+  /** Define el comportamiento cuando el usuario pulsa el botón de crear.
+   * Extrae todos los datos indicados del trabajo académico a partir de los formularios rellenados.
+   * Llama a la función del servicio de trabajos para crear trabajos académicos.
+   */
+  onClick() {
+    if (this.createWorkForm.invalid) {
+      return;
+    }
+    var description &#x3D; this.createWorkForm.controls[&quot;description&quot;].value;
+    var title &#x3D; this.createWorkForm.controls[&quot;title&quot;].value;
+    var category &#x3D; this.createWorkForm.controls[&quot;category&quot;].value;
+    var course &#x3D; this.createWorkForm.controls[&quot;course&quot;].value;
+    var teachers: any[] &#x3D; [];
+    teachers.push(sessionStorage.getItem(&quot;id&quot;))
+    var authorId &#x3D; sessionStorage.getItem(&quot;id&quot;);
+    this.workService.
+    
+    
+    
+    
+    createWork(authorId, title, description, category, course, teachers, this.teachersInvited, this.studentsInvited).subscribe({
+      next: (response) &#x3D;&gt; {
+        this.dialogRef.close();
+      },
+      error: (e) &#x3D;&gt; {
+      },
+    });
+
+  }
+
+  /** Comportamiento cuando el usuario pulsa el botón de cancelar.
+   * Se cierra el diálogo sin hacer nada más.
+   */
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'DialogDataAddWork.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

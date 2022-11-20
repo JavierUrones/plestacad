@@ -1,0 +1,71 @@
+<h1> Selecciona los usuarios a invitar </h1>
+
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div class="wrapper" *ngIf="!loading">
+        <mat-label>
+            Profesores
+        </mat-label>
+        <div class="container-group">
+            <mat-form-field class="input-group" appearance="fill">
+
+                <mat-label>Selecciona el profesor a invitar</mat-label>
+
+                <input matInput aria-label="State" [matAutocomplete]="auto1" [formControl]="teachersCtrl">
+
+                <mat-autocomplete #auto1="matAutocomplete">
+                    <mat-option *ngFor="let teacher of teachersFiltered | async" [value]="teacher.email">
+                        <span>{{teacher.email}}</span> | <span class="secondLevelInfo">{{teacher.name}}
+                            {{teacher.surname}}</span>
+                    </mat-option>
+
+                </mat-autocomplete>
+
+
+            </mat-form-field>
+            <button mat-raised-button class="button-group" (click)="addTeacherToList()" color="secondary">Invitar
+                profesor</button>
+        </div>
+
+        <p class="textEmpty" *ngIf="teachersInvited.length==0"> Ningún profesor invitado</p>
+
+        <mat-list *ngIf="teachersInvited.length>0">
+            <mat-list-item  *ngFor="let teacher of teachersInvited"> {{teacher}}
+                 <mat-icon matToolTip="Eliminar profesor invitado" tabindex=0 (keydown.enter)="deleteTeacherInvited(teacher)" class="iconDelete"
+                    (click)="deleteTeacherInvited(teacher)">highlight_remove</mat-icon>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+
+    <div class="wrapper" *ngIf="!loading">
+        <mat-label>
+            Estudiantes
+        </mat-label>
+        <div class="container-group">
+            <mat-form-field class="input-group" appearance="fill">
+                <mat-label>
+                    Selecciona el estudiante a invitar
+                </mat-label>
+                <input matInput aria-label="State" [matAutocomplete]="auto2" [formControl]="studentsCtrl">
+                <mat-autocomplete #auto2="matAutocomplete">
+                    <mat-option *ngFor="let student of studentsFiltered | async" [value]="student.email">
+                        <span>{{student.email}}</span> | <span class="secondLevelInfo">{{student.name}}
+                            {{student.surname}}</span>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button mat-raised-button class="button-group" (click)="addStudentToList()" color="secondary">Invitar
+                estudiante</button>
+        </div>
+        <p class="textEmpty" *ngIf="studentsInvited.length==0"> Ningún estudiante invitado</p>
+
+        <mat-list *ngIf="studentsInvited.length>0">
+            <mat-list-item *ngFor="let student of studentsInvited"> {{student}} <mat-icon matToolTip="Eliminar estudiante invitado" tabindex=0 (keydown.enter)="deleteStudentInvited(student)"  class="iconDelete"
+                    (click)="deleteStudentInvited(student)">highlight_remove</mat-icon>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
+
+<button class="align-right" mat-raised-button color="primary" (click)="onClick()">Generar solicitudes de invitación</button>
+    <button class="align-right" mat-raised-button color="secondary" (click)="onNoClick()">Cancelar</button>

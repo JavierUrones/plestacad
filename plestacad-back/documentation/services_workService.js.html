@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/workService.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/workService.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Servicio encargado de gestionar los usuarios.
+ * @module services/workService
+ */
+/**
+ * Modelo Work
+ */
+const Work = require("../models/Work");
+/**
+ * Modelo WorkRequest
+ */
+const WorkRequest = require("../models/WorkRequest");
+
+/**
+ * Obtiene la lista de todos los trabajos académicos.
+ * @returns Retorna la lista de todos los trabajos académicos
+ */
+async function getAllWorks() {
+  try {
+    const listWorks = Work.find({});
+    return listWorks;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene un trabajo académico a partir de su id.
+ * @param {string} id - id del trabajo académico 
+ * @returns Retorna el trabajo académico asociado al id.
+ */
+async function getWorkById(id) {
+  try {
+    const workById = Work.findById(id)
+    return workById;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Crea un nuevo trabajo académico.
+ * @param {Work} workDto - datos del trabajo académico
+ * @returns Retorna el nuevo trabajo académico creado
+ */
+async function createWork(workDto) {
+  const newWork = new Work({
+    title: workDto.title,
+    authorId: workDto.authorId,
+    teachers: workDto.teachers,
+    students: workDto.students,
+    category: workDto.category,
+    description: workDto.description,
+    course: workDto.course
+  });
+
+  try {
+    //Se guarda el nuevo trabajo.
+    const workSave = await newWork.save();
+    return workSave;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Elimina un trabajo académico.
+ * @param {string} id - id del trabajo académico a eliminar
+ * @returns Retorna el trabajo académico eliminado
+ */
+async function deleteWork(id) {
+  try {
+    let work = await Work.deleteOne({ _id: id });
+    return work;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Actualiza un trabajo académico
+ * @param {Work} workDto - datos del trabajo académico a actualizar.
+ * @returns Retorna el trabajo académico actualizado
+ */
+async function updateWork(workDto) {
+  try {
+    const filter = { _id: workDto.id };
+    const update = {
+      title: workDto.title,
+      authorId: workDto.authorId,
+      teachers: workDto.teachers,
+      students: workDto.students,
+      category: workDto.category,
+      description: workDto.description,
+      course: workDto.course,
+      classified: workDto.classified
+    };
+
+    let work = await Work.findOneAndUpdate(filter, update);
+
+    return work;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Elimina un solicitud de incorporación a un trabajo académico.
+ * @param {string} id - id de la solicitud de incorporación a un trabajo académico.
+ * @returns Retorna la solicitud de incoporación a dicho trabajo académico eliminada.
+ */
+async function deleteWorkRequest(id) {
+  try {
+    var workRequest = await WorkRequest.deleteOne({ _id: id })
+    return workRequest;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene los trabajos académicos en los que un usuario participa como estudiante a partir de su id.
+ * @param {string} id - id del trabajo académico
+ * @returns Retorna la lista de trabajos académicos en los que el usuario participa como estudiante
+ */
+async function getWorksByStudentId(id) {
+  try {
+    const listWorks = await Work.find({
+      'students': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    })
+    return listWorks;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene los trabajos académicos en los que un usuario participa como profesor a partir de su id.
+ * @param {string} id - id del trabajo académico
+ * @returns Retorna la lista de trabajos académicos en los que el usuario participa como profesor
+ */
+async function getWorksByTeacherId(id) {
+  try {
+    const listWorks = await Work.find({
+      'teachers': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    })
+    return listWorks;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+/**
+ * Obtiene los trabajos académicos de una categoría en concreto en los que el usuario participa como estudiante.
+ * @param {string} id - id del trabajo académico
+ * @param {string} category - categoría del trabajo académico.
+ * @returns Retorna la lista de trabajos académicos en los que el usuario participa como estudiante
+ */
+async function getWorksByStudentIdAndCategory(id, category) {
+  try {
+
+
+    const listWorks = await Work.find({
+      'category': category,
+      'students': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    })
+    return listWorks;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+/**
+ * Obtiene los trabajos académicos de una categoría en concreto en los que el usuario participa como profesor.
+ * @param {string} id - id del trabajo académico
+ * @param {string} category - categoría del trabajo académico.
+ * @returns Retorna la lista de trabajos académicos en los que el usuario participa como profesor
+ */
+async function getWorksByTeacherIdAndCategory(id, category) {
+  try {
+
+    const listWorks = await Work.find({
+      'category': category,
+      'teachers': {
+        $in: [
+          mongoose.Types.ObjectId(id)
+        ]
+      }
+    })
+    return listWorks;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Genera una solicitud de incorporación a un trabajo académico para un usuario en concreto.
+ * @param {string} idWork - id del trabajo académico
+ * @param {string} userIdReceiver - id del usuario que recibe la solicitud de incorporación.
+ * @param {string} userIdSender - id del usuario que envía la solicitud de incorporación.
+ * @param {string} role - rol del usuario en el trabajo académico (profesor o estudiante)
+ * @returns Retorna la solicitud de incorporación creada
+ */
+async function generateWorkRequest(idWork, userIdReceiver, userIdSender, role) {
+  const newWorkRequest = new WorkRequest({
+    workId: idWork,
+    userIdReceiver: userIdReceiver,
+    userIdSender: userIdSender,
+    role: role,
+    date: new Date()
+  });
+
+  try {
+    //Se guarda el nuevo trabajo.
+    const workRequestSave = await newWorkRequest.save();
+    return workRequestSave;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene las solicitudes de incorporación a un trabajo académico de un usuario.
+ * @param {string} id - id del usuario.
+ * @returns Retorna la lista de solicitudes de incoporación del usuario
+ */
+async function getWorkRequestsByUserReceiverId(id) {
+  try {
+
+    const listRequests = await WorkRequest.find({
+      'userIdReceiver': id
+    })
+    return listRequests;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Obtiene las solicitudes de incorporación a un trabajo académico existentes de un trabajo académico.
+ * @param {string} id - id del trabajo académico
+ * @returns Retorna la lista de solicitudes de incorporación que se han creado para el trabajo académico indicado
+ */
+async function getWorkRequestsByWorkId(id) {
+  try {
+
+    const listRequests = await WorkRequest.find({
+      'workId': id
+    })
+    return listRequests;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+/**
+ * Elimina a un usuario de un trabajo académico.
+ * @param {string} workId - id del trabajo académico.
+ * @param {string} userId - id del usuario a borrar
+ * @param {string} type - rol del usuario en el trabajo académico
+ * @returns Retorna el trabajo académico actualizado
+ */
+async function deleteUserFromWork(workId, userId, type) {
+  try {
+
+    const work = await Work.findById(workId);
+    if (type == "student") {
+      work.students = work.students.filter((student) => student.toString() != userId.toString())
+    }
+    if (type == "teacher") {
+      work.teachers = work.teachers.filter((teacher) => teacher.toString() != userId.toString())
+    }
+
+    work.save();
+    return work;
+  } catch (error) {
+    throw error;
+  }
+}
+
+
+
+module.exports = {updateWork, createWork, deleteWork, getWorkById, getAllWorks, getWorksByTeacherId, 
+  getWorksByStudentIdAndCategory, deleteWorkRequest, getWorksByTeacherIdAndCategory, generateWorkRequest, 
+  getWorkRequestsByUserReceiverId, getWorksByStudentId, getWorkRequestsByWorkId, deleteUserFromWork };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-config_index.html">config/index</a></li><li><a href="module-loaders_loaderExpress.html">loaders/loaderExpress</a></li><li><a href="module-loaders_loaderMongoose.html">loaders/loaderMongoose</a></li><li><a href="module-middleware_authMiddleware.html">middleware/authMiddleware</a></li><li><a href="module-models_CalendarEvent.html">models/CalendarEvent</a></li><li><a href="module-models_Notification.html">models/Notification</a></li><li><a href="module-models_Post.html">models/Post</a></li><li><a href="module-models_PostInteraction.html">models/PostInteraction</a></li><li><a href="module-models_Task.html">models/Task</a></li><li><a href="module-models_TaskClassificator.html">models/TaskClassificator</a></li><li><a href="module-models_User.html">models/User</a></li><li><a href="module-models_Work.html">models/Work</a></li><li><a href="module-models_WorkRequest.html">models/WorkRequest</a></li><li><a href="module-routes_authentication.html">routes/authentication</a></li><li><a href="module-routes_calendar.html">routes/calendar</a></li><li><a href="module-routes_files.html">routes/files</a></li><li><a href="module-routes_notifications.html">routes/notifications</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-routes_task.html">routes/task</a></li><li><a href="module-routes_users.html">routes/users</a></li><li><a href="module-routes_works.html">routes/works</a></li><li><a href="module-services_authService.html">services/authService</a></li><li><a href="module-services_calendarService.html">services/calendarService</a></li><li><a href="module-services_fileService.html">services/fileService</a></li><li><a href="module-services_notificationService.html">services/notificationService</a></li><li><a href="module-services_postService.html">services/postService</a></li><li><a href="module-services_taskService.html">services/taskService</a></li><li><a href="module-services_userService.html">services/userService</a></li><li><a href="module-services_workService.html">services/workService</a></li><li><a href="module-utils_email.html">utils/email</a></li><li><a href="module-utils_socket-io.html">utils/socket-io</a></li><li><a href="module-utils_token.html">utils/token</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Nov 16 2022 03:26:24 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

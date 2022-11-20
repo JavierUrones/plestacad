@@ -1,0 +1,107 @@
+<h1 class="header-title"> Videollamadas </h1>
+
+<div class="grid" *ngIf="!this.videocallsService.onCall">
+    <div class="contacts-grid">
+        <div class="contacts-frame">
+
+            <h2 id="contact-title">Contactos </h2>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Buscar contacto..." (input)="onSearch($event.target)" />
+            </mat-form-field>
+            <div class="no-contacts" *ngIf="this.contacts.length == 0">
+                <span> No tienes ningún contacto debido a que no compartes trabajos académicos con otros
+                    usuarios.</span>
+            </div>
+
+            <div class="contact" *ngFor="let contact of contacts">
+
+                <div *ngIf="this.contacts.length > 0">
+                    <div class="image-user-container">
+                        <img alt="Imagen de perfil" *ngIf="contact.photo!=undefined" class="circular-photo"
+                            [src]="contact.photo">
+                        <img alt="Imagen de perfil" *ngIf="contact.photo==undefined" class="circular-photo"
+                            src="assets/images/profile-default.png">
+                        <div *ngIf="!contact.isOnline" class='badge-offline'>
+                        </div>
+                        <div *ngIf="contact.isOnline" class='badge-online'>
+                        </div>
+                    </div>
+                </div>
+
+
+                <span class="info-user">{{contact.name}} {{contact.surname}}
+                </span>
+                <mat-icon tabindex=0 (keydown.enter)="initCall(contact._id)" matTooltip="Iniciar videollamada"
+                    *ngIf="contact.isOnline" class="icon-call-online" (click)="initCall(contact._id)">call</mat-icon>
+                <mat-icon *ngIf="!contact.isOnline" class="icon-call-offline">call</mat-icon>
+
+                <mat-menu></mat-menu>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="call-background">
+    <div *ngIf="this.videocallsService.onCall" class="wrapper-video">
+        <div class="video-user">
+            <div *ngFor="let user of this.videocallsService.userListStream">
+                <video [srcObject]="user" autoplay></video>
+                <div class="label-name">
+                    <span *ngIf="user==this.videocallsService.userListStream[0]">
+                        Tú
+                    </span>
+                    <span *ngIf="user==this.videocallsService.userListStream[1]">
+                        <span>{{this.videocallsService.userNameOnCall}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div *ngIf="this.videocallsService.onCall" class="videocall-options">
+
+        <button *ngIf="this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.muteAudio()">
+            <mat-icon matTooltip="Desactivar micrófono">mic</mat-icon>
+        </button>
+        <button *ngIf="!this.videocallsService.userListStream[0].getAudioTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.muteAudio()">
+            <mat-icon matTooltip="Activar micrófono">mic_off</mat-icon>
+        </button>
+
+        <button class="call-options" mat-raised-button (click)="this.endCall()">
+            <mat-icon matTooltip="Terminar videollamada" style="color: red">call_end</mat-icon>
+        </button>
+        <button *ngIf="this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.stopVideo()">
+            <mat-icon matTooltip="Apagar cámara">videocam</mat-icon>
+        </button>
+
+        <button *ngIf="!this.videocallsService.userListStream[0].getVideoTracks()[0].enabled" class="call-options"
+            mat-raised-button (click)="this.stopVideo()">
+            <mat-icon matTooltip="Encender cámara">videocam_off</mat-icon>
+        </button>
+
+
+    </div>
+</div>
+
+<!-- class="wrapper-video" >
+    
+
+    <div *ngFor="let user of listUser">
+        <video [srcObject]="user" autoplay></video>
+        <div class="label-name">
+            <span>{{user.nameUser}}</span>
+          </div>
+    </div>
+
+
+  </div>
+
+
+  -->

@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button *ngIf="!isAdmin" mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img alt="Logo" alt="Logo de Plestacad" class="img-logo" src="assets/images/logo-white.svg" />
+        <a routerLink="/admin"><img alt="Logo"  *ngIf="isAdmin" alt="Logo admin" class="img-logo" src="assets/images/logo-admin.svg" /></a>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" >
+                <li>
+                    <button *ngIf="!isAdmin" mat-icon-button routerLink="/ayuda" matTooltip="Ayuda">
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon *ngIf="this.photoProfile==undefined">person_outline</mat-icon>
+                        <img alt="Logo" *ngIf="this.photoProfile!=undefined" class="circular-photo" [src]="this.photoProfile">
+
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <span class="user-name"> {{this.username}} {{this.surname}} </span>
+
+                        <button  mat-menu-item routerLink="/perfil/{{this.idUser}}">
+                            <mat-icon>person</mat-icon>
+                            Mi perfil
+                        </button>
+
+                        <button mat-menu-item (click)="logout()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            Desconectarse
+                        </button>
+                    </mat-menu>
+
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

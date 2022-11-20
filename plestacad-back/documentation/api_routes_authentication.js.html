@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: api/routes/authentication.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: api/routes/authentication.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Router express que define las rutas relacionadas con la autenticación de los usuarios.
+ * @module routes/authentication
+ * @requires express
+ */
+
+/**
+ * Authentication service.
+ * @type {object}
+ * @const
+ */
+
+const authService = require("../../services/authService");
+
+/**
+ * Error de validación.
+ * @type {object}
+ * @const
+ */
+const ValidationError = require("../../config/errors/customErrors");
+
+
+/**
+ * Email util functions
+ * @type {object}
+ * @const
+ */
+const {sendEmailConfirmation, generateVerifyToken} = require("../../utils/email");
+
+
+/**
+ * Router express.
+ * @type {object}
+ * @const
+ */
+const router = require("express").Router();
+
+/**
+ * @name post/signup
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
+router.post("/signup", async (req, res) => {
+  const userDto = req.body;
+  try {
+    let verifyToken = generateVerifyToken(); //se crea el token de verificación del usuario
+
+    const response = await authService.signUp(userDto, verifyToken);
+
+    //sendEmailConfirmation(userDto, verifyToken); //comentar en pruebas
+
+
+    res.json({
+      data: response
+    });
+    
+
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      return res.status(400).json({ error: error.message });
+    } else {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+});
+
+/**
+ * @name post/login
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
+router.post("/login", async (req, res) => {
+  try {
+    const { token, userLogged } = await authService.login(req.body);
+    req.session.email = userLogged.email;
+    req.session.id = userLogged.id;
+
+    //req.session.role = userLogged.role;
+    //Se devuelve el token.
+
+    res.status(200).send({
+      token: token,
+      user: userLogged
+    });
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      return res.status(400).json({ error: error.message });
+    } else {
+      return res.status(500).json(error);
+    }
+  }
+});
+
+/**
+ * @name get/logout
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
+router.get("/logout", async (req, res) => {
+  try {
+    email = req.session.email;
+    req.session.email = null;
+    req.session.id = null;
+    //req.session.role = null;
+    res.status(200).send({
+      logout: email,
+    });
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+/**
+ * @name get/verify/:token
+ * @function
+ * @memberof module:routes/authentication
+ * @param {string} path - express path
+ * @param {callback} middleware - express middleware.
+ */
+router.get("/verify/:token", async (req, res) => {
+  try {
+    var token = req.params.token;
+    await authService.verifyUser(token);
+    res.redirect(process.env.URL_CLIENT+"/login");
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+module.exports = router;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-app.html">app</a></li><li><a href="module-config_index.html">config/index</a></li><li><a href="module-loaders_loaderExpress.html">loaders/loaderExpress</a></li><li><a href="module-loaders_loaderMongoose.html">loaders/loaderMongoose</a></li><li><a href="module-middleware_authMiddleware.html">middleware/authMiddleware</a></li><li><a href="module-models_CalendarEvent.html">models/CalendarEvent</a></li><li><a href="module-models_Notification.html">models/Notification</a></li><li><a href="module-models_Post.html">models/Post</a></li><li><a href="module-models_PostInteraction.html">models/PostInteraction</a></li><li><a href="module-models_Task.html">models/Task</a></li><li><a href="module-models_TaskClassificator.html">models/TaskClassificator</a></li><li><a href="module-models_User.html">models/User</a></li><li><a href="module-models_Work.html">models/Work</a></li><li><a href="module-models_WorkRequest.html">models/WorkRequest</a></li><li><a href="module-routes_authentication.html">routes/authentication</a></li><li><a href="module-routes_calendar.html">routes/calendar</a></li><li><a href="module-routes_files.html">routes/files</a></li><li><a href="module-routes_notifications.html">routes/notifications</a></li><li><a href="module-routes_posts.html">routes/posts</a></li><li><a href="module-routes_task.html">routes/task</a></li><li><a href="module-routes_users.html">routes/users</a></li><li><a href="module-routes_works.html">routes/works</a></li><li><a href="module-services_authService.html">services/authService</a></li><li><a href="module-services_calendarService.html">services/calendarService</a></li><li><a href="module-services_fileService.html">services/fileService</a></li><li><a href="module-services_notificationService.html">services/notificationService</a></li><li><a href="module-services_postService.html">services/postService</a></li><li><a href="module-services_taskService.html">services/taskService</a></li><li><a href="module-services_userService.html">services/userService</a></li><li><a href="module-services_workService.html">services/workService</a></li><li><a href="module-utils_email.html">utils/email</a></li><li><a href="module-utils_socket-io.html">utils/socket-io</a></li><li><a href="module-utils_token.html">utils/token</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Nov 16 2022 03:26:24 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
